@@ -1,0 +1,36 @@
+<html>
+	<head>
+		<script src="vendor/jquery-3.2.1.min.js"></script>
+		<script src="js/comun.js"></script>
+		<script src="js/adm_jornadas.js"></script>
+	</head>
+	<body>
+		<div class="main-container">
+			<div class="menu">
+			</div>
+			
+			<div class="content">
+				<div class="competiciones">
+					<select class="competicion">
+						<option value="">(Seleccione una)</option>
+					</select>				
+				</div>
+				<div class="jornadas">
+					<table class="tabla-jornadas">
+					</table>
+					<button class="crear">Crear</button>
+				</div>
+				
+				<div class="form-editar">
+					<input type="hidden" class="jorn_id dato" value="">
+					<input type="text" class="jorn_numero dato" placeholder="Número jornada" value="">
+					<input type="text" class="jorn_nombre dato" placeholder="Nombre" value="">
+					<input type="text" class="jorn_nombre_corto dato" placeholder="Nombre corto" value="">
+					<input type="text" class="jorn_fecha_hora dato" placeholder="Fecha y hora de inicio" value="">
+					<select class="jorn_tipo_jornada dato"></select>				
+					<button class="crear">Guardar</button>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

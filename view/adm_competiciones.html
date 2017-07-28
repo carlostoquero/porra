@@ -1,0 +1,46 @@
+<html>
+	<head>
+		<script src="vendor/jquery-3.2.1.min.js"></script>
+		<script src="js/comun.js"></script>
+		<script src="js/adm_competiciones.js"></script>
+	</head>
+	<body>
+		<div class="main-container">
+			<div class="menu">
+			</div>
+			
+			<div class="content">
+				
+				<div class="competiciones">
+					<table class="tabla-competiciones">
+					</table>
+					<button class="crear-competicion">Crear Competicion</button>
+				</div>
+				
+				<div class="form-editar-competicion">
+					<div class="datos-principales">
+						<input type="hidden" class="comp_id dato-competicion" value="">
+						<input type="text" class="comp_nombre dato-competicion" placeholder="Nombre" value="">
+						<input type="text" class="comp_siglas dato-competicion" placeholder="Abreviatura" value="">
+						<input type="text" class="comp_titulo dato-competicion" placeholder="Título" value="">
+						<input type="text" class="comp_subtitulo dato-competicion" placeholder="Subtítulo" value="">
+						<textarea class="comp_reglas dato-competicion" placeholder="Reglas" rows="7"></textarea>
+						<select class="comp_tipo_competicion dato-competicion"></select>				
+					</div>
+					<div class="datos-grupos">
+						<table class="tabla-grupos">
+						</table>
+						<button class="crear-grupo">Crear Grupo</button>
+					</div>
+					<div class="form-editar-grupo">
+						<input type="hidden" class="grupo_id dato-grupo" value="">
+						<input type="text" class="grupo_nombre dato-grupo" placeholder="Nombre" value="">
+						<input type="hidden" class="grupo_competicion dato-grupo" value="">
+					</div>
+					<button class="guardar-grupo">Guardar grupo</button>
+					<button class="guardar-competicion">Guardar</button>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
