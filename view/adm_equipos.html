@@ -1,0 +1,44 @@
+<html>
+	<head>
+		<script src="vendor/jquery-3.2.1.min.js"></script>
+		<script src="js/comun.js"></script>
+		<script src="js/adm_equipos.js"></script>
+	</head>
+	<body>
+		<div class="main-container">
+			<div class="menu">
+			</div>
+			
+			<div class="content">
+				<div class="equipos">
+					<table class="tabla-equipos">
+					</table>
+					<button class="crear-equipo">Crear Equipo</button>
+				</div>
+				
+				<div class="form-editar-equipo">
+					<div class="datos-principales">
+						<input type="hidden" class="equipo_id dato-equipo" value="">
+						<input type="text" class="equipo_nombre dato-equipo" placeholder="Nombre" value="">
+						<input type="text" class="equipo_abreviatura dato-equipo" placeholder="Abreviatura" value="">
+						<input type="text" class="equipo_escudo dato-equipo" placeholder="Escudo" value="">
+						<img src="" class="equipo_img_escudo dato-equipo">
+					</div>
+					<div class="datos-competiciones">
+						<h2>COMPETICIONES</h2>
+						<table class="tabla-competiciones">
+						</table>
+						<button class="crear-competicion">Crear Competicion</button>
+					</div>
+					<div class="form-editar-competiciones">
+						<select class="comp_competicion dato-competicion"></select>				
+						<select class="comp_grupo dato-competicion"></select>				
+					</div>
+					<button class="guardar-grupo">Guardar competicion</button>
+					<button class="guardar-competicion">Guardar</button>
+				</div>
+
+			</div>
+		</div>
+	</body>
+</html>
