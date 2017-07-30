@@ -69,6 +69,7 @@ function getEstadosUsuario(){
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // FIN INFORMACION MAESTRA
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 function getCompeticiones(){
 	var competiciones = [];
 	competiciones.push({id: 1, nombre: "Mundial Brasil 2014", 			titulo: "La porra del mundial", subtitulo: "FIFA World Cup Brasil 2014", siglas: "wc-14", tipo_competicion: {id: 3, nombre: "Mixto"}, reglas: ""});
@@ -229,6 +230,59 @@ function getEquiposGrupo(id_grupo){
 		return pertenece_grupo;
 	});
 	return equipos_grupo;
+}
+
+function getEstadios(){
+	var estadios = [];
+	estadios.push({ id: 1, nombre: "Beira R&iacute;o", ciudad: "Porto Alegre"});
+	estadios.push({ id: 2, nombre: "Estadio Castel&atilde;o", ciudad: "Fortaleza"});
+	estadios.push({ id: 3, nombre: "Arena Fonte Nova", ciudad: "Salvador de Bah&iacute;a"});
+	estadios.push({ id: 4, nombre: "Estadio Mineirao", ciudad: "Belo Horizonte"});
+	estadios.push({ id: 5, nombre: "Estadio Nacional", ciudad: "Brasilia"});
+	estadios.push({ id: 6, nombre: "Estadio Das Dunas", ciudad: "Natal"});
+	estadios.push({ id: 7, nombre: "Estadio Maracan&aacute;", ciudad: "R&iacute;o de Janeiro"});
+	estadios.push({ id: 8, nombre: "Arena da Baixada", ciudad: "Curitiba"});
+	estadios.push({ id: 9, nombre: "Arena Pantanal", ciudad: "Cuiab&aacute;"});
+	estadios.push({ id: 10, nombre: "Arena de S&atilde;o Paulo", ciudad: "S&atilde;o Paulo"});
+	estadios.push({ id: 11, nombre: "Arena de Pernambuco", ciudad: "Recife"});
+	estadios.push({ id: 12, nombre: "Arena Amazonia", ciudad: "Manaos"});
+	estadios.push({ id: 13, nombre: "Juegos Mediterr&aacute;neos", ciudad: "Almer&iacute;", equipo_local: 66});
+	estadios.push({ id: 14, nombre: "San Mam&eacute;s", ciudad: "Bilbao", equipo_local: 67});
+	estadios.push({ id: 15, nombre: "Vicente Calder&oacute;n", ciudad: "Madrid", equipo_local: 68});
+	estadios.push({ id: 16, nombre: "Camp Nou", ciudad: "Barcelona", equipo_local: 69});
+	estadios.push({ id: 17, nombre: "Bala&iacute;dos", ciudad: "Vigo", equipo_local: 70});
+	estadios.push({ id: 18, nombre: "Nuevo Arc&aacute;ngel", ciudad: "C&oacute;rdoba", equipo_local: 71});
+	estadios.push({ id: 19, nombre: "Riazor", ciudad: "La Coru�a", equipo_local: 72});
+	estadios.push({ id: 20, nombre: "Ipur&uacute;a", ciudad: "Eibar", equipo_local: 73});
+	estadios.push({ id: 21, nombre: "Mart&iacute;nez Valero", ciudad: "Elche", equipo_local: 74});
+	estadios.push({ id: 22, nombre: "Montjuic", ciudad: "Barcelona", equipo_local: 75});
+	estadios.push({ id: 23, nombre: "Alfonso P&eacute;rez", ciudad: "Getafe", equipo_local: 76});
+	estadios.push({ id: 24, nombre: "Nuevo Los C&aacute;rmenes", ciudad: "Granada", equipo_local: 77});
+	estadios.push({ id: 25, nombre: "Ciutat de Valencia", ciudad: "Valencia", equipo_local: 78});
+	estadios.push({ id: 26, nombre: "La Rosaleda", ciudad: "M&aacute;laga", equipo_local: 79});
+	estadios.push({ id: 27, nombre: "Santiago Bernab&eacute;u", ciudad: "Madrid", equipo_local: 80});
+	estadios.push({ id: 28, nombre: "Anoeta", ciudad: "San Sebasti&aacute;n", equipo_local: 81});
+	estadios.push({ id: 29, nombre: "Vallecas", ciudad: "Madrid", equipo_local: 82});
+	estadios.push({ id: 30, nombre: "S&aacute;nchez Pizju&aacute;n", ciudad: "Sevilla", equipo_local: 83});
+	estadios.push({ id: 31, nombre: "Mestalla", ciudad: "Valencia", equipo_local: 84});
+	estadios.push({ id: 32, nombre: "El Madrigal", ciudad: "Villarreal", equipo_local: 85});
+	estadios.push({ id: 33, nombre: "El Molinon", ciudad: "Gij&oacute;n", equipo_local: 87});
+	estadios.push({ id: 34, nombre: "Benito Villamar&iacute;n", ciudad: "Sevilla", equipo_local: 86});
+	estadios.push({ id: 35, nombre: "Insular", ciudad: "Las Palmas de Gran Canaria", equipo_local: 88});
+	estadios.push({ id: 36, nombre: "Stade de France", ciudad: "Saint-Denis"});
+	estadios.push({ id: 37, nombre: "Parc des Princes", ciudad: "Par&iacute;s"});
+	estadios.push({ id: 38, nombre: "Stade de Lyon", ciudad: "Lyon"});
+	estadios.push({ id: 39, nombre: "Stade Velodrome", ciudad: "Marsella"});
+	estadios.push({ id: 40, nombre: "Stade Pierre-Mauroy", ciudad: "Lille"});
+	estadios.push({ id: 41, nombre: "Stade Bollaert-Delelis", ciudad: "Lens"});
+	estadios.push({ id: 42, nombre: "Stade de Bordeaux", ciudad: "Burdeos"});
+	estadios.push({ id: 43, nombre: "Stade Geoffroy-Guichard", ciudad: "Saint-Etienne"});
+	estadios.push({ id: 44, nombre: "Stade de Toulouse", ciudad: "Toulouse"});
+	estadios.push({ id: 45, nombre: "Stade de Nice", ciudad: "Niza"});
+	estadios.push({ id: 46, nombre: "Mendizorroza", ciudad: "Vitoria", equipo_local: 120});
+	estadios.push({ id: 47, nombre: "Butarque", ciudad: "Legan&eacute;s", equipo_local: 121});
+	estadios.push({ id: 48, nombre: "El Sadar", ciudad: "Pamplona", equipo_local: 122});
+	return estadios;
 }
 
 function getJornadas(){
