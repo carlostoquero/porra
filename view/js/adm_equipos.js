@@ -34,7 +34,7 @@ $(document).ready(function(){
 							row.append('<td>' + competicion[0].nombre + '</td>');
 							row.append('<td>' + grupo[0].nombre + '</td>');
 							row.append('<td><button class="editar-competicion" data-id-competicion="' + competicion_equipo.id_competicion + '">Editar</button></td>');
-							row.append('<td><button class="borrar-competicion" data-id-grupo="' + competicion_equipo.id_competicion + '">Borrar</button></td>');
+							row.append('<td><button class="borrar-competicion" data-id-competicion="' + competicion_equipo.id_competicion + '">Borrar</button></td>');
 							$('.tabla-competiciones').append(row);
 						}
 					});

@@ -21,7 +21,7 @@ function generarMenu() {
 							'<li><a href="./adm_equipos.html">Equipos</a></li>' + 
 							'<li><a href="./adm_estadios.html">Estadios</a></li>' + 
 							'<li><a href="./adm_jornadas.html">Jornadas</a></li>' + 
-							'<li><a href="./adm_usuarios.html">Validar</a></li>' + 
+							'<li><a href="./adm_usuarios.html">Usuarios</a></li>' + 
 						'</ul>' + 
 					'</li>');
 	
@@ -333,16 +333,16 @@ function getJornadasCompeticion(id_competicion){
 
 function getPartidosJornada(id_jornada){
 	var partidos = [];
-	partidos.push({id: 1, equipo_1: {id: 1, nombre: 'Malaga', abreviatura: 'MAL', escudo: 'MAL.png'}, 					equipo_2: {id: 2, nombre: 'Osasuna', abreviatura: 'OSA', escudo: 'OSA.png'}, 				goles_equipo_1: 1, goles_equipo_2: 1, estadio: "La Rosaleda", fecha_hora: '19-08-2016 20:45'});
-	partidos.push({id: 2,  equipo_1: {id: 3, nombre: 'Deportivo de la Coruña', abreviatura: 'DEP', escudo: 'DEP.png'}, 	equipo_2: {id: 4, nombre: 'Eibar', abreviatura: 'EIB', escudo: 'EIB.png'},					goles_equipo_1: 2, goles_equipo_2: 1, estadio: "Riazor", fecha_hora: '19-08-2016 20:45'});
-	partidos.push({id: 3,  equipo_1: {id: 5, nombre: 'FC Barcelona', abreviatura: 'FCB', escudo: 'FCB.png'}, 			equipo_2: {id: 6, nombre: 'Real Betis', abreviatura: 'BET', escudo: 'BET.png'}, 			goles_equipo_1: 6, goles_equipo_2: 2, estadio: "Camp Nou", fecha_hora: '19-08-2016 20:45'});
-	partidos.push({id: 4,  equipo_1: {id: 7, nombre: 'Granada', abreviatura: 'GRA', escudo: 'GRA.png'}, 				equipo_2: {id: 8, nombre: 'Villarreal', abreviatura: 'VIL', escudo: 'VIL.png'}, 			goles_equipo_1: 1, goles_equipo_2: 1, estadio: "Nuevo Los Cármenes", fecha_hora: '19-08-2016 20:45'});
-	partidos.push({id: 5,  equipo_1: {id: 9, nombre: 'Sevilla', abreviatura: 'SEV', escudo: 'SEV.png'}, 				equipo_2: {id: 10, nombre: 'Español', abreviatura: 'ESP', escudo: 'ESY.png'}, 				goles_equipo_1: 6, goles_equipo_2: 4, estadio: "Sánchez Pizjuán", fecha_hora: '19-08-2016 20:45'});
-	partidos.push({id: 6,  equipo_1: {id: 11, nombre: 'Sporting de Gijón', abreviatura: 'SPO', escudo: 'SPO.png'}, 		equipo_2: {id: 12, nombre: 'Athletic de Bilbao', abreviatura: 'ATH', escudo: 'ATH.png'}, 	goles_equipo_1: 2, goles_equipo_2: 1, estadio: "El Molinón", fecha_hora: '19-08-2016 20:45'});
-	partidos.push({id: 7,  equipo_1: {id: 13, nombre: 'Real Sociedad', abreviatura: 'RSO', escudo: 'RSO.png'}, 			equipo_2: {id: 14, nombre: 'Real Madrid', abreviatura: 'RMA', escudo: 'RMA.png'}, 			goles_equipo_1: 0, goles_equipo_2: 3, estadio: "Anoeta", fecha_hora: '19-08-2016 20:45'});
-	partidos.push({id: 8,  equipo_1: {id: 15, nombre: 'Atlético de Madrid', abreviatura: 'ATM', escudo: 'ATM.png'}, 	equipo_2: {id: 16, nombre: 'Alavés', abreviatura: 'ALA', escudo: 'ALA.png'}, 				goles_equipo_1: 1, goles_equipo_2: 1, estadio: "Vicente Calderón", fecha_hora: '19-08-2016 20:45'});
-	partidos.push({id: 9,  equipo_1: {id: 17, nombre: 'Celta de Vigo', abreviatura: 'CEL', escudo: 'CEL.png'}, 			equipo_2: {id: 18, nombre: 'Leganés', abreviatura: 'LEG', escudo: 'LEG.png'}, 				goles_equipo_1: 0, goles_equipo_2: 1, estadio: "Balaídos", fecha_hora: '19-08-2016 20:45'});
-	partidos.push({id: 10, equipo_1: {id: 19, nombre: 'Valencia', abreviatura: 'VAL', escudo: 'VAL.png'}, 				equipo_2: {id: 20, nombre: 'Las Palmas', abreviatura: 'LPA', escudo: 'LPA.png'}, 			goles_equipo_1: 2, goles_equipo_2: 4, estadio: "Mestalla", fecha_hora: '19-08-2016 20:45'});
+	partidos.push({id: 1,  equipo_1: 1,  equipo_2: 2,  goles_equipo_1: 1, goles_equipo_2: 1, estadio: 1, fecha_hora: '19-08-2016 20:45'});
+	partidos.push({id: 2,  equipo_1: 3,  equipo_2: 4,  goles_equipo_1: 2, goles_equipo_2: 1, estadio: 2, fecha_hora: '19-08-2016 20:45'});
+	partidos.push({id: 3,  equipo_1: 5,  equipo_2: 6,  goles_equipo_1: 6, goles_equipo_2: 2, estadio: 3, fecha_hora: '19-08-2016 20:45'});
+	partidos.push({id: 4,  equipo_1: 7,  equipo_2: 8,  goles_equipo_1: 1, goles_equipo_2: 1, estadio: 4, fecha_hora: '19-08-2016 20:45'});
+	partidos.push({id: 5,  equipo_1: 9,  equipo_2: 10, goles_equipo_1: 6, goles_equipo_2: 4, estadio: 5, fecha_hora: '19-08-2016 20:45'});
+	partidos.push({id: 6,  equipo_1: 11, equipo_2: 12, goles_equipo_1: 2, goles_equipo_2: 1, estadio: 6, fecha_hora: '19-08-2016 20:45'});
+	partidos.push({id: 7,  equipo_1: 13, equipo_2: 14, goles_equipo_1: 0, goles_equipo_2: 3, estadio: 7, fecha_hora: '19-08-2016 20:45'});
+	partidos.push({id: 8,  equipo_1: 15, equipo_2: 16, goles_equipo_1: 1, goles_equipo_2: 1, estadio: 8, fecha_hora: '19-08-2016 20:45'});
+	partidos.push({id: 9,  equipo_1: 17, equipo_2: 18, goles_equipo_1: 0, goles_equipo_2: 1, estadio: 9, fecha_hora: '19-08-2016 20:45'});
+	partidos.push({id: 10, equipo_1: 19, equipo_2: 20, goles_equipo_1: 2, goles_equipo_2: 4, estadio: 10, fecha_hora: '19-08-2016 20:45'});
 	return partidos;
 }
 
@@ -394,6 +394,9 @@ function getPuntos(){
 	return puntos;
 }
 
+function getCompeticionSeleccionada(){
+	return 1;
+}
 function getJornadaActual(){
 	return 1;
 }

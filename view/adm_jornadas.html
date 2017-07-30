@@ -18,16 +18,32 @@
 				<div class="jornadas">
 					<table class="tabla-jornadas">
 					</table>
-					<button class="crear">Crear</button>
+					<button class="crear-jornada">Crear</button>
 				</div>
 				
-				<div class="form-editar">
-					<input type="hidden" class="jorn_id dato" value="">
-					<input type="text" class="jorn_numero dato" placeholder="Número jornada" value="">
-					<input type="text" class="jorn_nombre dato" placeholder="Nombre" value="">
-					<input type="text" class="jorn_nombre_corto dato" placeholder="Nombre corto" value="">
-					<input type="text" class="jorn_fecha_hora dato" placeholder="Fecha y hora de inicio" value="">
-					<select class="jorn_tipo_jornada dato"></select>				
+				<div class="form-editar-jornada">
+					<input type="hidden" class="jorn_id dato-jornada" value="">
+					<input type="text" class="jorn_numero dato-jornada" placeholder="Número jornada" value="">
+					<input type="text" class="jorn_nombre dato-jornada" placeholder="Nombre" value="">
+					<input type="text" class="jorn_nombre_corto dato-jornada" placeholder="Nombre corto" value="">
+					<input type="text" class="jorn_fecha_hora dato-jornada" placeholder="Fecha y hora de inicio" value="">
+					<select class="jorn_tipo_jornada dato-jornada"></select>				
+
+					<div class="datos-partidos">
+						<h2>PARTIDOS</h2>
+						<table class="tabla-partidos">
+						</table>
+						<button class="crear-partido">Crear Partido</button>
+					</div>
+
+					<div class="form-editar-partido">
+						<select class="part_equipo part_equipo_1 dato-partido"></select>				
+						<select class="part_equipo part_equipo_2 dato-partido"></select>
+						<select class="part_estadio dato-partido"></select>
+						<input type="text" class="part_fecha_hora dato-partido" placeholder="Fecha y hora partido" value="">
+						<button class="guardar-partido">Guardar partido</button>
+					</div>
+
 					<button class="crear">Guardar</button>
 				</div>
 			</div>
