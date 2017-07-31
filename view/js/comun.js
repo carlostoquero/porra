@@ -34,6 +34,15 @@ function generarMenu() {
 	$('.menu').append(actions);
 }
 
+function findElementByField(element_array, field_name, field_value){
+	var found_element = null;
+	var matching_elements = $.grep(element_array, function(element, index){
+		return element.hasOwnProperty(field_name) ? element[field_name] === field_value : false;
+	});
+	found_element = matching_elements !== null && matching_elements.length === 1 ? matching_elements[0] : null;
+	return found_element;
+}
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // INFORMACION MAESTRA
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////

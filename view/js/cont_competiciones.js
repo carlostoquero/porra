@@ -8,18 +8,16 @@ $(document).ready(function(){
 		$('.dato').val('');
 		var id_competicion = parseInt($(this).attr('data-id-competicion'));
 		if (id_competicion !== null){
-			var competicion_editar = $.grep(competiciones, function(competicion, index){
-				return competicion.id === id_competicion;
-			});
-			if (competicion_editar !== null && competicion_editar.length === 1){
+			var competicion_editar = findElementByField(competiciones, "id", id_competicion);
+			if (competicion_editar !== null){
 				$('.form-editar').show();
-				$('.comp_id').val(competicion_editar[0].id);
-				$('.comp_nombre').val(competicion_editar[0].nombre);
-				$('.comp_siglas').val(competicion_editar[0].siglas);
-				$('.comp_titulo').val(competicion_editar[0].titulo);
-				$('.comp_subtitulo').val(competicion_editar[0].subtitulo);
-				$('.comp_reglas').val(competicion_editar[0].reglas);
-				$('.comp_tipo_competicion').val(competicion_editar[0].tipo_competicion.id);
+				$('.comp_id').val(competicion_editar.id);
+				$('.comp_nombre').val(competicion_editar.nombre);
+				$('.comp_siglas').val(competicion_editar.siglas);
+				$('.comp_titulo').val(competicion_editar.titulo);
+				$('.comp_subtitulo').val(competicion_editar.subtitulo);
+				$('.comp_reglas').val(competicion_editar.reglas);
+				$('.comp_tipo_competicion').val(competicion_editar.tipo_competicion.id);
 			}
 		}
 	});

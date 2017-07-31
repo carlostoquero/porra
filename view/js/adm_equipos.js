@@ -11,28 +11,26 @@ $(document).ready(function(){
 		$('.dato-equipo').val('');
 		var id_equipo = parseInt($(this).attr('data-id-equipo'));
 		if (id_equipo !== null){
-			var equipo_editar = $.grep(equipos, function(equipo, index){
-				return equipo.id === id_equipo;
-			});
-			if (equipo_editar !== null && equipo_editar.length === 1){
+			var equipo_editar = findElementByField(equipos, "id", id_equipo);
+			if (equipo_editar !== null){
 				$('.form-editar-equipo').show();
 				$('.form-editar-competiciones').hide();
-				$('.equipo_id').val(equipo_editar[0].id);
-				$('.equipo_nombre').val(equipo_editar[0].nombre);
-				$('.equipo_abreviatura').val(equipo_editar[0].abreviatura);
-				$('.equipo_escudo').val(equipo_editar[0].escudo);
-				$('.equipo_img_escudo').attr('src', equipo_editar[0].escudo);
+				$('.equipo_id').val(equipo_editar.id);
+				$('.equipo_nombre').val(equipo_editar.nombre);
+				$('.equipo_abreviatura').val(equipo_editar.abreviatura);
+				$('.equipo_escudo').val(equipo_editar.escudo);
+				$('.equipo_img_escudo').attr('src', equipo_editar.escudo);
 
 				$('.tabla-competiciones').find('tr').remove();
-				competiciones_equipo = equipo_editar[0].competiciones;
+				competiciones_equipo = equipo_editar.competiciones;
 				if (competiciones_equipo !== null && competiciones_equipo.length > 0){
 					$.each(competiciones_equipo, function(index, competicion_equipo){
-						var competicion = $.grep(competiciones, function(competicion, index){ return competicion.id === competicion_equipo.id_competicion; });
-						var grupo = $.grep(grupos, function(grupo, index) { return grupo.id === competicion_equipo.id_grupo; });
-						if (competicion !== null && competicion.length === 1 && grupo !== null && grupo.length === 1){
+						var competicion = findElementByField(competiciones, "id", competicion_equipo.id_competicion);
+						var grupo = findElementByField(grupos, "id", competicion_equipo.id_grupo);
+						if (competicion !== null && grupo !== null){
 							var row = $('<tr>');
-							row.append('<td>' + competicion[0].nombre + '</td>');
-							row.append('<td>' + grupo[0].nombre + '</td>');
+							row.append('<td>' + competicion.nombre + '</td>');
+							row.append('<td>' + grupo.nombre + '</td>');
 							row.append('<td><button class="editar-competicion" data-id-competicion="' + competicion_equipo.id_competicion + '">Editar</button></td>');
 							row.append('<td><button class="borrar-competicion" data-id-competicion="' + competicion_equipo.id_competicion + '">Borrar</button></td>');
 							$('.tabla-competiciones').append(row);
@@ -54,14 +52,12 @@ $(document).ready(function(){
 		$('.dato-competicion').val('');
 		var id_competicion = parseInt($(this).attr('data-id-competicion'));
 		if (id_competicion !== null){
-			var competicion_editar = $.grep(competiciones_equipo, function(competicion, index){
-				return competicion.id_competicion === id_competicion;
-			});
-			if (competicion_editar !== null && competicion_editar.length === 1){
+			var competicion_editar = findElementByField(competiciones_equipo, "id_competicion", id_competicion);
+			if (competicion_editar !== null){
 				$('.form-editar-competiciones').show();
-				$('.comp_competicion').val(competicion_editar[0].id_competicion);
+				$('.comp_competicion').val(competicion_editar.id_competicion);
 				$('.comp_competicion').trigger('change');
-				$('.comp_grupo').val(competicion_editar[0].id_grupo);
+				$('.comp_grupo').val(competicion_editar.id_grupo);
 				$('.comp_competicion').attr('disabled', true);
 			}
 		}

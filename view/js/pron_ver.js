@@ -17,10 +17,10 @@ $(document).ready(function(){
 				var head_row = $('<tr>');
 				head_row.append($('<th>'));
 				$.each(partidos, function(index, partido){
-					var equipo_1 = $.grep(equipos, function(equipo, index) { return equipo.id === partido.equipo_1; });
-					var equipo_2 = $.grep(equipos, function(equipo, index) { return equipo.id === partido.equipo_2; });
-					if (equipo_1 !== null && equipo_1.length === 1 && equipo_2 !== null && equipo_2.length === 1){					
-						head_row.append('<th><img src="' + equipo_1[0].escudo + '">' + equipo_1[0].abreviatura + '-' + equipo_2[0].abreviatura + '<img src="' + equipo_2[0].escudo + '">');
+					var equipo_1 = findElementByField(equipos, "id", partido.equipo_1);
+					var equipo_2 = findElementByField(equipos, "id", partido.equipo_2);
+					if (equipo_1 !== null && equipo_2 !== null){					
+						head_row.append('<th><img src="' + equipo_1.escudo + '">' + equipo_1.abreviatura + '-' + equipo_2.abreviatura + '<img src="' + equipo_2.escudo + '">');
 					}
 				});
 				thead.append(head_row);

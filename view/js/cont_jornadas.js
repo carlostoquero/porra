@@ -8,17 +8,15 @@ $(document).ready(function(){
 		$('.dato').val('');
 		var id_jornada = parseInt($(this).attr('data-id-jornada'));
 		if (id_jornada !== null){
-			var jornada_editar = $.grep(jornadas, function(jornada, index){
-				return jornada.id === id_jornada;
-			});
-			if (jornada_editar !== null && jornada_editar.length === 1){
+			var jornada_editar = findElementByField(jornadas, "id",  id_jornada);
+			if (jornada_editar !== null){
 				$('.form-editar').show();
-				$('.jorn_id').val(jornada_editar[0].id);
-				$('.jorn_numero').val(jornada_editar[0].numero);
-				$('.jorn_nombre').val(jornada_editar[0].nombre);
-				$('.jorn_nombre_corto').val(jornada_editar[0].nombre_corto);
-				$('.jorn_fecha_hora').val(jornada_editar[0].fecha_hora);
-				$('.jorn_tipo_jornada').val(jornada_editar[0].tipo_jornada.id);
+				$('.jorn_id').val(jornada_editar.id);
+				$('.jorn_numero').val(jornada_editar.numero);
+				$('.jorn_nombre').val(jornada_editar.nombre);
+				$('.jorn_nombre_corto').val(jornada_editar.nombre_corto);
+				$('.jorn_fecha_hora').val(jornada_editar.fecha_hora);
+				$('.jorn_tipo_jornada').val(jornada_editar.tipo_jornada.id);
 			}
 		}
 	});

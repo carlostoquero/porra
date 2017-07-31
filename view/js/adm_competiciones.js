@@ -9,22 +9,20 @@ $(document).ready(function(){
 		$('.dato-competicion').val('');
 		var id_competicion = parseInt($(this).attr('data-id-competicion'));
 		if (id_competicion !== null){
-			var competicion_editar = $.grep(competiciones, function(competicion, index){
-				return competicion.id === id_competicion;
-			});
-			if (competicion_editar !== null && competicion_editar.length === 1){
+			var competicion_editar = findElementByField(competiciones, "id", id_competicion);
+			if (competicion_editar !== null){
 				$('.form-editar-competicion').show();
 				$('.form-editar-grupo').hide();
-				$('.comp_id').val(competicion_editar[0].id);
-				$('.comp_nombre').val(competicion_editar[0].nombre);
-				$('.comp_siglas').val(competicion_editar[0].siglas);
-				$('.comp_titulo').val(competicion_editar[0].titulo);
-				$('.comp_subtitulo').val(competicion_editar[0].subtitulo);
-				$('.comp_reglas').val(competicion_editar[0].reglas);
-				$('.comp_tipo_competicion').val(competicion_editar[0].tipo_competicion.id);
+				$('.comp_id').val(competicion_editar.id);
+				$('.comp_nombre').val(competicion_editar.nombre);
+				$('.comp_siglas').val(competicion_editar.siglas);
+				$('.comp_titulo').val(competicion_editar.titulo);
+				$('.comp_subtitulo').val(competicion_editar.subtitulo);
+				$('.comp_reglas').val(competicion_editar.reglas);
+				$('.comp_tipo_competicion').val(competicion_editar.tipo_competicion.id);
 
 				$('.tabla-grupos').find('tr').remove();
-				grupos_competicion = getGruposCompeticion(competicion_editar[0].id);
+				grupos_competicion = getGruposCompeticion(competicion_editar.id);
 				if (grupos_competicion !== null && grupos_competicion.length > 0){
 					$.each(grupos_competicion, function(index, grupo){
 						var row = $('<tr>');
@@ -50,14 +48,12 @@ $(document).ready(function(){
 		$('.dato-grupo').val('');
 		var id_grupo = parseInt($(this).attr('data-id-grupo'));
 		if (id_grupo !== null){
-			var grupo_editar = $.grep(grupos_competicion, function(grupo, index){
-				return grupo.id === id_grupo;
-			});
-			if (grupo_editar !== null && grupo_editar.length === 1){
+			var grupo_editar = findElementByField(grupos_competicion, "id", id_grupo);
+			if (grupo_editar !== null){
 				$('.form-editar-grupo').show();
-				$('.grupo_id').val(grupo_editar[0].id);
-				$('.grupo_nombre').val(grupo_editar[0].nombre);
-				$('.grupo_competicion').val(grupo_editar[0].id_competicion);
+				$('.grupo_id').val(grupo_editar.id);
+				$('.grupo_nombre').val(grupo_editar.nombre);
+				$('.grupo_competicion').val(grupo_editar.id_competicion);
 			}
 		}
 	});

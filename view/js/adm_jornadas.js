@@ -42,33 +42,31 @@ $(document).ready(function(){
 		$('.dato').val('');
 		var id_jornada = parseInt($(this).attr('data-id-jornada'));
 		if (id_jornada !== null){
-			var jornada_editar = $.grep(jornadas, function(jornada, index){
-				return jornada.id === id_jornada;
-			});
-			if (jornada_editar !== null && jornada_editar.length === 1){
+			var jornada_editar = findElementByField(jornadas, "id", id_jornada);
+			if (jornada_editar !== null){
 				$('.form-editar-jornada').show();
 				$('.form-editar-partido').hide();
-				$('.jorn_id').val(jornada_editar[0].id);
-				$('.jorn_numero').val(jornada_editar[0].numero);
-				$('.jorn_nombre').val(jornada_editar[0].nombre);
-				$('.jorn_nombre_corto').val(jornada_editar[0].nombre_corto);
-				$('.jorn_fecha_hora').val(jornada_editar[0].fecha_hora);
-				$('.jorn_tipo_jornada').val(jornada_editar[0].tipo_jornada.id);
+				$('.jorn_id').val(jornada_editar.id);
+				$('.jorn_numero').val(jornada_editar.numero);
+				$('.jorn_nombre').val(jornada_editar.nombre);
+				$('.jorn_nombre_corto').val(jornada_editar.nombre_corto);
+				$('.jorn_fecha_hora').val(jornada_editar.fecha_hora);
+				$('.jorn_tipo_jornada').val(jornada_editar.tipo_jornada.id);
 
 				$('.tabla-partidos').find('tr').remove();
-				partidos_jornada = getPartidosJornada(jornada_editar[0].id);
+				partidos_jornada = getPartidosJornada(jornada_editar.id);
 				if (partidos_jornada !== null && partidos_jornada.length > 0){
 					$.each(partidos_jornada, function(index, partido){
-						var equipo_1 = $.grep(equipos, function(equipo, index) { return equipo.id === partido.equipo_1; });
-						var equipo_2 = $.grep(equipos, function(equipo, index) { return equipo.id === partido.equipo_2; });
+						var equipo_1 = findElementByField(equipos, "id", partido.equipo_1);
+						var equipo_2 = findElementByField(equipos, "id", partido.equipo_2);
 						
-						if (equipo_1 !== null && equipo_1.length === 1 && equipo_2 !== null && equipo_2.length === 1){
+						if (equipo_1 !== null && equipo_2 !== null){
 							var row = $('<tr>');
 							row.append('<td>' + partido.id + '</td>');
-							row.append('<td><img src="' + equipo_1[0].escudo + '"/></td>');
-							row.append('<td>' + equipo_1[0].nombre + '</td>');
-							row.append('<td>' + equipo_2[0].nombre + '</td>');
-							row.append('<td><img src="' + equipo_2[0].escudo + '"/></td>');
+							row.append('<td><img src="' + equipo_1.escudo + '"/></td>');
+							row.append('<td>' + equipo_1.nombre + '</td>');
+							row.append('<td>' + equipo_2.nombre + '</td>');
+							row.append('<td><img src="' + equipo_2.escudo + '"/></td>');
 							row.append('<td>' + partido.estadio + '</td>');
 							row.append('<td>' + partido.fecha_hora + '</td>');
 							row.append('<td><button class="editar-partido" data-id-partido="' + partido.id + '">Editar</button></td>');
@@ -92,15 +90,13 @@ $(document).ready(function(){
 		$('.dato-partido').val('');
 		var id_partido = parseInt($(this).attr('data-id-partido'));
 		if (id_partido !== null){
-			var partido_editar = $.grep(partidos_jornada, function(partido, index){
-				return partido.id === id_partido;
-			});
-			if (partido_editar !== null && partido_editar.length === 1){
+			var partido_editar = findElementByField(partidos_jornada, "id", id_partido);
+			if (partido_editar !== null){
 				$('.form-editar-partido').show();
-				$('.part_equipo_1').val(partido_editar[0].equipo_1);
-				$('.part_equipo_2').val(partido_editar[0].equipo_2);
-				$('.part_estadio').val(partido_editar[0].estadio);
-				$('.part_fecha_hora').val(partido_editar[0].fecha_hora);
+				$('.part_equipo_1').val(partido_editar.equipo_1);
+				$('.part_equipo_2').val(partido_editar.equipo_2);
+				$('.part_estadio').val(partido_editar.estadio);
+				$('.part_fecha_hora').val(partido_editar.fecha_hora);
 			}
 		}
 	});

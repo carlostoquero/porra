@@ -8,15 +8,13 @@ $(document).ready(function(){
 		$('.dato-estadio').val('');
 		var id_estadio = parseInt($(this).attr('data-id-estadio'));
 		if (id_estadio !== null){
-			var estadio_editar = $.grep(estadios, function(estadio, index){
-				return estadio.id === id_estadio;
-			});
-			if (estadio_editar !== null && estadio_editar.length === 1){
+			var estadio_editar = findElementByField(estadios, "id", id_estadio);
+			if (estadio_editar !== null){
 				$('.form-editar-estadio').show();
-				$('.estadio_id').val(estadio_editar[0].id);
-				$('.estadio_nombre').val(estadio_editar[0].nombre);
-				$('.estadio_ciudad').val(estadio_editar[0].ciudad);
-				$('.estadio_equipo').val(estadio_editar[0].equipo_local);
+				$('.estadio_id').val(estadio_editar.id);
+				$('.estadio_nombre').val(estadio_editar.nombre);
+				$('.estadio_ciudad').val(estadio_editar.ciudad);
+				$('.estadio_equipo').val(estadio_editar.equipo_local);
 			}
 		}
 	});
