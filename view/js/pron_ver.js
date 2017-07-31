@@ -1,5 +1,8 @@
+var competicion_seleccionada = null;
 var jornada_seleccionada = null;
-var usuarios = null;
+var partidos = [];
+var equipos = [];
+var usuarios = [];
 
 $(document).ready(function(){
 	generarMenu();
@@ -7,14 +10,18 @@ $(document).ready(function(){
 	$('body').on('click','.selector-jornada', function(){
 		jornada_seleccionada = $(this).attr('data-id-jornada');
 		if (usuarios != null && usuarios.length > 0){
-			var partidos = getPartidosJornada(jornada_seleccionada);
+			partidos = getPartidosJornada(jornada_seleccionada);
 			if (partidos && partidos.length > 0){
 				$('.tabla-pronosticos').find('tr').remove();
 				var thead = $('<thead>');
 				var head_row = $('<tr>');
 				head_row.append($('<th>'));
 				$.each(partidos, function(index, partido){
-					head_row.append('<th><img src="./img/' + partido.equipo_1.escudo + '">' + partido.equipo_1.abreviatura + '-' + partido.equipo_2.abreviatura + '<img src="./img/' + partido.equipo_2.escudo + '">');
+					var equipo_1 = $.grep(equipos, function(equipo, index) { return equipo.id === partido.equipo_1; });
+					var equipo_2 = $.grep(equipos, function(equipo, index) { return equipo.id === partido.equipo_2; });
+					if (equipo_1 !== null && equipo_1.length === 1 && equipo_2 !== null && equipo_2.length === 1){					
+						head_row.append('<th><img src="' + equipo_1[0].escudo + '">' + equipo_1[0].abreviatura + '-' + equipo_2[0].abreviatura + '<img src="' + equipo_2[0].escudo + '">');
+					}
 				});
 				thead.append(head_row);
 				$('.tabla-pronosticos').append(thead);
@@ -39,7 +46,10 @@ $(document).ready(function(){
 	});
 	
 	usuarios = getUsuarios();
-	var jornadas = getJornadasCompeticion(1);
+	competicion_seleccionada = getCompeticionSeleccionada();
+	equipos = getEquiposCompeticion(competicion_seleccionada);
+
+	var jornadas = getJornadasCompeticion(competicion_seleccionada);
 	$.each(jornadas, function(index, jornada){
 		$('.jornadas').append($('<div class="selector-jornada" data-id-jornada="' + jornada.id + '"><a href="#" data-numero-jornada="' + jornada.numero + '">' + jornada.nombre_corto + '</a></div>'));
 	});
