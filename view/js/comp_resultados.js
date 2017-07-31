@@ -1,6 +1,8 @@
+var competicion_seleccionada = null;
 var jornada_seleccionada = null;
 var partidos = [];
 var equipos = [];
+var estadios = [];
 
 $(document).ready(function(){
 	generarMenu();
@@ -31,12 +33,11 @@ $(document).ready(function(){
 		}
 	});
 	
-	var competicionSeleccionada = getCompeticionSeleccionada();
-	
-	equipos = getEquiposCompeticion(competicionSeleccionada);
+	competicion_seleccionada = getCompeticionSeleccionada();
+	equipos = getEquiposCompeticion(competicion_seleccionada);
 	estadios = getEstadios();
 	
-	var jornadas = getJornadasCompeticion(competicionSeleccionada);
+	var jornadas = getJornadasCompeticion(competicion_seleccionada);
 	$.each(jornadas, function(index, jornada){
 		$('.jornadas').append($('<div class="selector-jornada" data-id-jornada="' + jornada.id + '"><a href="#" data-numero-jornada="' + jornada.numero + '">' + jornada.nombre_corto + '</a></div>'));
 	});
