@@ -427,6 +427,14 @@ function getUsuariosCompeticion(id_competicion){
 	return usuariosCompeticion;
 }
 
+function getUsuario(id_usuario){
+	var usuarios = getUsuarios();
+	var usuario = $.grep(usuarios, function(usr, index){
+		return usr.id === id_usuario;
+	});
+	return usuario !== null && usuario.length === 1 ? usuario[0] : null;
+}
+
 function getPronosticos(id_jornada){
 	var pronosticos = [];
 	for (idUsuario = 0; idUsuario <= 30; idUsuario++){
