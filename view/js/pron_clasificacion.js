@@ -1,11 +1,13 @@
+var competicion_seleccionada = null;
 var usuarios = null;
 var jornadas = null;
 
 $(document).ready(function(){
 	generarMenu();
-	
-	usuarios = getUsuarios();
-	jornadas = getJornadasCompeticion(1);
+
+	competicion_seleccionada = getCompeticionSeleccionada();
+	usuarios = getUsuariosCompeticion(competicion_seleccionada);
+	jornadas = getJornadasCompeticion(competicion_seleccionada);
 	
 	$('.tabla-clasificacion').find('tr').remove();
 	var row = $('<tr>');

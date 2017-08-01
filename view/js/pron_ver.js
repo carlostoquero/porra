@@ -45,8 +45,8 @@ $(document).ready(function(){
 		}
 	});
 	
-	usuarios = getUsuarios();
 	competicion_seleccionada = getCompeticionSeleccionada();
+	usuarios = getUsuariosCompeticion(competicion_seleccionada);
 	equipos = getEquiposCompeticion(competicion_seleccionada);
 
 	var jornadas = getJornadasCompeticion(competicion_seleccionada);
