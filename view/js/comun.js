@@ -30,8 +30,12 @@ function generarMenu() {
 				   '<li><a href="./comp_cambiar.html">Cambiar competicion</a></li>' + 
 				   '<li><a href="./logout.html">Salir</a></li>');
 
-	$('.menu').append(mainMenu);
-	$('.menu').append(actions);
+	$('.menu-div').append(mainMenu);
+	$('.menu-div').append(actions);
+}
+
+function generarFooter() {
+$('.footer-div').append('<span class="footer">2017 - La Web de la Porra</span>');
 }
 
 function findElementByField(element_array, field_name, field_value){

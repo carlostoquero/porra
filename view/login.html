@@ -1,23 +1,63 @@
-<html>
-	<head>
-		<script src="vendor/jquery-3.2.1.min.js"></script>
-		<script src="js/login.js"></script>
-	</head>
-	<body>
-		<div class="main-container">
-			<div class="form-container">
-				<div class="login-field form-field">
-					<label for="in_user">Usuario:</label>
-					<input type="text" id="in_user" />
-				</div>
-				<div class="login-field form-field">
-					<label for="in_password">Contraseña:</label>
-					<input type="password" id="in_password" />
-				</div>
-				<div class="form-button">
-					<button class="btn_login">Entrar a la porra</button>
-				</div>
-			</div>
-		</div>
-	</body>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<title>La Web de la Porra</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="description" content="La Web de la Porra" />
+	<meta name="author" content="Carlos Toquero (developer) & Alberto Lario (designer)" />
+	<!-- css -->
+ 	<link rel="stylesheet" href="css/bootstrap.min.css" />
+ 	<link rel="stylesheet" href="css/style.css" />
+ 	<link rel="stylesheet" href="css/theme.css" />
+ 	<!-- js -->
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="vendor/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="js/login.js"></script>
+ 	<!--<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>-->
+	<!-- HTML5 shim, for IE6-8 support of HTML5 elements & HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+</head>
+
+<body>
+	<div class="col-lg-4">
+	</div>
+	<div class="col-lg-4" id="log">
+		<form ng-controller="UsersController as UC">
+    		<div class="row form-group">
+        		<div class="col-lg-12">
+            		<div class="login-field form-field input-group input-group-lg">
+            			<span class="input-group-addon">
+                   			<label for="in_user" class="fa fa-user"></label>
+                  		</span>
+						<input type="text" placeholder="Usuario" id="in_user" class="form-control">
+            		</div>
+          		</div>
+     		</div>
+        	<div class="row form-group">
+            	<div class="col-lg-12">
+            		<div class="input-group input-group-lg">
+            			<span class="login-field form-field input-group-addon">
+                   			<label for="in_password" class="fa fa-lock"></label>
+                  		</span>
+               			<input type="password" placeholder="Contrase&ntilde;a" id="in_password" class="form-control">
+            		</div>
+           		</div>
+     		</div>
+        	<div class="row form-group">
+            	<div class="col-lg-12 form-button">
+            	<button type="button" class="btn_login btn btn-primary btn-lg">Entrar</button>
+            	</div>
+        	</div>
+		</form>
+	</div>
+	<div class="col-lg-4">
+	</div>
+</body>
 </html>
