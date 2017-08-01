@@ -42,14 +42,14 @@ $(document).ready(function(){
 	$('.acceso-usuario').append('<option value="">(Seleccione)</option>');
 	if (accesos_usuario !== null && accesos_usuario.length > 0){
 		$.each(accesos_usuario, function(index, acceso){
-			$('.acceso-usuario').append('<option value="' + acceso.id + '">' + acceso.nombre + '</option>');
+			$('.acceso-usuario').append('<option value="' + acceso.id_acceso + '">' + acceso.nombre_acceso + '</option>');
 		});
 	}
 
 	$('.estado-usuario').append('<option value="">(Seleccione)</option>');
 	if (estados_usuario !== null && estados_usuario.length > 0){
 		$.each(estados_usuario, function(index, estado){
-			$('.estado-usuario').append('<option value="' + estado.id + '">' + estado.nombre + '</option>');
+			$('.estado-usuario').append('<option value="' + estado.id_estado + '">' + estado.nombre_estado + '</option>');
 		});
 	}
 	

@@ -51,32 +51,22 @@ function findElementByField(element_array, field_name, field_value){
 // INFORMACION MAESTRA
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 function getTiposCompeticion(){
-	var tipos_competicion = [];
-	tipos_competicion.push({id: 1, nombre: "Liga"});
-	tipos_competicion.push({id: 2, nombre: "Copa"});
-	tipos_competicion.push({id: 3, nombre: "Mixto"});
+	var tipos_competicion = getAjaxSync('ServicioTipos', 'GetTiposCompeticion');
 	return tipos_competicion;
 }
 
 function getTiposJornada(){
-	var tipos_jornada = [];
-	tipos_jornada.push({id: 1, nombre: "Liga"});
-	tipos_jornada.push({id: 2, nombre: "Copa"});
+	var tipos_jornada = getAjaxSync('ServicioTipos', 'GetTiposJornada');
 	return tipos_jornada;
 }
 
 function getAccesosUsuario() {
-	var accesos_usuario = [];
-	accesos_usuario.push({id: 1, nombre: "Usuario"});
-	accesos_usuario.push({id: 2, nombre: "Administrador"});
+	var accesos_usuario = getAjaxSync('ServicioTipos', 'GetAccesos');
 	return accesos_usuario;
 }
 
 function getEstadosUsuario(){
-	var estados_usuario = [];
-	estados_usuario.push({id: 0, nombre: "PENDIENTE"});
-	estados_usuario.push({id: 1, nombre: "VALIDADO"});
-	estados_usuario.push({id: 2, nombre: "RECHAZADO"});
+	var estados_usuario = getAjaxSync('ServicioTipos', 'GetEstados');
 	return estados_usuario;
 }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -475,4 +465,30 @@ function getCompeticionSeleccionada(){
 }
 function getJornadaActual(){
 	return 1;
+}
+
+function getAjaxSync(servicio, funcion, argumentos){
+	var resultado = null;
+	
+	var requestData = { function_name: funcion };
+	if (argumentos !== null) requestData.arguments = argumentos;
+	
+	jQuery.ajax({
+		type: "GET",
+		url: '../controller/' + servicio + '.php',
+		async: false,
+		dataType: 'json',
+		data: requestData,
+
+		success: function (obj, textstatus) {
+					  if( !('error' in obj) ) {
+						  resultado = obj.result;
+					  }
+					  else {
+						  console.log(obj.error);
+					  }
+				}
+	});
+	return resultado;
+
 }
