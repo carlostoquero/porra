@@ -38,15 +38,17 @@ $(document).ready(function(){
 	});
 
 	$('body').on('click', '.guardar-estadio', function(){
-		//TODO: Validación datos
-		var datos_estadio = {};
-		if ($('.estadio_id').val() !== null && $('.estadio_id').val() !== "") datos_estadio.id = parseInt($('.estadio_id').val());
-		datos_estadio.nombre = $('.estadio_nombre').val();
-		datos_estadio.ciudad = $('.estadio_ciudad').val();
-		if ($('.estadio_equipo').val() !== null && $('.estadio_equipo').val() !== "") datos_estadio.equipo_local = parseInt($('.estadio_equipo').val());
-		
-		var resultado_guardado = getAjaxSync('ServicioEstadios', 'GuardarEstadio', JSON.stringify(datos_estadio));
-		if (resultado_guardado === "ok") loadEstadios();
+		$('.errores').html('');
+		if (checkInput()){
+			var datos_estadio = {};
+			if ($('.estadio_id').val() !== null && $('.estadio_id').val() !== "") datos_estadio.id = parseInt($('.estadio_id').val());
+			datos_estadio.nombre = $('.estadio_nombre').val();
+			datos_estadio.ciudad = $('.estadio_ciudad').val();
+			if ($('.estadio_equipo').val() !== null && $('.estadio_equipo').val() !== "") datos_estadio.equipo_local = parseInt($('.estadio_equipo').val());
+			
+			var resultado_guardado = getAjaxSync('ServicioEstadios', 'GuardarEstadio', JSON.stringify(datos_estadio));
+			if (resultado_guardado === "ok") loadEstadios();
+		}
 	});
 	
 	equipos = getEquipos();
@@ -71,6 +73,19 @@ $(document).ready(function(){
 			});
 		}
 		$('.form-editar-estadio').hide();
+	}
+	
+	function checkInput(){
+		var correct_input = true;
+		if ($('.estadio_nombre').val() === null || $('.estadio_nombre').val() === ""){
+			correct_input = false;
+			$('.errores').append('<div>Debe informarse el campo nombre</div>');
+		}
+		if ($('.estadio_ciudad').val() === null || $('.estadio_ciudad').val() === ""){
+			correct_input = false;
+			$('.errores').append('<div>Debe informarse el campo ciudad</div>');
+		}
+		return correct_input;
 	}
 
 });
