@@ -25,21 +25,58 @@ function GuardarEstadio($id_estadio, $nombre_estadio, $ciudad, $equipo_local){
 	return $guardado_correcto;
 }
 
-//TODO: Implementar
 function InsertarEstadio($estadio){
-	return true;
+    $correctInsert = false;
+	$db = new dbConnection();
+	$sql =  "INSERT INTO `ESTADIOS` (nombre_estadio, ciudad".(isset($estadio->id_equipo_local) ? ", id_equipo_local" : "").")
+	         VALUES  (?, ?".(isset($estadio->id_equipo_local) ? ", ?" : "").")";
+    
+    if ($stmt = $db->mysqli->prepare($sql)){
+		$nombre_acortado = substr($estadio->nombre_estadio, 0, 45);
+		$ciudad_acortada = substr($estadio->ciudad_estadio, 0, 45);
+		if (isset($estadio->id_equipo_local)){ $stmt->bind_param("ssi", $nombre_acortado, $ciudad_acortada, $estadio->id_equipo_local); }
+		else { $stmt->bind_param("ss", $nombre_acortado, $ciudad_acortada); }
+		$stmt->execute();
+		if ($db->mysqli->affected_rows >= 0) $correctInsert = true;
+		$stmt->close();
+	}
+	$db->close();
+	return $correctInsert;
 }
 
-//TODO: Implementar
 function ActualizarEstadio($estadio){
-	return true;
+    $correctUpdate = false;
+	$db = new dbConnection();
+	$sql =  "UPDATE `ESTADIOS` SET nombre_estadio = ?, ciudad = ?, id_equipo_local = ".(isset($estadio->id_equipo_local) ? "?" : "null")."
+	         WHERE id_estadio = ?";
+    
+    if ($stmt = $db->mysqli->prepare($sql)){
+		$nombre_acortado = substr($estadio->nombre_estadio, 0, 45);
+		$ciudad_acortada = substr($estadio->ciudad_estadio, 0, 45);
+		if (isset($estadio->id_equipo_local)){ $stmt->bind_param("ssii", $nombre_acortado, $ciudad_acortada, $estadio->id_equipo_local, $estadio->id_estadio); }
+		else { $stmt->bind_param("ssi", $nombre_acortado, $ciudad_acortada, $estadio->id_estadio); }
+		$stmt->execute();
+		if ($db->mysqli->affected_rows >= 0) $correctUpdate = true;
+		$stmt->close();
+	}
+	$db->close();
+	return $correctUpdate;
 }
 
-//TODO: Implementar
 function BorrarEstadio($id_estadio){
-	return true;
+    $correctDelete = false;
+	$db = new dbConnection();
+	$sql = "DELETE FROM `ESTADIOS`  WHERE  id_estadio = ?";
+	if ($stmt = $db->mysqli->prepare($sql)){
+		$stmt->bind_param("i", $id_estadio);
+		$stmt->execute();
+		if ($db->mysqli->affected_rows >= 0)
+			$correctDelete = true;
+		$stmt->close();
+	}
+	$db->close();
+	return $correctDelete;
 }
-
 
 header('Content-Type: application/json');
 $aResult = array();
