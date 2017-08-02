@@ -34,6 +34,29 @@ h1,h2, h3, h4, h5, h6 {
 	margin-bottom:20px;
 }
 
+
+
+
+
+.input-group-lg>.form-control, .input-group-lg>.input-group-addon, .input-group-lg>.input-group-btn>.btn {
+    height: 46px;
+    padding: 10px 16px;
+    font-size: 16px !important;
+    line-height: 1.3333333;
+    border-radius: 0px !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 /* ===================================
 2. layout
 ==================================== */

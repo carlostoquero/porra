@@ -35,7 +35,7 @@ function generarMenu() {
 }
 
 function generarFooter() {
-$('.footer-div').append('<span class="footer">2017 - La Web de la Porra</span>');
+	$('.footer-div').append('<span class="footer">2017 - La Web de la Porra</span>');
 }
 
 function findElementByField(element_array, field_name, field_value){
