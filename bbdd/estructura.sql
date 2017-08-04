@@ -29,3 +29,18 @@ CREATE TABLE ESTADIOS (
   id_equipo_local int,
   PRIMARY KEY (id_estadio)
 );
+
+CREATE TABLE EQUIPOS (
+  id_equipo int NOT NULL AUTO_INCREMENT,
+  nombre_equipo varchar(45) NOT NULL,
+  abreviatura varchar(3) NOT NULL UNIQUE,
+  url_escudo varchar(45) NOT NULL,
+  PRIMARY KEY (id_equipo)
+);
+
+CREATE TABLE EQUIPOS_COMPETICION (
+  id_competicion int NOT NULL,
+  id_equipo int NOT NULL,
+  id_grupo int NOT NULL,
+  PRIMARY KEY (id_competicion, id_equipo)
+);
