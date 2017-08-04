@@ -94,7 +94,7 @@ $(document).ready(function(){
 	
 	grupos = getGrupos();
 	
-	equipos = getEquipos();
+	equipos = getEquiposMockup();
 	$('.tabla-equipos').find('tr').remove();
 	if (equipos !== null && equipos.length > 0){
 		$.each(equipos, function(index, equipo){

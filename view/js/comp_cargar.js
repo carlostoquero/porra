@@ -34,8 +34,8 @@ $(document).ready(function(){
 	});
 
 	competicion_seleccionada = getCompeticionSeleccionada();
-	equipos = getEquiposCompeticion(competicion_seleccionada);
-	estadios = getEstadios();
+	equipos = getEquiposCompeticionMockup(competicion_seleccionada);
+	estadios = getEstadiosMockup();
 
 	var jornadas = getJornadasCompeticion(competicion_seleccionada);
 	$.each(jornadas, function(index, jornada){

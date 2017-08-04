@@ -47,7 +47,7 @@ $(document).ready(function(){
 	
 	competicion_seleccionada = getCompeticionSeleccionada();
 	usuarios = getUsuariosCompeticion(competicion_seleccionada);
-	equipos = getEquiposCompeticion(competicion_seleccionada);
+	equipos = getEquiposCompeticionMockup(competicion_seleccionada);
 
 	var jornadas = getJornadasCompeticion(competicion_seleccionada);
 	$.each(jornadas, function(index, jornada){

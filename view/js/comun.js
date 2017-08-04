@@ -54,19 +54,52 @@ function getTiposCompeticion(){
 	var tipos_competicion = getAjaxSync('ServicioTipos', 'GetTiposCompeticion');
 	return tipos_competicion;
 }
+function getTiposCompeticionMockup(){
+	alert("Tipos competicion es mockup");
+	var tipos_competicion = [];
+	tipos_competicion.push({id: 1, nombre: "Liga"});
+	tipos_competicion.push({id: 2, nombre: "Copa"});
+	tipos_competicion.push({id: 3, nombre: "Mixto"});
+	return tipos_competicion;
+}
+
 
 function getTiposJornada(){
 	var tipos_jornada = getAjaxSync('ServicioTipos', 'GetTiposJornada');
 	return tipos_jornada;
 }
+function getTiposJornadaMockup(){
+	alert("Tipos jornada es mockup");
+	var tipos_jornada = [];
+	tipos_jornada.push({id: 1, nombre: "Liga"});
+	tipos_jornada.push({id: 2, nombre: "Copa"});
+	return tipos_jornada;
+}
+
 
 function getAccesosUsuario() {
 	var accesos_usuario = getAjaxSync('ServicioTipos', 'GetAccesos');
 	return accesos_usuario;
 }
+function getAccesosUsuarioMockup() {
+	alert("Accessos usuario es mockup");
+	var accesos_usuario = [];
+	accesos_usuario.push({id_acceso: 1, nombre_acceso: "Usuario"});
+	accesos_usuario.push({id_acceso: 2, nombre_acceso: "Administrador"});
+	return accesos_usuario;
+}
+
 
 function getEstadosUsuario(){
 	var estados_usuario = getAjaxSync('ServicioTipos', 'GetEstados');
+	return estados_usuario;
+}
+function getEstadosUsuarioMockup(){
+	alert("Estados usuario es mockup");
+	var estados_usuario = [];
+	estados_usuario.push({id_estado: 0, nombre_estado: "PENDIENTE"});
+	estados_usuario.push({id_estado: 1, nombre_estado: "VALIDADO"});
+	estados_usuario.push({id_estado: 2, nombre_estado: "RECHAZADO"});
 	return estados_usuario;
 }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -122,6 +155,12 @@ function getCompeticionesUsuario(id_usuario){
 }
 
 function getEquipos(){
+	var equipos = getAjaxSync('ServicioEquipos', 'GetEquipos');
+	return equipos;
+}
+function getEquiposMockup(){
+	alert("Equipos es mockup");
+	
 	var equipos = [];
 	equipos.push({ id: 1, nombre: "Brasil", abreviatura: "BRA", escudo: "../view/img/BRA.png", competiciones: [{id_competicion: 1, id_grupo: 1}] });
 	equipos.push({ id: 2, nombre: "Croacia", abreviatura: "CRO", escudo: "../view/img/CRO.png", competiciones: [{id_competicion: 1, id_grupo: 1}, {id_competicion: 7, id_grupo: 14}]});
@@ -200,7 +239,13 @@ function getEquipos(){
 }
 
 function getEquiposCompeticion(id_competicion){
-	var equipos = getEquipos();
+	var equipos_competicion = getAjaxSync('ServicioEquipos', 'GetEquiposByCompeticion', JSON.stringify({id_competicion: id_competicion}));
+	return equipos_competicion;
+}
+function getEquiposCompeticionMockup(id_competicion){
+	alert("EquiposCompeticion es mockup");
+	
+	var equipos = getEquiposMockup();
 	var equipos_competicion = $.grep(equipos, function(equipo, index){
 		var pertenece_competicion = false;
 		if (equipo.competiciones.length === 0){
@@ -218,7 +263,13 @@ function getEquiposCompeticion(id_competicion){
 }
 
 function getEquiposGrupo(id_grupo){
-	var equipos = getEquipos();
+	var equipos_grupo = getAjaxSync('ServicioEquipos', 'GetEquiposByGrupo', JSON.stringify({id_grupo: id_grupo}));
+	return equipos_grupo;
+}
+function getEquiposGrupoMockup(id_grupo){
+	alert("EquiposGrupo es mockup");
+	
+	var equipos = getEquiposMockup();
 	var equipos_grupo = $.grep(equipos, function(equipo, index){
 		var pertenece_grupo = false;
 		if (equipo.competiciones.length === 0){
@@ -239,6 +290,61 @@ function getEstadios(){
 	var estadios = getAjaxSync('ServicioEstadios', 'GetEstadios');
 	return estadios;
 }
+function getEstadiosMockup(){
+	alert("Estadios es mockup");
+
+	var estadios = [];
+	estadios.push({ id_estadio: 1, nombre_estadio: "Beira R&iacute;o", ciudad_estadio: "Porto Alegre"});
+	estadios.push({ id_estadio: 2, nombre_estadio: "Estadio Castel&atilde;o", ciudad_estadio: "Fortaleza"});
+	estadios.push({ id_estadio: 3, nombre_estadio: "Arena Fonte Nova", ciudad_estadio: "Salvador de Bah&iacute;a"});
+	estadios.push({ id_estadio: 4, nombre_estadio: "Estadio Mineirao", ciudad_estadio: "Belo Horizonte"});
+	estadios.push({ id_estadio: 5, nombre_estadio: "Estadio Nacional", ciudad_estadio: "Brasilia"});
+	estadios.push({ id_estadio: 6, nombre_estadio: "Estadio Das Dunas", ciudad_estadio: "Natal"});
+	estadios.push({ id_estadio: 7, nombre_estadio: "Estadio Maracan&aacute;", ciudad_estadio: "R&iacute;o de Janeiro"});
+	estadios.push({ id_estadio: 8, nombre_estadio: "Arena da Baixada", ciudad_estadio: "Curitiba"});
+	estadios.push({ id_estadio: 9, nombre_estadio: "Arena Pantanal", ciudad_estadio: "Cuiab&aacute;"});
+	estadios.push({ id_estadio: 10, nombre_estadio: "Arena de S&atilde;o Paulo", ciudad_estadio: "S&atilde;o Paulo"});
+	estadios.push({ id_estadio: 11, nombre_estadio: "Arena de Pernambuco", ciudad_estadio: "Recife"});
+	estadios.push({ id_estadio: 12, nombre_estadio: "Arena Amazonia", ciudad_estadio: "Manaos"});
+	estadios.push({ id_estadio: 13, nombre_estadio: "Juegos Mediterr&aacute;neos", ciudad_estadio: "Almer&iacute;", id_equipo_local: 66});
+	estadios.push({ id_estadio: 14, nombre_estadio: "San Mam&eacute;s", ciudad_estadio: "Bilbao", id_equipo_local: 67});
+	estadios.push({ id_estadio: 15, nombre_estadio: "Vicente Calder&oacute;n", ciudad_estadio: "Madrid", id_equipo_local: 68});
+	estadios.push({ id_estadio: 16, nombre_estadio: "Camp Nou", ciudad_estadio: "Barcelona", id_equipo_local: 69});
+	estadios.push({ id_estadio: 17, nombre_estadio: "Bala&iacute;dos", ciudad_estadio: "Vigo", id_equipo_local: 70});
+	estadios.push({ id_estadio: 18, nombre_estadio: "Nuevo Arc&aacute;ngel", ciudad_estadio: "C&oacute;rdoba", id_equipo_local: 71});
+	estadios.push({ id_estadio: 19, nombre_estadio: "Riazor", ciudad_estadio: "La Coru�a", id_equipo_local: 72});
+	estadios.push({ id_estadio: 20, nombre_estadio: "Ipur&uacute;a", ciudad_estadio: "Eibar", id_equipo_local: 73});
+	estadios.push({ id_estadio: 21, nombre_estadio: "Mart&iacute;nez Valero", ciudad_estadio: "Elche", id_equipo_local: 74});
+	estadios.push({ id_estadio: 22, nombre_estadio: "Montjuic", ciudad_estadio: "Barcelona", id_equipo_local: 75});
+	estadios.push({ id_estadio: 23, nombre_estadio: "Alfonso P&eacute;rez", ciudad_estadio: "Getafe", id_equipo_local: 76});
+	estadios.push({ id_estadio: 24, nombre_estadio: "Nuevo Los C&aacute;rmenes", ciudad_estadio: "Granada", id_equipo_local: 77});
+	estadios.push({ id_estadio: 25, nombre_estadio: "Ciutat de Valencia", ciudad_estadio: "Valencia", id_equipo_local: 78});
+	estadios.push({ id_estadio: 26, nombre_estadio: "La Rosaleda", ciudad_estadio: "M&aacute;laga", id_equipo_local: 79});
+	estadios.push({ id_estadio: 27, nombre_estadio: "Santiago Bernab&eacute;u", ciudad_estadio: "Madrid", id_equipo_local: 80});
+	estadios.push({ id_estadio: 28, nombre_estadio: "Anoeta", ciudad_estadio: "San Sebasti&aacute;n", id_equipo_local: 81});
+	estadios.push({ id_estadio: 29, nombre_estadio: "Vallecas", ciudad_estadio: "Madrid", id_equipo_local: 82});
+	estadios.push({ id_estadio: 30, nombre_estadio: "S&aacute;nchez Pizju&aacute;n", ciudad_estadio: "Sevilla", id_equipo_local: 83});
+	estadios.push({ id_estadio: 31, nombre_estadio: "Mestalla", ciudad_estadio: "Valencia", id_equipo_local: 84});
+	estadios.push({ id_estadio: 32, nombre_estadio: "El Madrigal", ciudad_estadio: "Villarreal", id_equipo_local: 85});
+	estadios.push({ id_estadio: 33, nombre_estadio: "El Molinon", ciudad_estadio: "Gij&oacute;n", id_equipo_local: 87});
+	estadios.push({ id_estadio: 34, nombre_estadio: "Benito Villamar&iacute;n", ciudad_estadio: "Sevilla", id_equipo_local: 86});
+	estadios.push({ id_estadio: 35, nombre_estadio: "Insular", ciudad_estadio: "Las Palmas de Gran Canaria", id_equipo_local: 88});
+	estadios.push({ id_estadio: 36, nombre_estadio: "Stade de France", ciudad_estadio: "Saint-Denis"});
+	estadios.push({ id_estadio: 37, nombre_estadio: "Parc des Princes", ciudad_estadio: "Par&iacute;s"});
+	estadios.push({ id_estadio: 38, nombre_estadio: "Stade de Lyon", ciudad_estadio: "Lyon"});
+	estadios.push({ id_estadio: 39, nombre_estadio: "Stade Velodrome", ciudad_estadio: "Marsella"});
+	estadios.push({ id_estadio: 40, nombre_estadio: "Stade Pierre-Mauroy", ciudad_estadio: "Lille"});
+	estadios.push({ id_estadio: 41, nombre_estadio: "Stade Bollaert-Delelis", ciudad_estadio: "Lens"});
+	estadios.push({ id_estadio: 42, nombre_estadio: "Stade de Bordeaux", ciudad_estadio: "Burdeos"});
+	estadios.push({ id_estadio: 43, nombre_estadio: "Stade Geoffroy-Guichard", ciudad_estadio: "Saint-Etienne"});
+	estadios.push({ id_estadio: 44, nombre_estadio: "Stade de Toulouse", ciudad_estadio: "Toulouse"});
+	estadios.push({ id_estadio: 45, nombre_estadio: "Stade de Nice", ciudad_estadio: "Niza"});
+	estadios.push({ id_estadio: 46, nombre_estadio: "Mendizorroza", ciudad_estadio: "Vitoria", id_equipo_local: 120});
+	estadios.push({ id_estadio: 47, nombre_estadio: "Butarque", ciudad_estadio: "Legan&eacute;s", id_equipo_local: 121});
+	estadios.push({ id_estadio: 48, nombre_estadio: "El Sadar", ciudad_estadio: "Pamplona", id_equipo_local: 122});
+	return estadios;
+}
+
 
 function getJornadas(){
 	var jornadas = [];

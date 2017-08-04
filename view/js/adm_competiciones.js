@@ -63,7 +63,7 @@ $(document).ready(function(){
 		$('.form-editar-grupo').show();
 	});
 
-	tipos_competicion = getTiposCompeticion();
+	tipos_competicion = getTiposCompeticionMockup();
 	if (tipos_competicion !== null && tipos_competicion.length > 0){
 		$.each(tipos_competicion, function(index, tipo_competicion){
 			$('.comp_tipo_competicion').append('<option value="' + tipo_competicion.id + '">' + tipo_competicion.nombre + '</option>');

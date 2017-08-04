@@ -51,7 +51,7 @@ $(document).ready(function(){
 		}
 	});
 	
-	equipos = getEquipos();
+	equipos = getEquiposMockup();
 	$('.estadio_equipo').append('<option value="">(Seleccionar uno)</option>');
 	$.each(equipos, function(index, equipo){
 		$('.estadio_equipo').append('<option value="' + equipo.id + '">' + equipo.nombre + '</option>');
@@ -59,7 +59,7 @@ $(document).ready(function(){
 	loadEstadios();
 	
 	function loadEstadios(){
-		estadios = getEstadios();
+		estadios = getEstadiosMockup();
 		$('.tabla-estadios').find('tr').remove();
 		if (estadios !== null && estadios.length > 0){
 			$.each(estadios, function(index, estadio){
