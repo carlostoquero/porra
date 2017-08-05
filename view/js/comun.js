@@ -35,7 +35,7 @@ function generarMenu() {
 }
 
 function generarFooter() {
-	$('.footer-div').append('<span class="footer">2017 - La Web de la Porra</span>');
+	$('.footer-div').append('<div class="footer">2017 - La Web de la Porra</div>');
 }
 
 function findElementByField(element_array, field_name, field_value){
@@ -161,7 +161,7 @@ function getEquipos(){
 	equipos.push({ id: 68, nombre: "Atl&eacute;tico de Madrid", abreviatura: "ATM", escudo: "../view/img/ATM.png", competiciones: [{id_competicion: 2, id_grupo: 9}, {id_competicion: 6, id_grupo: 10}, {id_competicion: 8, id_grupo: 17}]});
 	equipos.push({ id: 69, nombre: "Barcelona", abreviatura: "FCB", escudo: "../view/img/FCB.png", competiciones: [{id_competicion: 2, id_grupo: 9}, {id_competicion: 6, id_grupo: 10}, {id_competicion: 8, id_grupo: 17}]});
 	equipos.push({ id: 70, nombre: "Celta", abreviatura: "CEL", escudo: "../view/img/CEL.png", competiciones: [{id_competicion: 2, id_grupo: 9}, {id_competicion: 6, id_grupo: 10}, {id_competicion: 8, id_grupo: 17}]});
-	equipos.push({ id: 72, nombre: "Deportivo de la Coru�a", abreviatura: "DEP", escudo: "../view/img/DEP.png", competiciones: [{id_competicion: 2, id_grupo: 9}, {id_competicion: 6, id_grupo: 10}, {id_competicion: 8, id_grupo: 17}]});
+	equipos.push({ id: 72, nombre: "Deportivo de la Coru&ntilde;a", abreviatura: "DEP", escudo: "../view/img/DEP.png", competiciones: [{id_competicion: 2, id_grupo: 9}, {id_competicion: 6, id_grupo: 10}, {id_competicion: 8, id_grupo: 17}]});
 	equipos.push({ id: 73, nombre: "Eibar", abreviatura: "EIB", escudo: "../view/img/EIB.png", competiciones: [{id_competicion: 2, id_grupo: 9}, {id_competicion: 6, id_grupo: 10}, {id_competicion: 8, id_grupo: 17}]});
 	equipos.push({ id: 74, nombre: "Elche", abreviatura: "ELC", escudo: "../view/img/ELC.png", competiciones: [{id_competicion: 2, id_grupo: 9}]});
 	equipos.push({ id: 75, nombre: "Espanyol", abreviatura: "ESP", escudo: "../view/img/ESY.png", competiciones: [{id_competicion: 2, id_grupo: 9}, {id_competicion: 6, id_grupo: 10}, {id_competicion: 8, id_grupo: 17}]});
