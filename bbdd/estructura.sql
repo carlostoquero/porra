@@ -22,6 +22,24 @@ CREATE TABLE TIPO_JORNADA(
 	primary key(id_tipo_jornada)
 );
 
+CREATE TABLE COMPETICION(
+	id_competicion int NOT NULL AUTO_INCREMENT,
+	nombre_competicion varchar(100) NOT NULL,
+	abreviatura varchar(5) NOT NULL UNIQUE,
+	titulo varchar(100) NOT NULL,
+	subtitulo varchar(50) NOT NULL,
+	reglas text,
+	id_tipo_competicion int NOT NULL,
+	primary key(id_competicion)
+);
+
+CREATE TABLE GRUPO(
+	id_grupo int NOT NULL AUTO_INCREMENT,
+	nombre_grupo varchar(45) NOT NULL,
+	id_competicion int,
+	primary key(id_grupo)
+);
+
 CREATE TABLE ESTADIOS (
   id_estadio int NOT NULL AUTO_INCREMENT,
   nombre_estadio varchar(45) NOT NULL,
