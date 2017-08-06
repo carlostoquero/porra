@@ -105,8 +105,13 @@ function getEstadosUsuarioMockup(){
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // FIN INFORMACION MAESTRA
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 function getCompeticiones(){
+	var competiciones = getAjaxSync('ServicioCompeticiones', 'GetCompeticiones');
+	return competiciones;
+}
+
+function getCompeticionesMockup(){
+	alert("Competiciones es mockup");
 	var competiciones = [];
 	competiciones.push({id_competicion: 1, nombre_competicion: "Mundial Brasil 2014", 			titulo: "La porra del mundial", subtitulo: "FIFA World Cup Brasil 2014", siglas: "wc-14", tipo_competicion: {id: 3, nombre: "Mixto"}, reglas: ""});
 	competiciones.push({id_competicion: 2, nombre_competicion: "Liga BBVA 2014 - 2015", 		titulo: "Porra Liga BBVA 2014 - 2015", subtitulo: "LFP", siglas: "le-14", tipo_competicion: {id: 1, nombre: "Liga"}, reglas: ""});

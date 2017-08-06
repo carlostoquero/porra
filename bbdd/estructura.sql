@@ -29,6 +29,8 @@ CREATE TABLE COMPETICION(
 	titulo varchar(100) NOT NULL,
 	subtitulo varchar(50) NOT NULL,
 	reglas text,
+	fecha_inicio datetime NOT NULL,
+	fecha_fin datetime NOT NULL,
 	id_tipo_competicion int NOT NULL,
 	primary key(id_competicion)
 );
