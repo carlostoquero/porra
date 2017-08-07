@@ -58,66 +58,70 @@ function GetCompeticionActual(){
 	return $competicion;
 }
 
-// function GuardarEstadio($id_estadio, $nombre_estadio, $ciudad, $equipo_local){
-	// $guardado_correcto = true;
-	// $estadio = new CEstadio($id_estadio, $nombre_estadio, $ciudad, $equipo_local);
-	// if ( !isset($id_estadio) ) { $guardado_correcto = InsertarEstadio($estadio); }
-	// else { $guardado_correcto = ActualizarEstadio($estadio); }
-	// return $guardado_correcto;
-// }
+function GuardarCompeticion($id_competicion, $nombre_competicion, $abreviatura, $titulo, $subtitulo, $reglas, $fecha_inicio, $fecha_fin, $tipo_competicion){
+	$guardado_correcto = true;
+	$competicion = new CCompeticion($id_competicion, $nombre_competicion, $abreviatura, $titulo, $subtitulo, $reglas, $fecha_inicio, $fecha_fin, $tipo_competicion);
+	if ( !isset($id_competicion) ) { $guardado_correcto = InsertarCompeticion($competicion); }
+	else { $guardado_correcto = ActualizarCompeticion($competicion); }
+	return $guardado_correcto;
+}
 
-// function InsertarEstadio($estadio){
-    // $correctInsert = false;
-	// $db = new dbConnection();
-	// $sql =  "INSERT INTO `ESTADIOS` (nombre_estadio, ciudad".(isset($estadio->id_equipo_local) ? ", id_equipo_local" : "").")
-	         // VALUES  (?, ?".(isset($estadio->id_equipo_local) ? ", ?" : "").")";
+function InsertarCompeticion($competicion){
+    $correctInsert = false;
+	$db = new dbConnection();
+	$sql =  "INSERT INTO `COMPETICION` (nombre_competicion, abreviatura, titulo, subtitulo, reglas, fecha_inicio, fecha_fin, id_tipo_competicion)
+	         VALUES  (?, ?, ?, ?, ?, ?, ? ,?)";
     
-    // if ($stmt = $db->mysqli->prepare($sql)){
-		// $nombre_acortado = substr($estadio->nombre_estadio, 0, 45);
-		// $ciudad_acortada = substr($estadio->ciudad_estadio, 0, 45);
-		// if (isset($estadio->id_equipo_local)){ $stmt->bind_param("ssi", $nombre_acortado, $ciudad_acortada, $estadio->id_equipo_local); }
-		// else { $stmt->bind_param("ss", $nombre_acortado, $ciudad_acortada); }
-		// $stmt->execute();
-		// if ($db->mysqli->affected_rows >= 0) $correctInsert = true;
-		// $stmt->close();
-	// }
-	// $db->close();
-	// return $correctInsert;
-// }
+    if ($stmt = $db->mysqli->prepare($sql)){
+		$nombre_acortado = substr($competicion->nombre_competicion, 0, 100);
+		$abreviatura_acortada = substr($competicion->abreviatura, 0, 5);
+		$titulo_acortado = substr($competicion->titulo, 0, 100);
+		$subtitulo_acortado = substr($competicion->subtitulo, 0, 50);
+		$stmt->bind_param("sssssssi", $nombre_acortado, $abreviatura_acortada, $titulo_acortado, $subtitulo_acortado, 
+		                              $competicion->reglas, $competicion->fecha_inicio, $competicion->fecha_fin, $competicion->tipo_competicion);
+		$stmt->execute();
+		if ($db->mysqli->affected_rows >= 0) $correctInsert = true;
+		$stmt->close();
+	}
+	$db->close();
+	return $correctInsert;
+}
 
-// function ActualizarEstadio($estadio){
-    // $correctUpdate = false;
-	// $db = new dbConnection();
-	// $sql =  "UPDATE `ESTADIOS` SET nombre_estadio = ?, ciudad = ?, id_equipo_local = ".(isset($estadio->id_equipo_local) ? "?" : "null")."
-	         // WHERE id_estadio = ?";
+function ActualizarCompeticion($competicion){
+    $correctUpdate = false;
+	$db = new dbConnection();
+	$sql =  "UPDATE `COMPETICION` SET nombre_competicion = ?, abreviatura = ?, titulo = ?, subtituo = ?, reglas = ?, fecha_inicio = ?, fecha_fin = ?, id_tipo_competicion = ?
+	         WHERE id_competicion = ?";
     
-    // if ($stmt = $db->mysqli->prepare($sql)){
-		// $nombre_acortado = substr($estadio->nombre_estadio, 0, 45);
-		// $ciudad_acortada = substr($estadio->ciudad_estadio, 0, 45);
-		// if (isset($estadio->id_equipo_local)){ $stmt->bind_param("ssii", $nombre_acortado, $ciudad_acortada, $estadio->id_equipo_local, $estadio->id_estadio); }
-		// else { $stmt->bind_param("ssi", $nombre_acortado, $ciudad_acortada, $estadio->id_estadio); }
-		// $stmt->execute();
-		// if ($db->mysqli->affected_rows >= 0) $correctUpdate = true;
-		// $stmt->close();
-	// }
-	// $db->close();
-	// return $correctUpdate;
-// }
+    if ($stmt = $db->mysqli->prepare($sql)){
+		$nombre_acortado = substr($competicion->nombre_competicion, 0, 100);
+		$abreviatura_acortada = substr($competicion->abreviatura, 0, 5);
+		$titulo_acortado = substr($competicion->titulo, 0, 100);
+		$subtitulo_acortado = substr($competicion->subtitulo, 0, 50);
+		$stmt->bind_param("ssssssii", $nombre_acortado,	$abreviatura_acortada, $titulo_acortado, $subtitulo_acortado, $competicion->reglas, 
+									  $competicion->fecha_inicio, $competicion->fecha_fin, $competicion->tipo_competicion, $competicion->id_competicion);
+		$stmt->execute();
+		if ($db->mysqli->affected_rows >= 0) $correctUpdate = true;
+		$stmt->close();
+	}
+	$db->close();
+	return $correctUpdate;
+}
 
-// function BorrarEstadio($id_estadio){
-    // $correctDelete = false;
-	// $db = new dbConnection();
-	// $sql = "DELETE FROM `ESTADIOS`  WHERE  id_estadio = ?";
-	// if ($stmt = $db->mysqli->prepare($sql)){
-		// $stmt->bind_param("i", $id_estadio);
-		// $stmt->execute();
-		// if ($db->mysqli->affected_rows >= 0)
-			// $correctDelete = true;
-		// $stmt->close();
-	// }
-	// $db->close();
-	// return $correctDelete;
-// }
+function BorrarCompeticion($id_competicion){
+    $correctDelete = false;
+	$db = new dbConnection();
+	$sql = "DELETE FROM `ESTADIOS`  WHERE  id_estadio = ?";
+	if ($stmt = $db->mysqli->prepare($sql)){
+		$stmt->bind_param("i", $id_estadio);
+		$stmt->execute();
+		if ($db->mysqli->affected_rows >= 0)
+			$correctDelete = true;
+		$stmt->close();
+	}
+	$db->close();
+	return $correctDelete;
+}
 
 header('Content-Type: application/json');
 $aResult = array();
