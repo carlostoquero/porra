@@ -125,7 +125,7 @@ footer h5 a:hover, footer a:hover {
 
 .copyright {
 	position: absolute;
-	bottom: 1%;
+	margin: 40px 0 20px;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	font-size: 12px;

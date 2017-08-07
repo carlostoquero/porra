@@ -1,3 +1,4 @@
 $(document).ready(function(){
-	generarMenu();
+generarMenu();
+generarFooter();
 });
