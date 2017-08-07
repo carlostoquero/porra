@@ -74,12 +74,12 @@ $(document).ready(function(){
 		if (competiciones !== null && competiciones.length > 0){
 			$.each(competiciones, function(index, competicion){
 				var row = $('<tr>');
-				row.append('<td>' + competicion.id + '</td>');
-				row.append('<td>' + competicion.nombre + '</td>');
+				row.append('<td>' + competicion.id_competicion + '</td>');
+				row.append('<td>' + competicion.nombre_competicion + '</td>');
 				row.append('<td>' + competicion.siglas + '</td>');
 				row.append('<td>' + competicion.titulo + '</td>');
 				row.append('<td>' + competicion.subtitulo + '</td>');
-				row.append('<td>' + competicion.tipo_competicion.nombre + '</td>');
+				//row.append('<td>' + competicion.tipo_competicion.nombre + '</td>');
 				row.append('<td><button class="editar-competicion" data-id-competicion="' + competicion.id + '">Editar</button></td>');
 				row.append('<td><button class="borrar-competicion" data-id-competicion="' + competicion.id + '">Borrar</button></td>');
 				$('.tabla-competiciones').append(row);
