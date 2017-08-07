@@ -111,6 +111,24 @@ function ActualizarCompeticion($competicion){
 function BorrarCompeticion($id_competicion){
     $correctDelete = false;
 	$db = new dbConnection();
+	
+	//TODO: Descomentar tablas que aún no existen, comprobar si alguna otra tabla debe consultarse
+	// Comprobar existencia de registros hijo
+	$sql = "select grupos.cuantos + equipos.cuantos -- + jornadas.cuantos + usuarios.cuantos 
+			from (	SELECT count(1) cuantos FROM GRUPO WHERE id_competicion = ?) grupos,
+				 ( 	SELECT count(1) cuantos FROM EQUIPOS_COMPETICION WHERE id_competicion = ?) equipos/*,
+				 (  SELECT count(1) cuantos FROM JORNADA WHERE id_competicion = ?) jornadas,
+				 ( 	SELECT count(1) cuantos FROM USUARIOS_COMPETICION WHERE id_competicion = ?) usuarios*/";
+	
+	if ($stmtComprobacion = $db->mysqli->prepare($sql)){
+		$stmt->execute();
+		$stmt->bind_result($rId, $rNombre, $rSiglas, $rTitulo, $rSubtitulo, $rReglas, $rFechaInicio, $rFechaFin, $rTipoCompeticion);
+		if ($stmt->fetch()){
+			$competicion = new CCompeticion($rId, $rNombre, $rSiglas, $rTitulo, $rSubtitulo, $rReglas, $rFechaInicio, $rFechaFin, $rTipoCompeticion);
+		}
+		$stmt->close();
+	}
+
 	$sql = "DELETE FROM `ESTADIOS`  WHERE  id_estadio = ?";
 	if ($stmt = $db->mysqli->prepare($sql)){
 		$stmt->bind_param("i", $id_estadio);
