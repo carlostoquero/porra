@@ -1,99 +1,212 @@
-<html>
-	<head>
-		<script src="vendor/jquery-3.2.1.min.js"></script>
-		<script src="js/comun.js"></script>
-		<script src="js/reglas.js"></script>
-	</head>
-	<body>
-		<div class="main-container">
-			<div class="menu-div">
-			</div>
-			
-			<div class="content">
-				<h1>SOBRE LA PORRA</h1>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<title>La Web de la Porra</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="description" content="La Web de la Porra" />
+	<meta name="author" content="Carlos Toquero (developer) & Alberto Lario (designer)" />
+	<!-- css -->
+ 	<link rel="stylesheet" href="css/bootstrap.min.css" />
+ 	<link rel="stylesheet" href="css/style.css" />
+ 	<!-- js -->
+	<script type="text/javascript" src="vendor/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/comun.js"></script>
+	<script type="text/javascript" src="js/reglas.js"></script>
+ 	<!--<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>-->
+	<!-- HTML5 shim, for IE6-8 support of HTML5 elements & HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+</head>
+
+<body>
+	<div class="main-container">
+		<div class="menu-div">
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+		  	<div class="col-lg-12">
+			<h1>SOBRE LA PORRA</h1>
 				<p>Al decidir participar, los jugadores aceptan TODAS estas normas.</p>
-				<h2>OBJETIVOS</h2>
+			<h2>OBJETIVOS</h2>
 				<p>Esta es una porra entre amigos. Se hace simplemente para pasar el rato, estar algo m&aacute;s entretenidos con la Liga, y en ning&uacute;n caso con &aacute;nimo de lucro por parte de los organizadores. Esperamos que se entienda que hacemos esto con nuestra mejor voluntad, y que cualquier error no se habr&aacute; cometido a prop&oacute;sito.</p>
-				<h2>FUNCIONAMIENTO</h2>
-				<p>Cada usuario deber&aacute; registrarse en el sistema para poder jugar. Al tratarse de una porra con dinero, los usuarios deber&aacute;n ser validados por los administradores, para evitar que se apunte gente desconocida. Esto no afecta al normal uso de la web, salvo a la clasificaci&oacute;n: en la clasificaci&oacute;n &uacute;nicamente se mostrar&aacute;n aquellos usuarios validados. Para facilitar el proceso de identificaci&oacute;n de los usuarios a la hora de validarlos, se ha habilitado un campo "Comentarios" en el formulario de registro, para que nos indiqu&eacute;is quienes sois o de qu&eacute; os conocemos :-D.</p>
+			</div>
+		</div>
+											
+		<div class="row">
+		 	<div class="col-lg-12">
+			<h2>FUNCIONAMIENTO</h2>
+				<p>Cada usuario deber&aacute; registrarse en el sistema para poder jugar. Al tratarse de una porra con dinero, los usuarios deber&aacute;n ser validados por los administradores, para evitar que se apunte gente desconocida. Esto no afecta al normal uso de la web, salvo a la clasificaci&oacute;n: en la clasificaci&oacute;n &uacute;nicamente se mostrar&aacute;n aquellos usuarios validados. Para facilitar el proceso de identificaci&oacute;n de los usuarios a la hora de validarlos, se ha habilitado un campo "Comentarios" en el formulario de registro, para que nos indiqu&eacute;is quienes sois o de qu&eacute; os conocemos.</p>
 				<p>Una vez registrado, se tiene acceso a informaci&oacute;n sobre la competici&oacute;n deportiva (resultados de los partidos y clasificaciones), y acceso a la informaci&oacute;n sobre pron&oacute;sticos. Cada jugador ser&aacute; responsable de cargar los pron&oacute;sticos de cada jornada, que podr&aacute;n cargarse en la web hasta 1 minuto antes del comienzo del primer partido de la jornada. La web est&aacute; preparada para controlar que no se carguen pron&oacute;sticos para una jornada pasada esa hora.</p>
 				<p>El pron&oacute;stico deber&aacute; ser el del resultado del partido cuando termine la segunda parte. Los pron&oacute;sticos pueden cambiarse tantas veces como se quieran (pero siempre antes de la hora l&iacute;mite: 1 minuto antes del primer partido de la jornada). &Uacute;nicamente se almacenar&aacute; el &uacute;ltimo resultado enviado.</p>
 				<p>En cuanto a la consulta de los pron&oacute;sticos cargados, hasta la hora l&iacute;mite, cada jugador s&oacute;lo podr&aacute; ver sus propios pron&oacute;sticos, para evitar copias. A partir de la hora l&iacute;mite, se tendr&aacute; acceso a los pron&oacute;sticos de todos los usuarios que los hayan rellenado.</p>
 				<p>El c&aacute;lculo de las clasificaciones se har&aacute; autom&aacute;ticamente una vez que los administradores carguemos el resultado final de los partidos. Cualquier reclamaci&oacute;n sobre la puntuaci&oacute;n deber&aacute; hacerse por correo a las cuentas carlostoquero[arroba]gmail[punto]com y lariobyte[arroba]gmail[punto]com (enviad correo a ambas direcciones), y se revisar&aacute; puntualmente.</p>
 				<p>Cualquier jugador puede unirse a la porra una vez iniciada la Liga. El aporte econ&oacute;mico ser&aacute; el mismo, y contar&aacute; con la desventaja de no poder recibir puntos por los partidos que ya se hayan jugado. Quien se una a la porra una vez comenzado la Liga, acepta estas dos premisas.</p>
-				<h2>PUNTUACIONES</h2>
+			</div>
+		</div>
+					
+		<div class="row">
+		  	<div class="col-lg-12">
+			<h2>PUNTUACIONES</h2>
 				<p>El m&eacute;todo de puntuaci&oacute;n ser&aacute; el siguiente:</p>
-				
-				<ul><li>Resultado acertado: 10 puntos</li>
+				<ul>
+					<li>Resultado acertado: 10 puntos</li>
 					<li>HABIENDO ACERTADO EL RESULTADO EXACTO: Por cada gol en el resultado: 2 puntos</li>
 					<li>Signo (1-X-2) acertado: 5 puntos [Si se acierta el resultado, estos puntos no se sumar&iacute;an]</li>
 				</ul>
+			</div>
+		</div>
 			
-				<p>Ejemplo:</p>
-				
-				<table>
-					<thead>
-						<th>Caso</th><th>Equipo 1</th><th>Goles E1</th><th>Goles E2</th><th>Equipo 2</th><th>Puntos resultado</th><th>Puntos signo</th><th>Total goles</th><th>Puntos goles</th><th>TOTAL PUNTOS</th>
-					</thead>
-					<tbody>
-						<tr>
-							<td>Resultado real</td><td>RMA</td><td>4</td><td>3</td><td>FCB</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td>
-						</tr>
-						<tr>
-							<td>Pron&oacute;stico 1</td><td>RMA</td><td>4</td><td>3</td><td>FCB</td><td>10</td><td>0</td><td>7</td><td>14</td><td>24</td>
-						</tr>
-						<tr>
-							<td>Pron&oacute;stico 2</td><td>RMA</td><td>4</td><td>2</td><td>FCB</td><td>0</td><td>5</td><td>7</td><td>0</td><td>5</td>
-						</tr>
-						<tr>
-							<td>Pron&oacute;stico 3</td><td>RMA</td><td>1</td><td>0</td><td>FCB</td><td>0</td><td>5</td><td>7</td><td>0</td><td>5</td>
-						</tr>
-						<tr>
-							<td>Pron&oacute;stico 4</td><td>RMA</td><td>0</td><td>1</td><td>FCB</td><td>0</td><td>0</td><td>7</td><td>0</td><td>0</td>
-						</tr>
-					</tbody>
-				</table>
-				
-				<h2>PREMIOS</h2>
+		<div class="row">
+    		<div class="col-lg-12">
+     			<p>Ejemplo:</p>
+      			<div class="table-responsive">
+       				<table class="table table-bordered table-hover">
+        				<thead>
+           				<tr>
+           					<th class="first-cell">Caso</th>
+           					<th>Equipo 1</th>
+           					<th>Goles E1</th>
+           					<th>Goles E2</th>
+           					<th>Equipo 2</th>
+           					<th>Puntos resultado</th>
+           					<th>Puntos signo</th>
+           					<th>Total goles</th>
+           					<th>Puntos goles</th>
+           					<th>TOTAL PUNTOS</th>
+           				</tr>
+        				</thead>
+        				<tbody>
+           				<tr>
+           					<td class="first-cell">Resultado real</td>
+           					<td>RMA</td>
+           					<td>4</td>
+           					<td>3</td>
+           					<td>FCB</td>
+           					<td>-</td>
+           					<td>-</td>
+           					<td>-</td>
+           					<td>-</td>
+           					<td>-</td>
+          				</tr>
+          				<tr>
+           					<td class="first-cell">Pron&oacute;stico 1</td>
+           					<td>RMA</td>
+              				<td>4</td>
+              				<td>3</td>
+              				<td>FCB</td>
+              				<td>10</td>
+              				<td>0</td>
+              				<td>7</td>
+              				<td>14</td>
+              				<td>24</td>
+            			</tr>
+            			<tr>
+             				<td class="first-cell">Pron&oacute;stico 2</td>
+              				<td>RMA</td>
+              				<td>4</td>
+              				<td>2</td>
+              				<td>FCB</td>
+              				<td>0</td>
+              				<td>5</td>
+              				<td>7</td>
+              				<td>0</td>
+              				<td>5</td>
+            			</tr>
+            			<tr>
+             				<td class="first-cell">Pron&oacute;stico 3</td>
+              				<td>RMA</td>
+              				<td>1</td>
+              				<td>0</td>
+              				<td>FCB</td>
+              				<td>0</td>
+              				<td>5</td>
+              				<td>7</td>
+              				<td>0</td>
+              				<td>5</td>
+            			</tr>
+            			<tr>
+             				<td class="first-cell">Pron&oacute;stico 4</td>
+              				<td>RMA</td>
+              				<td>0</td>
+              				<td>1</td>
+              				<td>FCB</td>
+              				<td>0</td>
+              				<td>0</td>
+              				<td>7</td>
+              				<td>0</td>
+              				<td>0</td>
+            			</tr>
+          				</tbody>
+        			</table>
+      			</div>
+    		</div>
+  		</div>
+					
+		<div class="row">
+			<div class="col-lg-12">
+			<h2>PREMIOS</h2>
 				<p>Cada jugador aportar&aacute; 20 euros, que siempre se repartir&aacute; al final de la Liga entre los ganadores. El reparto del dinero recaudado se har&aacute; de la siguiente forma:</p>
 				<ul>
-					<li>Ganador de cada jornada: 5 euros.</li>
-					<br/><strong>1&ordf; VUELTA:</strong>
+					<li>Ganador de cada jornada: 5 euros.</li><br/>
+					<strong>1&ordf; VUELTA:</strong>
 					<li>Primer clasificado: 25% del bote una vez retirados los premios por jornada.</li>
 					<li>Segundo clasificado: 11% del bote una vez retirados los premios por jornada.</li>
-					<li>Tercer clasificado: 5% del bote una vez retirados los premios por jornada.</li>
-					<br/>
+					<li>Tercer clasificado: 5% del bote una vez retirados los premios por jornada.</li><br/>
 					<strong>2&ordf; VUELTA:</strong>
 					<li>Primer clasificado: 35% del bote una vez retirados los premios por jornada.</li>
 					<li>Segundo clasificado: 16% del bote una vez retirados los premios por jornada.</li>
 					<li>Tercer clasificado: 8% del bote una vez retirados los premios por jornada.</li>
 				</ul>
+			</div>
+		</div>
 				
-				<h2>CUOTA DE PARTICIPACI&Oacute;N</h2>
+		<div class="row">
+		  	<div class="col-lg-12">
+			<h2>CUOTA DE PARTICIPACI&Oacute;N</h2>
 				<p>La cuota de participaci&oacute;n por persona es de <strong>20 EUROS</strong>.</p>
 				<p>El pago de la cuota se podr&aacute; hacer de dos formas:</p>
 				<ul>
-					<li>Pagar los 20 euros de la participaci&oacute;n de una sola vez antes del final de la 1&ordf; vuelta (25 de enero de 2017).</li>
-					<li>Pagar 10 euros en dos partes: una antes del final de la 1&ordf; vuelta y otra antes del final de la Liga (23 de mayo de 2017).</li>
+					<li>Pagar los 20 euros de la participaci&oacute;n de una sola vez antes de la primera jornada de la 1&ordf; vuelta (18 de agosto de 2017).</li>
+					<li>Pagar los 20 euros en dos partes de 10: una antes de la primera jornada de la 1&ordf; vuelta y otra antes de la primera jornada de la 2&ordf; vuelta (19 de enero de 2018).</li>
 				</ul>
-				<p>Quien no haya pagado cumpliendo estos plazos tendr&aacute; una multa de 5 euros m&aacute;s, que tambi&eacute;n se repartir&aacute;n entre los ganadores. El pago deber&aacute; hacerse a Carlos Toquero o a Alberto Lario, en efectivo. Nos hacemos responsables del dinero de todos, y de hacerselo llegar a los ganadores, una vez que la porra haya finalizado.</p>
-			
-				<h1>SOBRE LA WEB</h1>
+			  	<p><strong>IMPORTANTE:</strong> Si alguien no ha pagado cumpliendo estos plazos, sus puntos obtenidos en las jornadas no se tendr&aacute;n en cuenta, y empezar&aacute;n a contabilizarse desde la jornada posterior a la fecha en que efect&uacute;e el pago.</p>
+			  	<p>El pago deber&aacute; hacerse a Carlos Toquero o a Alberto Lario, en efectivo. Nos hacemos responsables del dinero de todos, y de hac&eacute;rselo llegar a los ganadores una vez que la temporada haya finalizado completamente.</p>
+			</div>
+		</div>
+		<hr>	
+		<div class="row">
+		  	<div class="col-lg-12">
+			<h1>SOBRE LA WEB</h1>
 				<p>Cuando se produzca alg&uacute;n error mientras est&aacute;is utilizando la web, mandadnos un correo a carlostoquero[arroba]gmail[punto]com y lariobyte[arroba]gmail[punto]com, y procuraremos resolverlo lo m&aacute;s r&aacute;pido posible.</p>
 				<p>Si teneis cualquier duda o sugerencia sobre el funcionamiento o la apariencia de la web, no dud&eacute;is en coment&aacute;rnoslo, estaremos encantados de mejorar entre todos.</p>
-				<p>Esta web la hemos hecho en ratos libres, y la mantendremos en ratos libres. por ello, si se produce alg&uacute;n error, entended que no ha sido a prop&oacute;sito, y sentimos si puedan tener alguna incidencia en el normal desarrollo de la porra. Al tener que arreglar esos errores en los ratos libres, no podemos asegurar que la resoluci&oacute;n de las incidencias sea inmediata.<p>
-				
-				<h2>DISCLAIMERS</h2>
-				
-				<h3>USO DE COOKIES</h3>
-				<p>Los dispositivos de almacenamiento y recuperaci&oacute;n de datos (cookies) son pequeÃ±os ficheros de datos generados por el sitio web por donde el usuario navega y que se guardan en un directorio del dispositivo utilizado por el usuario. Las cookies facilitan cierta informaci&oacute;n sobre la navegaci&oacute;n del usuario permitiendo mejorar el servicio del sitio web y ofrecerle una mejor experiencia de usuario.</p>
+				<p>Esta web la hemos hecho en ratos libres, y la mantendremos en ratos libres. por ello, si se produce alg&uacute;n error, entended que no ha sido a prop&oacute;sito, y sentimos si puedan tener alguna incidencia en el normal desarrollo de la porra. Al tener que arreglar esos errores en los ratos libres, no podemos asegurar que la resoluci&oacute;n de las incidencias sea inmediata.</p>
+			</div>
+		</div>
+							
+		<div class="row">
+		  	<div class="col-lg-12">
+			<h2>DISCLAIMERS</h2>
+			<h3>USO DE COOKIES</h3>
+				<p>Los dispositivos de almacenamiento y recuperaci&oacute;n de datos (cookies) son peque&ntilde;os ficheros de datos generados por el sitio web por donde el usuario navega y que se guardan en un directorio del dispositivo utilizado por el usuario. Las cookies facilitan cierta informaci&oacute;n sobre la navegaci&oacute;n del usuario permitiendo mejorar el servicio del sitio web y ofrecerle una mejor experiencia de usuario.</p>
 				<p>Esta web utiliza cookies en los equipos de los usuarios registrados, y la informaci&oacute;n generada por dichos dispositivos es recopilada y utilizada por el motor de la web para registrar las entradas de datos del usuario (por ejemplo, cuando el usuario rellena un formulario) (cookies de sesi&oacute;n), e identificarle como usuario registrado y permitirle la navegaci&oacute;n por los distintos contenidos de la web, &uacute;nicamente mientras dure la sesi&oacute;n (cookies de autenticaci&oacute;n de usuarios).</p>
 				
-				<h3>PRIVACIDAD DE DATOS</h3>
+			<h3>PRIVACIDAD DE DATOS</h3>
 				<p>El almacenamiento y tratamiento de la informaci&oacute;n as&iacute; obtenida por la web obedece a una &uacute;nica finalidad t&eacute;cnica necesaria: iniciar sesi&oacute;n y navegar por los contenidos de la web como usuarios registrados, con el fin de ofrecer el servicio de participar en la porra.</p>
 				<p>En caso de no aceptar el establecimiento y uso de cookies para las finalidades aqu&iacute; descritas no debe registrarse como usuario de la web y, por tanto, debe abstenerse de jugar a trav&eacute;s de la misma.</p>
 				<p>Por &uacute;ltimo, los datos proporcionados no ser&aacute;n facilitados a ning&uacute;n tercero, y quedar&aacute;n &uacute;nicamente almacenados en la base de datos de la web con la finalidad de utilizar el servicio de la web como usuarios registrados.</p>
 			</div>
 		</div>
-	</body>
+	</div>
+	<!-- footer -->	
+	<footer class="footer-div">
+	</footer>
+</body>
 </html>

@@ -24,7 +24,7 @@ $(document).ready(function(){
 		if (id_estadio !== null){
 			var estadio_borrar = findElementByField(estadios, "id_estadio", id_estadio);
 			if (estadio_borrar !== null){
-				if (confirm("Borrar el estadio " + estadio_borrar.nombre_estadio)){
+				if (confirm("Borrar el estadio '" + estadio_borrar.nombre_estadio + "'?")){
 					var resultado_borrado = getAjaxSync('ServicioEstadios', 'BorrarEstadio', JSON.stringify({id: estadio_borrar.id_estadio}));
 					if (resultado_borrado === "ok") loadEstadios();
 				}
@@ -51,7 +51,7 @@ $(document).ready(function(){
 		}
 	});
 	
-	equipos = getEquipos();
+	equipos = getEquiposMockup();
 	$('.estadio_equipo').append('<option value="">(Seleccionar uno)</option>');
 	$.each(equipos, function(index, equipo){
 		$('.estadio_equipo').append('<option value="' + equipo.id + '">' + equipo.nombre + '</option>');
@@ -59,7 +59,7 @@ $(document).ready(function(){
 	loadEstadios();
 	
 	function loadEstadios(){
-		estadios = getEstadios();
+		estadios = getEstadiosMockup();
 		$('.tabla-estadios').find('tr').remove();
 		if (estadios !== null && estadios.length > 0){
 			$.each(estadios, function(index, estadio){

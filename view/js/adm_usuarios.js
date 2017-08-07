@@ -6,8 +6,8 @@ var accesos_usuario = [];
 $(document).ready(function(){
 	generarMenu();
 	
-	accesos_usuario = getAccesosUsuario();
-	estados_usuario = getEstadosUsuario();
+	accesos_usuario = getAccesosUsuarioMockup();
+	estados_usuario = getEstadosUsuarioMockup();
 	competiciones = getCompeticiones();
 	usuarios = getUsuarios();
 	$('.tabla-usuarios').find('tr').remove();
