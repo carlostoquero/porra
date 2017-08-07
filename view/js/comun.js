@@ -35,7 +35,7 @@ function generarMenu() {
 }
 
 function generarFooter() {
-	$('.footer-div').append('<div class="copyright">2017 &bull; <a href="http://www.porra.com.es" target="_self">La Web de la Porra</a></div>');
+	$('.footer-div').append('<span class="copyright">2017 - La Web de la Porra</span>');
 }
 
 function findElementByField(element_array, field_name, field_value){
@@ -167,81 +167,6 @@ function getEquiposMockup(){
 	alert("Equipos es mockup");
 	
 	var equipos = [];
-<<<<<<< HEAD
-	equipos.push({ id: 1, nombre: "Brasil", abreviatura: "BRA", escudo: "../view/img/BRA.png", competiciones: [{id_competicion: 1, id_grupo: 1}] });
-	equipos.push({ id: 2, nombre: "Croacia", abreviatura: "CRO", escudo: "../view/img/CRO.png", competiciones: [{id_competicion: 1, id_grupo: 1}, {id_competicion: 7, id_grupo: 14}]});
-	equipos.push({ id: 3, nombre: "M&eacute;xico", abreviatura: "MEX", escudo: "../view/img/MEX.png", competiciones: [{id_competicion: 1, id_grupo: 1}]});
-	equipos.push({ id: 4, nombre: "Camer&uacute;n", abreviatura: "CMR", escudo: "../view/img/CMR.png", competiciones: [{id_competicion: 1, id_grupo: 1}]});
-	equipos.push({ id: 5, nombre: "Espa&ntilde;a", abreviatura: "SPA", escudo: "../view/img/ESP.png", competiciones: [{id_competicion: 1, id_grupo: 2}, {id_competicion: 7, id_grupo: 14}]});
-	equipos.push({ id: 6, nombre: "Holanda", abreviatura: "HOL", escudo: "../view/img/HOL.png", competiciones: [{id_competicion: 1, id_grupo: 2}]});
-	equipos.push({ id: 7, nombre: "Chile", abreviatura: "CHI", escudo: "../view/img/CHI.png", competiciones: [{id_competicion: 1, id_grupo: 2}]});
-	equipos.push({ id: 8, nombre: "Australia", abreviatura: "AUS", escudo: "../view/img/AUS.png", competiciones: [{id_competicion: 1, id_grupo: 2}]});
-	equipos.push({ id: 9, nombre: "Colombia", abreviatura: "COL", escudo: "../view/img/COL.png", competiciones: [{id_competicion: 1, id_grupo: 3}]});
-	equipos.push({ id: 10, nombre: "Grecia", abreviatura: "GRE", escudo: "../view/img/GRE.png", competiciones: [{id_competicion: 1, id_grupo: 3}]});
-	equipos.push({ id: 11, nombre: "Costa de Marfil", abreviatura: "CIV", escudo: "../view/img/CIV.png", competiciones: [{id_competicion: 1, id_grupo: 3}]});
-	equipos.push({ id: 12, nombre: "Jap&oacute;n", abreviatura: "JPN", escudo: "../view/img/JPN.png", competiciones: [{id_competicion: 1, id_grupo: 3}]});
-	equipos.push({ id: 13, nombre: "Uruguay", abreviatura: "URU", escudo: "../view/img/URU.png", competiciones: [{id_competicion: 1, id_grupo: 4}]});
-	equipos.push({ id: 14, nombre: "Costa Rica", abreviatura: "CRC", escudo: "../view/img/CRC.png", competiciones: [{id_competicion: 1, id_grupo: 4}]});
-	equipos.push({ id: 15, nombre: "Inglaterra", abreviatura: "ING", escudo: "../view/img/ING.png", competiciones: [{id_competicion: 1, id_grupo: 4}, {id_competicion: 7, id_grupo: 12}]});
-	equipos.push({ id: 16, nombre: "Italia", abreviatura: "ITA", escudo: "../view/img/ITA.png", competiciones: [{id_competicion: 1, id_grupo: 4}, {id_competicion: 7, id_grupo: 15}]});
-	equipos.push({ id: 17, nombre: "Suiza", abreviatura: "SUI", escudo: "../view/img/SUI.png", competiciones: [{id_competicion: 1, id_grupo: 5}, {id_competicion: 7, id_grupo: 11}]});
-	equipos.push({ id: 18, nombre: "Ecuador", abreviatura: "ECU", escudo: "../view/img/ECU.png", competiciones: [{id_competicion: 1, id_grupo: 5}]});
-	equipos.push({ id: 19, nombre: "Francia", abreviatura: "FRA", escudo: "../view/img/FRA.png", competiciones: [{id_competicion: 1, id_grupo: 5}, {id_competicion: 7, id_grupo: 11}]});
-	equipos.push({ id: 20, nombre: "Honduras", abreviatura: "HON", escudo: "../view/img/HON.png", competiciones: [{id_competicion: 1, id_grupo: 5}]});
-	equipos.push({ id: 21, nombre: "Argentina", abreviatura: "ARG", escudo: "../view/img/ARG.png", competiciones: [{id_competicion: 1, id_grupo: 6}]});
-	equipos.push({ id: 22, nombre: "Bosnia y Herzegovina", abreviatura: "BIH", escudo: "../view/img/BIH.png", competiciones: [{id_competicion: 1, id_grupo: 6}]});
-	equipos.push({ id: 23, nombre: "Ir&aacute;n", abreviatura: "IRN", escudo: "../view/img/IRN.png", competiciones: [{id_competicion: 1, id_grupo: 6}]});
-	equipos.push({ id: 24, nombre: "Nigeria", abreviatura: "NIG", escudo: "../view/img/NIG.png", competiciones: [{id_competicion: 1, id_grupo: 6}]});
-	equipos.push({ id: 25, nombre: "Alemania", abreviatura: "ALE", escudo: "../view/img/ALE.png", competiciones: [{id_competicion: 1, id_grupo: 7}, {id_competicion: 7, id_grupo: 13}]});
-	equipos.push({ id: 26, nombre: "Portugal", abreviatura: "POR", escudo: "../view/img/POR.png", competiciones: [{id_competicion: 1, id_grupo: 7},  {id_competicion: 7, id_grupo: 16}]});
-	equipos.push({ id: 27, nombre: "Ghana", abreviatura: "GHA", escudo: "../view/img/GHA.png", competiciones: [{id_competicion: 1, id_grupo: 7}]});
-	equipos.push({ id: 28, nombre: "Estados Unidos", abreviatura: "USA", escudo: "../view/img/USA.png", competiciones: [{id_competicion: 1, id_grupo: 7}]});
-	equipos.push({ id: 29, nombre: "B&eacute;lgica", abreviatura: "BEL", escudo: "../view/img/BEL.png", competiciones: [{id_competicion: 1, id_grupo: 8}, {id_competicion: 7, id_grupo: 15}]});
-	equipos.push({ id: 30, nombre: "Argelia", abreviatura: "ALG", escudo: "../view/img/ALG.png", competiciones: [{id_competicion: 1, id_grupo: 8}]});
-	equipos.push({ id: 31, nombre: "Rusia", abreviatura: "RUS", escudo: "../view/img/RUS.png", competiciones: [{id_competicion: 1, id_grupo: 8}, {id_competicion: 7, id_grupo: 12}]});
-	equipos.push({ id: 32, nombre: "Corea", abreviatura: "KOR", escudo: "../view/img/KOR.png", competiciones: [{id_competicion: 1, id_grupo: 8}]});
-	equipos.push({ id: 71, nombre: "C&oacute;rdoba", abreviatura: "COR", escudo: "../view/img/COR.png", competiciones: [{id_competicion: 2, id_grupo: 9}]});
-	equipos.push({ id: 66, nombre: "Almer&iacute;a", abreviatura: "ALM", escudo: "../view/img/ALM.png", competiciones: [{id_competicion: 2, id_grupo: 9}]});
-	equipos.push({ id: 67, nombre: "Athletic de Bilbao", abreviatura: "ATH", escudo: "../view/img/ATH.png", competiciones: [{id_competicion: 2, id_grupo: 9}, {id_competicion: 6, id_grupo: 10}, {id_competicion: 8, id_grupo: 17}]});
-	equipos.push({ id: 68, nombre: "Atl&eacute;tico de Madrid", abreviatura: "ATM", escudo: "../view/img/ATM.png", competiciones: [{id_competicion: 2, id_grupo: 9}, {id_competicion: 6, id_grupo: 10}, {id_competicion: 8, id_grupo: 17}]});
-	equipos.push({ id: 69, nombre: "Barcelona", abreviatura: "FCB", escudo: "../view/img/FCB.png", competiciones: [{id_competicion: 2, id_grupo: 9}, {id_competicion: 6, id_grupo: 10}, {id_competicion: 8, id_grupo: 17}]});
-	equipos.push({ id: 70, nombre: "Celta", abreviatura: "CEL", escudo: "../view/img/CEL.png", competiciones: [{id_competicion: 2, id_grupo: 9}, {id_competicion: 6, id_grupo: 10}, {id_competicion: 8, id_grupo: 17}]});
-	equipos.push({ id: 72, nombre: "Deportivo de la Coru&ntilde;a", abreviatura: "DEP", escudo: "../view/img/DEP.png", competiciones: [{id_competicion: 2, id_grupo: 9}, {id_competicion: 6, id_grupo: 10}, {id_competicion: 8, id_grupo: 17}]});
-	equipos.push({ id: 73, nombre: "Eibar", abreviatura: "EIB", escudo: "../view/img/EIB.png", competiciones: [{id_competicion: 2, id_grupo: 9}, {id_competicion: 6, id_grupo: 10}, {id_competicion: 8, id_grupo: 17}]});
-	equipos.push({ id: 74, nombre: "Elche", abreviatura: "ELC", escudo: "../view/img/ELC.png", competiciones: [{id_competicion: 2, id_grupo: 9}]});
-	equipos.push({ id: 75, nombre: "Espanyol", abreviatura: "ESP", escudo: "../view/img/ESY.png", competiciones: [{id_competicion: 2, id_grupo: 9}, {id_competicion: 6, id_grupo: 10}, {id_competicion: 8, id_grupo: 17}]});
-	equipos.push({ id: 76, nombre: "Getafe", abreviatura: "GET", escudo: "../view/img/GET.png", competiciones: [{id_competicion: 2, id_grupo: 9}, {id_competicion: 6, id_grupo: 10}]});
-	equipos.push({ id: 77, nombre: "Granada", abreviatura: "GRA", escudo: "../view/img/GRA.png", competiciones: [{id_competicion: 2, id_grupo: 9}, {id_competicion: 6, id_grupo: 10}, {id_competicion: 8, id_grupo: 17}]});
-	equipos.push({ id: 78, nombre: "Levante", abreviatura: "LEV", escudo: "../view/img/LEV.png", competiciones: [{id_competicion: 2, id_grupo: 9}, {id_competicion: 6, id_grupo: 10}]});
-	equipos.push({ id: 79, nombre: "M&aacute;laga", abreviatura: "MAL", escudo: "../view/img/MAL.png", competiciones: [{id_competicion: 2, id_grupo: 9}, {id_competicion: 6, id_grupo: 10}, {id_competicion: 8, id_grupo: 17}]});
-	equipos.push({ id: 80, nombre: "Real Madrid", abreviatura: "RMA", escudo: "../view/img/RMA.png", competiciones: [{id_competicion: 2, id_grupo: 9}, {id_competicion: 6, id_grupo: 10}, {id_competicion: 8, id_grupo: 17}]});
-	equipos.push({ id: 81, nombre: "Real Sociedad", abreviatura: "RSO", escudo: "../view/img/RSO.png", competiciones: [{id_competicion: 2, id_grupo: 9}, {id_competicion: 6, id_grupo: 10}, {id_competicion: 8, id_grupo: 17}]});
-	equipos.push({ id: 82, nombre: "Rayo Vallecano", abreviatura: "RAY", escudo: "../view/img/RAY.png", competiciones: [{id_competicion: 2, id_grupo: 9}, {id_competicion: 6, id_grupo: 10}]});
-	equipos.push({ id: 83, nombre: "Sevilla", abreviatura: "SEV", escudo: "../view/img/SEV.png", competiciones: [{id_competicion: 2, id_grupo: 9}, {id_competicion: 6, id_grupo: 10}, {id_competicion: 8, id_grupo: 17}]});
-	equipos.push({ id: 84, nombre: "Valencia", abreviatura: "VAL", escudo: "../view/img/VAL.png", competiciones: [{id_competicion: 2, id_grupo: 9}, {id_competicion: 6, id_grupo: 10}, {id_competicion: 8, id_grupo: 17}]});
-	equipos.push({ id: 85, nombre: "Villarreal", abreviatura: "VIL", escudo: "../view/img/VIL.png", competiciones: [{id_competicion: 2, id_grupo: 9}, {id_competicion: 6, id_grupo: 10}, {id_competicion: 8, id_grupo: 17}]});
-	equipos.push({ id: 86, nombre: "Real Betis", abreviatura: "BET", escudo: "../view/img/BET.png", competiciones: [{id_competicion: 6, id_grupo: 10}, {id_competicion: 8, id_grupo: 17}]});
-	equipos.push({ id: 87, nombre: "Sporting de Gij&oacute;n", abreviatura: "SPO", escudo: "../view/img/SPO.png", competiciones: [{id_competicion: 6, id_grupo: 10}, {id_competicion: 8, id_grupo: 17}]});
-	equipos.push({ id: 88, nombre: "Las Palmas", abreviatura: "LPA", escudo: "../view/img/LPA.png", competiciones: [{id_competicion: 6, id_grupo: 10}, {id_competicion: 8, id_grupo: 17}]});
-	equipos.push({ id: 89, nombre: "Rumania", abreviatura: "RUM", escudo: "../view/img/RUM.png", competiciones: [{id_competicion: 7, id_grupo: 11}]});
-	equipos.push({ id: 90, nombre: "Albania", abreviatura: "ALB", escudo: "../view/img/ALB.png", competiciones: [{id_competicion: 7, id_grupo: 11}]});
-	equipos.push({ id: 91, nombre: "Gales", abreviatura: "WAL", escudo: "../view/img/WAL.png", competiciones: [{id_competicion: 7, id_grupo: 12}]});
-	equipos.push({ id: 92, nombre: "Eslovaquia", abreviatura: "SVK", escudo: "../view/img/SVK.png", competiciones: [{id_competicion: 7, id_grupo: 12}]});
-	equipos.push({ id: 93, nombre: "Polonia", abreviatura: "POL", escudo: "../view/img/POL.png", competiciones: [{id_competicion: 7, id_grupo: 13}]});
-	equipos.push({ id: 94, nombre: "Irlanda del Norte", abreviatura: "NIR", escudo: "../view/img/NIR.png", competiciones: [{id_competicion: 7, id_grupo: 13}]});
-	equipos.push({ id: 95, nombre: "Ucrania", abreviatura: "UKR", escudo: "../view/img/UKR.png", competiciones: [{id_competicion: 7, id_grupo: 13}]});
-	equipos.push({ id: 96, nombre: "Republica checa", abreviatura: "CZK", escudo: "../view/img/CZK.png", competiciones: [{id_competicion: 7, id_grupo: 14}]});
-	equipos.push({ id: 97, nombre: "Turquia", abreviatura: "TUR", escudo: "../view/img/TUR.png", competiciones: [{id_competicion: 7, id_grupo: 14}]});
-	equipos.push({ id: 98, nombre: "Irlanda", abreviatura: "IRL", escudo: "../view/img/IRL.png", competiciones: [{id_competicion: 7, id_grupo: 15}]});
-	equipos.push({ id: 99, nombre: "Suecia", abreviatura: "SWE", escudo: "../view/img/SWE.png", competiciones: [{id_competicion: 7, id_grupo: 15}]});
-	equipos.push({ id: 100, nombre: "Islandia", abreviatura: "ISL", escudo: "../view/img/ISL.png", competiciones: [{id_competicion: 7, id_grupo: 16}]});
-	equipos.push({ id: 101, nombre: "Austria", abreviatura: "AUT", escudo: "../view/img/AUT.png", competiciones: [{id_competicion: 7, id_grupo: 16}]});
-	equipos.push({ id: 102, nombre: "Hungria", abreviatura: "HUN", escudo: "../view/img/HUN.png", competiciones: [{id_competicion: 7, id_grupo: 16}]});
-	equipos.push({ id: 122, nombre: "At.Osasuna", abreviatura: "OSA", escudo: "../view/img/OSA.png", competiciones: [{id_competicion: 8, id_grupo: 17}]});
-	equipos.push({ id: 121, nombre: "CD Legan&eacute;s", abreviatura: "LEG", escudo: "../view/img/LEG.png", competiciones: [{id_competicion: 8, id_grupo: 17}]});
-	equipos.push({ id: 120, nombre: "Deportivo Alav&eacute;s SAD", abreviatura: "ALA", escudo: "../view/img/ALA.png", competiciones: [{id_competicion: 8, id_grupo: 17}]});
-	equipos.push({ id: 119, nombre: "Desconocido", abreviatura: "DES", escudo: "../view/img/NONE.png", competiciones: []});
-=======
 	equipos.push({ id_equipo: 1, nombre_equipo: "Brasil", abreviatura: "BRA", url_escudo: "../view/img/BRA.png", competiciones: [{id_competicion: 1, id_grupo: 1}] });
 	equipos.push({ id_equipo: 2, nombre_equipo: "Croacia", abreviatura: "CRO", url_escudo: "../view/img/CRO.png", competiciones: [{id_competicion: 1, id_grupo: 1}, {id_competicion: 7, id_grupo: 14}]});
 	equipos.push({ id_equipo: 3, nombre_equipo: "M&eacute;xico", abreviatura: "MEX", url_escudo: "../view/img/MEX.png", competiciones: [{id_competicion: 1, id_grupo: 1}]});
@@ -315,7 +240,6 @@ function getEquiposMockup(){
 	equipos.push({ id_equipo: 121, nombre_equipo: "CD Legan&eacute;s", abreviatura: "LEG", url_escudo: "../view/img/LEG.png", competiciones: [{id_competicion: 8, id_grupo: 17}]});
 	equipos.push({ id_equipo: 120, nombre_equipo: "Deportivo Alav&eacute;s SAD", abreviatura: "ALA", url_escudo: "../view/img/ALA.png", competiciones: [{id_competicion: 8, id_grupo: 17}]});
 	equipos.push({ id_equipo: 119, nombre_equipo: "Desconocido", abreviatura: "DES", url_escudo: "../view/img/NONE.png", competiciones: []});
->>>>>>> 08c7197be8f6bc8a72274a585c3fb69a902bb36d
 	return equipos;
 }
 
