@@ -123,6 +123,12 @@ function getCompeticionesMockup(){
 }
 
 function getGrupos(){
+	var grupos = getAjaxSync('ServicioCompeticiones', 'GetGrupos');
+	return grupos;
+}
+
+function getGruposMockup(){
+	alert("Grupos es mockup");
 	var grupos = [];
 	grupos.push({ id_grupo: 1,  nombre_grupo: "A", id_competicion: 1});
 	grupos.push({ id_grupo: 2,  nombre_grupo: "B", id_competicion: 1});

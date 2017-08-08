@@ -11,8 +11,6 @@ $(document).ready(function(){
 		if (id_competicion !== null){
 			var competicion_editar = findElementByField(competiciones, "id_competicion", id_competicion);
 			if (competicion_editar !== null){
-				var fecha_inicio = new Date(competicion_editar.fecha_inicio);
-				
 				$('.form-editar-competicion').show();
 				$('.datos-grupos').show();
 				$('.form-editar-grupo').hide();
@@ -23,22 +21,13 @@ $(document).ready(function(){
 				$('.comp_titulo').val(competicion_editar.titulo);
 				$('.comp_subtitulo').val(competicion_editar.subtitulo);
 				$('.comp_reglas').val(competicion_editar.reglas);
-				$('.comp_inicio').val(fecha_inicio);
-				$('.comp_fin').val(competicion_editar.fecha_fin);
+				$('.comp_inicio').val(moment(competicion_editar.fecha_inicio).format('YYYY-MM-DDTHH:mm'));
+				$('.comp_fin').val(moment(competicion_editar.fecha_fin).format('YYYY-MM-DDTHH:mm'));
 				$('.comp_tipo_competicion').val(competicion_editar.id_tipo_competicion);
+				
+				$('.crear-grupo').attr('data-id-competicion', competicion_editar.id_competicion);
 
-				$('.tabla-grupos').find('tr').remove();
-				grupos_competicion = getGruposCompeticion(competicion_editar.id);
-				if (grupos_competicion !== null && grupos_competicion.length > 0){
-					$.each(grupos_competicion, function(index, grupo){
-						var row = $('<tr>');
-						row.append('<td>' + grupo.id + '</td>');
-						row.append('<td>' + grupo.nombre + '</td>');
-						row.append('<td><button class="editar-grupo" data-id-grupo="' + grupo.id + '">Editar</button></td>');
-						row.append('<td><button class="borrar-grupo" data-id-grupo="' + grupo.id + '">Borrar</button></td>');
-						$('.tabla-grupos').append(row);
-					});
-				}
+				loadGrupos(competicion_editar.id_competicion);
 			}
 		}
 	});
@@ -66,16 +55,16 @@ $(document).ready(function(){
 	
 	$('body').on('click', '.guardar-competicion', function(){
 		$('.errores').html('');
-		if (checkInput()){
+		if (checkInputCompeticion()){
 			var datos_competicion = {};
 			if ($('.comp_id').val() !== null && $('.comp_id').val() !== "") datos_competicion.id = parseInt($('.comp_id').val());
 			datos_competicion.nombre = $('.comp_nombre').val();
-			datos_competicion.abreviatura = $('.comp_siglas').val();
+			datos_competicion.siglas = $('.comp_siglas').val();
 			datos_competicion.titulo = $('.comp_titulo').val();
 			datos_competicion.subtitulo = $('.comp_subtitulo').val();
 			datos_competicion.reglas = $('.comp_reglas').val();
-			datos_competicion.inicio = $('.comp_inicio').val();
-			datos_competicion.fin = $('.comp_fin').val();
+			datos_competicion.inicio = moment($('.comp_inicio').val()).format('YYYY-MM-DD HH:mm:SS');
+			datos_competicion.fin = moment($('.comp_fin').val()).format('YYYY-MM-DD HH:mm:SS');
 			datos_competicion.tipo_competicion = parseInt($('.comp_tipo_competicion').val());
 			
 			var resultado_guardado = getAjaxSync('ServicioCompeticiones', 'GuardarCompeticion', JSON.stringify(datos_competicion));
@@ -88,12 +77,26 @@ $(document).ready(function(){
 		$('.dato-grupo').val('');
 		var id_grupo = parseInt($(this).attr('data-id-grupo'));
 		if (id_grupo !== null){
-			var grupo_editar = findElementByField(grupos_competicion, "id", id_grupo);
+			var grupo_editar = findElementByField(grupos_competicion, "id_grupo", id_grupo);
 			if (grupo_editar !== null){
 				$('.form-editar-grupo').show();
-				$('.grupo_id').val(grupo_editar.id);
-				$('.grupo_nombre').val(grupo_editar.nombre);
+				$('.grupo_id').val(grupo_editar.id_grupo);
+				$('.grupo_nombre').val(grupo_editar.nombre_grupo);
 				$('.grupo_competicion').val(grupo_editar.id_competicion);
+			}
+		}
+	});
+	
+	$('body').on('click', '.borrar-grupo', function(){
+		var id_competicion = parseInt($(this).attr('data-id-competicion'));
+		var id_grupo = parseInt($(this).attr('data-id-grupo'));
+		if (id_grupo !== null){
+			var grupo_borrar = findElementByField(grupos_competicion, "id_grupo", id_grupo);
+			if (grupo_borrar !== null){
+				if (confirm("Borrar el grupo '" + grupo_borrar.nombre_grupo + "'?")){
+					var resultado_borrado = getAjaxSync('ServicioCompeticiones', 'BorrarGrupo', JSON.stringify({id: grupo_borrar.id_grupo}));
+					if (resultado_borrado === "ok") loadGrupos(id_competicion);
+				}
 			}
 		}
 	});
@@ -101,6 +104,21 @@ $(document).ready(function(){
 	$('body').on('click', '.crear-grupo', function(){
 		$('.dato-grupo').val('');
 		$('.form-editar-grupo').show();
+		$('.grupo_competicion').val(parseInt($('.crear-grupo').attr('data-id-competicion')));
+	});
+	
+	$('body').on('click', '.guardar-grupo', function(){
+		$('.errores').html('');
+		if (checkInputGrupo()){
+			var id_competicion = parseInt($('.grupo_competicion').val());
+			var datos_grupo = {};
+			if ($('.grupo_id').val() !== null && $('.grupo_id').val() !== "") datos_grupo.id = parseInt($('.grupo_id').val());
+			datos_grupo.nombre = $('.grupo_nombre').val();
+			datos_grupo.id_competicion = id_competicion;
+			
+			var resultado_guardado = getAjaxSync('ServicioCompeticiones', 'GuardarGrupo', JSON.stringify(datos_grupo));
+			if (resultado_guardado === "ok") loadGrupos(id_competicion);
+		}
 	});
 
 	tipos_competicion = getTiposCompeticionMockup();
@@ -131,17 +149,65 @@ $(document).ready(function(){
 		$('.form-editar-grupo').hide();
 	}
 	
-	function checkInput(){
+	function loadGrupos(id_competicion){
+		grupos_competicion = getGruposCompeticion(id_competicion);
+		$('.tabla-grupos').find('tr').remove();
+		if (grupos_competicion !== null && grupos_competicion.length > 0){
+			$.each(grupos_competicion, function(index, grupo){
+				var row = $('<tr>');
+				row.append('<td>' + grupo.id_grupo + '</td>');
+				row.append('<td>' + grupo.nombre_grupo + '</td>');
+				row.append('<td><button class="editar-grupo" data-id-competicion="' + id_competicion + '" data-id-grupo="' + grupo.id_grupo + '">Editar</button></td>');
+				row.append('<td><button class="borrar-grupo" data-id-competicion="' + id_competicion + '" data-id-grupo="' + grupo.id_grupo + '">Borrar</button></td>');
+				$('.tabla-grupos').append(row);
+			});
+		}
+		$('.form-editar-grupo').hide();
+	}
+	
+	function checkInputCompeticion(){
 		var correct_input = true;
-		// if ($('.estadio_nombre').val() === null || $('.estadio_nombre').val() === ""){
-			// correct_input = false;
-			// $('.errores').append('<div>Debe informarse el campo nombre</div>');
-		// }
-		// if ($('.estadio_ciudad').val() === null || $('.estadio_ciudad').val() === ""){
-			// correct_input = false;
-			// $('.errores').append('<div>Debe informarse el campo ciudad</div>');
-		// }
+		if ($('.comp_nombre').val() === null || $('.comp_nombre').val() === ""){
+			correct_input = false;
+			$('.errores').append('<div>Debe informarse el campo nombre</div>');
+		}
+		if ($('.comp_siglas').val() === null || $('.comp_siglas').val() === ""){
+			correct_input = false;
+			$('.errores').append('<div>Debe informarse el campo siglas</div>');
+		}
+		if ($('.comp_titulo').val() === null || $('.comp_titulo').val() === ""){
+			correct_input = false;
+			$('.errores').append('<div>Debe informarse el campo titulo</div>');
+		}
+		if ($('.comp_subtitulo').val() === null || $('.comp_subtitulo').val() === ""){
+			correct_input = false;
+			$('.errores').append('<div>Debe informarse el campo subtitulo</div>');
+		}
+		if ($('.comp_reglas').val() === null || $('.comp_reglas').val() === ""){
+			correct_input = false;
+			$('.errores').append('<div>Debe informarse el campo reglas</div>');
+		}
+		if ($('.comp_inicio').val() === null || $('.comp_inicio').val() === ""){
+			correct_input = false;
+			$('.errores').append('<div>Debe informarse el campo Fecha inicio</div>');
+		}
+		if ($('.comp_fin').val() === null || $('.comp_fin').val() === ""){
+			correct_input = false;
+			$('.errores').append('<div>Debe informarse el campo Fecha fin</div>');
+		}
+		if ($('.comp_tipo_competicion').val() === null || $('.comp_tipo_competicion').val() === ""){
+			correct_input = false;
+			$('.errores').append('<div>Debe informarse el campo tipo de competicion</div>');
+		}
 		return correct_input;
 	}
 	
+	function checkInputGrupo(){
+		var correct_input = true;
+		if ($('.grupo_nombre').val() === null || $('.grupo_nombre').val() === ""){
+			correct_input = false;
+			$('.errores').append('<div>Debe informarse el campo nombre</div>');
+		}
+		return correct_input;
+	}
 });
