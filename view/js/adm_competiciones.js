@@ -205,15 +205,26 @@ $(document).ready(function(){
 		}
 		
 		//TODO: Comprobar que cumple formato YYYY-MM-DD HH:MM
+		var fecha_inicio = null;
 		if ($('.comp_inicio').val() === null || $('.comp_inicio').val() === ""){
 			correct_input = false;
 			$('.errores').append('<div>Debe informarse el campo Fecha inicio</div>');
+		} else {
+			fecha_inicio = moment($('.comp_inicio').val());
 		}
 		
 		//TODO: Comprobar que cumple formato YYYY-MM-DD HH:MM
+		var fecha_fin = null;
 		if ($('.comp_fin').val() === null || $('.comp_fin').val() === ""){
 			correct_input = false;
 			$('.errores').append('<div>Debe informarse el campo Fecha fin</div>');
+		} else {
+			fecha_fin = moment($('.comp_fin').val());
+		}
+		
+		if (fecha_inicio !== null && fecha_fin !== null && fecha_inicio.isAfter(fecha_fin)){
+			correct_input = false;
+			$('.errores').append('<div>Fecha inicio debe ser anterior a Fecha fin</div>');
 		}
 		
 		if ($('.comp_tipo_competicion').val() === null || $('.comp_tipo_competicion').val() === ""){
