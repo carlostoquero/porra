@@ -83,9 +83,7 @@ function InsertarCompeticion($competicion, &$mensajes){
 		if ($db->mysqli->affected_rows >= 0) {
 			$mensajes = "Inserción correcta";
 			$insercion_correcta = true;
-		} else {
-			$mensajes = "Error al insertar: ".$db->mysqli->error;
-		}
+		} else { $mensajes = "Error al insertar: ".$db->mysqli->error; }
 		$stmt->close();
 	} else { $mensajes = "Datos recibidos incorrectos: ".$db->mysqli->error; }
 	$db->close();
@@ -110,9 +108,7 @@ function ActualizarCompeticion($competicion, &$mensajes){
 		if ($db->mysqli->affected_rows >= 0){
 			$mensajes = "Actualización correcta";
 			$actualizacion_correcta = true;
-		} else {
-			$mensajes = "Error al actualizar: ".$db->mysqli->error;
-		}
+		} else { $mensajes = "Error al actualizar: ".$db->mysqli->error; }
 		$stmt->close();
 	} else { $mensajes = "Datos recibidos incorrectos: ".$db->mysqli->error; }
 	$db->close();
@@ -151,9 +147,7 @@ function BorrarCompeticion($id_competicion, &$mensajes){
 				if ($db->mysqli->affected_rows >= 0){
 					$mensajes = "Borrado correcto";
 					$borrado_correcto = true;
-				} else {
-					$mensajes = "Error al borrar: ".$db->mysqli->error;
-				}
+				} else { $mensajes = "Error al borrar: ".$db->mysqli->error; }
 				$stmtBorrado->close();
 			} else { $mensajes = "Error al borrar, sentencia incorrecta: ".$db->mysqli->error; }
 		}
