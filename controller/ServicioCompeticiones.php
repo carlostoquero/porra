@@ -58,16 +58,16 @@ function GetCompeticionActual(){
 	return $competicion;
 }
 
-function GuardarCompeticion($id_competicion, $nombre_competicion, $abreviatura, $titulo, $subtitulo, $reglas, $fecha_inicio, $fecha_fin, $tipo_competicion){
-	$guardado_correcto = true;
+function GuardarCompeticion($id_competicion, $nombre_competicion, $abreviatura, $titulo, $subtitulo, $reglas, $fecha_inicio, $fecha_fin, $tipo_competicion, &$mensajes){
+	$guardado_correcto = "";
 	$competicion = new CCompeticion($id_competicion, $nombre_competicion, $abreviatura, $titulo, $subtitulo, $reglas, $fecha_inicio, $fecha_fin, $tipo_competicion);
-	if ( !isset($id_competicion) ) { $guardado_correcto = InsertarCompeticion($competicion); }
-	else { $guardado_correcto = ActualizarCompeticion($competicion); }
+	if ( !isset($id_competicion) ) { $guardado_correcto = InsertarCompeticion($competicion, $mensajes); }
+	else { $guardado_correcto = ActualizarCompeticion($competicion, $mensajes); }
 	return $guardado_correcto;
 }
 
-function InsertarCompeticion($competicion){
-    $correctInsert = false;
+function InsertarCompeticion($competicion, &$mensajes){
+    $insercion_correcta = false;
 	$db = new dbConnection();
 	$sql =  "INSERT INTO `COMPETICION` (nombre_competicion, abreviatura, titulo, subtitulo, reglas, fecha_inicio, fecha_fin, id_tipo_competicion)
 	         VALUES  (?, ?, ?, ?, ?, ?, ? ,?)";
@@ -78,17 +78,22 @@ function InsertarCompeticion($competicion){
 		$titulo_acortado = substr($competicion->titulo, 0, 100);
 		$subtitulo_acortado = substr($competicion->subtitulo, 0, 50);
 		$stmt->bind_param("sssssssi", $nombre_acortado, $abreviatura_acortada, $titulo_acortado, $subtitulo_acortado, 
-		                              $competicion->reglas, $competicion->fecha_inicio, $competicion->fecha_fin, $competicion->tipo_competicion);
+		                              $competicion->reglas, $competicion->fecha_inicio, $competicion->fecha_fin, $competicion->id_tipo_competicion);
 		$stmt->execute();
-		if ($db->mysqli->affected_rows >= 0) $correctInsert = true;
+		if ($db->mysqli->affected_rows >= 0) {
+			$mensajes = "Inserción correcta";
+			$insercion_correcta = true;
+		} else {
+			$mensajes = "Error al insertar: ".$db->mysqli->error;
+		}
 		$stmt->close();
-	}
+	} else { $mensajes = "Datos recibidos incorrectos."; }
 	$db->close();
-	return $correctInsert;
+	return $insercion_correcta;
 }
 
-function ActualizarCompeticion($competicion){
-    $correctUpdate = false;
+function ActualizarCompeticion($competicion, &$mensajes){
+    $actualizacion_correcta = false;
 	$db = new dbConnection();
 	$sql =  "UPDATE `COMPETICION` SET nombre_competicion = ?, abreviatura = ?, titulo = ?, subtituo = ?, reglas = ?, fecha_inicio = ?, fecha_fin = ?, id_tipo_competicion = ?
 	         WHERE id_competicion = ?";
@@ -99,17 +104,22 @@ function ActualizarCompeticion($competicion){
 		$titulo_acortado = substr($competicion->titulo, 0, 100);
 		$subtitulo_acortado = substr($competicion->subtitulo, 0, 50);
 		$stmt->bind_param("ssssssii", $nombre_acortado,	$abreviatura_acortada, $titulo_acortado, $subtitulo_acortado, $competicion->reglas, 
-									  $competicion->fecha_inicio, $competicion->fecha_fin, $competicion->tipo_competicion, $competicion->id_competicion);
+									  $competicion->fecha_inicio, $competicion->fecha_fin, $competicion->id_tipo_competicion, $competicion->id_competicion);
 		$stmt->execute();
-		if ($db->mysqli->affected_rows >= 0) $correctUpdate = true;
+		if ($db->mysqli->affected_rows >= 0){
+			$mensajes = "Actualización correcta";
+			$actualizacion_correcta = true;
+		} else {
+			$mensajes = "Error al actualizar: ".$db->mysqli->error;
+		}
 		$stmt->close();
-	}
+	} else { $mensajes = "Datos recibidos incorrectos."; }
 	$db->close();
-	return $correctUpdate;
+	return $actualizacion_correcta;
 }
 
-function BorrarCompeticion($id_competicion){
-    $correctDelete = false;
+function BorrarCompeticion($id_competicion, &$mensajes){
+    $borrado_correcto = false;
 	$db = new dbConnection();
 	
 	//TODO: Descomentar tablas que aún no existen, comprobar si alguna otra tabla debe consultarse
@@ -121,24 +131,35 @@ function BorrarCompeticion($id_competicion){
 				 ( 	SELECT count(1) cuantos FROM USUARIOS_COMPETICION WHERE id_competicion = ?) usuarios*/";
 	
 	if ($stmtComprobacion = $db->mysqli->prepare($sql)){
-		$stmt->execute();
-		$stmt->bind_result($rId, $rNombre, $rSiglas, $rTitulo, $rSubtitulo, $rReglas, $rFechaInicio, $rFechaFin, $rTipoCompeticion);
-		if ($stmt->fetch()){
-			$competicion = new CCompeticion($rId, $rNombre, $rSiglas, $rTitulo, $rSubtitulo, $rReglas, $rFechaInicio, $rFechaFin, $rTipoCompeticion);
+		//TODO: El bueno es el de abajo, no se puede poner hasta que no estén todas las tablas
+		$stmtComprobacion->bind_param("ii", $id_competicion,$id_competicion);
+		//$stmtComprobacion->bind_param("iiii", $id_competicion,$id_competicion, $id_competicion,$id_competicion);
+		
+		$stmtComprobacion->execute();
+		$stmtComprobacion->bind_result($rCuantos);
+		if ($stmtComprobacion->fetch()){
+			// Si no hay registros hijo, borrar
+			if ($rCuantos > 0){ $mensajes = "La competicion tiene datos vinculados, limpie antes esos datos (grupos, equipos, jornadas, usuarios)."; }
 		}
-		$stmt->close();
-	}
+		$stmtComprobacion->close();
+		
+		if ($rCuantos == 0){
+			if ($stmtBorrado = $db->mysqli->prepare("DELETE FROM COMPETICION WHERE id_competicion = ?")){
+				$stmtBorrado->bind_param("i", $id_competicion);
+				$stmtBorrado->execute();
+				if ($db->mysqli->affected_rows >= 0){
+					$mensajes = "Borrado correcto";
+					$borrado_correcto = true;
+				} else {
+					$mensajes = "Error al borrar: ".$db->mysqli->error;
+				}
+				$stmtBorrado->close();
+			} else { $mensajes = "Error al borrar, sentencia incorrecta: ".$db->mysqli->error; }
+		}
+	} else { $mensajes = "Error al comprobar si existen datos vinculados."; }
 
-	$sql = "DELETE FROM `ESTADIOS`  WHERE  id_estadio = ?";
-	if ($stmt = $db->mysqli->prepare($sql)){
-		$stmt->bind_param("i", $id_estadio);
-		$stmt->execute();
-		if ($db->mysqli->affected_rows >= 0)
-			$correctDelete = true;
-		$stmt->close();
-	}
 	$db->close();
-	return $correctDelete;
+	return $borrado_correcto;
 }
 
 header('Content-Type: application/json');
@@ -156,28 +177,30 @@ if( !isset($aResult['error']) ) {
 			$aResult['result'] = GetCompeticionActual();
 			break;
 			
-		// case 'GuardarEstadio':
-			// if( !isset($_GET['arguments']) ) { $aResult['error'] = 'No arguments!'; }
-			// else{
-				// $arguments = json_decode($_GET['arguments']);
-				// if ( isset($arguments->nombre) && isset($arguments->ciudad) ){
-					// if (GuardarEstadio($arguments->id, $arguments->nombre, $arguments->ciudad, $arguments->equipo_local))  { 
-						// $aResult['result'] = "ok";
-					// } else { $aResult['result'] = "error"; }
-				// } else { $aResult['error'] = 'Wrong arguments!'; }
-			// }
-			// break;
+		case 'GuardarCompeticion':
+			if( !isset($_GET['arguments']) ) { $aResult['error'] = 'No arguments!'; }
+			else{
+				 $arguments = json_decode($_GET['arguments']);
+				if ( isset($arguments->nombre) && isset($arguments->abreviatura) && isset($arguments->titulo) && isset($arguments->subtitulo) && 
+				    isset($arguments->reglas) && isset($arguments->inicio) && isset($arguments->fin) && isset($arguments->tipo_competicion) ){
+					if (GuardarCompeticion($arguments->id, $arguments->nombre, $arguments->abreviatura, $arguments->titulo, $arguments->subtitulo, 
+					                       $arguments->reglas, $arguments->inicio, $arguments->fin, $arguments->tipo_competicion, $aResult['messages'])){
+						$aResult['result'] = "ok";
+					} else { $aResult['result'] = "error"; }
+				} else { $aResult['error'] = 'Wrong arguments!'; }
+			}
+			break;
 
-		// case 'BorrarEstadio': 
-			// if( !isset($_GET['arguments']) ) { $aResult['error'] = 'No arguments!'; }
-			// else {
-				// $arguments = json_decode($_GET['arguments']);
-				// if ( isset($arguments->id) ){
-					// if (BorrarEstadio($arguments->id))  { $aResult['result'] = "ok";}
-					// else { $aResult['result'] = "error"; }
-				// } else { $aResult['error'] = 'Wrong arguments!'; }
-			 // }
-			// break;
+		case 'BorrarCompeticion': 
+			if( !isset($_GET['arguments']) ) { $aResult['error'] = 'No arguments!'; }
+			else {
+				$arguments = json_decode($_GET['arguments']);
+				if ( isset($arguments->id) ){ 
+					if (BorrarCompeticion($arguments->id, $aResult['messages']) ){ $aResult['result'] = "ok"; }
+					else { $aResult['result'] = "error"; }
+				} else { $aResult['error'] = 'Wrong arguments!'; }
+			 }
+			break;
 
 		default:
 		   $aResult['error'] = 'Not found function '.$_POST['function_name'].'!';

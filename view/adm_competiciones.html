@@ -18,6 +18,7 @@
 				</div>
 				
 				<div class="form-editar-competicion">
+					<div class="errores"></div>
 					<div class="datos-principales">
 						<input type="hidden" class="comp_id dato-competicion" value="">
 						<input type="text" class="comp_nombre dato-competicion" placeholder="Nombre" value="">
@@ -25,8 +26,11 @@
 						<input type="text" class="comp_titulo dato-competicion" placeholder="Título" value="">
 						<input type="text" class="comp_subtitulo dato-competicion" placeholder="Subtítulo" value="">
 						<textarea class="comp_reglas dato-competicion" placeholder="Reglas" rows="7"></textarea>
+						<input type="datetime-local" class="comp_inicio dato-competicion" placeholder="Fecha inicio" value="">
+						<input type="datetime-local" class="comp_fin dato-competicion" placeholder="Fecha fin" value="">
 						<select class="comp_tipo_competicion dato-competicion"></select>				
 					</div>
+					<button class="guardar-competicion">Guardar</button>
 					<div class="datos-grupos">
 						<h2>GRUPOS</h2>
 						<table class="tabla-grupos">
@@ -37,9 +41,8 @@
 						<input type="hidden" class="grupo_id dato-grupo" value="">
 						<input type="text" class="grupo_nombre dato-grupo" placeholder="Nombre" value="">
 						<input type="hidden" class="grupo_competicion dato-grupo" value="">
+						<button class="guardar-grupo">Guardar grupo</button>
 					</div>
-					<button class="guardar-grupo">Guardar grupo</button>
-					<button class="guardar-competicion">Guardar</button>
 				</div>
 			</div>
 		</div>
