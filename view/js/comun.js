@@ -545,11 +545,13 @@ function getAjaxSync(servicio, funcion, argumentos){
 		data: requestData,
 
 		success: function (obj, textstatus) {
-					  if( !('error' in obj) ) {
-						  resultado = obj.result;
-					  }
-					  else {
+					  if( 'error' in obj ) {
 						  console.log(obj.error);
+					  } else{
+						  if ('messages' in obj){
+							alert(obj.messages);
+						  }
+						  resultado = obj.result;
 					  }
 				}
 	});
