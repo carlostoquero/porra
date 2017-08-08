@@ -1,22 +1,22 @@
 function generarMenu() {
-	var mainMenu = $('<ul>');
+	var mainMenu = $('<ul class="nav navbar-nav">');
 	mainMenu.append('<li><a href="./reglas.html">Reglas</a></li>' + 
-					'<li><a href="#">Competici&oacute;n</a>' + 
-						'<ul>' + 
+					'<li class="dropdown"><a href="#">Competici&oacute;n</a>' + 
+						'<ul class="dropdown-menu">' + 
 							'<li><a href="./comp_resultados.html">Resultados</a></li>' + 
 							'<li><a href="./comp_clasificacion.html">Clasificaci&oacute;n</a></li>' + 
 							'<li><a href="./comp_cargar.html">Cargar</a></li>' + 
 						'</ul>' + 
 					'</li>' + 
-					'<li><a href="#">Pron&oacute;sticos</a>' + 
-						'<ul>' + 
+					'<li class="dropdown"><a href="#">Pron&oacute;sticos</a>' + 
+						'<ul class="dropdown-menu">' + 
 							'<li><a href="./pron_cargar.html">Cargar</a></li>' + 
 							'<li><a href="./pron_ver.html">Ver</a></li>' + 
 							'<li><a href="./pron_clasificacion.html">Clasificacion</a></li>' + 
 						'</ul>' + 
 					'</li>' + 
-					'<li><a href="#">Administraci&oacute;n</a>' + 
-						'<ul>' + 
+					'<li class="dropdown"><a href="#">Administraci&oacute;n</a>' + 
+						'<ul class="dropdown-menu">' + 
 							'<li><a href="./adm_competiciones.html">Competiciones</a></li>' + 
 							'<li><a href="./adm_equipos.html">Equipos</a></li>' + 
 							'<li><a href="./adm_estadios.html">Estadios</a></li>' + 
@@ -25,10 +25,11 @@ function generarMenu() {
 						'</ul>' + 
 					'</li>');
 	
-	var actions = $('<ul>');
+	var actions = $('<ul class="nav navbar-nav">');
 	actions.append('<li><a href="./gest_editar.html">Editar perfil</a></li>' + 
 				   '<li><a href="./comp_cambiar.html">Cambiar competicion</a></li>' + 
-				   '<li><a href="./logout.html">Salir</a></li>');
+				   '<li><a href="./logout.html">Salir</a></li>'+ 
+					'</ul>');
 
 	$('.menu-div').append(mainMenu);
 	$('.menu-div').append(actions);

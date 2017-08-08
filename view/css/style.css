@@ -540,6 +540,9 @@ img.img-polaroid {
 ==================================== */
 
 /* --- header -- */
+.menu-div {
+	float: right;
+}
 header .navbar {
     margin-bottom:0;
 }
@@ -560,13 +563,13 @@ header .navbar {
 }
 
 header .navbar-collapse  ul.navbar-nav {
-    float:right;
+    /*float:right;*/
     margin-right:0;
 }
 
 header .navbar-default{
-    background-color:#000000;
-	color:#ffffff;
+    background-color:#ffffff;
+	color:#333333;
 }
 
 header .nav li a:hover,
@@ -685,7 +688,7 @@ header ul.nav li ul li a {
 }
 
 .navbar .nav > li > a {
-  color:#ffffff;
+  color:#333333;
   text-shadow:none;
 }
 
