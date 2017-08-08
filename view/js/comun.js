@@ -151,7 +151,13 @@ function getGruposMockup(){
 }
 
 function getGruposCompeticion(id_competicion){
-	var grupos = getGrupos();
+	var grupos_competicion = getAjaxSync('ServicioCompeticiones', 'GetGruposCompeticion', JSON.stringify({id: id_competicion}));
+	return grupos_competicion;
+}
+
+function getGruposCompeticionMockup(id_competicion){
+	alert("Grupos Competicion es mockup");
+	var grupos = getGruposMockup();
 	var grupos_competicion = $.grep(grupos, function(grupo, index){
 		return grupo.id_competicion === id_competicion;
 	});
@@ -256,7 +262,6 @@ function getEquiposCompeticion(id_competicion){
 }
 function getEquiposCompeticionMockup(id_competicion){
 	alert("EquiposCompeticion es mockup");
-	
 	var equipos = getEquiposMockup();
 	var equipos_competicion = $.grep(equipos, function(equipo, index){
 		var pertenece_competicion = false;

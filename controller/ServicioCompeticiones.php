@@ -181,7 +181,7 @@ function GetGrupos(){
 function GetGruposCompeticion($id_competicion){
 	$grupos = array();
 	$db = new dbConnection();
-	if ($stmt = $db->mysqli->prepare('SELECT id_grupo, nombre_grupo, id_competicion WHERE id_competicion = ? FROM GRUPO ORDER BY id_grupo')){
+	if ($stmt = $db->mysqli->prepare('SELECT id_grupo, nombre_grupo, id_competicion FROM GRUPO WHERE id_competicion = ? ORDER BY id_grupo')){
 		$stmt->bind_param("i", $id_competicion);
 		$stmt->execute();
 		$stmt->bind_result($rId, $rNombre, $rCompeticion);
