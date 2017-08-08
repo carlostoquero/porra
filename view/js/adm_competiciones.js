@@ -167,47 +167,70 @@ $(document).ready(function(){
 	
 	function checkInputCompeticion(){
 		var correct_input = true;
+		
 		if ($('.comp_nombre').val() === null || $('.comp_nombre').val() === ""){
 			correct_input = false;
 			$('.errores').append('<div>Debe informarse el campo nombre</div>');
 		}
+		
 		if ($('.comp_siglas').val() === null || $('.comp_siglas').val() === ""){
 			correct_input = false;
 			$('.errores').append('<div>Debe informarse el campo siglas</div>');
+		} else {
+			// Comprobar que no están repetidas
+			var id_competicion = $('.comp_id').val() === null || $('.comp_id').val() === "" ? null : parseInt($('.comp_id').val());
+			var siglas_repetidas = $.grep(competiciones, function(competicion, index){
+				return competicion.siglas === $('.comp_siglas').val() && (id_competicion === null || competicion.id_competicion !== id_competicion );
+			});
+			
+			if (siglas_repetidas !== null && siglas_repetidas.length > 0){
+				correct_input = false;
+				$('.errores').append('<div>Siglas repetidas.</div>');
+			}
 		}
+		
 		if ($('.comp_titulo').val() === null || $('.comp_titulo').val() === ""){
 			correct_input = false;
 			$('.errores').append('<div>Debe informarse el campo titulo</div>');
 		}
+		
 		if ($('.comp_subtitulo').val() === null || $('.comp_subtitulo').val() === ""){
 			correct_input = false;
 			$('.errores').append('<div>Debe informarse el campo subtitulo</div>');
 		}
+		
 		if ($('.comp_reglas').val() === null || $('.comp_reglas').val() === ""){
 			correct_input = false;
 			$('.errores').append('<div>Debe informarse el campo reglas</div>');
 		}
+		
+		//TODO: Comprobar que cumple formato YYYY-MM-DD HH:MM
 		if ($('.comp_inicio').val() === null || $('.comp_inicio').val() === ""){
 			correct_input = false;
 			$('.errores').append('<div>Debe informarse el campo Fecha inicio</div>');
 		}
+		
+		//TODO: Comprobar que cumple formato YYYY-MM-DD HH:MM
 		if ($('.comp_fin').val() === null || $('.comp_fin').val() === ""){
 			correct_input = false;
 			$('.errores').append('<div>Debe informarse el campo Fecha fin</div>');
 		}
+		
 		if ($('.comp_tipo_competicion').val() === null || $('.comp_tipo_competicion').val() === ""){
 			correct_input = false;
 			$('.errores').append('<div>Debe informarse el campo tipo de competicion</div>');
 		}
+		
 		return correct_input;
 	}
 	
 	function checkInputGrupo(){
 		var correct_input = true;
+		//TODO: Comprobar unicidad en la competición?
 		if ($('.grupo_nombre').val() === null || $('.grupo_nombre').val() === ""){
 			correct_input = false;
 			$('.errores').append('<div>Debe informarse el campo nombre</div>');
-		}
+		} 
 		return correct_input;
 	}
 });
