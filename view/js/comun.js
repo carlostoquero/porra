@@ -164,6 +164,11 @@ function getGruposCompeticionMockup(id_competicion){
 	return grupos_competicion;
 }
 
+function getCompeticionesEquipo(id_equipo){
+	var competiciones_equipo = getAjaxSync('ServicioEquipos', 'GetCompeticionesEquipo', JSON.stringify({id: id_equipo}));
+	return competiciones_equipo;
+}
+
 function getCompeticionesUsuario(id_usuario){
 	var competiciones_usuario = getCompeticiones();
 	$.each(competiciones_usuario, function(item, competicion){
@@ -260,6 +265,7 @@ function getEquiposCompeticion(id_competicion){
 	var equipos_competicion = getAjaxSync('ServicioEquipos', 'GetEquiposByCompeticion', JSON.stringify({id_competicion: id_competicion}));
 	return equipos_competicion;
 }
+
 function getEquiposCompeticionMockup(id_competicion){
 	alert("EquiposCompeticion es mockup");
 	var equipos = getEquiposMockup();
