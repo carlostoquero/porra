@@ -126,7 +126,6 @@ function getGrupos(){
 	var grupos = getAjaxSync('ServicioCompeticiones', 'GetGrupos');
 	return grupos;
 }
-
 function getGruposMockup(){
 	alert("Grupos es mockup");
 	var grupos = [];
@@ -265,7 +264,6 @@ function getEquiposCompeticion(id_competicion){
 	var equipos_competicion = getAjaxSync('ServicioEquipos', 'GetEquiposByCompeticion', JSON.stringify({id_competicion: id_competicion}));
 	return equipos_competicion;
 }
-
 function getEquiposCompeticionMockup(id_competicion){
 	alert("EquiposCompeticion es mockup");
 	var equipos = getEquiposMockup();
@@ -368,8 +366,13 @@ function getEstadiosMockup(){
 	return estadios;
 }
 
-
 function getJornadas(){
+	var jornadas = getAjaxSync('ServicioJornadas', 'GetJornadas');
+	return jornadas;
+
+}
+function getJornadasMockup(){
+	alert("Jornadas es Mockup");
 	var jornadas = [];
 	var id_jornada = 1;
 	
@@ -408,7 +411,12 @@ function getJornadas(){
 }
 
 function getJornadasCompeticion(id_competicion){
-	var jornadas = getJornadas();
+	var jornadas_competicion = getAjaxSync('ServicioJornadas', 'GetJornadasCompeticion', JSON.stringify({id_competicion: id_competicion}));
+	return jornadas_competicion;
+}
+function getJornadasCompeticionMockup(id_competicion){
+	alert("JornadasCompeticion es mockup");
+	var jornadas = getJornadasMockup();
 	var jornadas_competicion = $.grep(jornadas, function(jornada, index){
 		return jornada.id_competicion === id_competicion;
 	});
