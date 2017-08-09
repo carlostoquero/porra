@@ -38,128 +38,151 @@ INSERT INTO GRUPO(nombre_grupo, id_competicion) VALUES ("Grupo F",4);
 INSERT INTO GRUPO(nombre_grupo, id_competicion) VALUES ("Primera Division",5);
 INSERT INTO GRUPO(nombre_grupo, id_competicion) VALUES ("Primera Division",6);
 
-INSERT INTO ESTADIOS(nombre_estadio, ciudad) VALUES ("Beira R&iacute;o", "Porto Alegre");
-INSERT INTO ESTADIOS(nombre_estadio, ciudad) VALUES ("Estadio Castel&atilde;o", "Fortaleza");
-INSERT INTO ESTADIOS(nombre_estadio, ciudad) VALUES ("Arena Fonte Nova", "Salvador de Bah&iacute;a");
-INSERT INTO ESTADIOS(nombre_estadio, ciudad) VALUES ("Estadio Mineirao", "Belo Horizonte");
-INSERT INTO ESTADIOS(nombre_estadio, ciudad) VALUES ("Estadio Nacional", "Brasilia");
-INSERT INTO ESTADIOS(nombre_estadio, ciudad) VALUES ("Estadio Das Dunas", "Natal");
-INSERT INTO ESTADIOS(nombre_estadio, ciudad) VALUES ("Estadio Maracan&aacute;", "R&iacute;o de Janeiro");
-INSERT INTO ESTADIOS(nombre_estadio, ciudad) VALUES ("Arena da Baixada", "Curitiba");
-INSERT INTO ESTADIOS(nombre_estadio, ciudad) VALUES ("Arena Pantanal", "Cuiab&aacute;");
-INSERT INTO ESTADIOS(nombre_estadio, ciudad) VALUES ("Arena de S&atilde;o Paulo", "S&atilde;o Paulo");
-INSERT INTO ESTADIOS(nombre_estadio, ciudad) VALUES ("Arena de Pernambuco", "Recife");
-INSERT INTO ESTADIOS(nombre_estadio, ciudad) VALUES ("Arena Amazonia", "Manaos");
-INSERT INTO ESTADIOS(nombre_estadio, ciudad) VALUES ("Juegos Mediterr&aacute;neos", "Almer&iacute;");
-INSERT INTO ESTADIOS(nombre_estadio, ciudad) VALUES ("San Mam&eacute;s", "Bilbao");
-INSERT INTO ESTADIOS(nombre_estadio, ciudad) VALUES ("Vicente Calder&oacute;n", "Madrid");
-INSERT INTO ESTADIOS(nombre_estadio, ciudad) VALUES ("Camp Nou", "Barcelona");
-INSERT INTO ESTADIOS(nombre_estadio, ciudad) VALUES ("Bala&iacute;dos", "Vigo");
-INSERT INTO ESTADIOS(nombre_estadio, ciudad) VALUES ("Nuevo Arc&aacute;ngel", "C&oacute;rdoba");
-INSERT INTO ESTADIOS(nombre_estadio, ciudad) VALUES ("Riazor", "La Coruña");
-INSERT INTO ESTADIOS(nombre_estadio, ciudad) VALUES ("Ipur&uacute;a", "Eibar");
-INSERT INTO ESTADIOS(nombre_estadio, ciudad) VALUES ("Mart&iacute;nez Valero", "Elche");
-INSERT INTO ESTADIOS(nombre_estadio, ciudad) VALUES ("Montjuic", "Barcelona");
-INSERT INTO ESTADIOS(nombre_estadio, ciudad) VALUES ("Alfonso P&eacute;rez", "Getafe");
-INSERT INTO ESTADIOS(nombre_estadio, ciudad) VALUES ("Nuevo Los C&aacute;rmenes", "Granada");
-INSERT INTO ESTADIOS(nombre_estadio, ciudad) VALUES ("Ciutat de Valencia", "Valencia");
-INSERT INTO ESTADIOS(nombre_estadio, ciudad) VALUES ("La Rosaleda", "M&aacute;laga");
-INSERT INTO ESTADIOS(nombre_estadio, ciudad) VALUES ("Santiago Bernab&eacute;u", "Madrid");
-INSERT INTO ESTADIOS(nombre_estadio, ciudad) VALUES ("Anoeta", "San Sebasti&aacute;n");
-INSERT INTO ESTADIOS(nombre_estadio, ciudad) VALUES ("Vallecas", "Madrid");
-INSERT INTO ESTADIOS(nombre_estadio, ciudad) VALUES ("S&aacute;nchez Pizju&aacute;n", "Sevilla");
-INSERT INTO ESTADIOS(nombre_estadio, ciudad) VALUES ("Mestalla", "Valencia");
-INSERT INTO ESTADIOS(nombre_estadio, ciudad) VALUES ("El Madrigal", "Villarreal");
-INSERT INTO ESTADIOS(nombre_estadio, ciudad) VALUES ("El Molinon", "Gijón");
-INSERT INTO ESTADIOS(nombre_estadio, ciudad) VALUES ("Benito Villamar&iacute;n", "Sevilla");
-INSERT INTO ESTADIOS(nombre_estadio, ciudad) VALUES ("Insular", "Las Palmas de Gran Canaria");
-INSERT INTO ESTADIOS(nombre_estadio, ciudad) VALUES ("Stade de France", "Saint-Denis");
-INSERT INTO ESTADIOS(nombre_estadio, ciudad) VALUES ("Parc des Princes", "París");
-INSERT INTO ESTADIOS(nombre_estadio, ciudad) VALUES ("Stade de Lyon", "Lyon");
-INSERT INTO ESTADIOS(nombre_estadio, ciudad) VALUES ("Stade Velodrome", "Marsella");
-INSERT INTO ESTADIOS(nombre_estadio, ciudad) VALUES ("Stade Pierre-Mauroy", "Lille");
-INSERT INTO ESTADIOS(nombre_estadio, ciudad) VALUES ("Stade Bollaert-Delelis", "Lens");
-INSERT INTO ESTADIOS(nombre_estadio, ciudad) VALUES ("Stade de Bordeaux", "Burdeos");
-INSERT INTO ESTADIOS(nombre_estadio, ciudad) VALUES ("Stade Geoffroy-Guichard", "Saint-Etienne");
-INSERT INTO ESTADIOS(nombre_estadio, ciudad) VALUES ("Stade de Toulouse", "Toulouse");
-INSERT INTO ESTADIOS(nombre_estadio, ciudad) VALUES ("Stade de Nice", "Niza");
-INSERT INTO ESTADIOS(nombre_estadio, ciudad) VALUES ("Mendizorroza", "Vitoria");
-INSERT INTO ESTADIOS(nombre_estadio, ciudad) VALUES ("Butarque", "Leganés");
-INSERT INTO ESTADIOS(nombre_estadio, ciudad) VALUES ("El Sadar", "Pamplona");
+INSERT INTO ESTADIO(nombre_estadio, ciudad) VALUES ("Beira R&iacute;o", "Porto Alegre");
+INSERT INTO ESTADIO(nombre_estadio, ciudad) VALUES ("Estadio Castel&atilde;o", "Fortaleza");
+INSERT INTO ESTADIO(nombre_estadio, ciudad) VALUES ("Arena Fonte Nova", "Salvador de Bah&iacute;a");
+INSERT INTO ESTADIO(nombre_estadio, ciudad) VALUES ("Estadio Mineirao", "Belo Horizonte");
+INSERT INTO ESTADIO(nombre_estadio, ciudad) VALUES ("Estadio Nacional", "Brasilia");
+INSERT INTO ESTADIO(nombre_estadio, ciudad) VALUES ("Estadio Das Dunas", "Natal");
+INSERT INTO ESTADIO(nombre_estadio, ciudad) VALUES ("Estadio Maracan&aacute;", "R&iacute;o de Janeiro");
+INSERT INTO ESTADIO(nombre_estadio, ciudad) VALUES ("Arena da Baixada", "Curitiba");
+INSERT INTO ESTADIO(nombre_estadio, ciudad) VALUES ("Arena Pantanal", "Cuiab&aacute;");
+INSERT INTO ESTADIO(nombre_estadio, ciudad) VALUES ("Arena de S&atilde;o Paulo", "S&atilde;o Paulo");
+INSERT INTO ESTADIO(nombre_estadio, ciudad) VALUES ("Arena de Pernambuco", "Recife");
+INSERT INTO ESTADIO(nombre_estadio, ciudad) VALUES ("Arena Amazonia", "Manaos");
+INSERT INTO ESTADIO(nombre_estadio, ciudad) VALUES ("Juegos Mediterr&aacute;neos", "Almer&iacute;");
+INSERT INTO ESTADIO(nombre_estadio, ciudad) VALUES ("San Mam&eacute;s", "Bilbao");
+INSERT INTO ESTADIO(nombre_estadio, ciudad) VALUES ("Vicente Calder&oacute;n", "Madrid");
+INSERT INTO ESTADIO(nombre_estadio, ciudad) VALUES ("Camp Nou", "Barcelona");
+INSERT INTO ESTADIO(nombre_estadio, ciudad) VALUES ("Bala&iacute;dos", "Vigo");
+INSERT INTO ESTADIO(nombre_estadio, ciudad) VALUES ("Nuevo Arc&aacute;ngel", "C&oacute;rdoba");
+INSERT INTO ESTADIO(nombre_estadio, ciudad) VALUES ("Riazor", "La Coruña");
+INSERT INTO ESTADIO(nombre_estadio, ciudad) VALUES ("Ipur&uacute;a", "Eibar");
+INSERT INTO ESTADIO(nombre_estadio, ciudad) VALUES ("Mart&iacute;nez Valero", "Elche");
+INSERT INTO ESTADIO(nombre_estadio, ciudad) VALUES ("Montjuic", "Barcelona");
+INSERT INTO ESTADIO(nombre_estadio, ciudad) VALUES ("Alfonso P&eacute;rez", "Getafe");
+INSERT INTO ESTADIO(nombre_estadio, ciudad) VALUES ("Nuevo Los C&aacute;rmenes", "Granada");
+INSERT INTO ESTADIO(nombre_estadio, ciudad) VALUES ("Ciutat de Valencia", "Valencia");
+INSERT INTO ESTADIO(nombre_estadio, ciudad) VALUES ("La Rosaleda", "M&aacute;laga");
+INSERT INTO ESTADIO(nombre_estadio, ciudad) VALUES ("Santiago Bernab&eacute;u", "Madrid");
+INSERT INTO ESTADIO(nombre_estadio, ciudad) VALUES ("Anoeta", "San Sebasti&aacute;n");
+INSERT INTO ESTADIO(nombre_estadio, ciudad) VALUES ("Vallecas", "Madrid");
+INSERT INTO ESTADIO(nombre_estadio, ciudad) VALUES ("S&aacute;nchez Pizju&aacute;n", "Sevilla");
+INSERT INTO ESTADIO(nombre_estadio, ciudad) VALUES ("Mestalla", "Valencia");
+INSERT INTO ESTADIO(nombre_estadio, ciudad) VALUES ("El Madrigal", "Villarreal");
+INSERT INTO ESTADIO(nombre_estadio, ciudad) VALUES ("El Molinon", "Gijón");
+INSERT INTO ESTADIO(nombre_estadio, ciudad) VALUES ("Benito Villamar&iacute;n", "Sevilla");
+INSERT INTO ESTADIO(nombre_estadio, ciudad) VALUES ("Insular", "Las Palmas de Gran Canaria");
+INSERT INTO ESTADIO(nombre_estadio, ciudad) VALUES ("Stade de France", "Saint-Denis");
+INSERT INTO ESTADIO(nombre_estadio, ciudad) VALUES ("Parc des Princes", "París");
+INSERT INTO ESTADIO(nombre_estadio, ciudad) VALUES ("Stade de Lyon", "Lyon");
+INSERT INTO ESTADIO(nombre_estadio, ciudad) VALUES ("Stade Velodrome", "Marsella");
+INSERT INTO ESTADIO(nombre_estadio, ciudad) VALUES ("Stade Pierre-Mauroy", "Lille");
+INSERT INTO ESTADIO(nombre_estadio, ciudad) VALUES ("Stade Bollaert-Delelis", "Lens");
+INSERT INTO ESTADIO(nombre_estadio, ciudad) VALUES ("Stade de Bordeaux", "Burdeos");
+INSERT INTO ESTADIO(nombre_estadio, ciudad) VALUES ("Stade Geoffroy-Guichard", "Saint-Etienne");
+INSERT INTO ESTADIO(nombre_estadio, ciudad) VALUES ("Stade de Toulouse", "Toulouse");
+INSERT INTO ESTADIO(nombre_estadio, ciudad) VALUES ("Stade de Nice", "Niza");
+INSERT INTO ESTADIO(nombre_estadio, ciudad) VALUES ("Mendizorroza", "Vitoria");
+INSERT INTO ESTADIO(nombre_estadio, ciudad) VALUES ("Butarque", "Leganés");
+INSERT INTO ESTADIO(nombre_estadio, ciudad) VALUES ("El Sadar", "Pamplona");
 
 
-INSERT INTO EQUIPOS(nombre_equipo, abreviatura, url_escudo) VALUES ("Brasil", "BRA", "../view/img/BRA.png");
-INSERT INTO EQUIPOS(nombre_equipo, abreviatura, url_escudo) VALUES ("Croacia", "CRO", "../view/img/CRO.png");
-INSERT INTO EQUIPOS(nombre_equipo, abreviatura, url_escudo) VALUES ("M&eacute;xico", "MEX", "../view/img/MEX.png");
-INSERT INTO EQUIPOS(nombre_equipo, abreviatura, url_escudo) VALUES ("Camer&uacute;n", "CMR", "../view/img/CMR.png");
-INSERT INTO EQUIPOS(nombre_equipo, abreviatura, url_escudo) VALUES ("Espa&ntilde;a", "SPA", "../view/img/ESP.png");
-INSERT INTO EQUIPOS(nombre_equipo, abreviatura, url_escudo) VALUES ("Holanda", "HOL", "../view/img/HOL.png");
-INSERT INTO EQUIPOS(nombre_equipo, abreviatura, url_escudo) VALUES ("Chile", "CHI", "../view/img/CHI.png");
-INSERT INTO EQUIPOS(nombre_equipo, abreviatura, url_escudo) VALUES ("Australia", "AUS", "../view/img/AUS.png");
-INSERT INTO EQUIPOS(nombre_equipo, abreviatura, url_escudo) VALUES ("Colombia", "COL", "../view/img/COL.png");
-INSERT INTO EQUIPOS(nombre_equipo, abreviatura, url_escudo) VALUES ("Grecia", "GRE", "../view/img/GRE.png");
-INSERT INTO EQUIPOS(nombre_equipo, abreviatura, url_escudo) VALUES ("Costa de Marfil", "CIV", "../view/img/CIV.png");
-INSERT INTO EQUIPOS(nombre_equipo, abreviatura, url_escudo) VALUES ("Jap&oacute;n", "JPN", "../view/img/JPN.png");
-INSERT INTO EQUIPOS(nombre_equipo, abreviatura, url_escudo) VALUES ("Uruguay", "URU", "../view/img/URU.png");
-INSERT INTO EQUIPOS(nombre_equipo, abreviatura, url_escudo) VALUES ("Costa Rica", "CRC", "../view/img/CRC.png");
-INSERT INTO EQUIPOS(nombre_equipo, abreviatura, url_escudo) VALUES ("Inglaterra", "ING", "../view/img/ING.png");
-INSERT INTO EQUIPOS(nombre_equipo, abreviatura, url_escudo) VALUES ("Italia", "ITA", "../view/img/ITA.png");
-INSERT INTO EQUIPOS(nombre_equipo, abreviatura, url_escudo) VALUES ("Suiza", "SUI", "../view/img/SUI.png");
-INSERT INTO EQUIPOS(nombre_equipo, abreviatura, url_escudo) VALUES ("Ecuador", "ECU", "../view/img/ECU.png");
-INSERT INTO EQUIPOS(nombre_equipo, abreviatura, url_escudo) VALUES ("Francia", "FRA", "../view/img/FRA.png");
-INSERT INTO EQUIPOS(nombre_equipo, abreviatura, url_escudo) VALUES ("Honduras", "HON", "../view/img/HON.png");
-INSERT INTO EQUIPOS(nombre_equipo, abreviatura, url_escudo) VALUES ("Argentina", "ARG", "../view/img/ARG.png");
-INSERT INTO EQUIPOS(nombre_equipo, abreviatura, url_escudo) VALUES ("Bosnia y Herzegovina", "BIH", "../view/img/BIH.png");
-INSERT INTO EQUIPOS(nombre_equipo, abreviatura, url_escudo) VALUES ("Ir&aacute;n", "IRN", "../view/img/IRN.png");
-INSERT INTO EQUIPOS(nombre_equipo, abreviatura, url_escudo) VALUES ("Nigeria", "NIG", "../view/img/NIG.png");
-INSERT INTO EQUIPOS(nombre_equipo, abreviatura, url_escudo) VALUES ("Alemania", "ALE", "../view/img/ALE.png");
-INSERT INTO EQUIPOS(nombre_equipo, abreviatura, url_escudo) VALUES ("Portugal", "POR", "../view/img/POR.png");
-INSERT INTO EQUIPOS(nombre_equipo, abreviatura, url_escudo) VALUES ("Ghana", "GHA", "../view/img/GHA.png");
-INSERT INTO EQUIPOS(nombre_equipo, abreviatura, url_escudo) VALUES ("Estados Unidos", "USA", "../view/img/USA.png");
-INSERT INTO EQUIPOS(nombre_equipo, abreviatura, url_escudo) VALUES ("B&eacute;lgica", "BEL", "../view/img/BEL.png");
-INSERT INTO EQUIPOS(nombre_equipo, abreviatura, url_escudo) VALUES ("Argelia", "ALG", "../view/img/ALG.png");
-INSERT INTO EQUIPOS(nombre_equipo, abreviatura, url_escudo) VALUES ("Rusia", "RUS", "../view/img/RUS.png");
-INSERT INTO EQUIPOS(nombre_equipo, abreviatura, url_escudo) VALUES ("Corea", "KOR", "../view/img/KOR.png");
-INSERT INTO EQUIPOS(nombre_equipo, abreviatura, url_escudo) VALUES ("Almer&iacute;a", "ALM", "../view/img/ALM.png");
-INSERT INTO EQUIPOS(nombre_equipo, abreviatura, url_escudo) VALUES ("Athletic de Bilbao", "ATH", "../view/img/ATH.png");
-INSERT INTO EQUIPOS(nombre_equipo, abreviatura, url_escudo) VALUES ("Atl&eacute;tico de Madrid", "ATM", "../view/img/ATM.png");
-INSERT INTO EQUIPOS(nombre_equipo, abreviatura, url_escudo) VALUES ("Barcelona", "FCB", "../view/img/FCB.png");
-INSERT INTO EQUIPOS(nombre_equipo, abreviatura, url_escudo) VALUES ("Celta", "CEL", "../view/img/CEL.png");
-INSERT INTO EQUIPOS(nombre_equipo, abreviatura, url_escudo) VALUES ("C&oacute;rdoba", "COR", "../view/img/COR.png");
-INSERT INTO EQUIPOS(nombre_equipo, abreviatura, url_escudo) VALUES ("Deportivo de la Coruña", "DEP", "../view/img/DEP.png");
-INSERT INTO EQUIPOS(nombre_equipo, abreviatura, url_escudo) VALUES ("Eibar", "EIB", "../view/img/EIB.png");
-INSERT INTO EQUIPOS(nombre_equipo, abreviatura, url_escudo) VALUES ("Elche", "ELC", "../view/img/ELC.png");
-INSERT INTO EQUIPOS(nombre_equipo, abreviatura, url_escudo) VALUES ("Espanyol", "ESP", "../view/img/ESY.png");
-INSERT INTO EQUIPOS(nombre_equipo, abreviatura, url_escudo) VALUES ("Getafe", "GET", "../view/img/GET.png");
-INSERT INTO EQUIPOS(nombre_equipo, abreviatura, url_escudo) VALUES ("Granada", "GRA", "../view/img/GRA.png");
-INSERT INTO EQUIPOS(nombre_equipo, abreviatura, url_escudo) VALUES ("Levante", "LEV", "../view/img/LEV.png");
-INSERT INTO EQUIPOS(nombre_equipo, abreviatura, url_escudo) VALUES ("M&aacute;laga", "MAL", "../view/img/MAL.png");
-INSERT INTO EQUIPOS(nombre_equipo, abreviatura, url_escudo) VALUES ("Real Madrid", "RMA", "../view/img/RMA.png");
-INSERT INTO EQUIPOS(nombre_equipo, abreviatura, url_escudo) VALUES ("Real Sociedad", "RSO", "../view/img/RSO.png");
-INSERT INTO EQUIPOS(nombre_equipo, abreviatura, url_escudo) VALUES ("Rayo Vallecano", "RAY", "../view/img/RAY.png");
-INSERT INTO EQUIPOS(nombre_equipo, abreviatura, url_escudo) VALUES ("Sevilla", "SEV", "../view/img/SEV.png");
-INSERT INTO EQUIPOS(nombre_equipo, abreviatura, url_escudo) VALUES ("Valencia", "VAL", "../view/img/VAL.png");
-INSERT INTO EQUIPOS(nombre_equipo, abreviatura, url_escudo) VALUES ("Villarreal", "VIL", "../view/img/VIL.png");
-INSERT INTO EQUIPOS(nombre_equipo, abreviatura, url_escudo) VALUES ("Real Betis", "BET", "../view/img/BET.png");
-INSERT INTO EQUIPOS(nombre_equipo, abreviatura, url_escudo) VALUES ("Sporting de Gij&oacute;n", "SPO", "../view/img/SPO.png");
-INSERT INTO EQUIPOS(nombre_equipo, abreviatura, url_escudo) VALUES ("Las Palmas", "LPA", "../view/img/LPA.png");
-INSERT INTO EQUIPOS(nombre_equipo, abreviatura, url_escudo) VALUES ("Rumania", "RUM", "../view/img/RUM.png");
-INSERT INTO EQUIPOS(nombre_equipo, abreviatura, url_escudo) VALUES ("Albania", "ALB", "../view/img/ALB.png");
-INSERT INTO EQUIPOS(nombre_equipo, abreviatura, url_escudo) VALUES ("Gales", "WAL", "../view/img/WAL.png");
-INSERT INTO EQUIPOS(nombre_equipo, abreviatura, url_escudo) VALUES ("Eslovaquia", "SVK", "../view/img/SVK.png");
-INSERT INTO EQUIPOS(nombre_equipo, abreviatura, url_escudo) VALUES ("Polonia", "POL", "../view/img/POL.png");
-INSERT INTO EQUIPOS(nombre_equipo, abreviatura, url_escudo) VALUES ("Irlanda del Norte", "NIR", "../view/img/NIR.png");
-INSERT INTO EQUIPOS(nombre_equipo, abreviatura, url_escudo) VALUES ("Ucrania", "UKR", "../view/img/UKR.png");
-INSERT INTO EQUIPOS(nombre_equipo, abreviatura, url_escudo) VALUES ("Republica checa", "CZK", "../view/img/CZK.png");
-INSERT INTO EQUIPOS(nombre_equipo, abreviatura, url_escudo) VALUES ("Turquia", "TUR", "../view/img/TUR.png");
-INSERT INTO EQUIPOS(nombre_equipo, abreviatura, url_escudo) VALUES ("Irlanda", "IRL", "../view/img/IRL.png");
-INSERT INTO EQUIPOS(nombre_equipo, abreviatura, url_escudo) VALUES ("Suecia", "SWE", "../view/img/SWE.png");
-INSERT INTO EQUIPOS(nombre_equipo, abreviatura, url_escudo) VALUES ("Islandia", "ISL", "../view/img/ISL.png");
-INSERT INTO EQUIPOS(nombre_equipo, abreviatura, url_escudo) VALUES ("Austria", "AUT", "../view/img/AUT.png");
-INSERT INTO EQUIPOS(nombre_equipo, abreviatura, url_escudo) VALUES ("Hungria", "HUN", "../view/img/HUN.png");
-INSERT INTO EQUIPOS(nombre_equipo, abreviatura, url_escudo) VALUES ("Desconocido", "DES", "../view/img/NONE.png");
-INSERT INTO EQUIPOS(nombre_equipo, abreviatura, url_escudo) VALUES ("Deportivo Alav&eacute;s SAD", "ALA", "../view/img/ALA.png");
-INSERT INTO EQUIPOS(nombre_equipo, abreviatura, url_escudo) VALUES ("CD Legan&eacute;s", "LEG", "../view/img/LEG.png");
-INSERT INTO EQUIPOS(nombre_equipo, abreviatura, url_escudo) VALUES ("At.Osasuna", "OSA", "../view/img/OSA.png");
-INSERT INTO EQUIPOS(nombre_equipo, abreviatura, url_escudo) VALUES ("Girona", "GIR", "../view/img/GIR.png");
+INSERT INTO EQUIPO(nombre_equipo, abreviatura, url_escudo) VALUES ("Brasil", "BRA", "../view/img/BRA.png");
+INSERT INTO EQUIPO(nombre_equipo, abreviatura, url_escudo) VALUES ("Croacia", "CRO", "../view/img/CRO.png");
+INSERT INTO EQUIPO(nombre_equipo, abreviatura, url_escudo) VALUES ("M&eacute;xico", "MEX", "../view/img/MEX.png");
+INSERT INTO EQUIPO(nombre_equipo, abreviatura, url_escudo) VALUES ("Camer&uacute;n", "CMR", "../view/img/CMR.png");
+INSERT INTO EQUIPO(nombre_equipo, abreviatura, url_escudo) VALUES ("Espa&ntilde;a", "SPA", "../view/img/ESP.png");
+INSERT INTO EQUIPO(nombre_equipo, abreviatura, url_escudo) VALUES ("Holanda", "HOL", "../view/img/HOL.png");
+INSERT INTO EQUIPO(nombre_equipo, abreviatura, url_escudo) VALUES ("Chile", "CHI", "../view/img/CHI.png");
+INSERT INTO EQUIPO(nombre_equipo, abreviatura, url_escudo) VALUES ("Australia", "AUS", "../view/img/AUS.png");
+INSERT INTO EQUIPO(nombre_equipo, abreviatura, url_escudo) VALUES ("Colombia", "COL", "../view/img/COL.png");
+INSERT INTO EQUIPO(nombre_equipo, abreviatura, url_escudo) VALUES ("Grecia", "GRE", "../view/img/GRE.png");
+INSERT INTO EQUIPO(nombre_equipo, abreviatura, url_escudo) VALUES ("Costa de Marfil", "CIV", "../view/img/CIV.png");
+INSERT INTO EQUIPO(nombre_equipo, abreviatura, url_escudo) VALUES ("Jap&oacute;n", "JPN", "../view/img/JPN.png");
+INSERT INTO EQUIPO(nombre_equipo, abreviatura, url_escudo) VALUES ("Uruguay", "URU", "../view/img/URU.png");
+INSERT INTO EQUIPO(nombre_equipo, abreviatura, url_escudo) VALUES ("Costa Rica", "CRC", "../view/img/CRC.png");
+INSERT INTO EQUIPO(nombre_equipo, abreviatura, url_escudo) VALUES ("Inglaterra", "ING", "../view/img/ING.png");
+INSERT INTO EQUIPO(nombre_equipo, abreviatura, url_escudo) VALUES ("Italia", "ITA", "../view/img/ITA.png");
+INSERT INTO EQUIPO(nombre_equipo, abreviatura, url_escudo) VALUES ("Suiza", "SUI", "../view/img/SUI.png");
+INSERT INTO EQUIPO(nombre_equipo, abreviatura, url_escudo) VALUES ("Ecuador", "ECU", "../view/img/ECU.png");
+INSERT INTO EQUIPO(nombre_equipo, abreviatura, url_escudo) VALUES ("Francia", "FRA", "../view/img/FRA.png");
+INSERT INTO EQUIPO(nombre_equipo, abreviatura, url_escudo) VALUES ("Honduras", "HON", "../view/img/HON.png");
+INSERT INTO EQUIPO(nombre_equipo, abreviatura, url_escudo) VALUES ("Argentina", "ARG", "../view/img/ARG.png");
+INSERT INTO EQUIPO(nombre_equipo, abreviatura, url_escudo) VALUES ("Bosnia y Herzegovina", "BIH", "../view/img/BIH.png");
+INSERT INTO EQUIPO(nombre_equipo, abreviatura, url_escudo) VALUES ("Ir&aacute;n", "IRN", "../view/img/IRN.png");
+INSERT INTO EQUIPO(nombre_equipo, abreviatura, url_escudo) VALUES ("Nigeria", "NIG", "../view/img/NIG.png");
+INSERT INTO EQUIPO(nombre_equipo, abreviatura, url_escudo) VALUES ("Alemania", "ALE", "../view/img/ALE.png");
+INSERT INTO EQUIPO(nombre_equipo, abreviatura, url_escudo) VALUES ("Portugal", "POR", "../view/img/POR.png");
+INSERT INTO EQUIPO(nombre_equipo, abreviatura, url_escudo) VALUES ("Ghana", "GHA", "../view/img/GHA.png");
+INSERT INTO EQUIPO(nombre_equipo, abreviatura, url_escudo) VALUES ("Estados Unidos", "USA", "../view/img/USA.png");
+INSERT INTO EQUIPO(nombre_equipo, abreviatura, url_escudo) VALUES ("B&eacute;lgica", "BEL", "../view/img/BEL.png");
+INSERT INTO EQUIPO(nombre_equipo, abreviatura, url_escudo) VALUES ("Argelia", "ALG", "../view/img/ALG.png");
+INSERT INTO EQUIPO(nombre_equipo, abreviatura, url_escudo) VALUES ("Rusia", "RUS", "../view/img/RUS.png");
+INSERT INTO EQUIPO(nombre_equipo, abreviatura, url_escudo) VALUES ("Corea", "KOR", "../view/img/KOR.png");
+INSERT INTO EQUIPO(nombre_equipo, abreviatura, url_escudo) VALUES ("Almer&iacute;a", "ALM", "../view/img/ALM.png");
+INSERT INTO EQUIPO(nombre_equipo, abreviatura, url_escudo) VALUES ("Athletic de Bilbao", "ATH", "../view/img/ATH.png");
+INSERT INTO EQUIPO(nombre_equipo, abreviatura, url_escudo) VALUES ("Atl&eacute;tico de Madrid", "ATM", "../view/img/ATM.png");
+INSERT INTO EQUIPO(nombre_equipo, abreviatura, url_escudo) VALUES ("Barcelona", "FCB", "../view/img/FCB.png");
+INSERT INTO EQUIPO(nombre_equipo, abreviatura, url_escudo) VALUES ("Celta", "CEL", "../view/img/CEL.png");
+INSERT INTO EQUIPO(nombre_equipo, abreviatura, url_escudo) VALUES ("C&oacute;rdoba", "COR", "../view/img/COR.png");
+INSERT INTO EQUIPO(nombre_equipo, abreviatura, url_escudo) VALUES ("Deportivo de la Coruña", "DEP", "../view/img/DEP.png");
+INSERT INTO EQUIPO(nombre_equipo, abreviatura, url_escudo) VALUES ("Eibar", "EIB", "../view/img/EIB.png");
+INSERT INTO EQUIPO(nombre_equipo, abreviatura, url_escudo) VALUES ("Elche", "ELC", "../view/img/ELC.png");
+INSERT INTO EQUIPO(nombre_equipo, abreviatura, url_escudo) VALUES ("Espanyol", "ESP", "../view/img/ESY.png");
+INSERT INTO EQUIPO(nombre_equipo, abreviatura, url_escudo) VALUES ("Getafe", "GET", "../view/img/GET.png");
+INSERT INTO EQUIPO(nombre_equipo, abreviatura, url_escudo) VALUES ("Granada", "GRA", "../view/img/GRA.png");
+INSERT INTO EQUIPO(nombre_equipo, abreviatura, url_escudo) VALUES ("Levante", "LEV", "../view/img/LEV.png");
+INSERT INTO EQUIPO(nombre_equipo, abreviatura, url_escudo) VALUES ("M&aacute;laga", "MAL", "../view/img/MAL.png");
+INSERT INTO EQUIPO(nombre_equipo, abreviatura, url_escudo) VALUES ("Real Madrid", "RMA", "../view/img/RMA.png");
+INSERT INTO EQUIPO(nombre_equipo, abreviatura, url_escudo) VALUES ("Real Sociedad", "RSO", "../view/img/RSO.png");
+INSERT INTO EQUIPO(nombre_equipo, abreviatura, url_escudo) VALUES ("Rayo Vallecano", "RAY", "../view/img/RAY.png");
+INSERT INTO EQUIPO(nombre_equipo, abreviatura, url_escudo) VALUES ("Sevilla", "SEV", "../view/img/SEV.png");
+INSERT INTO EQUIPO(nombre_equipo, abreviatura, url_escudo) VALUES ("Valencia", "VAL", "../view/img/VAL.png");
+INSERT INTO EQUIPO(nombre_equipo, abreviatura, url_escudo) VALUES ("Villarreal", "VIL", "../view/img/VIL.png");
+INSERT INTO EQUIPO(nombre_equipo, abreviatura, url_escudo) VALUES ("Real Betis", "BET", "../view/img/BET.png");
+INSERT INTO EQUIPO(nombre_equipo, abreviatura, url_escudo) VALUES ("Sporting de Gij&oacute;n", "SPO", "../view/img/SPO.png");
+INSERT INTO EQUIPO(nombre_equipo, abreviatura, url_escudo) VALUES ("Las Palmas", "LPA", "../view/img/LPA.png");
+INSERT INTO EQUIPO(nombre_equipo, abreviatura, url_escudo) VALUES ("Rumania", "RUM", "../view/img/RUM.png");
+INSERT INTO EQUIPO(nombre_equipo, abreviatura, url_escudo) VALUES ("Albania", "ALB", "../view/img/ALB.png");
+INSERT INTO EQUIPO(nombre_equipo, abreviatura, url_escudo) VALUES ("Gales", "WAL", "../view/img/WAL.png");
+INSERT INTO EQUIPO(nombre_equipo, abreviatura, url_escudo) VALUES ("Eslovaquia", "SVK", "../view/img/SVK.png");
+INSERT INTO EQUIPO(nombre_equipo, abreviatura, url_escudo) VALUES ("Polonia", "POL", "../view/img/POL.png");
+INSERT INTO EQUIPO(nombre_equipo, abreviatura, url_escudo) VALUES ("Irlanda del Norte", "NIR", "../view/img/NIR.png");
+INSERT INTO EQUIPO(nombre_equipo, abreviatura, url_escudo) VALUES ("Ucrania", "UKR", "../view/img/UKR.png");
+INSERT INTO EQUIPO(nombre_equipo, abreviatura, url_escudo) VALUES ("Republica checa", "CZK", "../view/img/CZK.png");
+INSERT INTO EQUIPO(nombre_equipo, abreviatura, url_escudo) VALUES ("Turquia", "TUR", "../view/img/TUR.png");
+INSERT INTO EQUIPO(nombre_equipo, abreviatura, url_escudo) VALUES ("Irlanda", "IRL", "../view/img/IRL.png");
+INSERT INTO EQUIPO(nombre_equipo, abreviatura, url_escudo) VALUES ("Suecia", "SWE", "../view/img/SWE.png");
+INSERT INTO EQUIPO(nombre_equipo, abreviatura, url_escudo) VALUES ("Islandia", "ISL", "../view/img/ISL.png");
+INSERT INTO EQUIPO(nombre_equipo, abreviatura, url_escudo) VALUES ("Austria", "AUT", "../view/img/AUT.png");
+INSERT INTO EQUIPO(nombre_equipo, abreviatura, url_escudo) VALUES ("Hungria", "HUN", "../view/img/HUN.png");
+INSERT INTO EQUIPO(nombre_equipo, abreviatura, url_escudo) VALUES ("Desconocido", "DES", "../view/img/NONE.png");
+INSERT INTO EQUIPO(nombre_equipo, abreviatura, url_escudo) VALUES ("Deportivo Alav&eacute;s SAD", "ALA", "../view/img/ALA.png");
+INSERT INTO EQUIPO(nombre_equipo, abreviatura, url_escudo) VALUES ("CD Legan&eacute;s", "LEG", "../view/img/LEG.png");
+INSERT INTO EQUIPO(nombre_equipo, abreviatura, url_escudo) VALUES ("At.Osasuna", "OSA", "../view/img/OSA.png");
+INSERT INTO EQUIPO(nombre_equipo, abreviatura, url_escudo) VALUES ("Girona", "GIR", "../view/img/GIR.png");
 
+INSERT INTO EQUIPO_COMPETICION(id_equipo, id_competicion, id_grupo)
+SELECT  E.id_equipo, C.id_competicion, G.id_grupo
+FROM    EQUIPOS E,
+		COMPETICION C,
+        GRUPO G
+WHERE   G.id_competicion = C.id_competicion
+AND     ((E.abreviatura in ('BRA', 'CRO', 'MEX', 'CMR') AND C.abreviatura='wc-14' and G.nombre_grupo = 'A') OR 
+		 (E.abreviatura in ('SPA', 'HOL', 'CHI', 'AUS') AND C.abreviatura='wc-14' and G.nombre_grupo = 'B') OR 
+         (E.abreviatura in ('COL', 'GRE', 'CIV', 'JPN') AND C.abreviatura='wc-14' and G.nombre_grupo = 'C') OR 
+         (E.abreviatura in ('URU', 'CRC', 'ING', 'ITA') AND C.abreviatura='wc-14' and G.nombre_grupo = 'D') OR 
+         (E.abreviatura in ('SUI', 'ECU', 'FRA', 'HON') AND C.abreviatura='wc-14' and G.nombre_grupo = 'E') OR 
+         (E.abreviatura in ('ARG', 'BIH', 'IRN', 'NIG') AND C.abreviatura='wc-14' and G.nombre_grupo = 'F') OR
+         (E.abreviatura in ('ALE', 'POR', 'GHA', 'USA') AND C.abreviatura='wc-14' and G.nombre_grupo = 'G') OR
+         (E.abreviatura in ('BEL', 'ALG', 'RUS', 'KOR') AND C.abreviatura='wc-14' and G.nombre_grupo = 'H') OR         
+		 (E.abreviatura in ('ALM', 'ATH', 'ATM', 'FCB', 'CEL', 'COR', 'DEP', 'EIB', 'ELC', 'ESP', 'GET', 'GRA', 'LEV', 'MAL', 'RMA', 'RSO', 'RAY', 'SEV', 'VAL', 'VIL') AND C.abreviatura='le-14' and G.nombre_grupo like 'Primera%') OR 
+		 (E.abreviatura in ('ATH', 'ATM', 'FCB', 'CEL', 'DEP', 'EIB', 'ESP', 'GET', 'GRA', 'LEV', 'MAL', 'RMA', 'RSO', 'RAY', 'SEV', 'VAL', 'VIL', 'BET', 'SPO', 'LPA') AND C.abreviatura='le-15' and G.nombre_grupo like 'Primera%') OR 
+		 (E.abreviatura in ('SUI', 'FRA', 'RUM', 'ALB') AND C.abreviatura='ec-16' and G.nombre_grupo LIKE '%A') OR 
+		 (E.abreviatura in ('ING', 'RUS', 'WAL', 'SVK') AND C.abreviatura='ec-16' and G.nombre_grupo LIKE '%B') OR 
+         (E.abreviatura in ('ALE', 'POL', 'NIR', 'UKR') AND C.abreviatura='ec-16' and G.nombre_grupo LIKE '%C') OR 
+         (E.abreviatura in ('CRO', 'SPA', 'CZK', 'TUR') AND C.abreviatura='ec-16' and G.nombre_grupo LIKE '%D') OR 
+         (E.abreviatura in ('ITA', 'BEL', 'IRL', 'SWE') AND C.abreviatura='ec-16' and G.nombre_grupo LIKE '%E') OR 
+         (E.abreviatura in ('POR', 'ISL', 'AUT', 'HUN') AND C.abreviatura='ec-16' and G.nombre_grupo LIKE '%F') OR
+		 (E.abreviatura in ('ATH', 'ATM', 'FCB', 'CEL', 'DEP', 'EIB', 'ESP', 'GRA', 'MAL', 'RMA', 'RSO', 'SEV', 'VAL', 'VIL', 'BET', 'SPO', 'LPA', 'OSA', 'LEG', 'ALA') AND C.abreviatura='le-16' and G.nombre_grupo like 'Primera%'))
