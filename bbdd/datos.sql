@@ -318,3 +318,18 @@ INSERT INTO JORNADA(fecha_inicio, fecha_fin, numero_jornada, nombre_jornada, nom
 INSERT INTO JORNADA(fecha_inicio, fecha_fin, numero_jornada, nombre_jornada, nombre_corto, id_tipo_jornada, id_competicion) VALUES ("2017-05-19 20:45:00","2017-05-19 20:45:00",38,"Jornada 38","J38",1,5);
 INSERT INTO JORNADA(fecha_inicio, fecha_fin, numero_jornada, nombre_jornada, nombre_corto, id_tipo_jornada, id_competicion) VALUES ("2017-08-18 20:15:00","2017-08-18 20:15:00",1,"Jornada 1","J01",1,6);
 INSERT INTO JORNADA(fecha_inicio, fecha_fin, numero_jornada, nombre_jornada, nombre_corto, id_tipo_jornada, id_competicion) VALUES ("2017-08-25 20:15:00","2017-08-25 20:15:00",2,"Jornada 2","J02",1,6);
+
+select cast(concat('INSERT INTO PARTIDO(fecha_inicio, fecha_fin, id_equipo_1, id_equipo_2, id_estadio, id_grupo, id_jornada, goles_equipo_1, goles_equipo_2) ',
+                   'VALUES ("', p.fecha_hora, '", "', p.fecha_hora, '", (SELECT id_equipo FROM EQUIPOS WHERE abreviatura = "',e1.abreviatura,'"), ',
+                   '(SELECT id_equipo FROM EQUIPOS WHERE abreviatura = "',e2.abreviatura,'"), ',
+                   '(SELECT id_estadio FROM ESTADIO WHERE nombre_estadio = "',est.nombre_estadio,'"), ',
+                   '(SELECT id_grupo FROM GRUPO WHERE nombre_grupo = "',g.nombre_grupo,'" and id_competicion = 1), ',
+                   '(SELECT id_jornada FROM JORNADA WHERE nombre_corto = "',j.nombre_corto,'" and id_competicion = 1),',p.goles_equipo_1,',',p.goles_equipo_2,');') as char(20000))
+FROM   PARTIDOS p
+JOIN   EQUIPOS e1 ON e1.idEquipo = p.idEquipo1
+JOIN   EQUIPOS e2 ON e2.idEquipo = p.idEquipo2
+JOIN   ESTADIOS est ON est.idEstadio = p.idEstadio
+JOIN   JORNADAS j on j.idJornada = p.idJornada
+LEFT JOIN   GRUPOS g on g.idGrupo = p.idGrupo
+WHERE  j.idCompeticion = 1
+order by p.idPartido
