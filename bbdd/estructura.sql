@@ -42,7 +42,7 @@ CREATE TABLE GRUPO(
 	primary key(id_grupo)
 );
 
-CREATE TABLE ESTADIOS (
+CREATE TABLE ESTADIO (
   id_estadio int NOT NULL AUTO_INCREMENT,
   nombre_estadio varchar(45) NOT NULL,
   ciudad varchar(45) NOT NULL,
@@ -50,7 +50,7 @@ CREATE TABLE ESTADIOS (
   PRIMARY KEY (id_estadio)
 );
 
-CREATE TABLE EQUIPOS (
+CREATE TABLE EQUIPO (
   id_equipo int NOT NULL AUTO_INCREMENT,
   nombre_equipo varchar(45) NOT NULL,
   abreviatura varchar(3) NOT NULL UNIQUE,
@@ -58,9 +58,33 @@ CREATE TABLE EQUIPOS (
   PRIMARY KEY (id_equipo)
 );
 
-CREATE TABLE EQUIPOS_COMPETICION (
+CREATE TABLE EQUIPO_COMPETICION (
   id_competicion int NOT NULL,
   id_equipo int NOT NULL,
   id_grupo int NOT NULL,
   PRIMARY KEY (id_competicion, id_equipo)
+);
+
+CREATE TABLE JORNADA (
+  id_jornada int NOT NULL AUTO_INCREMENT,
+  fecha_inicio datetime NOT NULL,
+  numero_jornada int NOT NULL,
+  nombre_jornada varchar(20) NOT NULL,
+  nombre_corto varchar(5) NOT NULL,
+  id_tipo_jornada int NOT NULL,
+  id_competicion int NOT NULL,
+  PRIMARY KEY (id_jornada)
+) ;
+
+CREATE TABLE PARTIDO (
+  id_partido int NOT NULL AUTO_INCREMENT,
+  fecha_hora datetime NOT NULL,
+  id_equipo_1 int NOT NULL,
+  id_equipo_2 int NOT NULL,
+  id_estadio int DEFAULT NULL,
+  id_grupo int NOT NULL,
+  id_jornada int NOT NULL,
+  goles_equipo_1 int DEFAULT NULL,
+  goles_equipo_2 int DEFAULT NULL,
+  PRIMARY KEY (id_partido)
 );
