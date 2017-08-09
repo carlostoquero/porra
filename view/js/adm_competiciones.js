@@ -72,7 +72,6 @@ $(document).ready(function(){
 		}
 	});
 	
-	
 	$('body').on('click', '.editar-grupo', function(){
 		$('.dato-grupo').val('');
 		var id_grupo = parseInt($(this).attr('data-id-grupo'));

@@ -24,6 +24,7 @@ function GetJornadasCompeticion($id_competicion){
 	$db = new dbConnection();
 	if ($stmt = $db->mysqli->prepare('SELECT id_jornada, fecha_inicio, fecha_fin, numero_jornada, nombre_jornada, nombre_corto, id_tipo_jornada, id_competicion
 									  FROM JORNADA WHERE id_competicion = ? ORDER BY id_jornada')){
+		$stmt->bind_param("i", $id_competicion);
 		$stmt->execute();
 		$stmt->bind_result($rId, $rFechaInicio, $rFechaFin, $rNumero, $rNombre, $rNombreCorto, $rTipoJornada, $rCompeticion);
 		while ($stmt->fetch()){

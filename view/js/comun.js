@@ -369,7 +369,6 @@ function getEstadiosMockup(){
 function getJornadas(){
 	var jornadas = getAjaxSync('ServicioJornadas', 'GetJornadas');
 	return jornadas;
-
 }
 function getJornadasMockup(){
 	alert("Jornadas es Mockup");

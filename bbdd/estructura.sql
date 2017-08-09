@@ -68,6 +68,7 @@ CREATE TABLE EQUIPO_COMPETICION (
 CREATE TABLE JORNADA (
   id_jornada int NOT NULL AUTO_INCREMENT,
   fecha_inicio datetime NOT NULL,
+  fecha_fin datetime NOT NULL,
   numero_jornada int NOT NULL,
   nombre_jornada varchar(20) NOT NULL,
   nombre_corto varchar(5) NOT NULL,

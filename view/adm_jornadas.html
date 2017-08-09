@@ -1,6 +1,7 @@
 <html>
 	<head>
 		<script src="vendor/jquery-3.2.1.min.js"></script>
+		<script src="vendor/moment-2.18.1.min.js"></script>
 		<script src="js/comun.js"></script>
 		<script src="js/adm_jornadas.js"></script>
 	</head>
@@ -23,12 +24,13 @@
 				
 				<div class="form-editar-jornada">
 					<input type="hidden" class="jorn_id dato-jornada" value="">
+					<input type="datetime-local" class="jorn_fecha_inicio dato-jornada" placeholder="Fecha de inicio" value="">
+					<input type="datetime-local" class="jorn_fecha_fin dato-jornada" placeholder="Fecha de fin" value="">
 					<input type="text" class="jorn_numero dato-jornada" placeholder="Número jornada" value="">
 					<input type="text" class="jorn_nombre dato-jornada" placeholder="Nombre" value="">
 					<input type="text" class="jorn_nombre_corto dato-jornada" placeholder="Nombre corto" value="">
-					<input type="text" class="jorn_fecha_hora dato-jornada" placeholder="Fecha y hora de inicio" value="">
-					<select class="jorn_tipo_jornada dato-jornada"></select>				
-					<button class="crear">Guardar jornada</button>
+					<select class="jorn_tipo_jornada dato-jornada"></select>	
+					<button class="guardar-jornada">Guardar jornada</button>
 
 					<div class="datos-partidos">
 						<h2>PARTIDOS</h2>
