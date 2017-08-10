@@ -1,8 +1,10 @@
-var jornadas = [];
 var tipos_jornada = [];
 var equipos = [];
 var estadios = [];
 var grupos = [];
+
+var jornadas = [];
+var partidos_jornada = [];
 
 $(document).ready(function(){
 	generarMenu();
@@ -183,15 +185,6 @@ $(document).ready(function(){
 	$('.datos-partidos').hide();
 	$('.form-editar-partido').hide();
 	
-	//TODO: Implementar
-	function checkInputJornada(){
-		return true;
-	}
-	//TODO: Implementar
-	function checkInputPartido(){
-		return true;
-	}
-	
 	function loadJornadas(id_competicion){
 		$('.tabla-jornadas').find('tr').remove();
 		jornadas = getJornadasCompeticion(id_competicion);
@@ -241,5 +234,129 @@ $(document).ready(function(){
 		}
 		$('.form-editar-partido').hide();
 	}
+
+	function checkInputJornada(){
+		var correct_input = true;
+		
+		//TODO: Comprobar que cumple formato YYYY-MM-DD HH:MM
+		var fecha_inicio = null;
+		if ($('.jorn_fecha_inicio').val() === null || $('.jorn_fecha_inicio').val() === ""){
+			correct_input = false;
+			$('.errores').append('<div>Debe informarse el campo Fecha inicio</div>');
+		} else {
+			fecha_inicio = moment($('.jorn_fecha_inicio').val());
+		}
+		
+		//TODO: Comprobar que cumple formato YYYY-MM-DD HH:MM
+		var fecha_fin = null;
+		if ($('.jorn_fecha_fin').val() === null || $('.jorn_fecha_fin').val() === ""){
+			correct_input = false;
+			$('.errores').append('<div>Debe informarse el campo Fecha fin</div>');
+		} else {
+			fecha_fin = moment($('.jorn_fecha_fin').val());
+		}
+		
+		if (fecha_inicio !== null && fecha_fin !== null && fecha_inicio.isAfter(fecha_fin)){
+			correct_input = false;
+			$('.errores').append('<div>Fecha inicio debe ser anterior a Fecha fin</div>');
+		}
+		
+		if ($('.jorn_numero').val() === null || $('.jorn_numero').val() === ""){
+			correct_input = false;
+			$('.errores').append('<div>Debe informarse el campo Número</div>');
+		} else {
+			if (!$.isNumeric( $('.jorn_numero').val() )){
+				correct_input = false;
+				$('.errores').append('<div>El campo Número debe ser numérico</div>');
+			}
+		}
+
+		if ($('.jorn_nombre').val() === null || $('.jorn_nombre').val() === ""){
+			correct_input = false;
+			$('.errores').append('<div>Debe informarse el campo nombre</div>');
+		}
+		
+		if ($('.jorn_nombre_corto').val() === null || $('.jorn_nombre_corto').val() === ""){
+			correct_input = false;
+			$('.errores').append('<div>Debe informarse el campo Nombre Corto</div>');
+		} else {
+			// Comprobar que no están repetidas
+			var id_jornada = $('.jorn_id').val() === null || $('.jorn_id').val() === "" ? null : parseInt($('.jorn_id').val());
+			var nombre_corto_repetido = $.grep(jornadas, function(jornada, index){
+				return jornada.nombre_corto === $('.jorn_nombre_corto').val() && (id_jornada === null || jornada.id_jornada !== id_jornada );
+			});
+			
+			if (nombre_corto_repetido !== null && nombre_corto_repetido.length > 0){
+				correct_input = false;
+				$('.errores').append('<div>Nombre corto repetido.</div>');
+			}
+		}
+
+		if ($('.jorn_tipo_jornada').val() === null || $('.jorn_tipo_jornada').val() === ""){
+			correct_input = false;
+			$('.errores').append('<div>Debe informarse el campo Tipo de Jornada</div>');
+		}
+
+		return correct_input;
+	}
+
+	function checkInputPartido(){
+		var correct_input = true;
+		var id_partido = $('.jorn_id').val() === null || $('.jorn_id').val() === "" ? null : parseInt($('.jorn_id').val());
+		
+		var equipo_1 = null;
+		if ($('.part_equipo_1').val() === null || $('.part_equipo_1').val() === ""){
+			correct_input = false;
+			$('.errores').append('<div>Debe informarse el campo Equipo 1</div>');
+		} else {
+			equipo_1 = parseInt($('.part_equipo_1').val());
+			// Equipo no usado en otro partido
+			var equipo_repetido = $.grep(partidos_jornada, function(partido, index){
+				return (partido.id_equipo_1 === equipo_1 || partido.id_equipo_2 === equipo_1) && (id_partido === null || partido.id_partido !== id_partido );
+			});
+			
+			if (equipo_repetido !== null && equipo_repetido.length > 0){
+				correct_input = false;
+				$('.errores').append('<div>Equipo 1 ya utilizado en otro partido.</div>');
+			}
+		}
+
+		var equipo_2 = null;
+		if ($('.part_equipo_2').val() === null || $('.part_equipo_2').val() === ""){
+			correct_input = false;
+			$('.errores').append('<div>Debe informarse el campo Equipo 2</div>');
+		} else {
+			equipo_2 = parseInt($('.part_equipo_2').val());
+			// Equipo no usado en otro partido
+			var equipo_repetido = $.grep(partidos_jornada, function(partido, index){
+				return (partido.id_equipo_1 === equipo_2 || partido.id_equipo_2 === equipo_2) && (id_partido === null || partido.id_partido !== id_partido );
+			});
+			
+			if (equipo_repetido !== null && equipo_repetido.length > 0){
+				correct_input = false;
+				$('.errores').append('<div>Equipo 2 ya utilizado en otro partido.</div>');
+			}
+		}
+		
+		if (equipo_1 !== null && equipo_2 !== null && equipo_1 === equipo_2){
+			correct_input = false;
+			$('.errores').append('<div>No puede jugar un equipo contra si mismo!.</div>');
+		}
+		
+		if ($('.part_estadio').val() === null || $('.part_estadio').val() === ""){
+			correct_input = false;
+			$('.errores').append('<div>Debe informarse el campo Estadio</div>');
+		} 
+		
+		//TODO: Comprobar que cumple formato YYYY-MM-DD HH:MM
+		if ($('.part_fecha_hora').val() === null || $('.part_fecha_hora').val() === ""){
+			correct_input = false;
+			$('.errores').append('<div>Debe informarse el campo Fecha - hora</div>');
+		}
+		
+		return correct_input;
+
+	}
+	
 
 });

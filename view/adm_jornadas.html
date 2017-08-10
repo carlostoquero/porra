@@ -23,15 +23,17 @@
 				</div>
 				
 				<div class="form-editar-jornada">
-					<input type="hidden" class="jorn_id dato-jornada" value="">
-					<input type="datetime-local" class="jorn_fecha_inicio dato-jornada" placeholder="Fecha de inicio" value="">
-					<input type="datetime-local" class="jorn_fecha_fin dato-jornada" placeholder="Fecha de fin" value="">
-					<input type="text" class="jorn_numero dato-jornada" placeholder="Número jornada" value="">
-					<input type="text" class="jorn_nombre dato-jornada" placeholder="Nombre" value="">
-					<input type="text" class="jorn_nombre_corto dato-jornada" placeholder="Nombre corto" value="">
-					<select class="jorn_tipo_jornada dato-jornada"></select>	
+					<div class="errores"></div>
+					<div class="datos-principales">
+						<input type="hidden" class="jorn_id dato-jornada" value="">
+						<input type="datetime-local" class="jorn_fecha_inicio dato-jornada" placeholder="Fecha de inicio" value="">
+						<input type="datetime-local" class="jorn_fecha_fin dato-jornada" placeholder="Fecha de fin" value="">
+						<input type="text" class="jorn_numero dato-jornada" placeholder="Número jornada" value="">
+						<input type="text" class="jorn_nombre dato-jornada" placeholder="Nombre" value="">
+						<input type="text" class="jorn_nombre_corto dato-jornada" placeholder="Nombre corto" value="">
+						<select class="jorn_tipo_jornada dato-jornada"></select>	
+					</div>
 					<button class="guardar-jornada">Guardar jornada</button>
-
 					<div class="datos-partidos">
 						<h2>PARTIDOS</h2>
 						<table class="tabla-partidos">
