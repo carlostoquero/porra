@@ -23,7 +23,7 @@ function GetEquiposByCompeticion($id_competicion){
 	if ($stmt = $db->mysqli->prepare('SELECT E.id_equipo, E.nombre_equipo, E.abreviatura, E.url_escudo
 									  FROM EQUIPOS_COMPETICION EC JOIN EQUIPOS E ON E.id_equipo = EC.id_equipo
 									  WHERE EC.id_competicion = ? ORDER by E.id_equipo')) {
-		$stmtCompeticiones->bind_param("i", $id_competicion);
+		$stmt->bind_param("i", $id_competicion);
 		$stmt->execute();
 		$stmt->bind_result($rId, $rNombre, $rAbreviatura, $rUrl);
 		while ($stmt->fetch()){
