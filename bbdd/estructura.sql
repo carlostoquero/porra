@@ -1,3 +1,16 @@
+DROP TABLE ACCESO_USUARIO;
+DROP TABLE ESTADO_USUARIO;
+DROP TABLE TIPO_COMPETICION;
+DROP TABLE TIPO_JORNADA;
+DROP TABLE COMPETICION;
+DROP TABLE GRUPO;
+DROP TABLE ESTADIO;
+DROP TABLE EQUIPO;
+DROP TABLE EQUIPO_COMPETICION;
+DROP TABLE JORNADA;
+DROP TABLE PARTIDO;
+
+
 CREATE TABLE ACCESO_USUARIO(
 	id_acceso int, 
 	nombre_acceso varchar(45), 
@@ -6,7 +19,7 @@ CREATE TABLE ACCESO_USUARIO(
 
 CREATE TABLE ESTADO_USUARIO(
 	id_estado int, 
-	nombre_acceso varchar(45), 
+	nombre_estado varchar(45), 
 	primary key(id_estado)
 );
 
@@ -83,7 +96,7 @@ CREATE TABLE PARTIDO (
   id_equipo_1 int NOT NULL,
   id_equipo_2 int NOT NULL,
   id_estadio int DEFAULT NULL,
-  id_grupo int NOT NULL,
+  id_grupo int ,
   id_jornada int NOT NULL,
   goles_equipo_1 int DEFAULT NULL,
   goles_equipo_2 int DEFAULT NULL,
