@@ -104,18 +104,14 @@ function ActualizarEquipo($equipo, &$mensajes){
 function BorrarEquipo($id_equipo, &$mensajes){
     $correctDelete = false;
 	$db = new dbConnection();
-	//TODO: Descomentar tablas que aún no existen, comprobar si alguna otra tabla debe consultarse
 	// Comprobar existencia de registros hijo
-	$sql = "select competiciones.cuantos /*+ partidos.cuantos */ + estadios.cuantos 
+	$sql = "select competiciones.cuantos + partidos.cuantos + estadios.cuantos 
 			from ( 	SELECT count(1) cuantos FROM EQUIPOS_COMPETICION WHERE id_equipo = ?) competiciones,
-				 /*(  SELECT count(1) cuantos FROM PARTIDO WHERE id_equipo_1 = ? OR id_equipo_2 = ?) partidos,*/
+				 (  SELECT count(1) cuantos FROM PARTIDO WHERE id_equipo_1 = ? OR id_equipo_2 = ?) partidos,
 				 ( 	SELECT count(1) cuantos FROM ESTADIOS WHERE id_equipo_local = ?) estadios";
 	
 	if ($stmtComprobacion = $db->mysqli->prepare($sql)){
-		//TODO: El bueno es el de abajo, no se puede poner hasta que no estén todas las tablas
-		$stmtComprobacion->bind_param("ii", $id_equipo, $id_equipo);
-		//$stmtComprobacion->bind_param("iiii", $id_equipo,$id_equipo, $id_equipo,$id_equipo);
-		
+		$stmtComprobacion->bind_param("iiii", $id_equipo,$id_equipo, $id_equipo,$id_equipo);
 		$stmtComprobacion->execute();
 		$stmtComprobacion->bind_result($rCuantos);
 		if ($stmtComprobacion->fetch()){

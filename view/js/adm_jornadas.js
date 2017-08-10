@@ -183,11 +183,11 @@ $(document).ready(function(){
 	$('.datos-partidos').hide();
 	$('.form-editar-partido').hide();
 	
-	//TODO
+	//TODO: Implementar
 	function checkInputJornada(){
 		return true;
 	}
-	//TODO
+	//TODO: Implementar
 	function checkInputPartido(){
 		return true;
 	}
