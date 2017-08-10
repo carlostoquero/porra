@@ -40,10 +40,13 @@
 					</div>
 
 					<div class="form-editar-partido">
+						<input type="hidden" class="part_id dato-partido" value=""></input>
 						<select class="part_equipo part_equipo_1 dato-partido"></select>				
 						<select class="part_equipo part_equipo_2 dato-partido"></select>
 						<select class="part_estadio dato-partido"></select>
-						<input type="text" class="part_fecha_hora dato-partido" placeholder="Fecha y hora partido" value="">
+						<select class="part_grupo dato-partido"></select>
+						<input type="datetime-local" class="part_fecha_hora dato-partido" placeholder="Fecha y hora partido" value="">
+						<input type="hidden" class="part_jornada dato-partido" value=""></input>
 						<button class="guardar-partido">Guardar partido</button>
 					</div>
 

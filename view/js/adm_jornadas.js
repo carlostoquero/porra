@@ -2,6 +2,7 @@ var jornadas = [];
 var tipos_jornada = [];
 var equipos = [];
 var estadios = [];
+var grupos = [];
 
 $(document).ready(function(){
 	generarMenu();
@@ -10,13 +11,20 @@ $(document).ready(function(){
 		$('.jornadas').show();
 	
 		var id_competicion = parseInt($('.competicion').val());
-		equipos = getEquiposCompeticion(id_competicion);
 		
+		equipos = getEquiposCompeticion(id_competicion);
 		$('.part_equipo').find('option').remove();
 		if (equipos !== null && equipos.length > 0){
-			$('.part_equipo').append('<option value="">(Seleccione uno)</option>');
 			$.each(equipos, function(index, equipo){
-				$('.part_equipo').append('<option value="' + equipo.id + '">' + equipo.nombre + '</option>');
+				$('.part_equipo').append('<option value="' + equipo.id_equipo + '">' + equipo.nombre_equipo + '</option>');
+			});
+		}
+		
+		grupos = getGruposCompeticion(id_competicion);
+		$('.part_grupo').find('option').remove();
+		if (grupos !== null && grupos.length > 0){
+			$.each(grupos, function(index, grupo){
+				$('.part_grupo').append('<option value="' + grupo.id_grupo + '">' + grupo.nombre_grupo + '</option>');
 			});
 		}
 		
@@ -41,6 +49,8 @@ $(document).ready(function(){
 				$('.jorn_nombre_corto').val(jornada_editar.nombre_corto);
 				$('.jorn_tipo_jornada').val(jornada_editar.id_tipo_jornada);
 				
+				$('.crear-partido').attr('data-id-jornada', jornada_editar.id_jornada);
+
 				loadPartidosJornada(jornada_editar.id_jornada);
 			}
 		}
@@ -89,19 +99,35 @@ $(document).ready(function(){
 			if (resultado_guardado === "ok") loadJornadas(id_competicion);
 		}
 	});
-
 	
 	$('body').on('click', '.editar-partido', function(){
 		$('.dato-partido').val('');
 		var id_partido = parseInt($(this).attr('data-id-partido'));
 		if (id_partido !== null){
-			var partido_editar = findElementByField(partidos_jornada, "id", id_partido);
+			var partido_editar = findElementByField(partidos_jornada, "id_partido", id_partido);
 			if (partido_editar !== null){
 				$('.form-editar-partido').show();
-				$('.part_equipo_1').val(partido_editar.equipo_1);
-				$('.part_equipo_2').val(partido_editar.equipo_2);
-				$('.part_estadio').val(partido_editar.estadio);
-				$('.part_fecha_hora').val(partido_editar.fecha_hora);
+				$('.part_id').val(partido_editar.id_partido);
+				$('.part_equipo_1').val(partido_editar.id_equipo_1);
+				$('.part_equipo_2').val(partido_editar.id_equipo_2);
+				$('.part_estadio').val(partido_editar.id_estadio);
+				$('.part_grupo').val(partido_editar.id_grupo);
+				$('.part_jornada').val(partido_editar.id_jornada);
+				$('.part_fecha_hora').val(moment(partido_editar.fecha_hora).format('YYYY-MM-DDTHH:mm'));
+			}
+		}
+	});
+	
+	$('body').on('click', '.borrar-partido', function(){
+		var id_jornada = parseInt($(this).attr('data-id-jornada'));
+		var id_partido = parseInt($(this).attr('data-id-partido'));
+		if (id_partido !== null){
+			var partido_borrar = findElementByField(partidos_jornada, "id_partido", id_partido);
+			if (partido_borrar !== null){
+				if (confirm("Borrar el partido?")){
+					var resultado_borrado = getAjaxSync('ServicioJornadas', 'BorrarPartido', JSON.stringify({id: partido_borrar.id_partido}));
+					if (resultado_borrado === "ok") loadPartidosJornada(id_jornada);
+				}
 			}
 		}
 	});
@@ -109,7 +135,28 @@ $(document).ready(function(){
 	$('body').on('click', '.crear-partido', function(){
 		$('.dato-partido').val('');
 		$('.form-editar-partido').show();
+		$('.part_jornada').val(parseInt($('.crear-partido').attr('data-id-jornada')));
 	});
+	
+	$('body').on('click', '.guardar-partido', function(){
+		$('.errores').html('');
+		if (checkInputPartido()){
+		
+			var id_jornada = parseInt($('.part_jornada').val());
+			var datos_partido = {};
+			if ($('.part_id').val() !== null && $('.part_id').val() !== "") datos_partido.id = parseInt($('.part_id').val());
+			datos_partido.equipo_1 = parseInt($('.part_equipo_1').val());
+			datos_partido.equipo_2 = parseInt($('.part_equipo_2').val());
+			datos_partido.estadio = parseInt($('.part_estadio').val());
+			if ($('.part_grupo').val() !== null && $('.part_grupo').val() !== "") datos_partido.grupo = parseInt($('.part_grupo').val());
+			datos_partido.fecha_hora = moment($('.part_fecha_hora').val()).format('YYYY-MM-DD HH:mm:SS');
+			datos_partido.jornada = id_jornada;
+			
+			var resultado_guardado = getAjaxSync('ServicioJornadas', 'GuardarPartido', JSON.stringify(datos_partido));
+			if (resultado_guardado === "ok") loadPartidosJornada(id_jornada);
+		}
+	});
+
 
 	tipos_jornada = getTiposJornada();
 	if (tipos_jornada !== null && tipos_jornada.length > 0){
@@ -136,7 +183,12 @@ $(document).ready(function(){
 	$('.datos-partidos').hide();
 	$('.form-editar-partido').hide();
 	
+	//TODO
 	function checkInputJornada(){
+		return true;
+	}
+	//TODO
+	function checkInputPartido(){
 		return true;
 	}
 	
@@ -165,23 +217,24 @@ $(document).ready(function(){
 	
 	function loadPartidosJornada(id_jornada){
 		$('.tabla-partidos').find('tr').remove();
-		partidos_jornada = getPartidosJornada(jornada_editar.id);
+		partidos_jornada = getPartidosJornada(id_jornada);
 		if (partidos_jornada !== null && partidos_jornada.length > 0){
 			$.each(partidos_jornada, function(index, partido){
-				var equipo_1 = findElementByField(equipos, "id", partido.equipo_1);
-				var equipo_2 = findElementByField(equipos, "id", partido.equipo_2);
+				var equipo_1 = findElementByField(equipos, "id_equipo", partido.id_equipo_1);
+				var equipo_2 = findElementByField(equipos, "id_equipo", partido.id_equipo_2);
+				var estadio = findElementByField(estadios, "id_estadio", partido.id_estadio)
 				
 				if (equipo_1 !== null && equipo_2 !== null){
 					var row = $('<tr>');
-					row.append('<td>' + partido.id + '</td>');
-					row.append('<td><img src="' + equipo_1.escudo + '"/></td>');
-					row.append('<td>' + equipo_1.nombre + '</td>');
-					row.append('<td>' + equipo_2.nombre + '</td>');
-					row.append('<td><img src="' + equipo_2.escudo + '"/></td>');
-					row.append('<td>' + partido.estadio + '</td>');
+					row.append('<td>' + partido.id_partido + '</td>');
+					row.append('<td><img src="' + equipo_1.url_escudo + '"/></td>');
+					row.append('<td>' + equipo_1.nombre_equipo + '</td>');
+					row.append('<td>' + equipo_2.nombre_equipo + '</td>');
+					row.append('<td><img src="' + equipo_2.url_escudo + '"/></td>');
+					row.append('<td>' + estadio.nombre_estadio + '</td>');
 					row.append('<td>' + partido.fecha_hora + '</td>');
-					row.append('<td><button class="editar-partido" data-id-partido="' + partido.id + '">Editar</button></td>');
-					row.append('<td><button class="borrar-partido" data-id-partido="' + partido.id + '">Borrar</button></td>');
+					row.append('<td><button class="editar-partido" data-id-jornada="' + partido.id_jornada + '" data-id-partido="' + partido.id_partido + '">Editar</button></td>');
+					row.append('<td><button class="borrar-partido" data-id-jornada="' + partido.id_jornada + '" data-id-partido="' + partido.id_partido + '">Borrar</button></td>');
 					$('.tabla-partidos').append(row);
 				}
 			});
