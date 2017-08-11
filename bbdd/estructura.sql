@@ -9,6 +9,8 @@ DROP TABLE EQUIPO;
 DROP TABLE EQUIPO_COMPETICION;
 DROP TABLE JORNADA;
 DROP TABLE PARTIDO;
+DROP TABLE USUARIO;
+DROP TABLE USUARIO_COMPETICION;
 
 
 CREATE TABLE ACCESO_USUARIO(
@@ -101,4 +103,33 @@ CREATE TABLE PARTIDO (
   goles_equipo_1 int DEFAULT NULL,
   goles_equipo_2 int DEFAULT NULL,
   PRIMARY KEY (id_partido)
+);
+
+CREATE TABLE USUARIO (
+  id_usuario int NOT NULL AUTO_INCREMENT,
+  login varchar(15) NOT NULL UNIQUE,
+  password varchar(100) NOT NULL,
+  nombre varchar(20) NOT NULL,
+  apellidos varchar(50) NOT NULL,
+  comentarios varchar(200),
+  email varchar(50) NOT NULL,
+  id_estado int NOT NULL,
+  id_acceso int NOT NULL,
+  PRIMARY KEY (id_usuario)
+);
+
+CREATE TABLE USUARIO_COMPETICION (
+  id_usuario int NOT NULL,
+  id_competicion int NOT NULL,
+  pagado boolean NOT NULL,
+  PRIMARY KEY (id_usuario,id_competicion)
+);
+
+CREATE TABLE PRONOSTICO(
+  id_pronostico int NOT NULL AUTO_INCREMENT,
+  id_usuario int NOT NULL,
+  id_partido int NOT NULL,
+  goles_equipo_1 int NOT NULL,
+  goles_equipo_2 int NOT NULL,
+  PRIMARY KEY (id_pronostico)
 );
