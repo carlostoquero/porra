@@ -2,6 +2,10 @@
 include_once ("../model/dbConnection.php");
 include_once ("../model/Tipos.php");
 
+if (session_id() == '') {
+    session_start();
+}
+
 function GetAccesos(){
 	$accesos = array();
 	$db = new dbConnection();

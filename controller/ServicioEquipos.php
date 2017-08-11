@@ -2,6 +2,10 @@
 include_once ("../model/dbConnection.php");
 include_once ("../model/Equipo.php");
 
+if (session_id() == '') {
+    session_start();
+}
+
 function GetEquipos(){
 	$equipos = array();
 	$db = new dbConnection();

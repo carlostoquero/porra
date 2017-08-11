@@ -2,6 +2,10 @@
 include_once ("../model/dbConnection.php");
 include_once ("../model/Competicion.php");
 
+if (session_id() == '') {
+    session_start();
+}
+
 function GetCompeticiones(){
 	$competiciones = array();
 	$db = new dbConnection();

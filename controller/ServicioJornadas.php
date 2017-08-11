@@ -3,6 +3,10 @@ include_once ("../model/dbConnection.php");
 include_once ("../model/Jornada.php");
 include_once ("../model/Partido.php");
 
+if (session_id() == '') {
+    session_start();
+}
+
 function GetJornadas(){
 	$jornadas = array();
 	$db = new dbConnection();
