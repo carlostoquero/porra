@@ -100,11 +100,13 @@ function getCompeticionesEquipo(id_equipo){
 	return competiciones_equipo;
 }
 
+function getCompeticionesUsuarios(){
+	var competiciones_usuarios = getAjaxSync('ServicioUsuarios', 'GetCompeticionesUsuarios');
+	return competiciones_usuarios;
+}
+
 function getCompeticionesUsuario(id_usuario){
-	var competiciones_usuario = getCompeticionesMockup();
-	$.each(competiciones_usuario, function(item, competicion){
-		competicion.id_usuario = id_usuario;
-	});
+	var competiciones_usuario = getAjaxSync('ServicioUsuarios', 'GetCompeticionesUsuario', JSON.stringify({id_usuario: id_usuario}));
 	return competiciones_usuario;
 }
 

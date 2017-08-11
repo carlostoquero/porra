@@ -75,6 +75,16 @@ function getGruposCompeticionMockup(id_competicion){
 	return grupos_competicion;
 }
 
+function getCompeticionesUsuarioMockup(id_usuario){
+	alert("Competicion usuario es mockup");
+	var competiciones_usuario = getCompeticionesMockup();
+	$.each(competiciones_usuario, function(item, competicion){
+		competicion.id_usuario = id_usuario;
+	});
+	return competiciones_usuario;
+}
+
+
 function getEquiposMockup(){
 	alert("Equipos es mockup");
 	

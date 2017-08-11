@@ -23,12 +23,12 @@ class CUsuario {
   }
 }
 
-class CUsuarioCompeticion{
+class CCompeticionUsuario{
 	public $id_usuario;
 	public $id_competicion;
 	public $pagado;
 	
-	public function CUsuarioCompeticion($usuario, $competicion, $pagado){
+	public function CCompeticionUsuario($usuario, $competicion, $pagado){
 		$this->id_usuario = $usuario;
 		$this->id_competicion = $competicion;
 		$this->pagado = $pagado;

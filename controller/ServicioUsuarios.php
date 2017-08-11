@@ -144,38 +144,36 @@ function GetUsuarioConectado(){
 	
 // }
 
-// // function GetPartidos(){
-	// // $partidos = array();
-	// // $db = new dbConnection();
-	// // if ($stmt = $db->mysqli->prepare('SELECT id_partido, fecha_hora, id_equipo_1, id_equipo_2, id_estadio, id_grupo, id_jornada, goles_equipo_1, goles_equipo_2
-	                                  // // FROM PARTIDO ORDER BY id_partido')){
-		// // $stmt->execute();
-		// // $stmt->bind_result($rId, $rFecha, $rEquipo1, $rEquipo2, $rEstadio, $rGrupo, $rJornada, $rGoles1, $rGoles2);
-		// // while ($stmt->fetch()){
-			// // $partidos[] = new CPartido($rId, $rFecha, $rEquipo1, $rEquipo2, $rEstadio, $rGrupo, $rJornada, $rGoles1, $rGoles2);
-		// // }
-		// // $stmt->close();
-	// // }
-	// // $db->close();
-	// // return $partidos;
-// // }
+function GetCompeticionesUsuarios(){
+	$competiciones_usuarios = array();
+	$db = new dbConnection();
+	if ($stmt = $db->mysqli->prepare('SELECT id_usuario, id_competicion, pagado FROM USUARIO_COMPETICION ORDER BY id_usuario, id_competicion')){
+		$stmt->execute();
+		$stmt->bind_result($rIdUsuario, $rIdCompeticion, $rPagado);
+		while ($stmt->fetch()){
+			$competiciones_usuarios[] = new CCompeticionUsuario($rIdUsuario, $rIdCompeticion, $rPagado);
+		}
+		$stmt->close();
+	}
+	$db->close();
+	return $competiciones_usuarios;
+}
 
-// // function GetPartidosJornada($id_jornada){
-	// // $partidos = array();
+// function GetCompeticionesUsuario($id_usuario){
+	// $competiciones_usuario = array();
 	// // $db = new dbConnection();
-	// // if ($stmt = $db->mysqli->prepare('SELECT id_partido, fecha_hora, id_equipo_1, id_equipo_2, id_estadio, id_grupo, id_jornada, goles_equipo_1, goles_equipo_2
-	                                  // // FROM PARTIDO WHERE id_jornada = ? ORDER BY id_partido')){
-		// // $stmt->bind_param("i", $id_jornada);
+	// // if ($stmt = $db->mysqli->prepare('SELECT id_usuario, id_competicion, pagado FROM USUARIO_COMPETICION WHERE id_usuario = ? ORDER BY id_competicion')){
+		// // $stmt->bind_param("i", $id_usuario);
 		// // $stmt->execute();
-		// // $stmt->bind_result($rId, $rFecha, $rEquipo1, $rEquipo2, $rEstadio, $rGrupo, $rJornada, $rGoles1, $rGoles2);
+		// // $stmt->bind_result($rIdUsuario, $rIdCompeticion, $rPagado);
 		// // while ($stmt->fetch()){
-			// // $partidos[] = new CPartido($rId, $rFecha, $rEquipo1, $rEquipo2, $rEstadio, $rGrupo, $rJornada, $rGoles1, $rGoles2);
+			// // $competiciones_usuario[] = new CCompeticionUsuario($rIdUsuario, $rIdCompeticion, $rPagado);
 		// // }
 		// // $stmt->close();
 	// // }
 	// // $db->close();
-	// // return $partidos;
-// // }
+	// return $competiciones_usuario;
+// }
 
 // // function GuardarPartido($id_partido, $equipo_1, $equipo_2, $estadio, $grupo, $fecha_hora, $jornada, &$mensajes){
 	// // $guardado_correcto = true;
@@ -352,6 +350,19 @@ if( !isset($aResult['error']) ) {
 			 // }
 			// break;
 
+		case 'GetCompeticionesUsuarios':
+			$aResult['result'] = GetCompeticionesUsuarios();
+			break;
+			
+		case 'GetCompeticionesUsuario':
+			// if( !isset($_GET['arguments']) ) { $aResult['error'] = 'No arguments!'; }
+			// else {
+				// $arguments = json_decode($_GET['arguments']);
+				// if ( isset($arguments->id_usuario) ){  $aResult['result'] = GetCompeticionesUsuario($arguments->id_usuario); } 
+				// else { $aResult['error'] = 'Wrong arguments!'; }
+			 // }
+			break;
+			
 		default:
 		   $aResult['error'] = 'Not found function '.$_POST['function_name'].'!';
 		   break;
