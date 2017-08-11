@@ -1,8 +1,10 @@
 var usuario = null;
 
 $(document).ready(function(){
+	var usuario_conexion = usuarioConectado();
+	
 	generarMenu();
-	usuario = getUsuario(8);
+	usuario = getUsuario(usuario_conexion.id_usuario);
 	
 	if (usuario !== null){
 		if (usuario.hasOwnProperty('id')) $('.usr-id').val(usuario.id);
