@@ -48,9 +48,13 @@ function findElementByField(element_array, field_name, field_value){
 	return found_element;
 }
 
-function usuarioConectado(){
+function usuarioConectado(checkAdmin){
 	var usuario_conectado = getAjaxSync('ServicioUsuarios', 'GetUsuarioConectado');
 	if (usuario_conectado === null) location.href = './login.html';
+	
+	// Comprobación de acceso de administrador para determinadas páginas
+	if (checkAdmin && usuario_conectado.id_acceso != 2) location.href = './reglas.html'; 
+	
 	return usuario_conectado;
 }
 

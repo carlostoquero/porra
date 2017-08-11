@@ -1,7 +1,7 @@
 var usuario = null;
 
 $(document).ready(function(){
-	var usuario_conexion = usuarioConectado();
+	var usuario_conexion = usuarioConectado(false); // No necesario administrador
 	
 	generarMenu();
 	usuario = getUsuario(usuario_conexion.id_usuario);
