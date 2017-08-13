@@ -1,34 +1,34 @@
 function generarMenu() {
 	var mainMenu = $('<ul class="nav navbar-nav">');
-	mainMenu.append('<li><a href="./reglas.html">Reglas</a></li>' + 
-					'<li class="dropdown"><a href="#">Competici&oacute;n</a>' + 
+	mainMenu.append('<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="fa fa-trophy user"></span>Competici&oacute;n</a>' + 
 						'<ul class="dropdown-menu">' + 
-							'<li><a href="./comp_resultados.html">Resultados</a></li>' + 
-							'<li><a href="./comp_clasificacion.html">Clasificaci&oacute;n</a></li>' + 
-							'<li><a href="./comp_cargar.html">Cargar</a></li>' + 
+							'<li><a href="./comp_resultados.html"><span class="fa fa-futbol-o user"></span>Resultados</a></li>' + 
+							'<li><a href="./comp_clasificacion.html"><span class="fa fa-sort-numeric-asc user"></span>Clasificaci&oacute;n</a></li>' + 
+							'<li><a href="./comp_cargar.html"><span class="fa fa-plus user"></span>Cargar</a></li>' + 
+							'<li><a href="./comp_cambiar.html"><span class="fa fa-exchange user"></span>Cambiar competicion</a></li>' +
 						'</ul>' + 
 					'</li>' + 
-					'<li class="dropdown"><a href="#">Pron&oacute;sticos</a>' + 
+					'<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="fa fa-pencil user"></span>Pron&oacute;sticos</a>' + 
 						'<ul class="dropdown-menu">' + 
-							'<li><a href="./pron_cargar.html">Cargar</a></li>' + 
-							'<li><a href="./pron_ver.html">Ver</a></li>' + 
-							'<li><a href="./pron_clasificacion.html">Clasificacion</a></li>' + 
+							'<li><a href="./pron_cargar.html"><span class="fa fa-check user"></span>Cargar</a></li>' + 
+							'<li><a href="./pron_ver.html"><span class="fa fa-search user"></span>Ver</a></li>' + 
+							'<li><a href="./pron_clasificacion.html"><span class="fa fa-sort-amount-desc user"></span>Clasificaci&oacute;n</a></li>' + 
 						'</ul>' + 
 					'</li>' + 
-					'<li class="dropdown"><a href="#">Administraci&oacute;n</a>' + 
+					'<li><a href="./reglas.html"><span class="fa fa-info user"></span>Reglas</a></li>' +
+					'<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="fa fa-cog user"></span>Administraci&oacute;n</a>' + 
 						'<ul class="dropdown-menu">' + 
-							'<li><a href="./adm_competiciones.html">Competiciones</a></li>' + 
-							'<li><a href="./adm_equipos.html">Equipos</a></li>' + 
-							'<li><a href="./adm_estadios.html">Estadios</a></li>' + 
-							'<li><a href="./adm_jornadas.html">Jornadas</a></li>' + 
-							'<li><a href="./adm_usuarios.html">Usuarios</a></li>' + 
+							'<li><a href="./adm_competiciones.html"><span class="fa fa-trophy user"></span>Competiciones</a></li>' + 
+							'<li><a href="./adm_equipos.html"><span class="fa fa-shield user"></span>Equipos</a></li>' + 
+							'<li><a href="./adm_estadios.html"><span class="fa fa-flag user"></span>Estadios</a></li>' + 
+							'<li><a href="./adm_jornadas.html"><span class="fa fa-calendar user"></span>Jornadas</a></li>' + 
+							'<li><a href="./adm_usuarios.html"><span class="fa fa-users user"></span>Usuarios</a></li>' + 
 						'</ul>' + 
 					'</li>');
 	
-	var actions = $('<ul class="nav navbar-nav">');
-	actions.append('<li><a href="./gest_editar.html">Editar perfil</a></li>' + 
-				   '<li><a href="./comp_cambiar.html">Cambiar competicion</a></li>' + 
-				   '<li><a href="./logout.html">Salir</a></li>'+ 
+	var actions = $('<ul class="nav navbar-nav navbar-user">');
+	actions.append('<li><a href="./gest_editar.html"><span class="fa fa-user user"></span>Editar perfil</a></li>' + 
+				   '<li><a href="./logout.html"><span class="fa fa-close user"></span>Salir</a></li>'+ 
 					'</ul>');
 
 	$('.menu-div').append(mainMenu);
