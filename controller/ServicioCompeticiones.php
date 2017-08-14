@@ -2,6 +2,10 @@
 include_once ("../model/dbConnection.php");
 include_once ("../model/Competicion.php");
 
+if (session_id() == '') {
+    session_start();
+}
+
 function GetCompeticiones(){
 	$competiciones = array();
 	$db = new dbConnection();
@@ -123,13 +127,13 @@ function BorrarCompeticion($id_competicion, &$mensajes){
 	// Comprobar existencia de registros hijo
 	$sql = "select grupos.cuantos + equipos.cuantos -- + jornadas.cuantos + usuarios.cuantos 
 			from (	SELECT count(1) cuantos FROM GRUPO WHERE id_competicion = ?) grupos,
-				 ( 	SELECT count(1) cuantos FROM EQUIPOS_COMPETICION WHERE id_competicion = ?) equipos/*,
-				 (  SELECT count(1) cuantos FROM JORNADA WHERE id_competicion = ?) jornadas,
+				 ( 	SELECT count(1) cuantos FROM EQUIPOS_COMPETICION WHERE id_competicion = ?) equipos,
+				 (  SELECT count(1) cuantos FROM JORNADA WHERE id_competicion = ?) jornadas/*,
 				 ( 	SELECT count(1) cuantos FROM USUARIOS_COMPETICION WHERE id_competicion = ?) usuarios*/";
 	
 	if ($stmtComprobacion = $db->mysqli->prepare($sql)){
 		//TODO: El bueno es el de abajo, no se puede poner hasta que no estén todas las tablas
-		$stmtComprobacion->bind_param("ii", $id_competicion,$id_competicion);
+		$stmtComprobacion->bind_param("iii", $id_competicion, $id_competicion, $id_competicion);
 		//$stmtComprobacion->bind_param("iiii", $id_competicion,$id_competicion, $id_competicion,$id_competicion);
 		
 		$stmtComprobacion->execute();
