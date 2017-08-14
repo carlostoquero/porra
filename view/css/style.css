@@ -78,6 +78,10 @@ hr {
 	margin-bottom:0;
 }
 
+img {
+	max-width: 100%;
+}
+
 /* === Footer === */
 footer{
 	padding: 10px 0 0 0;
@@ -396,12 +400,23 @@ header .navbar {
 	font-family: 'BebasNeueRegular', Arial, sans-serif;
     color: #333333;
 	text-transform: uppercase;
-    font-size: 40px;
+    font-size: 36px;
     font-weight: 500;
     line-height: 1em;
 	letter-spacing: -1px;
     margin-top: 30px;
     padding: 0 15px;
+}
+
+.navbar-brand span{
+    color: #337ab7;
+}
+
+.logo {
+	float: right;
+    width: 142px;
+    height: auto;
+	margin: -10px 5px 10px 5px;
 }
 
 header .navbar-collapse  ul.navbar-nav {
@@ -466,10 +481,6 @@ header .nav .caret {
 }
 .navbar-default .navbar-collapse, .navbar-default .navbar-form {
     /*border-bottom: 1px solid #cccccc;*/
-}
-
-.navbar-brand span{
-    color: #337ab7;
 }
 
 .user{
