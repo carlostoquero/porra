@@ -1,25 +1,49 @@
-<html>
-	<head>
-		<script src="vendor/jquery-3.2.1.min.js"></script>
-		<script src="js/comun.js"></script>
-		<script src="js/mockup.js"></script>
-		<script src="js/registro.js"></script>
-	</head>
-	<body>
-		<div class="main-container">
-			<div class="content">
-				<div class="form">
-					<input type="hidden" class="datos-usuario usr-id" name="id">
-					<input type="text" placeholder="Login" class="datos-usuario usr-login" name="login">
-					<input type="text" placeholder="Nombre" class="datos-usuario usr-name" name="name">
-					<input type="text" placeholder="Apellidos" class="datos-usuario usr-surname" name="surname">
-					<input type="text" placeholder="Email" class="datos-usuario usr-email" name="email">
-					<textarea rows="3" placeholder="Comentarios" class="datos-usuario usr-comments" name="comments"> </textarea>
-					<input type="password" placeholder="Password" class="datos-usuario usr-pwd" name="newPass">
-					<input type="password" placeholder="Confirmar password" class="datos-usuario conf-pwd" name="confPass">
-					<input type="submit" value="Registrar" >			
-				</div>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<title>La Web de la Porra</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="description" content="La Web de la Porra" />
+	<meta name="author" content="Carlos Toquero (developer) & Alberto Lario (designer)" />
+	<!-- css -->
+ 	<link rel="stylesheet" href="css/bootstrap.min.css" />
+ 	<link rel="stylesheet" href="css/style.css" />
+ 	<!-- js -->
+	<script type="text/javascript" src="vendor/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/comun.js"></script>
+	<script type="text/javascript" src="js/mockup.js"></script>
+	<script type="text/javascript" src="js/registro.js"></script>
+ 	<!--<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>-->
+	<!-- HTML5 shim, for IE6-8 support of HTML5 elements & HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+</head>
+
+<body>
+	<div class="main-container">
+		<div class="content">
+			<div class="form">
+				<input type="hidden" class="datos-usuario usr-id" name="id">
+				<input type="text" placeholder="Login" class="datos-usuario usr-login" name="login">
+				<input type="text" placeholder="Nombre" class="datos-usuario usr-name" name="name">
+				<input type="text" placeholder="Apellidos" class="datos-usuario usr-surname" name="surname">
+				<input type="text" placeholder="Email" class="datos-usuario usr-email" name="email">
+				<textarea rows="3" placeholder="Comentarios" class="datos-usuario usr-comments" name="comments"> </textarea>
+				<input type="password" placeholder="Password" class="datos-usuario usr-pwd" name="newPass">
+				<input type="password" placeholder="Confirmar password" class="datos-usuario conf-pwd" name="confPass">
+				<input type="submit" value="Registrar" >			
 			</div>
 		</div>
-	</body>
+	</div>
+	<!-- footer -->	
+	<footer class="footer-div">
+	</footer>
+</body>
 </html>
