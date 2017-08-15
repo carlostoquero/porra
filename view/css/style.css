@@ -213,14 +213,15 @@ footer h5 a:hover, footer a:hover {
 }
 
 .logo-login {
-	float: right;
+	display: block;
     width: 400px;
     height: auto;
-	margin: 10px;
+	margin: 10px auto;
+	text-align: center;
 }
 
 .register {
-	font-size: 12px;
+	font-size: 11px;
 	padding-bottom: 10px;
 }
 
@@ -407,10 +408,10 @@ header .navbar {
 	font-family: 'BebasNeueRegular', Arial, sans-serif;
     color: #333333;
 	text-transform: uppercase;
-    font-size: 28px;
+    font-size: 24px;
     font-weight: 500;
     line-height: 1em;
-	letter-spacing: -1px;
+
     margin-top: 30px;
     padding: 0 15px;
 }
@@ -421,9 +422,9 @@ header .navbar {
 
 .logo {
 	float: right;
-    width: 142px;
+    width: 130px;
     height: auto;
-	margin: -14px 5px 10px 5px;
+	margin: -15px 3px 10px 3px;
 }
 
 header .navbar-collapse  ul.navbar-nav {
