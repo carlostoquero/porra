@@ -27,7 +27,7 @@ function generarMenu() {
 					'</li>');
 	
 	var actions = $('<ul class="nav navbar-nav navbar-user">');
-	actions.append('<li><a href="./gest_editar.html"><span class="fa fa-user user"></span>Editar perfil</a></li>' + 
+	actions.append('<li><a href="./gest_editar.html"><span class="fa fa-user user"></span>Perfil</a></li>' + 
 				   '<li><a href="./logout.html"><span class="fa fa-close user"></span>Salir</a></li>'+ 
 					'</ul>');
 
