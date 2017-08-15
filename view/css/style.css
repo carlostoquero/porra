@@ -129,7 +129,7 @@ footer h5 a:hover, footer a:hover {
 
 .copyright {
 	position: absolute;
-	margin: 40px 0 20px;
+	margin: 20px 0 10px 0;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	font-size: 12px;
@@ -411,8 +411,7 @@ header .navbar {
     font-size: 24px;
     font-weight: 500;
     line-height: 1em;
-
-    margin-top: 30px;
+    margin-top: 38px;
     padding: 0 15px;
 }
 
@@ -487,13 +486,14 @@ header .nav .caret {
     border-bottom-color:#f4f4f4;
     border-top-color:#f4f4f4;
 }
+
 .navbar-default .navbar-collapse, .navbar-default .navbar-form {
-    /*border-bottom: 1px solid #cccccc;*/
+    border: none;
 }
 
 .user{
     color: #337ab7;
-	padding:0 10px 0 0;
+	padding: 0 10px 0 0;
 }
 
 header .nav li a:hover,
@@ -1377,7 +1377,7 @@ article img.pull-right, article .align-right{
   }
 
 	.navbar-brand {
-		margin-top:10px;
+		margin-top: 15px;
 		border-bottom:none;
 	}
 
