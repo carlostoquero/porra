@@ -7,7 +7,9 @@ var jornadas = [];
 var partidos_jornada = [];
 
 $(document).ready(function(){
+	var usuario_conexion = usuarioConectado(true); // SI necesario administrador
 	generarMenu();
+	generarFooter();
 	
 	$('body').on('change', '.competicion', function(){
 		$('.jornadas').show();

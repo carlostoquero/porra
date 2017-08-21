@@ -3,7 +3,9 @@ var usuarios = null;
 var jornadas = null;
 
 $(document).ready(function(){
+	var usuario_conexion = usuarioConectado(false); // No necesario administrador
 	generarMenu();
+	generarFooter();
 
 	competicion_seleccionada = getCompeticionSeleccionada();
 	usuarios = getUsuariosCompeticion(competicion_seleccionada);
@@ -17,7 +19,7 @@ $(document).ready(function(){
 	});
 	$('.tabla-clasificacion').append(row);
 	
-	var puntos = getPuntos();
+	var puntos = getClasificacionUsuarios();
 	$.each(usuarios, function(index, usuario){
 		var row = $('<tr>');
 		row.append('<td>' + usuario.login + '</td>');
@@ -26,7 +28,7 @@ $(document).ready(function(){
 			var puntosJornada = null;
 			if (puntos !== null && puntos.length > 0){
 				puntosJornada = $.grep(puntos, function(punto, index){
-					return punto.id_usuario === usuario.id && punto.id_jornada === jornada.id;
+					return punto.id_usuario === usuario.id_usuario && punto.id_jornada === jornada.id_jornada;
 				});
 			};
 			row.append('<td>' + (puntosJornada === null || puntosJornada.length === 0 ? '-' : puntosJornada[0].valor) + '</td>');

@@ -1,4 +1,5 @@
 $(document).ready(function(){
-generarMenu();
-generarFooter();
+	var usuario_conexion = usuarioConectado(false); // No necesario administrador
+	generarMenu();
+	generarFooter();
 });

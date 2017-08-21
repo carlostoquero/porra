@@ -3,7 +3,9 @@ var grupos_competicion = [];
 var tipos_competicion = [];
 
 $(document).ready(function(){
+	var usuario_conexion = usuarioConectado(true); // SI necesario administrador
 	generarMenu();
+	generarFooter();
 	
 	$('body').on('click', '.editar-competicion', function(){
 		$('.dato-competicion').val('');
@@ -129,7 +131,7 @@ $(document).ready(function(){
 	}
 	
 	function loadCompeticiones(){
-		competiciones = getCompeticionesMockup();
+		competiciones = getCompeticiones();
 		$('.tabla-competiciones').find('tr').remove();
 		if (competiciones !== null && competiciones.length > 0){
 			$.each(competiciones, function(index, competicion){

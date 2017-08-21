@@ -2,10 +2,10 @@ var usuario = null;
 
 $(document).ready(function(){
 	var usuario_conexion = usuarioConectado(false); // No necesario administrador
-	
 	generarMenu();
-	usuario = getUsuario(usuario_conexion.id_usuario);
+	generarFooter();
 	
+	usuario = getUsuario(usuario_conexion.id_usuario);
 	if (usuario !== null){
 		if (usuario.hasOwnProperty('id')) $('.usr-id').val(usuario.id);
 		if (usuario.hasOwnProperty('login')) $('.usr-login').val(usuario.login);

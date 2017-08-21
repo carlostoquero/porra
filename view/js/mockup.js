@@ -1,5 +1,4 @@
 function getTiposCompeticionMockup(){
-	alert("Tipos competicion es mockup");
 	var tipos_competicion = [];
 	tipos_competicion.push({id: 1, nombre: "Liga"});
 	tipos_competicion.push({id: 2, nombre: "Copa"});
@@ -8,15 +7,13 @@ function getTiposCompeticionMockup(){
 }
 
 function getTiposJornadaMockup(){
-	alert("Tipos jornada es mockup");
 	var tipos_jornada = [];
-	tipos_jornada.push({id: 1, nombre: "Liga"});
-	tipos_jornada.push({id: 2, nombre: "Copa"});
+	tipos_jornada.push({id_tipo_jornada: 1, nombre_tipo_jornada: "Liga"});
+	tipos_jornada.push({id_tipo_jornada: 2, nombre_tipo_jornada: "Copa"});
 	return tipos_jornada;
 }
 
 function getAccesosUsuarioMockup() {
-	alert("Accessos usuario es mockup");
 	var accesos_usuario = [];
 	accesos_usuario.push({id_acceso: 1, nombre_acceso: "Usuario"});
 	accesos_usuario.push({id_acceso: 2, nombre_acceso: "Administrador"});
@@ -24,7 +21,6 @@ function getAccesosUsuarioMockup() {
 }
 
 function getEstadosUsuarioMockup(){
-	alert("Estados usuario es mockup");
 	var estados_usuario = [];
 	estados_usuario.push({id_estado: 0, nombre_estado: "PENDIENTE"});
 	estados_usuario.push({id_estado: 1, nombre_estado: "VALIDADO"});
@@ -33,18 +29,16 @@ function getEstadosUsuarioMockup(){
 }
 
 function getCompeticionesMockup(){
-	alert("Competiciones es mockup");
 	var competiciones = [];
-	competiciones.push({id_competicion: 1, nombre_competicion: "Mundial Brasil 2014", 			titulo: "La porra del mundial", subtitulo: "FIFA World Cup Brasil 2014", siglas: "wc-14", tipo_competicion: {id: 3, nombre: "Mixto"}, reglas: ""});
-	competiciones.push({id_competicion: 2, nombre_competicion: "Liga BBVA 2014 - 2015", 		titulo: "Porra Liga BBVA 2014 - 2015", subtitulo: "LFP", siglas: "le-14", tipo_competicion: {id: 1, nombre: "Liga"}, reglas: ""});
-	competiciones.push({id_competicion: 6, nombre_competicion: "Liga BBVA 2015 - 2016", 		titulo: "Porra Liga BBVA 2015 - 2016", subtitulo: "LFP", siglas: "le-15", tipo_competicion: {id: 1, nombre: "Liga"}, reglas: ""});
-	competiciones.push({id_competicion: 7, nombre_competicion: "Eurocopa Francia 2016", 		titulo: "La porra de la Eurocopa", subtitulo: "UEFA Euro 2016", siglas: "ec-16", tipo_competicion: {id: 3, nombre: "Mixto"}, reglas: ""});
-	competiciones.push({id_competicion: 8, nombre_competicion: "La Liga Santander 2016-2017", 	titulo: "Porra Liga 2016-2017", subtitulo: "LFP", siglas: "le-16", tipo_competicion: {id: 1, nombre: "Liga"}, reglas: ""});
+	competiciones.push({id_competicion: 1, nombre_competicion: "Mundial Brasil 2014", 			titulo: "La porra del mundial", subtitulo: "FIFA World Cup Brasil 2014", siglas: "wc-14", id_tipo_competicion: 3, reglas: "Prueba de contenido para reglas"});
+	competiciones.push({id_competicion: 2, nombre_competicion: "Liga BBVA 2014 - 2015", 		titulo: "Porra Liga BBVA 2014 - 2015", subtitulo: "LFP", siglas: "le-14", id_tipo_competicion: 1, reglas: "Prueba de contenido para reglas"});
+	competiciones.push({id_competicion: 6, nombre_competicion: "Liga BBVA 2015 - 2016", 		titulo: "Porra Liga BBVA 2015 - 2016", subtitulo: "LFP", siglas: "le-15", id_tipo_competicion: 1, reglas: "Prueba de contenido para reglas"});
+	competiciones.push({id_competicion: 7, nombre_competicion: "Eurocopa Francia 2016", 		titulo: "La porra de la Eurocopa", subtitulo: "UEFA Euro 2016", siglas: "ec-16", id_tipo_competicion: 3, reglas: "Prueba de contenido para reglas"});
+	competiciones.push({id_competicion: 8, nombre_competicion: "La Liga Santander 2016-2017", 	titulo: "Porra Liga 2016-2017", subtitulo: "LFP", siglas: "le-16", id_tipo_competicion: 1, reglas: "Prueba de contenido para reglas"});
 	return competiciones;
 }
 
 function getGruposMockup(){
-	alert("Grupos es mockup");
 	var grupos = [];
 	grupos.push({ id_grupo: 1,  nombre_grupo: "A", id_competicion: 1});
 	grupos.push({ id_grupo: 2,  nombre_grupo: "B", id_competicion: 1});
@@ -67,7 +61,6 @@ function getGruposMockup(){
 }
 
 function getGruposCompeticionMockup(id_competicion){
-	alert("Grupos Competicion es mockup");
 	var grupos = getGruposMockup();
 	var grupos_competicion = $.grep(grupos, function(grupo, index){
 		return grupo.id_competicion === id_competicion;
@@ -76,7 +69,6 @@ function getGruposCompeticionMockup(id_competicion){
 }
 
 function getCompeticionesUsuarioMockup(id_usuario){
-	alert("Competicion usuario es mockup");
 	var competiciones_usuario = getCompeticionesMockup();
 	$.each(competiciones_usuario, function(item, competicion){
 		competicion.id_usuario = id_usuario;
@@ -86,8 +78,6 @@ function getCompeticionesUsuarioMockup(id_usuario){
 
 
 function getEquiposMockup(){
-	alert("Equipos es mockup");
-	
 	var equipos = [];
 	equipos.push({ id_equipo: 1, nombre_equipo: "Brasil", abreviatura: "BRA", url_escudo: "../view/img/BRA.png", competiciones: [{id_competicion: 1, id_grupo: 1}] });
 	equipos.push({ id_equipo: 2, nombre_equipo: "Croacia", abreviatura: "CRO", url_escudo: "../view/img/CRO.png", competiciones: [{id_competicion: 1, id_grupo: 1}, {id_competicion: 7, id_grupo: 14}]});
@@ -166,7 +156,6 @@ function getEquiposMockup(){
 }
 
 function getEquiposCompeticionMockup(id_competicion){
-	alert("EquiposCompeticion es mockup");
 	var equipos = getEquiposMockup();
 	var equipos_competicion = $.grep(equipos, function(equipo, index){
 		var pertenece_competicion = false;
@@ -184,9 +173,16 @@ function getEquiposCompeticionMockup(id_competicion){
 	return equipos_competicion;
 }
 
+function getCompeticionesEquipoMockup(id_equipo){
+	var competiciones_equipo = [];
+	var equipo = findElementByField(getEquiposMockup(), "id_equipo", id_equipo);
+	if (equipo !== null){
+		competiciones_equipo = equipo.competiciones;
+	}
+	return competiciones_equipo;
+}
+
 function getEquiposGrupoMockup(id_grupo){
-	alert("EquiposGrupo es mockup");
-	
 	var equipos = getEquiposMockup();
 	var equipos_grupo = $.grep(equipos, function(equipo, index){
 		var pertenece_grupo = false;
@@ -205,8 +201,6 @@ function getEquiposGrupoMockup(id_grupo){
 }
 
 function getEstadiosMockup(){
-	alert("Estadios es mockup");
-
 	var estadios = [];
 	estadios.push({ id_estadio: 1, nombre_estadio: "Beira R&iacute;o", ciudad_estadio: "Porto Alegre"});
 	estadios.push({ id_estadio: 2, nombre_estadio: "Estadio Castel&atilde;o", ciudad_estadio: "Fortaleza"});
@@ -260,121 +254,127 @@ function getEstadiosMockup(){
 }
 
 function getJornadasMockup(){
-	alert("Jornadas es Mockup");
 	var jornadas = [];
 	var id_jornada = 1;
 	
 	// Jornadas Mundial
-	jornadas.push({id: id_jornada++, numero: 1, nombre: 'Jornada 01', nombre_corto: 'J01', fecha_hora: '19-08-2016 20:45', tipo_jornada: { id: 1, nombre: 'Liga' }, id_competicion: 1});
-	jornadas.push({id: id_jornada++, numero: 2, nombre: 'Jornada 02', nombre_corto: 'J02', fecha_hora: '19-08-2016 20:45', tipo_jornada: { id: 1, nombre: 'Liga' }, id_competicion: 1});
-	jornadas.push({id: id_jornada++, numero: 3, nombre: 'Jornada 03', nombre_corto: 'J03', fecha_hora: '19-08-2016 20:45', tipo_jornada: { id: 1, nombre: 'Liga' }, id_competicion: 1});
-	jornadas.push({id: id_jornada++, numero: 4, nombre: 'Octavos de final', nombre_corto: 'OF', fecha_hora: '19-08-2016 20:45', tipo_jornada: { id: 2, nombre: 'Copa' }, id_competicion: 1});
-	jornadas.push({id: id_jornada++, numero: 5, nombre: 'Cuartos de final', nombre_corto: 'QF' , fecha_hora: '19-08-2016 20:45', tipo_jornada: { id: 2, nombre: 'Copa' }, id_competicion: 1});
-	jornadas.push({id: id_jornada++, numero: 6, nombre: 'Semifinales', nombre_corto: 'SF', fecha_hora: '19-08-2016 20:45', tipo_jornada: { id: 2, nombre: 'Copa' }, id_competicion: 1});
-	jornadas.push({id: id_jornada++, numero: 7, nombre: 'Final', nombre_corto: 'F', fecha_hora: '19-08-2016 20:45', tipo_jornada: { id: 2, nombre: 'Copa' }, id_competicion: 1});
+	jornadas.push({id_jornada: id_jornada++, numero_jornada: 1, nombre_jornada: 'Jornada 01', nombre_corto: 'J01', fecha_inicio: '2016-08-19 20:45:00', fecha_fin: '2016-08-19 20:45:00', id_tipo_jornada: 1, id_competicion: 1});
+	jornadas.push({id_jornada: id_jornada++, numero_jornada: 2, nombre_jornada: 'Jornada 02', nombre_corto: 'J02', fecha_inicio: '2016-08-19 20:45:00', fecha_fin: '2016-08-19 20:45:00', id_tipo_jornada: 1, id_competicion: 1});
+	jornadas.push({id_jornada: id_jornada++, numero_jornada: 3, nombre_jornada: 'Jornada 03', nombre_corto: 'J03', fecha_inicio: '2016-08-19 20:45:00', fecha_fin: '2016-08-19 20:45:00', id_tipo_jornada: 1, id_competicion: 1});
+	jornadas.push({id_jornada: id_jornada++, numero_jornada: 4, nombre_jornada: 'Octavos de final', nombre_corto: 'OF', fecha_inicio: '2016-08-19 20:45:00', fecha_fin: '2016-08-19 20:45:00', id_tipo_jornada: 2, id_competicion: 1});
+	jornadas.push({id_jornada: id_jornada++, numero_jornada: 5, nombre_jornada: 'Cuartos de final', nombre_corto: 'QF' , fecha_inicio: '2016-08-19 20:45:00', fecha_fin: '2016-08-19 20:45:00', id_tipo_jornada: 2, id_competicion: 1});
+	jornadas.push({id_jornada: id_jornada++, numero_jornada: 6, nombre_jornada: 'Semifinales', nombre_corto: 'SF', fecha_inicio: '2016-08-19 20:45:00', fecha_fin: '2016-08-19 20:45:00', id_tipo_jornada: 2, id_competicion: 1});
+	jornadas.push({id_jornada: id_jornada++, numero_jornada: 7, nombre_jornada: 'Final', nombre_corto: 'F', fecha_inicio: '2016-08-19 20:45:00', fecha_fin: '2016-08-19 20:45:00', id_tipo_jornada: 2, id_competicion: 1});
 	
 	// Jornadas liga 14-15
 	for (i = 1; i <= 38; i++){
-		jornadas.push({id: id_jornada++, numero: i, nombre: 'Jornada ' + ('00' + i).slice(-2), nombre_corto: 'J' + ('00' + i).slice(-2), fecha_hora: '19-08-2016 20:45', tipo_jornada: { id: 1, nombre: 'Liga' }, id_competicion: 2});
+		jornadas.push({id_jornada: id_jornada++, numero_jornada: i, nombre_jornada: 'Jornada ' + ('00' + i).slice(-2), nombre_corto: 'J' + ('00' + i).slice(-2), fecha_inicio: '2016-08-19 20:45:00', fecha_fin: '2016-08-19 20:45:00', id_tipo_jornada: 1, id_competicion: 2});
 	}
 	
 	// Jornada liga 15-16
 	for (i = 1; i <= 38; i++){
-		jornadas.push({id: id_jornada++, numero: i, nombre: 'Jornada ' + ('00' + i).slice(-2), nombre_corto: 'J' + ('00' + i).slice(-2), fecha_hora: '19-08-2016 20:45', tipo_jornada: { id: 1, nombre: 'Liga' }, id_competicion: 6});
+		jornadas.push({id_jornada: id_jornada++, numero_jornada: i, nombre_jornada: 'Jornada ' + ('00' + i).slice(-2), nombre_corto: 'J' + ('00' + i).slice(-2), fecha_inicio: '2016-08-19 20:45:00', fecha_fin: '2016-08-19 20:45:00', id_tipo_jornada: 1, id_competicion: 6});
 	}
 	
 	// Jornadas Eurocopa
-	jornadas.push({id: id_jornada++, numero: 1, nombre: 'Jornada 01', nombre_corto: 'J01', fecha_hora: '19-08-2016 20:45', tipo_jornada: { id: 1, nombre: 'Liga' }, id_competicion: 7});
-	jornadas.push({id: id_jornada++, numero: 2, nombre: 'Jornada 02', nombre_corto: 'J02', fecha_hora: '19-08-2016 20:45', tipo_jornada: { id: 1, nombre: 'Liga' }, id_competicion: 7});
-	jornadas.push({id: id_jornada++, numero: 3, nombre: 'Jornada 03', nombre_corto: 'J03', fecha_hora: '19-08-2016 20:45', tipo_jornada: { id: 1, nombre: 'Liga' }, id_competicion: 7});
-	jornadas.push({id: id_jornada++, numero: 4, nombre: 'Cuartos de final', nombre_corto: 'QF' , fecha_hora: '19-08-2016 20:45', tipo_jornada: { id: 2, nombre: 'Copa' }, id_competicion: 7});
-	jornadas.push({id: id_jornada++, numero: 5, nombre: 'Semifinales', nombre_corto: 'SF', fecha_hora: '19-08-2016 20:45', tipo_jornada: { id: 2, nombre: 'Copa' }, id_competicion: 7});
-	jornadas.push({id: id_jornada++, numero: 6, nombre: 'Final', nombre_corto: 'F', fecha_hora: '19-08-2016 20:45', tipo_jornada: { id: 2, nombre: 'Copa' }, id_competicion: 7});
+	jornadas.push({id_jornada: id_jornada++, numero_jornada: 1, nombre_jornada: 'Jornada 01', nombre_corto: 'J01', fecha_inicio: '2016-08-19 20:45:00', fecha_fin: '2016-08-19 20:45:00', id_tipo_jornada: 1, id_competicion: 7});
+	jornadas.push({id_jornada: id_jornada++, numero_jornada: 2, nombre_jornada: 'Jornada 02', nombre_corto: 'J02', fecha_inicio: '2016-08-19 20:45:00', fecha_fin: '2016-08-19 20:45:00', id_tipo_jornada: 1, id_competicion: 7});
+	jornadas.push({id_jornada: id_jornada++, numero_jornada: 3, nombre_jornada: 'Jornada 03', nombre_corto: 'J03', fecha_inicio: '2016-08-19 20:45:00', fecha_fin: '2016-08-19 20:45:00', id_tipo_jornada: 1, id_competicion: 7});
+	jornadas.push({id_jornada: id_jornada++, numero_jornada: 4, nombre_jornada: 'Cuartos de final', nombre_corto: 'QF' , fecha_inicio: '2016-08-19 20:45:00', fecha_fin: '2016-08-19 20:45:00', id_tipo_jornada: 2, id_competicion: 7});
+	jornadas.push({id_jornada: id_jornada++, numero_jornada: 5, nombre_jornada: 'Semifinales', nombre_corto: 'SF', fecha_inicio: '2016-08-19 20:45:00', fecha_fin: '2016-08-19 20:45:00', id_tipo_jornada: 2, id_competicion: 7});
+	jornadas.push({id_jornada: id_jornada++, numero_jornada: 6, nombre_jornada: 'Final', nombre_corto: 'F', fecha_inicio: '2016-08-19 20:45:00', fecha_fin: '2016-08-19 20:45:00', id_tipo_jornada: 2, id_competicion: 7});
 	
 	// Jornadas liga 16-17
 	for (i = 1; i <= 38; i++){
-		jornadas.push({id: id_jornada++, numero: i, nombre: 'Jornada ' + ('00' + i).slice(-2), nombre_corto: 'J' + ('00' + i).slice(-2), fecha_hora: '19-08-2016 20:45', tipo_jornada: { id: 1, nombre: 'Liga' }, id_competicion: 8});
+		jornadas.push({id_jornada: id_jornada++, numero_jornada: i, nombre_jornada: 'Jornada ' + ('00' + i).slice(-2), nombre_corto: 'J' + ('00' + i).slice(-2), fecha_inicio: '2016-08-19 20:45:00', fecha_fin: '2016-08-19 20:45:00', id_tipo_jornada: 1, id_competicion: 8});
 	}
 	return jornadas;
 }
 
+function getJornadasCompeticionMockup(id_competicion){
+	var jornadas = getJornadasMockup();
+	var jornadas_competicion = $.grep(jornadas, function(jornada, index){
+		return jornada.id_competicion === id_competicion;
+	});
+	return jornadas_competicion;
+}
+
 function getPartidosJornadaMockup(id_jornada){
-	alert("PartidosJornada es mockup");
 	var partidos = [];
-	partidos.push({id: 1,  equipo_1: 1,  equipo_2: 2,  goles_equipo_1: 1, goles_equipo_2: 1, estadio: 1, fecha_hora: '19-08-2016 20:45'});
-	partidos.push({id: 2,  equipo_1: 3,  equipo_2: 4,  goles_equipo_1: 2, goles_equipo_2: 1, estadio: 2, fecha_hora: '19-08-2016 20:45'});
-	partidos.push({id: 3,  equipo_1: 5,  equipo_2: 6,  goles_equipo_1: 6, goles_equipo_2: 2, estadio: 3, fecha_hora: '19-08-2016 20:45'});
-	partidos.push({id: 4,  equipo_1: 7,  equipo_2: 8,  goles_equipo_1: 1, goles_equipo_2: 1, estadio: 4, fecha_hora: '19-08-2016 20:45'});
-	partidos.push({id: 5,  equipo_1: 9,  equipo_2: 10, goles_equipo_1: 6, goles_equipo_2: 4, estadio: 5, fecha_hora: '19-08-2016 20:45'});
-	partidos.push({id: 6,  equipo_1: 11, equipo_2: 12, goles_equipo_1: 2, goles_equipo_2: 1, estadio: 6, fecha_hora: '19-08-2016 20:45'});
-	partidos.push({id: 7,  equipo_1: 13, equipo_2: 14, goles_equipo_1: 0, goles_equipo_2: 3, estadio: 7, fecha_hora: '19-08-2016 20:45'});
-	partidos.push({id: 8,  equipo_1: 15, equipo_2: 16, goles_equipo_1: 1, goles_equipo_2: 1, estadio: 8, fecha_hora: '19-08-2016 20:45'});
-	partidos.push({id: 9,  equipo_1: 17, equipo_2: 18, goles_equipo_1: 0, goles_equipo_2: 1, estadio: 9, fecha_hora: '19-08-2016 20:45'});
-	partidos.push({id: 10, equipo_1: 19, equipo_2: 20, goles_equipo_1: 2, goles_equipo_2: 4, estadio: 10, fecha_hora: '19-08-2016 20:45'});
+	partidos.push({id_partido: 1,  id_equipo_1: 1,  id_equipo_2: 2,  goles_equipo_1: 1, goles_equipo_2: 1, id_estadio: 1, fecha_hora: '2016-08-19 20:45:00', id_grupo: 1});
+	partidos.push({id_partido: 2,  id_equipo_1: 3,  id_equipo_2: 4,  goles_equipo_1: 2, goles_equipo_2: 1, id_estadio: 2, fecha_hora: '2016-08-19 20:45:00', id_grupo: 1});
+	partidos.push({id_partido: 3,  id_equipo_1: 5,  id_equipo_2: 6,  goles_equipo_1: 6, goles_equipo_2: 2, id_estadio: 3, fecha_hora: '2016-08-19 20:45:00', id_grupo: 2});
+	partidos.push({id_partido: 4,  id_equipo_1: 7,  id_equipo_2: 8,  goles_equipo_1: 1, goles_equipo_2: 1, id_estadio: 4, fecha_hora: '2016-08-19 20:45:00', id_grupo: 2});
+	partidos.push({id_partido: 5,  id_equipo_1: 9,  id_equipo_2: 10, goles_equipo_1: 6, goles_equipo_2: 4, id_estadio: 5, fecha_hora: '2016-08-19 20:45:00', id_grupo: 3});
+	partidos.push({id_partido: 6,  id_equipo_1: 11, id_equipo_2: 12, goles_equipo_1: 2, goles_equipo_2: 1, id_estadio: 6, fecha_hora: '2016-08-19 20:45:00', id_grupo: 3});
+	partidos.push({id_partido: 7,  id_equipo_1: 13, id_equipo_2: 14, goles_equipo_1: 0, goles_equipo_2: 3, id_estadio: 7, fecha_hora: '2016-08-19 20:45:00', id_grupo: 4});
+	partidos.push({id_partido: 8,  id_equipo_1: 15, id_equipo_2: 16, goles_equipo_1: 1, goles_equipo_2: 1, id_estadio: 8, fecha_hora: '2016-08-19 20:45:00', id_grupo: 4});
+	partidos.push({id_partido: 9,  id_equipo_1: 17, id_equipo_2: 18, goles_equipo_1: 0, goles_equipo_2: 1, id_estadio: 9, fecha_hora: '2016-08-19 20:45:00', id_grupo: 5});
+	partidos.push({id_partido: 10, id_equipo_1: 19, id_equipo_2: 20, goles_equipo_1: 2, goles_equipo_2: 4, id_estadio: 10, fecha_hora: '2016-08-19 20:45:00', id_grupo: 5});
 	return partidos;
 }
 
 function getUsuariosMockup(){
 	var usuarios = [];
-	usuarios.push({ id: 8, login: "Tokero", nombre: "Carlos", apellidos: "Toquero", comentarios: " ", email: "carlostoquero@gmail.com", id_estado: 1, id_acceso: 2, competiciones: [	1, 2, 6, 7, 8	]});
-	usuarios.push({ id: 10, login: "jluzon", nombre: "Jairo", apellidos: "Luz�n", comentarios: "No comment ", email: "jairoluzon@gmail.com", id_estado: 1, id_acceso: 1, competiciones: [	1, 2, 6, 7, 8	]});
-	usuarios.push({ id: 11, login: "Lario", nombre: "Alberto", apellidos: "Lario", comentarios: "Dise�ador del sitio ", email: "lariobyte@gmail.com", id_estado: 1, id_acceso: 2, competiciones: [	1, 2, 6, 7, 8	]});
-	usuarios.push({ id: 13, login: "jorgjim", nombre: "Jorge", apellidos: "Jimenez Pose", comentarios: "Pose campe�n!!", email: "jorgjim@gmail.com", id_estado: 1, id_acceso: 1, competiciones: [	1, 2, 6, 7, 8	]});
-	usuarios.push({ id: 14, login: "pinguinino", nombre: "Carlos", apellidos: "Fresno", comentarios: "Nos conocemos de alguna borrachera que otra...", email: "pinguinino@gmail.com", id_estado: 1, id_acceso: 1, competiciones: [	1, 2, 6, 7, 8	]});
-	usuarios.push({ id: 15, login: "juanrilla", nombre: "Juan Ram�nn", apellidos: "Garc�a Fern�ndez", comentarios: "Voy a pelar unos cuantos pollos...", email: "juanramongarcia@gmail.com", id_estado: 1, id_acceso: 1, competiciones: [	1, 2, 6, 7, 8	]});
-	usuarios.push({ id: 16, login: "juanignaciosl", nombre: "Nacho", apellidos: "S�nchez", comentarios: "Creo que no hay suficientes campos de registro, sexo, color de pelo y talla son fundamentales tambi�n =D", email: "aaa", id_estado: 2, id_acceso: 1, competiciones: [		]});
-	usuarios.push({ id: 19, login: "Pepe", nombre: "Pepe", apellidos: "Toquero S�nchez", comentarios: "", email: "joseatoquero@gmail.com", id_estado: 1, id_acceso: 1, competiciones: [	1, 2, 6, 7, 8	]});
-	usuarios.push({ id: 20, login: "Uvekefu", nombre: "Jose A.", apellidos: "Garc�a", comentarios: "Viva el Mister de la PD Hermanos", email: "uvekefu@gmail.com", id_estado: 1, id_acceso: 1, competiciones: [	1, 2, 6, 7, 8	]});
-	usuarios.push({ id: 21, login: "Chuchi69", nombre: "Jes�s", apellidos: "Diego G�lvez", comentarios: "", email: "Ewerthon_85@hotmail.com", id_estado: 1, id_acceso: 1, competiciones: [	1, 2, 6, 7, 8	]});
-	usuarios.push({ id: 22, login: "sofiadenao", nombre: "Sofia", apellidos: "P�rez Gonz�lez ", comentarios: "", email: "sofiadenao@hotmail.com", id_estado: 1, id_acceso: 1, competiciones: [	1, 2, 6, 7, 8	]});
-	usuarios.push({ id: 23, login: "flipi", nombre: "Miguel", apellidos: "Pena", comentarios: "Los de salinas los mejores", email: "miguel.migeling@gmail.com", id_estado: 1, id_acceso: 1, competiciones: [	1, 2, 6, 7, 8	]});
-	usuarios.push({ id: 24, login: "Gaby", nombre: "gabriel", apellidos: "rodr�guez", comentarios: "", email: "gabriel10@hotmail.es", id_estado: 1, id_acceso: 1, competiciones: [	1, 2, 6, 7	]});
-	usuarios.push({ id: 25, login: "jiye", nombre: "Guillermo", apellidos: "Santofan", comentarios: "Lo hablamos", email: "gsimmross@gmail.com", id_estado: 1, id_acceso: 1, competiciones: [	1	]});
-	usuarios.push({ id: 26, login: "raujipo", nombre: "Raul ", apellidos: "Jimenez Pose", comentarios: "Hola, soy Raul (Mane), el hermano de Pose de Avila. ", email: "raujipo@gmail.com", id_estado: 1, id_acceso: 1, competiciones: [	1, 2, 6, 7, 8	]});
-	usuarios.push({ id: 27, login: "felixuco1981", nombre: "J.Felix", apellidos: "Jimenez Jimenez", comentarios: "Soy Felix de Avila", email: "felixuco533@hotmail.com", id_estado: 1, id_acceso: 1, competiciones: [	1, 2, 6, 7, 8	]});
-	usuarios.push({ id: 28, login: "ana.g", nombre: "ANA", apellidos: "GONZALEZ ALVARADO", comentarios: "��� VAAAMOS ESPA�A !!!!!", email: "ana.g.alvarado1981@gmail.com", id_estado: 1, id_acceso: 1, competiciones: [	1, 2, 6, 7, 8	]});
-	usuarios.push({ id: 29, login: "bpenmar", nombre: "Benito", apellidos: "PM", comentarios: "", email: "bpenmar@gmail.com", id_estado: 1, id_acceso: 1, competiciones: [	1	]});
-	usuarios.push({ id: 30, login: "Jesi", nombre: "Jesi", apellidos: "Roman", comentarios: "jesy sexy!", email: "jessy_delfin@hotmail.com", id_estado: 1, id_acceso: 1, competiciones: [	1	]});
-	usuarios.push({ id: 31, login: "Mario", nombre: "Mario", apellidos: "Martin", comentarios: "", email: "mariete83@hotmail.com", id_estado: 1, id_acceso: 1, competiciones: [	1, 2, 6, 7, 8	]});
-	usuarios.push({ id: 32, login: "Ginny", nombre: "Virginia", apellidos: "Garc�a Garc�a", comentarios: "", email: "Virginny03@hotmail.com", id_estado: 1, id_acceso: 1, competiciones: [	1, 2, 6, 7, 8	]});
-	usuarios.push({ id: 33, login: "Mitxelebb", nombre: "Miguel", apellidos: "Gonz�lez Alvarado", comentarios: "", email: "Mitxelebb@hotmail.com", id_estado: 1, id_acceso: 1, competiciones: [	1, 2, 6, 7, 8	]});
-	usuarios.push({ id: 35, login: "Alberto", nombre: "Alberto", apellidos: "Alvarez Toquero", comentarios: "Primo TOK", email: "ea.alvatok@gmail.com", id_estado: 1, id_acceso: 1, competiciones: [	1, 6	]});
-	usuarios.push({ id: 36, login: "Gerardo", nombre: "Gerardo", apellidos: "Marcos gomez", comentarios: "", email: "gmargom@ono.com", id_estado: 1, id_acceso: 1, competiciones: [	1, 2, 6, 7, 8	]});
-	usuarios.push({ id: 37, login: "Angel", nombre: "Angel Luis", apellidos: "Sanchez Mata", comentarios: "Que soy yo. El primo de Pepe", email: "sancmata@gmail.com", id_estado: 1, id_acceso: 1, competiciones: [	1, 2, 6, 7, 8	]});
-	usuarios.push({ id: 38, login: "dolphy77", nombre: "AURE VIOREL", apellidos: "ALBU", comentarios: "", email: "aurelviorel21@gmail.com", id_estado: 1, id_acceso: 1, competiciones: [	1	]});
-	usuarios.push({ id: 39, login: "juanjo", nombre: "Juanjo", apellidos: "Toquero Nieto", comentarios: "", email: "juanitotok_84@hotmail.com", id_estado: 1, id_acceso: 1, competiciones: [	1, 2, 6, 7, 8	]});
-	usuarios.push({ id: 40, login: "Luigi", nombre: "Luis", apellidos: "Ferrari Nieto", comentarios: "Amigo pervertido del guiller", email: "lfernie79@gmail.com", id_estado: 1, id_acceso: 1, competiciones: [	1	]});
-	usuarios.push({ id: 41, login: "Alvaro", nombre: "A�lvaro", apellidos: "Lario Velasco", comentarios: "", email: "alv_lario@hotmail.com", id_estado: 1, id_acceso: 1, competiciones: [	1, 2, 7, 8	]});
-	usuarios.push({ id: 42, login: "barrilla", nombre: "Javier", apellidos: "Barra", comentarios: "Hola, Javier Barra para jugar, con el n�mero 11 a la espalda si puede ser! jejeje", email: "jbarra@spanishplayer.com", id_estado: 1, id_acceso: 1, competiciones: [	1	]});
-	usuarios.push({ id: 43, login: "Fran1977", nombre: "FRANCISCO MANUEL", apellidos: "MARTIN ARRABAL", comentarios: "", email: "jatar2000@hotmail.com", id_estado: 1, id_acceso: 1, competiciones: [	1	]});
-	usuarios.push({ id: 44, login: "Javi", nombre: "Javier", apellidos: "Gonz�lez Alvarado", comentarios: "", email: "Karpkoeman1978@hotmail.com", id_estado: 1, id_acceso: 1, competiciones: [	1, 6, 7, 8	]});
-	usuarios.push({ id: 45, login: "angelito", nombre: "Angel", apellidos: "rodriguez serrador", comentarios: "Compa�ero Alberto ��lvarez", email: "gil19@hotmail.es", id_estado: 1, id_acceso: 1, competiciones: [	1	]});
-	usuarios.push({ id: 46, login: "Roman", nombre: "Joni", apellidos: "Rom�n Garc�a", comentarios: "VIVA ESPA�A ", email: "jonimaster2@hotmail.com", id_estado: 1, id_acceso: 1, competiciones: [	1, 2, 6, 7, 8	]});
-	usuarios.push({ id: 47, login: "kulter84", nombre: "Borja", apellidos: "Martin de Frutos", comentarios: "BORJA PE�A HERMANOS", email: "ajrob1984@gmail.com", id_estado: 1, id_acceso: 1, competiciones: [	1, 2, 6, 7, 8	]});
-	usuarios.push({ id: 51, login: "_sabelotodo", nombre: "Usuario", apellidos: "Sabelotodo", comentarios: "", email: "usuario@sabelotodo.com", id_estado: 2, id_acceso: 1, competiciones: [		]});
-	usuarios.push({ id: 52, login: "alber_collantes", nombre: "Alberto", apellidos: "Collantes Z��iga", comentarios: "Amigo Juanra", email: "albertocollantes@hotmail.com", id_estado: 1, id_acceso: 1, competiciones: [	2	]});
-	usuarios.push({ id: 53, login: "Blanco", nombre: "Rub�n", apellidos: "Blanco", comentarios: "", email: "rubenblanco1979@gmail.com", id_estado: 1, id_acceso: 1, competiciones: [	2	]});
-	usuarios.push({ id: 54, login: "Cordo", nombre: "Carlos", apellidos: "Cordob�s Espeja", comentarios: "", email: "cordo_10@hotmail.com", id_estado: 1, id_acceso: 1, competiciones: [	2	]});
-	usuarios.push({ id: 55, login: "Cristina", nombre: "Cristina", apellidos: "Amo Iglesias", comentarios: "", email: "cristina3581@hotmail.com", id_estado: 1, id_acceso: 1, competiciones: [	2	]});
-	usuarios.push({ id: 56, login: "Diego", nombre: "Diego", apellidos: "Robert", comentarios: "", email: "diegopucela@hotmail.es", id_estado: 1, id_acceso: 1, competiciones: [	2	]});
-	usuarios.push({ id: 57, login: "rulopedrajax", nombre: "Raul", apellidos: "Carretero", comentarios: "Primo Fresno", email: "raul.carretero@gmail.com", id_estado: 1, id_acceso: 1, competiciones: [	2	]});
-	usuarios.push({ id: 58, login: "chavo", nombre: "Rub�n", apellidos: "Casillas", comentarios: "Amigo Pose", email: "rcrcas@gmail.com", id_estado: 1, id_acceso: 1, competiciones: [	2, 6, 7	]});
-	usuarios.push({ id: 59, login: "Richard", nombre: "Ricardo", apellidos: "Mart�n Frutos", comentarios: "", email: "richarmartin@hotmail.com", id_estado: 1, id_acceso: 1, competiciones: [	2, 6, 7, 8	]});
-	usuarios.push({ id: 60, login: "Jonastrum", nombre: "Jonatan", apellidos: "Casillas", comentarios: "Hermano de ruben (chavo)", email: "rubio_a3_@hotmail.com", id_estado: 1, id_acceso: 1, competiciones: [	6, 7, 8	]});
-	usuarios.push({ id: 61, login: "Carletto", nombre: "Carlos augusto", apellidos: "Lopez alonso", comentarios: "", email: "Clopez_alonso@hotmail.com", id_estado: 1, id_acceso: 1, competiciones: [	6, 7	]});
-	usuarios.push({ id: 62, login: "Jotaeme", nombre: "Jose", apellidos: "Perez gonzalez", comentarios: "", email: "Jotaemepuntog@hotmail.com", id_estado: 1, id_acceso: 1, competiciones: [	6, 7, 8	]});
-	usuarios.push({ id: 63, login: "nando", nombre: "Fernando", apellidos: "Garcinu�o", comentarios: "", email: "nando_gm84@hotmail.com", id_estado: 1, id_acceso: 1, competiciones: [	6, 7, 8	]});
-	usuarios.push({ id: 64, login: "Andrew", nombre: "Andres", apellidos: "Castro Tirados", comentarios: "", email: "leondrew@hotmail.com", id_estado: 1, id_acceso: 1, competiciones: [	6, 7	]});
-	usuarios.push({ id: 65, login: "samurablack", nombre: "Juan Mamuel", apellidos: "Rodriguez Pedruelo", comentarios: "", email: "samurablack@yahoo.es", id_estado: 1, id_acceso: 1, competiciones: [	6, 8	]});
-	usuarios.push({ id: 66, login: "benjamin", nombre: "benjamin", apellidos: "manrique", comentarios: "", email: "bmanrique@impalag.es", id_estado: 0, id_acceso: 1, competiciones: [	6	]});
-	usuarios.push({ id: 67, login: "olps70", nombre: "Oscar", apellidos: "Pollán  Somoza", comentarios: "Oscar laura", email: "lusgali@hotmail.es", id_estado: 1, id_acceso: 1, competiciones: [	7, 8	]});
-	usuarios.push({ id: 68, login: "Guillerkai", nombre: "Guillermo", apellidos: "Garc�a Fern�ndez", comentarios: "Soy el hermano de Juanra, y pod�is ir aflojando la pasta que no ten�is nada que hacer XD", email: "guillergf83@gmail.com", id_estado: 1, id_acceso: 1, competiciones: [	7	]});
-	usuarios.push({ id: 69, login: "JoseInclam", nombre: "Jose", apellidos: "Rodr�guez de las Heras", comentarios: "Soy Jose, compa�ero de trabajo de Carlos y Juanra!", email: "josrodhe@gmail.com", id_estado: 1, id_acceso: 1, competiciones: [	7, 8	]});
-	usuarios.push({ id: 70, login: "jhonete", nombre: "jonatan", apellidos: "fernandez camino", comentarios: "Esa hermanos!!!!!", email: "jhonete85@hotmail.com", id_estado: 1, id_acceso: 1, competiciones: [	7, 8	]});
-	usuarios.push({ id: 71, login: "miguelmendez000", nombre: "Miguel", apellidos: "M�ndez", comentarios: "", email: "miguelmendez000@hotmail.com", id_estado: 1, id_acceso: 1, competiciones: [	7, 8	]});
-	usuarios.push({ id: 72, login: "a.gonzalez", nombre: "Alvaro", apellidos: "Gonzalez", comentarios: "", email: "a.gm130888@gmail.com", id_estado: 1, id_acceso: 1, competiciones: [	7, 8	]});
-	usuarios.push({ id: 73, login: "MINGUEZ", nombre: "VICTOR", apellidos: "MINGUEZ ORTEGO", comentarios: "", email: "minguez_atleti_90@hotmail.com", id_estado: 1, id_acceso: 1, competiciones: [	7	]});
-	usuarios.push({ id: 74, login: "antuas", nombre: "antuas", apellidos: "lopez", comentarios: "", email: "tonnocorreo-personal@yahoo.es", id_estado: 0, id_acceso: 1, competiciones: [		]});
+	usuarios.push({ id_usuario: 8, login: "Tokero", nombre: "Carlos", apellidos: "Toquero", comentarios: " ", email: "carlostoquero@gmail.com", id_estado: 1, id_acceso: 2, competiciones: [	1, 2, 6, 7, 8	]});
+	usuarios.push({ id_usuario: 10, login: "jluzon", nombre: "Jairo", apellidos: "Luz�n", comentarios: "No comment ", email: "jairoluzon@gmail.com", id_estado: 1, id_acceso: 1, competiciones: [	1, 2, 6, 7, 8	]});
+	usuarios.push({ id_usuario: 11, login: "Lario", nombre: "Alberto", apellidos: "Lario", comentarios: "Dise�ador del sitio ", email: "lariobyte@gmail.com", id_estado: 1, id_acceso: 2, competiciones: [	1, 2, 6, 7, 8	]});
+	usuarios.push({ id_usuario: 13, login: "jorgjim", nombre: "Jorge", apellidos: "Jimenez Pose", comentarios: "Pose campe�n!!", email: "jorgjim@gmail.com", id_estado: 1, id_acceso: 1, competiciones: [	1, 2, 6, 7, 8	]});
+	usuarios.push({ id_usuario: 14, login: "pinguinino", nombre: "Carlos", apellidos: "Fresno", comentarios: "Nos conocemos de alguna borrachera que otra...", email: "pinguinino@gmail.com", id_estado: 1, id_acceso: 1, competiciones: [	1, 2, 6, 7, 8	]});
+	usuarios.push({ id_usuario: 15, login: "juanrilla", nombre: "Juan Ram�nn", apellidos: "Garc�a Fern�ndez", comentarios: "Voy a pelar unos cuantos pollos...", email: "juanramongarcia@gmail.com", id_estado: 1, id_acceso: 1, competiciones: [	1, 2, 6, 7, 8	]});
+	usuarios.push({ id_usuario: 16, login: "juanignaciosl", nombre: "Nacho", apellidos: "S�nchez", comentarios: "Creo que no hay suficientes campos de registro, sexo, color de pelo y talla son fundamentales tambi�n =D", email: "aaa", id_estado: 2, id_acceso: 1, competiciones: [		]});
+	usuarios.push({ id_usuario: 19, login: "Pepe", nombre: "Pepe", apellidos: "Toquero S�nchez", comentarios: "", email: "joseatoquero@gmail.com", id_estado: 1, id_acceso: 1, competiciones: [	1, 2, 6, 7, 8	]});
+	usuarios.push({ id_usuario: 20, login: "Uvekefu", nombre: "Jose A.", apellidos: "Garc�a", comentarios: "Viva el Mister de la PD Hermanos", email: "uvekefu@gmail.com", id_estado: 1, id_acceso: 1, competiciones: [	1, 2, 6, 7, 8	]});
+	usuarios.push({ id_usuario: 21, login: "Chuchi69", nombre: "Jes�s", apellidos: "Diego G�lvez", comentarios: "", email: "Ewerthon_85@hotmail.com", id_estado: 1, id_acceso: 1, competiciones: [	1, 2, 6, 7, 8	]});
+	usuarios.push({ id_usuario: 22, login: "sofiadenao", nombre: "Sofia", apellidos: "P�rez Gonz�lez ", comentarios: "", email: "sofiadenao@hotmail.com", id_estado: 1, id_acceso: 1, competiciones: [	1, 2, 6, 7, 8	]});
+	usuarios.push({ id_usuario: 23, login: "flipi", nombre: "Miguel", apellidos: "Pena", comentarios: "Los de salinas los mejores", email: "miguel.migeling@gmail.com", id_estado: 1, id_acceso: 1, competiciones: [	1, 2, 6, 7, 8	]});
+	usuarios.push({ id_usuario: 24, login: "Gaby", nombre: "gabriel", apellidos: "rodr�guez", comentarios: "", email: "gabriel10@hotmail.es", id_estado: 1, id_acceso: 1, competiciones: [	1, 2, 6, 7	]});
+	usuarios.push({ id_usuario: 25, login: "jiye", nombre: "Guillermo", apellidos: "Santofan", comentarios: "Lo hablamos", email: "gsimmross@gmail.com", id_estado: 1, id_acceso: 1, competiciones: [	1	]});
+	usuarios.push({ id_usuario: 26, login: "raujipo", nombre: "Raul ", apellidos: "Jimenez Pose", comentarios: "Hola, soy Raul (Mane), el hermano de Pose de Avila. ", email: "raujipo@gmail.com", id_estado: 1, id_acceso: 1, competiciones: [	1, 2, 6, 7, 8	]});
+	usuarios.push({ id_usuario: 27, login: "felixuco1981", nombre: "J.Felix", apellidos: "Jimenez Jimenez", comentarios: "Soy Felix de Avila", email: "felixuco533@hotmail.com", id_estado: 1, id_acceso: 1, competiciones: [	1, 2, 6, 7, 8	]});
+	usuarios.push({ id_usuario: 28, login: "ana.g", nombre: "ANA", apellidos: "GONZALEZ ALVARADO", comentarios: "��� VAAAMOS ESPA�A !!!!!", email: "ana.g.alvarado1981@gmail.com", id_estado: 1, id_acceso: 1, competiciones: [	1, 2, 6, 7, 8	]});
+	usuarios.push({ id_usuario: 29, login: "bpenmar", nombre: "Benito", apellidos: "PM", comentarios: "", email: "bpenmar@gmail.com", id_estado: 1, id_acceso: 1, competiciones: [	1	]});
+	usuarios.push({ id_usuario: 30, login: "Jesi", nombre: "Jesi", apellidos: "Roman", comentarios: "jesy sexy!", email: "jessy_delfin@hotmail.com", id_estado: 1, id_acceso: 1, competiciones: [	1	]});
+	usuarios.push({ id_usuario: 31, login: "Mario", nombre: "Mario", apellidos: "Martin", comentarios: "", email: "mariete83@hotmail.com", id_estado: 1, id_acceso: 1, competiciones: [	1, 2, 6, 7, 8	]});
+	usuarios.push({ id_usuario: 32, login: "Ginny", nombre: "Virginia", apellidos: "Garc�a Garc�a", comentarios: "", email: "Virginny03@hotmail.com", id_estado: 1, id_acceso: 1, competiciones: [	1, 2, 6, 7, 8	]});
+	usuarios.push({ id_usuario: 33, login: "Mitxelebb", nombre: "Miguel", apellidos: "Gonz�lez Alvarado", comentarios: "", email: "Mitxelebb@hotmail.com", id_estado: 1, id_acceso: 1, competiciones: [	1, 2, 6, 7, 8	]});
+	usuarios.push({ id_usuario: 35, login: "Alberto", nombre: "Alberto", apellidos: "Alvarez Toquero", comentarios: "Primo TOK", email: "ea.alvatok@gmail.com", id_estado: 1, id_acceso: 1, competiciones: [	1, 6	]});
+	usuarios.push({ id_usuario: 36, login: "Gerardo", nombre: "Gerardo", apellidos: "Marcos gomez", comentarios: "", email: "gmargom@ono.com", id_estado: 1, id_acceso: 1, competiciones: [	1, 2, 6, 7, 8	]});
+	usuarios.push({ id_usuario: 37, login: "Angel", nombre: "Angel Luis", apellidos: "Sanchez Mata", comentarios: "Que soy yo. El primo de Pepe", email: "sancmata@gmail.com", id_estado: 1, id_acceso: 1, competiciones: [	1, 2, 6, 7, 8	]});
+	usuarios.push({ id_usuario: 38, login: "dolphy77", nombre: "AURE VIOREL", apellidos: "ALBU", comentarios: "", email: "aurelviorel21@gmail.com", id_estado: 1, id_acceso: 1, competiciones: [	1	]});
+	usuarios.push({ id_usuario: 39, login: "juanjo", nombre: "Juanjo", apellidos: "Toquero Nieto", comentarios: "", email: "juanitotok_84@hotmail.com", id_estado: 1, id_acceso: 1, competiciones: [	1, 2, 6, 7, 8	]});
+	usuarios.push({ id_usuario: 40, login: "Luigi", nombre: "Luis", apellidos: "Ferrari Nieto", comentarios: "Amigo pervertido del guiller", email: "lfernie79@gmail.com", id_estado: 1, id_acceso: 1, competiciones: [	1	]});
+	usuarios.push({ id_usuario: 41, login: "Alvaro", nombre: "A�lvaro", apellidos: "Lario Velasco", comentarios: "", email: "alv_lario@hotmail.com", id_estado: 1, id_acceso: 1, competiciones: [	1, 2, 7, 8	]});
+	usuarios.push({ id_usuario: 42, login: "barrilla", nombre: "Javier", apellidos: "Barra", comentarios: "Hola, Javier Barra para jugar, con el n�mero 11 a la espalda si puede ser! jejeje", email: "jbarra@spanishplayer.com", id_estado: 1, id_acceso: 1, competiciones: [	1	]});
+	usuarios.push({ id_usuario: 43, login: "Fran1977", nombre: "FRANCISCO MANUEL", apellidos: "MARTIN ARRABAL", comentarios: "", email: "jatar2000@hotmail.com", id_estado: 1, id_acceso: 1, competiciones: [	1	]});
+	usuarios.push({ id_usuario: 44, login: "Javi", nombre: "Javier", apellidos: "Gonz�lez Alvarado", comentarios: "", email: "Karpkoeman1978@hotmail.com", id_estado: 1, id_acceso: 1, competiciones: [	1, 6, 7, 8	]});
+	usuarios.push({ id_usuario: 45, login: "angelito", nombre: "Angel", apellidos: "rodriguez serrador", comentarios: "Compa�ero Alberto ��lvarez", email: "gil19@hotmail.es", id_estado: 1, id_acceso: 1, competiciones: [	1	]});
+	usuarios.push({ id_usuario: 46, login: "Roman", nombre: "Joni", apellidos: "Rom�n Garc�a", comentarios: "VIVA ESPA�A ", email: "jonimaster2@hotmail.com", id_estado: 1, id_acceso: 1, competiciones: [	1, 2, 6, 7, 8	]});
+	usuarios.push({ id_usuario: 47, login: "kulter84", nombre: "Borja", apellidos: "Martin de Frutos", comentarios: "BORJA PE�A HERMANOS", email: "ajrob1984@gmail.com", id_estado: 1, id_acceso: 1, competiciones: [	1, 2, 6, 7, 8	]});
+	usuarios.push({ id_usuario: 51, login: "_sabelotodo", nombre: "Usuario", apellidos: "Sabelotodo", comentarios: "", email: "usuario@sabelotodo.com", id_estado: 2, id_acceso: 1, competiciones: [		]});
+	usuarios.push({ id_usuario: 52, login: "alber_collantes", nombre: "Alberto", apellidos: "Collantes Z��iga", comentarios: "Amigo Juanra", email: "albertocollantes@hotmail.com", id_estado: 1, id_acceso: 1, competiciones: [	2	]});
+	usuarios.push({ id_usuario: 53, login: "Blanco", nombre: "Rub�n", apellidos: "Blanco", comentarios: "", email: "rubenblanco1979@gmail.com", id_estado: 1, id_acceso: 1, competiciones: [	2	]});
+	usuarios.push({ id_usuario: 54, login: "Cordo", nombre: "Carlos", apellidos: "Cordob�s Espeja", comentarios: "", email: "cordo_10@hotmail.com", id_estado: 1, id_acceso: 1, competiciones: [	2	]});
+	usuarios.push({ id_usuario: 55, login: "Cristina", nombre: "Cristina", apellidos: "Amo Iglesias", comentarios: "", email: "cristina3581@hotmail.com", id_estado: 1, id_acceso: 1, competiciones: [	2	]});
+	usuarios.push({ id_usuario: 56, login: "Diego", nombre: "Diego", apellidos: "Robert", comentarios: "", email: "diegopucela@hotmail.es", id_estado: 1, id_acceso: 1, competiciones: [	2	]});
+	usuarios.push({ id_usuario: 57, login: "rulopedrajax", nombre: "Raul", apellidos: "Carretero", comentarios: "Primo Fresno", email: "raul.carretero@gmail.com", id_estado: 1, id_acceso: 1, competiciones: [	2	]});
+	usuarios.push({ id_usuario: 58, login: "chavo", nombre: "Rub�n", apellidos: "Casillas", comentarios: "Amigo Pose", email: "rcrcas@gmail.com", id_estado: 1, id_acceso: 1, competiciones: [	2, 6, 7	]});
+	usuarios.push({ id_usuario: 59, login: "Richard", nombre: "Ricardo", apellidos: "Mart�n Frutos", comentarios: "", email: "richarmartin@hotmail.com", id_estado: 1, id_acceso: 1, competiciones: [	2, 6, 7, 8	]});
+	usuarios.push({ id_usuario: 60, login: "Jonastrum", nombre: "Jonatan", apellidos: "Casillas", comentarios: "Hermano de ruben (chavo)", email: "rubio_a3_@hotmail.com", id_estado: 1, id_acceso: 1, competiciones: [	6, 7, 8	]});
+	usuarios.push({ id_usuario: 61, login: "Carletto", nombre: "Carlos augusto", apellidos: "Lopez alonso", comentarios: "", email: "Clopez_alonso@hotmail.com", id_estado: 1, id_acceso: 1, competiciones: [	6, 7	]});
+	usuarios.push({ id_usuario: 62, login: "Jotaeme", nombre: "Jose", apellidos: "Perez gonzalez", comentarios: "", email: "Jotaemepuntog@hotmail.com", id_estado: 1, id_acceso: 1, competiciones: [	6, 7, 8	]});
+	usuarios.push({ id_usuario: 63, login: "nando", nombre: "Fernando", apellidos: "Garcinu�o", comentarios: "", email: "nando_gm84@hotmail.com", id_estado: 1, id_acceso: 1, competiciones: [	6, 7, 8	]});
+	usuarios.push({ id_usuario: 64, login: "Andrew", nombre: "Andres", apellidos: "Castro Tirados", comentarios: "", email: "leondrew@hotmail.com", id_estado: 1, id_acceso: 1, competiciones: [	6, 7	]});
+	usuarios.push({ id_usuario: 65, login: "samurablack", nombre: "Juan Mamuel", apellidos: "Rodriguez Pedruelo", comentarios: "", email: "samurablack@yahoo.es", id_estado: 1, id_acceso: 1, competiciones: [	6, 8	]});
+	usuarios.push({ id_usuario: 66, login: "benjamin", nombre: "benjamin", apellidos: "manrique", comentarios: "", email: "bmanrique@impalag.es", id_estado: 0, id_acceso: 1, competiciones: [	6	]});
+	usuarios.push({ id_usuario: 67, login: "olps70", nombre: "Oscar", apellidos: "Pollán  Somoza", comentarios: "Oscar laura", email: "lusgali@hotmail.es", id_estado: 1, id_acceso: 1, competiciones: [	7, 8	]});
+	usuarios.push({ id_usuario: 68, login: "Guillerkai", nombre: "Guillermo", apellidos: "Garc�a Fern�ndez", comentarios: "Soy el hermano de Juanra, y pod�is ir aflojando la pasta que no ten�is nada que hacer XD", email: "guillergf83@gmail.com", id_estado: 1, id_acceso: 1, competiciones: [	7	]});
+	usuarios.push({ id_usuario: 69, login: "JoseInclam", nombre: "Jose", apellidos: "Rodr�guez de las Heras", comentarios: "Soy Jose, compa�ero de trabajo de Carlos y Juanra!", email: "josrodhe@gmail.com", id_estado: 1, id_acceso: 1, competiciones: [	7, 8	]});
+	usuarios.push({ id_usuario: 70, login: "jhonete", nombre: "jonatan", apellidos: "fernandez camino", comentarios: "Esa hermanos!!!!!", email: "jhonete85@hotmail.com", id_estado: 1, id_acceso: 1, competiciones: [	7, 8 ]});
+	usuarios.push({ id_usuario: 71, login: "miguelmendez000", nombre: "Miguel", apellidos: "M�ndez", comentarios: "", email: "miguelmendez000@hotmail.com", id_estado: 1, id_acceso: 1, competiciones: [	7, 8	]});
+	usuarios.push({ id_usuario: 72, login: "a.gonzalez", nombre: "Alvaro", apellidos: "Gonzalez", comentarios: "", email: "a.gm130888@gmail.com", id_estado: 1, id_acceso: 1, competiciones: [	7, 8	]});
+	usuarios.push({ id_usuario: 73, login: "MINGUEZ", nombre: "VICTOR", apellidos: "MINGUEZ ORTEGO", comentarios: "", email: "minguez_atleti_90@hotmail.com", id_estado: 1, id_acceso: 1, competiciones: [	7	]});
+	usuarios.push({ id_usuario: 74, login: "antuas", nombre: "antuas", apellidos: "lopez", comentarios: "", email: "tonnocorreo-personal@yahoo.es", id_estado: 0, id_acceso: 1, competiciones: [		]});
 	return usuarios;
 }
 
@@ -387,9 +387,75 @@ function getUsuariosCompeticionMockup(id_competicion){
 }
 
 function getUsuarioMockup(id_usuario){
-	var usuarios = getUsuariosMockup();
-	var usuario = $.grep(usuarios, function(usr, index){
-		return usr.id === id_usuario;
+	return findElementByField(getUsuariosMockup(), "id_usuario", id_usuario);
+}
+
+function getCompeticionesUsuariosMockup(){
+	var competiciones_usuarios = [];
+	$.each(usuarios, function(index, usuario){
+		$.each(usuario.competiciones, function(index, competicion){
+			competiciones_usuarios.push({id_usuario: usuario.id_usuario, id_competicion: competicion, pagado: (usuario.id_usuario + competicion) % 2 });
+		});
 	});
-	return usuario !== null && usuario.length === 1 ? usuario[0] : null;
+	return competiciones_usuarios;
+}
+
+function getPronosticosMockup(id_jornada){
+	var pronosticos = [];
+	for (idUsuario = 0; idUsuario <= 30; idUsuario++){
+		if (idUsuario % 7 !== 0){
+			pronosticos.push({id: idUsuario*10 + 1, id_partido: 1, goles_equipo_1: 2, goles_equipo_2: 1, id_usuario: idUsuario});
+			pronosticos.push({id: idUsuario*10 + 2, id_partido: 2, goles_equipo_1: 2, goles_equipo_2: 1, id_usuario: idUsuario});
+			pronosticos.push({id: idUsuario*10 + 3, id_partido: 3, goles_equipo_1: 2, goles_equipo_2: 1, id_usuario: idUsuario});
+			pronosticos.push({id: idUsuario*10 + 4, id_partido: 4, goles_equipo_1: 2, goles_equipo_2: 1, id_usuario: idUsuario});
+			pronosticos.push({id: idUsuario*10 + 5, id_partido: 5, goles_equipo_1: 2, goles_equipo_2: 1, id_usuario: idUsuario});
+			pronosticos.push({id: idUsuario*10 + 6, id_partido: 6, goles_equipo_1: 2, goles_equipo_2: 1, id_usuario: idUsuario});
+			pronosticos.push({id: idUsuario*10 + 7, id_partido: 7, goles_equipo_1: 2, goles_equipo_2: 1, id_usuario: idUsuario});
+			pronosticos.push({id: idUsuario*10 + 8, id_partido: 8, goles_equipo_1: 2, goles_equipo_2: 1, id_usuario: idUsuario});
+			pronosticos.push({id: idUsuario*10 + 9, id_partido: 9, goles_equipo_1: 2, goles_equipo_2: 1, id_usuario: idUsuario});
+			pronosticos.push({id: idUsuario*10 + 10, id_partido: 10, goles_equipo_1: 2, goles_equipo_2: 1, id_usuario: idUsuario});
+		}
+	}
+	return pronosticos;
+}
+
+function getClasificacionUsuariosMockup(){
+	var puntos = [];
+	for (idUsuario = 0; idUsuario <= 30; idUsuario++){
+		if (idUsuario % 7 !== 0){
+			for (idJornada = 0; idJornada <= 22; idJornada++){
+				puntos.push({id_usuario: idUsuario, id_jornada: idJornada, valor: 5});
+			}
+		}
+	}
+	return puntos;
+}
+
+function getClasificacionEquiposMockup(){
+	var clasificacion_grupos = [];
+	
+	var clasificacion_equipos = [];
+	clasificacion_equipos.push({id_equipo: 1, url_escudo: "img/RMA.png", nombre_equipo: "Real Madrid", jugados: 38, ganados: 29, empatados: 6, perdidos: 3, goles_favor: 106, goles_contra: 41, puntos: 93 });
+	clasificacion_equipos.push({id_equipo: 2, url_escudo: "img/FCB.png", nombre_equipo: "Barcelona", jugados: 38, ganados: 28, empatados: 6, perdidos: 4, goles_favor: 116, goles_contra: 37, puntos: 90 });
+	clasificacion_equipos.push({id_equipo: 3, url_escudo: "img/ATM.png", nombre_equipo: "Atl&eacute;tico de Madrid", jugados: 38, ganados: 23, empatados: 9, perdidos: 6, goles_favor: 70, goles_contra: 27, puntos: 78 });
+	clasificacion_equipos.push({id_equipo: 4, url_escudo: "img/SEV.png", nombre_equipo: "Sevilla", jugados: 38, ganados: 21, empatados: 9, perdidos: 8, goles_favor: 69, goles_contra: 49, puntos: 72 });
+	clasificacion_equipos.push({id_equipo: 5, url_escudo: "img/VIL.png", nombre_equipo: "Villarreal", jugados: 38, ganados: 19, empatados: 10, perdidos: 9, goles_favor: 56, goles_contra: 33, puntos: 67 });
+	clasificacion_equipos.push({id_equipo: 6, url_escudo: "img/RSO.png", nombre_equipo: "Real Sociedad", jugados: 38, ganados: 19, empatados: 7, perdidos: 12, goles_favor: 59, goles_contra: 53, puntos: 64 });
+	clasificacion_equipos.push({id_equipo: 7, url_escudo: "img/ATH.png", nombre_equipo: "Athletic de Bilbao", jugados: 38, ganados: 19, empatados: 6, perdidos: 13, goles_favor: 53, goles_contra: 43, puntos: 63 });
+	clasificacion_equipos.push({id_equipo: 8, url_escudo: "img/ESY.png", nombre_equipo: "Espanyol", jugados: 38, ganados: 15, empatados: 11, perdidos: 12, goles_favor: 49, goles_contra: 50, puntos: 56 });
+	clasificacion_equipos.push({id_equipo: 9, url_escudo: "img/ALA.png", nombre_equipo: "Deportivo Alav&eacute;s SAD", jugados: 38, ganados: 14, empatados: 13, perdidos: 11, goles_favor: 41, goles_contra: 43, puntos: 55 });
+	clasificacion_equipos.push({id_equipo: 10, url_escudo: "img/EIB.png", nombre_equipo: "Eibar", jugados: 38, ganados: 15, empatados: 9, perdidos: 14, goles_favor: 56, goles_contra: 51, puntos: 54 });
+	clasificacion_equipos.push({id_equipo: 11, url_escudo: "img/MAL.png", nombre_equipo: "M&aacute;laga", jugados: 38, ganados: 12, empatados: 10, perdidos: 16, goles_favor: 49, goles_contra: 55, puntos: 46 });
+	clasificacion_equipos.push({id_equipo: 12, url_escudo: "img/VAL.png", nombre_equipo: "Valencia", jugados: 38, ganados: 13, empatados: 7, perdidos: 18, goles_favor: 56, goles_contra: 65, puntos: 46 });
+	clasificacion_equipos.push({id_equipo: 13, url_escudo: "img/CEL.png", nombre_equipo: "Celta", jugados: 38, ganados: 13, empatados: 6, perdidos: 19, goles_favor: 53, goles_contra: 69, puntos: 45 });
+	clasificacion_equipos.push({id_equipo: 14, url_escudo: "img/LPA.png", nombre_equipo: "Las Palmas", jugados: 38, ganados: 10, empatados: 9, perdidos: 19, goles_favor: 53, goles_contra: 74, puntos: 39 });
+	clasificacion_equipos.push({id_equipo: 15, url_escudo: "img/BET.png", nombre_equipo: "Real Betis", jugados: 38, ganados: 10, empatados: 9, perdidos: 19, goles_favor: 41, goles_contra: 64, puntos: 39 });
+	clasificacion_equipos.push({id_equipo: 16, url_escudo: "img/DEP.png", nombre_equipo: "Deportivo de la Coruña", jugados: 38, ganados: 8, empatados: 12, perdidos: 18, goles_favor: 43, goles_contra: 61, puntos: 36 });
+	clasificacion_equipos.push({id_equipo: 17, url_escudo: "img/LEG.png", nombre_equipo: "CD Legan&eacute;s", jugados: 38, ganados: 8, empatados: 11, perdidos: 19, goles_favor: 36, goles_contra: 55, puntos: 35 });
+	clasificacion_equipos.push({id_equipo: 18, url_escudo: "img/SPO.png", nombre_equipo: "Sporting de Gij&oacute;n", jugados: 38, ganados: 7, empatados: 10, perdidos: 21, goles_favor: 42, goles_contra: 72, puntos: 31 });
+	clasificacion_equipos.push({id_equipo: 19, url_escudo: "img/OSA.png", nombre_equipo: "At.Osasuna", jugados: 38, ganados: 4, empatados: 10, perdidos: 24, goles_favor: 40, goles_contra: 94, puntos: 22 });
+	clasificacion_equipos.push({id_equipo: 20, url_escudo: "img/GRA.png", nombre_equipo: "Granada", jugados: 38, ganados: 4, empatados: 8, perdidos: 26, goles_favor: 30, goles_contra: 82, puntos: 20 });
+	
+	clasificacion_grupos.push({ id_grupo: 1, nombre_grupo: "Primera_division", clasificacion: clasificacion_equipos });
+	return clasificacion_grupos;
 }

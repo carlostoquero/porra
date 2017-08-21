@@ -5,7 +5,9 @@ var estados_usuario = [];
 var accesos_usuario = [];
 
 $(document).ready(function(){
+	var usuario_conexion = usuarioConectado(true); // SI necesario administrador
 	generarMenu();
+	generarFooter();
 	
 	accesos_usuario = getAccesosUsuario();
 	estados_usuario = getEstadosUsuario();
@@ -68,8 +70,11 @@ $(document).ready(function(){
 		});
 		
 		$.each(competiciones_usuario, function(index, comp_usr){
-			$('.participa-competicion[data-id-usuario="' + comp_usr.id_usuario + '"][data-id-competicion="' + comp_usr.id_competicion + '"]').prop('checked', true);
-			if (comp_usr.pagado) $('.pagada-competicion[data-id-usuario="' + comp_usr.id_usuario + '"][data-id-competicion="' + comp_usr.id_competicion + '"]').prop('checked', true);
+			var usrCompContainer = $('.usr-comp[data-id-usuario="' + comp_usr.id_usuario + '"][data-id-competicion="' + comp_usr.id_competicion + '"]');
+			if (usrCompContainer){
+				usrCompContainer.find('.participa-competicion').prop('checked', true);
+				if (comp_usr.pagado) usrCompContainer.find('.pagada-competicion').prop('checked', true);
+			}
 		});
 	});
 });

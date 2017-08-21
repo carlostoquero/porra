@@ -3,7 +3,9 @@ var equipos = [];
 var competiciones_equipo = [];
 
 $(document).ready(function(){
+	var usuario_conexion = usuarioConectado(true); // SI necesario administrador
 	generarMenu();
+	generarFooter();
 	
 	$('body').on('click', '.editar-equipo', function(){
 		$('.errores').html('');

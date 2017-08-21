@@ -2,7 +2,9 @@ var estadios = [];
 var equipos = [];
 
 $(document).ready(function(){
+	var usuario_conexion = usuarioConectado(true); // SI necesario administrador
 	generarMenu();
+	generarFooter();
 	
 	$('body').on('click', '.editar-estadio', function(){
 		$('.dato-estadio').val('');
@@ -51,15 +53,15 @@ $(document).ready(function(){
 		}
 	});
 	
-	equipos = getEquiposMockup();
+	equipos = getEquipos();
 	$('.estadio_equipo').append('<option value="">(Seleccionar uno)</option>');
 	$.each(equipos, function(index, equipo){
-		$('.estadio_equipo').append('<option value="' + equipo.id + '">' + equipo.nombre + '</option>');
+		$('.estadio_equipo').append('<option value="' + equipo.id_equipo + '">' + equipo.nombre_equipo + '</option>');
 	});
 	loadEstadios();
 	
 	function loadEstadios(){
-		estadios = getEstadiosMockup();
+		estadios = getEstadios();
 		$('.tabla-estadios').find('tr').remove();
 		if (estadios !== null && estadios.length > 0){
 			$.each(estadios, function(index, estadio){
