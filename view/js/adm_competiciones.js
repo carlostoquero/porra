@@ -129,7 +129,7 @@ $(document).ready(function(){
 	}
 	
 	function loadCompeticiones(){
-		competiciones = getCompeticiones();
+		competiciones = getCompeticionesMockup();
 		$('.tabla-competiciones').find('tr').remove();
 		if (competiciones !== null && competiciones.length > 0){
 			$.each(competiciones, function(index, competicion){
