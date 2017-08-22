@@ -162,7 +162,7 @@ function getCompeticionesUsuario(id_usuario){
 	if (TRABAJANDO_EN_LOCAL) {
 		competiciones_usuario = getCompeticionesUsuarioMockup(id_usuario);
 	} else {
-		competiciones_usuario = getAjaxSync('ServicioUsuarios', 'GetCompeticionesUsuario', JSON.stringify({id_usuario: id_usuario}));
+		competiciones_usuario = getAjaxSync('ServicioCompeticiones', 'GetCompeticionesUsuario', JSON.stringify({id_usuario: id_usuario}));
 	}
 	return competiciones_usuario;
 }
@@ -298,7 +298,13 @@ function getClasificacionUsuarios(){
 }
 
 function getCompeticionSeleccionada(){
-	return 1;
+	var competicion_seleccionada = null;
+	if (TRABAJANDO_EN_LOCAL){
+		competicion_seleccionada = getCompeticionSeleccionadaMockup();
+	} else {
+		competicion_seleccionada = getAjaxSync('ServicioCompeticiones', 'GetCompeticionSeleccionada');
+	}
+	return competicion_seleccionada;
 }
 function getJornadaActual(){
 	return 1;
@@ -321,7 +327,7 @@ function getAjaxSync(servicio, funcion, argumentos){
 					  if( 'error' in obj ) {
 						  console.log(obj.error);
 					  } else{
-						  if ('messages' in obj){
+						  if ('messages' in obj && obj.messages !== null){
 							alert(obj.messages);
 						  }
 						  resultado = obj.result;

@@ -9,7 +9,8 @@ if (session_id() == '') {
 function GetCompeticiones(){
 	$competiciones = array();
 	$db = new dbConnection();
-	if ($stmt = $db->mysqli->prepare('SELECT id_competicion, nombre_competicion, abreviatura, titulo, subtitulo, reglas, fecha_inicio, fecha_fin, id_tipo_competicion FROM `COMPETICION` ORDER BY id_competicion')){
+	if ($stmt = $db->mysqli->prepare('SELECT id_competicion, nombre_competicion, abreviatura, titulo, subtitulo, reglas, fecha_inicio, fecha_fin, id_tipo_competicion 
+	                                  FROM COMPETICION ORDER BY id_competicion')){
 		$stmt->execute();
 		$stmt->bind_result($rId, $rNombre, $rSiglas, $rTitulo, $rSubtitulo, $rReglas, $rFechaInicio, $rFechaFin, $rTipoCompeticion);
 		while ($stmt->fetch()){
@@ -21,12 +22,30 @@ function GetCompeticiones(){
 	return $competiciones;
 }
 
+function GetCompeticion($id_competicion){
+	$competicion = null;
+	$db = new dbConnection();
+	if ($stmt = $db->mysqli->prepare('SELECT id_competicion, nombre_competicion, abreviatura, titulo, subtitulo, reglas, fecha_inicio, fecha_fin, id_tipo_competicion 
+	                                  FROM COMPETICION WHERE id_competicion = ? ORDER BY id_competicion')){
+		$stmt->bind_param("i", $id_competicion);
+		$stmt->execute();
+		$stmt->bind_result($rId, $rNombre, $rSiglas, $rTitulo, $rSubtitulo, $rReglas, $rFechaInicio, $rFechaFin, $rTipoCompeticion);
+		if ($stmt->fetch()){
+			$competicion = new CCompeticion($rId, $rNombre, $rSiglas, $rTitulo, $rSubtitulo, $rReglas, $rFechaInicio, $rFechaFin, $rTipoCompeticion);
+		}
+		$stmt->close();
+	}
+	$db->close();
+	return $competicion;
+}
+
 function GetCompeticionActual(){
 	$competicion = null;
 	
 	// Primera opción, hay competición en curso
 	$db = new dbConnection();
-	if ($stmt = $db->mysqli->prepare('SELECT id_competicion, nombre_competicion, abreviatura, titulo, subtitulo, reglas, fecha_inicio, fecha_fin, id_tipo_competicion FROM `COMPETICION` WHERE now() BETWEEN fecha_inicio and fecha_fin;')){
+	if ($stmt = $db->mysqli->prepare('SELECT id_competicion, nombre_competicion, abreviatura, titulo, subtitulo, reglas, fecha_inicio, fecha_fin, id_tipo_competicion 
+	                                  FROM COMPETICION WHERE now() BETWEEN fecha_inicio and fecha_fin;')){
 		$stmt->execute();
 		$stmt->bind_result($rId, $rNombre, $rSiglas, $rTitulo, $rSubtitulo, $rReglas, $rFechaInicio, $rFechaFin, $rTipoCompeticion);
 		if ($stmt->fetch()){
@@ -37,7 +56,8 @@ function GetCompeticionActual(){
 	
 	// Segunda opción, hay próxima competición que empieza en el futuro
 	if ($competicion == null){
-		if ($stmt = $db->mysqli->prepare('SELECT id_competicion, nombre_competicion, abreviatura, titulo, subtitulo, reglas, fecha_inicio, fecha_fin, id_tipo_competicion FROM `COMPETICION` WHERE fecha_inicio = (SELECT min(c2.fecha_inicio) FROM COMPETICION c2 WJERE c2.fecha_inicio > now());')){
+		if ($stmt = $db->mysqli->prepare('SELECT id_competicion, nombre_competicion, abreviatura, titulo, subtitulo, reglas, fecha_inicio, fecha_fin, id_tipo_competicion 
+		                                  FROM COMPETICION WHERE fecha_inicio = (SELECT min(c2.fecha_inicio) FROM COMPETICION c2 WJERE c2.fecha_inicio > now());')){
 			$stmt->execute();
 			$stmt->bind_result($rId, $rNombre, $rSiglas, $rTitulo, $rSubtitulo, $rReglas, $rFechaInicio, $rFechaFin, $rTipoCompeticion);
 			if ($stmt->fetch()){
@@ -49,7 +69,8 @@ function GetCompeticionActual(){
 	
 	// Tercera opción, hay última competición que terminó en el pasado
 	if ($competicion == null){
-		if ($stmt = $db->mysqli->prepare('SELECT id_competicion, nombre_competicion, abreviatura, titulo, subtitulo, reglas, fecha_inicio, fecha_fin, id_tipo_competicion FROM `COMPETICION` WHERE fecha_fin = (SELECT max(c2.fecha_fin) FROM COMPETICION c2 WHERE c2.fecha_fin < now());')){
+		if ($stmt = $db->mysqli->prepare('SELECT id_competicion, nombre_competicion, abreviatura, titulo, subtitulo, reglas, fecha_inicio, fecha_fin, id_tipo_competicion 
+		                                  FROM COMPETICION WHERE fecha_fin = (SELECT max(c2.fecha_fin) FROM COMPETICION c2 WHERE c2.fecha_fin < now());')){
 			$stmt->execute();
 			$stmt->bind_result($rId, $rNombre, $rSiglas, $rTitulo, $rSubtitulo, $rReglas, $rFechaInicio, $rFechaFin, $rTipoCompeticion);
 			if ($stmt->fetch()){
@@ -61,6 +82,45 @@ function GetCompeticionActual(){
 	$db->close();
 	return $competicion;
 }
+
+function GetCompeticionSeleccionada(){
+	$competicion_seleccionada = null;
+	if (isset($_SESSION['competicion'])){ $competicion_seleccionada = $_SESSION['competicion']; }
+	else {
+		$competicion_seleccionada = GetCompeticionActual();
+		$_SESSION['competicion'] = $competicion_seleccionada;
+	}
+	return $competicion_seleccionada;
+}
+
+function SetCompeticionSeleccionada($id_competicion, &$mensajes){
+	$set_correcto = false;
+	$competicion = GetCompeticion($id_competicion);
+	if (isset($competicion)){
+		$_SESSION['competicion'] = $competicion;
+		$set_correcto = true;
+	} else { $mensajes = 'La competicion indicada no existe.'; }
+	return $set_correcto;
+}
+
+function GetCompeticionesUsuario($id_usuario){
+	$competiciones_usuario = array();
+	$db = new dbConnection();
+	
+	if ($stmt = $db->mysqli->prepare('SELECT c.id_competicion, c.nombre_competicion, c.abreviatura, c.titulo, c.subtitulo, c.reglas, c.fecha_inicio, c.fecha_fin, c.id_tipo_competicion 
+	                                  FROM COMPETICION c JOIN USUARIO_COMPETICION uc ON uc.id_competicion = c.id_competicion WHERE uc.id_usuario = ? ORDER BY id_competicion')){
+		$stmt->bind_param("i", $id_usuario);
+		$stmt->execute();
+		$stmt->bind_result($rId, $rNombre, $rSiglas, $rTitulo, $rSubtitulo, $rReglas, $rFechaInicio, $rFechaFin, $rTipoCompeticion);
+		while ($stmt->fetch()){
+			$competiciones_usuario[] = new CCompeticion($rId, $rNombre, $rSiglas, $rTitulo, $rSubtitulo, $rReglas, $rFechaInicio, $rFechaFin, $rTipoCompeticion);
+		}
+		$stmt->close();
+	}
+	$db->close();
+	return $competiciones_usuario;
+}
+
 
 function GuardarCompeticion($id_competicion, $nombre_competicion, $siglas, $titulo, $subtitulo, $reglas, $fecha_inicio, $fecha_fin, $tipo_competicion, &$mensajes){
 	$guardado_correcto = "";
@@ -127,9 +187,9 @@ function BorrarCompeticion($id_competicion, &$mensajes){
 	// Comprobar existencia de registros hijo
 	$sql = "select grupos.cuantos + equipos.cuantos -- + jornadas.cuantos + usuarios.cuantos 
 			from (	SELECT count(1) cuantos FROM GRUPO WHERE id_competicion = ?) grupos,
-				 ( 	SELECT count(1) cuantos FROM EQUIPOS_COMPETICION WHERE id_competicion = ?) equipos,
+				 ( 	SELECT count(1) cuantos FROM EQUIPO_COMPETICION WHERE id_competicion = ?) equipos,
 				 (  SELECT count(1) cuantos FROM JORNADA WHERE id_competicion = ?) jornadas/*,
-				 ( 	SELECT count(1) cuantos FROM USUARIOS_COMPETICION WHERE id_competicion = ?) usuarios*/";
+				 ( 	SELECT count(1) cuantos FROM USUARIO_COMPETICION WHERE id_competicion = ?) usuarios*/";
 	
 	if ($stmtComprobacion = $db->mysqli->prepare($sql)){
 		//TODO: El bueno es el de abajo, no se puede poner hasta que no estén todas las tablas
@@ -249,7 +309,7 @@ function BorrarGrupo($id_grupo, &$mensajes){
 	//TODO: Descomentar tablas que aún no existen, comprobar si alguna otra tabla debe consultarse
 	// Comprobar existencia de registros hijo
 	$sql = "select equipos.cuantos -- + partidos.cuantos
-			from ( 	SELECT count(1) cuantos FROM EQUIPOS_COMPETICION WHERE id_grupo = ?) equipos/*,
+			from ( 	SELECT count(1) cuantos FROM EQUIPO_COMPETICION WHERE id_grupo = ?) equipos/*,
 				 ( 	SELECT count(1) cuantos FROM PARTIDO WHERE id_grupo = ?) partidos*/";
 	
 	if ($stmtComprobacion = $db->mysqli->prepare($sql)){
@@ -295,8 +355,28 @@ if( !isset($aResult['error']) ) {
 			$aResult['result'] = GetCompeticiones();
 			break;
 			
-		case 'GetCompeticionActual':
-			$aResult['result'] = GetCompeticionActual();
+		case 'GetCompeticionSeleccionada':
+			$aResult['result'] = GetCompeticionSeleccionada();
+			break;
+			
+		case 'SetCompeticionSeleccionada':
+			if( !isset($_GET['arguments']) ) { $aResult['error'] = 'No arguments!'; }
+			else {
+				$arguments = json_decode($_GET['arguments']);
+				if ( isset($arguments->id) ){ 
+					if (SetCompeticionSeleccionada($arguments->id, $aResult['messages']) ){ $aResult['result'] = "ok"; }
+					else { $aResult['result'] = "error"; }
+				} else { $aResult['error'] = 'Wrong arguments!'; }
+			}
+			break;
+			
+		case 'GetCompeticionesUsuario':
+			if( !isset($_GET['arguments']) ) { $aResult['error'] = 'No arguments!'; }
+			else {
+				$arguments = json_decode($_GET['arguments']);
+				if ( isset($arguments->id_usuario) ){  $aResult['result'] = GetCompeticionesUsuario($arguments->id_usuario); } 
+				else { $aResult['error'] = 'Wrong arguments!'; }
+			 }
 			break;
 			
 		case 'GuardarCompeticion':
@@ -321,7 +401,7 @@ if( !isset($aResult['error']) ) {
 					if (BorrarCompeticion($arguments->id, $aResult['messages']) ){ $aResult['result'] = "ok"; }
 					else { $aResult['result'] = "error"; }
 				} else { $aResult['error'] = 'Wrong arguments!'; }
-			 }
+			}
 			break;
 
 		case 'GetGrupos':

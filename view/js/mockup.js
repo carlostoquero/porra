@@ -459,3 +459,7 @@ function getClasificacionEquiposMockup(){
 	clasificacion_grupos.push({ id_grupo: 1, nombre_grupo: "Primera_division", clasificacion: clasificacion_equipos });
 	return clasificacion_grupos;
 }
+
+function getCompeticionSeleccionadaMockup(){
+	return {id_competicion: 1, nombre_competicion: "Mundial Brasil 2014", 			titulo: "La porra del mundial", subtitulo: "FIFA World Cup Brasil 2014", siglas: "wc-14", id_tipo_competicion: 3, reglas: "Prueba de contenido para reglas"};
+}

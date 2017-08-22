@@ -8,8 +8,8 @@ $(document).ready(function(){
 	generarFooter();
 
 	competicion_seleccionada = getCompeticionSeleccionada();
-	usuarios = getUsuariosCompeticion(competicion_seleccionada);
-	jornadas = getJornadasCompeticion(competicion_seleccionada);
+	usuarios = getUsuariosCompeticion(competicion_seleccionada.id_competicion);
+	jornadas = getJornadasCompeticion(competicion_seleccionada.id_competicion);
 	
 	$('.tabla-clasificacion').find('tr').remove();
 	var row = $('<tr>');

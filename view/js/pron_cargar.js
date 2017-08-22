@@ -32,9 +32,9 @@ $(document).ready(function(){
 	});
 	
 	competicion_seleccionada = getCompeticionSeleccionada();
-	equipos = getEquiposCompeticion(competicion_seleccionada);
+	equipos = getEquiposCompeticion(competicion_seleccionada.id_competicion);
 
-	var jornadas = getJornadasCompeticion(competicion_seleccionada);
+	var jornadas = getJornadasCompeticion(competicion_seleccionada.id_competicion);
 	$.each(jornadas, function(index, jornada){
 		$('.jornadas').append($('<div class="selector-jornada" data-id-jornada="' + jornada.id_jornada + '"><a href="#" data-numero-jornada="' + jornada.numero_jornada + '">' + jornada.nombre_corto + '</a></div>'));
 	});

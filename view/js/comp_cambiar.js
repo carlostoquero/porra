@@ -9,11 +9,19 @@ $(document).ready(function(){
 		$.each(competiciones, function(index, competicion) {
 			var divCompeticion = '';
 			divCompeticion += '<div class="form-button">';
-			divCompeticion += 	'<a href="./reglas.html" class="btn_login">' + competicion.nombre_competicion + '</a>';
+			divCompeticion += 	'<a href="#" class="select-competicion" data-id-competicion="' + competicion.id_competicion + '">' + competicion.nombre_competicion + '</a>';
 			divCompeticion += '</div>';
 
 			$('.competiciones').append(divCompeticion);
 		});
 	}
+	
+	$('body').on('click', '.select-competicion', function(){
+		var idCompeticion = $(this).attr('data-id-competicion') !== null && $(this).attr('data-id-competicion') !== "" ? parseInt($(this).attr('data-id-competicion')) : null;
+		if (idCompeticion !== null){
+			var resultado_cambio = getAjaxSync('ServicioCompeticiones', 'SetCompeticionSeleccionada', JSON.stringify({id: idCompeticion}));
+			if (resultado_cambio === "ok") location.href = './reglas.html'; 
+		}
+	});
 });
 

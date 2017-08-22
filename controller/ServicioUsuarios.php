@@ -159,22 +159,6 @@ function GetCompeticionesUsuarios(){
 	return $competiciones_usuarios;
 }
 
-// function GetCompeticionesUsuario($id_usuario){
-	// $competiciones_usuario = array();
-	// // $db = new dbConnection();
-	// // if ($stmt = $db->mysqli->prepare('SELECT id_usuario, id_competicion, pagado FROM USUARIO_COMPETICION WHERE id_usuario = ? ORDER BY id_competicion')){
-		// // $stmt->bind_param("i", $id_usuario);
-		// // $stmt->execute();
-		// // $stmt->bind_result($rIdUsuario, $rIdCompeticion, $rPagado);
-		// // while ($stmt->fetch()){
-			// // $competiciones_usuario[] = new CCompeticionUsuario($rIdUsuario, $rIdCompeticion, $rPagado);
-		// // }
-		// // $stmt->close();
-	// // }
-	// // $db->close();
-	// return $competiciones_usuario;
-// }
-
 // // function GuardarPartido($id_partido, $equipo_1, $equipo_2, $estadio, $grupo, $fecha_hora, $jornada, &$mensajes){
 	// // $guardado_correcto = true;
 	// // $partido = new CPartido($id_partido, $fecha_hora, $equipo_1, $equipo_2, $estadio, $grupo, $jornada, null, null);
@@ -352,15 +336,6 @@ if( !isset($aResult['error']) ) {
 
 		case 'GetCompeticionesUsuarios':
 			$aResult['result'] = GetCompeticionesUsuarios();
-			break;
-			
-		case 'GetCompeticionesUsuario':
-			// if( !isset($_GET['arguments']) ) { $aResult['error'] = 'No arguments!'; }
-			// else {
-				// $arguments = json_decode($_GET['arguments']);
-				// if ( isset($arguments->id_usuario) ){  $aResult['result'] = GetCompeticionesUsuario($arguments->id_usuario); } 
-				// else { $aResult['error'] = 'Wrong arguments!'; }
-			 // }
 			break;
 			
 		default:
