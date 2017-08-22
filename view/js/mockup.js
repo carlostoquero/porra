@@ -1,8 +1,8 @@
 function getTiposCompeticionMockup(){
 	var tipos_competicion = [];
-	tipos_competicion.push({id: 1, nombre: "Liga"});
-	tipos_competicion.push({id: 2, nombre: "Copa"});
-	tipos_competicion.push({id: 3, nombre: "Mixto"});
+	tipos_competicion.push({id_tipo_competicion: 1, nombre_tipo_competicion: "Liga"});
+	tipos_competicion.push({id_tipo_competicion: 2, nombre_tipo_competicion: "Copa"});
+	tipos_competicion.push({id_tipo_competicion: 3, nombre_tipo_competicion: "Mixto"});
 	return tipos_competicion;
 }
 

@@ -125,7 +125,7 @@ $(document).ready(function(){
 	tipos_competicion = getTiposCompeticion();
 	if (tipos_competicion !== null && tipos_competicion.length > 0){
 		$.each(tipos_competicion, function(index, tipo_competicion){
-			$('.comp_tipo_competicion').append('<option value="' + tipo_competicion.id + '">' + tipo_competicion.nombre + '</option>');
+			$('.comp_tipo_competicion').append('<option value="' + tipo_competicion.id_tipo_competicion + '">' + tipo_competicion.nombre_tipo_competicion + '</option>');
 		});
 		loadCompeticiones();
 	}
