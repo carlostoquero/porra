@@ -15,9 +15,9 @@ $(document).ready(function(){
 		if (partidos && partidos.length > 0){
 			$('.tabla-partidos').find('tr').remove();
 			$.each(partidos, function(index, partido){
-				var equipo_1 = findElementByField(equipos, "id_equipo", partido.equipo_1);
-				var equipo_2 = findElementByField(equipos, "id_equipo", partido.equipo_2);
-				var estadio = findElementByField(estadios, "id_estadio", partido.estadio);
+				var equipo_1 = findElementByField(equipos, "id_equipo", partido.id_equipo_1);
+				var equipo_2 = findElementByField(equipos, "id_equipo", partido.id_equipo_2);
+				var estadio = findElementByField(estadios, "id_estadio", partido.id_estadio);
 				if (equipo_1 !== null && equipo_2 !== null && estadio !== null){
 					var row = $('<tr class="jornada">');
 					row.append('<td><img src="' + equipo_1.url_escudo + '" title="' + equipo_1.nombre_equipo + '"></td>');

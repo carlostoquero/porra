@@ -9,7 +9,7 @@ if (session_id() == '') {
 function GetEstadios(){
 	$estadios = array();
 	$db = new dbConnection();
-	if ($stmt = $db->mysqli->prepare('SELECT id_estadio, nombre_estadio, ciudad, id_equipo_local FROM `ESTADIOS` ORDER BY id_estadio')){
+	if ($stmt = $db->mysqli->prepare('SELECT id_estadio, nombre_estadio, ciudad, id_equipo_local FROM ESTADIO ORDER BY id_estadio')){
 		$stmt->execute();
 		$stmt->bind_result($rId, $rNombre, $rCiudad, $rEquipoLocal);
 		while ($stmt->fetch()){
@@ -32,7 +32,7 @@ function GuardarEstadio($id_estadio, $nombre_estadio, $ciudad, $equipo_local){
 function InsertarEstadio($estadio){
     $correctInsert = false;
 	$db = new dbConnection();
-	$sql =  "INSERT INTO `ESTADIOS` (nombre_estadio, ciudad".(isset($estadio->id_equipo_local) ? ", id_equipo_local" : "").")
+	$sql =  "INSERT INTO ESTADIO (nombre_estadio, ciudad".(isset($estadio->id_equipo_local) ? ", id_equipo_local" : "").")
 	         VALUES  (?, ?".(isset($estadio->id_equipo_local) ? ", ?" : "").")";
     
     if ($stmt = $db->mysqli->prepare($sql)){
@@ -70,7 +70,7 @@ function ActualizarEstadio($estadio){
 function BorrarEstadio($id_estadio){
     $correctDelete = false;
 	$db = new dbConnection();
-	$sql = "DELETE FROM `ESTADIOS`  WHERE  id_estadio = ?";
+	$sql = "DELETE FROM ESTADIO  WHERE  id_estadio = ?";
 	if ($stmt = $db->mysqli->prepare($sql)){
 		$stmt->bind_param("i", $id_estadio);
 		$stmt->execute();

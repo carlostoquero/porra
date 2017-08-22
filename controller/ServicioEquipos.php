@@ -9,7 +9,7 @@ if (session_id() == '') {
 function GetEquipos(){
 	$equipos = array();
 	$db = new dbConnection();
-	if ($stmtEquipos = $db->mysqli->prepare('SELECT id_equipo, nombre_equipo, abreviatura, url_escudo FROM EQUIPOS ORDER BY id_equipo')){
+	if ($stmtEquipos = $db->mysqli->prepare('SELECT id_equipo, nombre_equipo, abreviatura, url_escudo FROM EQUIPO ORDER BY id_equipo')){
 		$stmtEquipos->execute();
 		$stmtEquipos->bind_result($rId, $rNombre, $rAbreviatura, $rUrl);
 		while ($stmtEquipos->fetch()){
@@ -25,7 +25,7 @@ function GetEquiposByCompeticion($id_competicion){
 	$equipos = array();
 	$db = new dbConnection();
 	if ($stmt = $db->mysqli->prepare('SELECT E.id_equipo, E.nombre_equipo, E.abreviatura, E.url_escudo
-									  FROM EQUIPOS_COMPETICION EC JOIN EQUIPOS E ON E.id_equipo = EC.id_equipo
+									  FROM EQUIPO_COMPETICION EC JOIN EQUIPO E ON E.id_equipo = EC.id_equipo
 									  WHERE EC.id_competicion = ? ORDER by E.id_equipo')) {
 		$stmt->bind_param("i", $id_competicion);
 		$stmt->execute();
@@ -70,7 +70,7 @@ function GuardarEquipo($id_equipo, $nombre_equipo, $abreviatura, $url, &$mensaje
 function InsertarEquipo($equipo, &$mensajes){
     $correctInsert = false;
 	$db = new dbConnection();
-    if ($stmt = $db->mysqli->prepare("INSERT INTO `EQUIPOS` (nombre_equipo, abreviatura, url_escudo) VALUES  (?, ?, ?)")){
+    if ($stmt = $db->mysqli->prepare("INSERT INTO EQUIPO (nombre_equipo, abreviatura, url_escudo) VALUES  (?, ?, ?)")){
 		$nombre_acortado = substr($equipo->nombre_equipo, 0, 45);
 		$abreviatura_acortada = substr($equipo->abreviatura, 0, 3);
 		$url_acortada = substr($equipo->url_escudo, 0, 45);
@@ -89,7 +89,7 @@ function InsertarEquipo($equipo, &$mensajes){
 function ActualizarEquipo($equipo, &$mensajes){
     $correctUpdate = false;
 	$db = new dbConnection();
-    if ($stmt = $db->mysqli->prepare("UPDATE `EQUIPOS` SET nombre_equipo = ?, abreviatura = ?, url_escudo = ? WHERE id_equipo = ?")){
+    if ($stmt = $db->mysqli->prepare("UPDATE EQUIPO SET nombre_equipo = ?, abreviatura = ?, url_escudo = ? WHERE id_equipo = ?")){
 		$nombre_acortado = substr($equipo->nombre_equipo, 0, 45);
 		$abreviatura_acortada = substr($equipo->abreviatura, 0, 3);
 		$url_acortada = substr($equipo->url_escudo, 0, 45);
@@ -110,9 +110,9 @@ function BorrarEquipo($id_equipo, &$mensajes){
 	$db = new dbConnection();
 	// Comprobar existencia de registros hijo
 	$sql = "select competiciones.cuantos + partidos.cuantos + estadios.cuantos 
-			from ( 	SELECT count(1) cuantos FROM EQUIPOS_COMPETICION WHERE id_equipo = ?) competiciones,
+			from ( 	SELECT count(1) cuantos FROM EQUIPO_COMPETICION WHERE id_equipo = ?) competiciones,
 				 (  SELECT count(1) cuantos FROM PARTIDO WHERE id_equipo_1 = ? OR id_equipo_2 = ?) partidos,
-				 ( 	SELECT count(1) cuantos FROM ESTADIOS WHERE id_equipo_local = ?) estadios";
+				 ( 	SELECT count(1) cuantos FROM ESTADIO WHERE id_equipo_local = ?) estadios";
 	
 	if ($stmtComprobacion = $db->mysqli->prepare($sql)){
 		$stmtComprobacion->bind_param("iiii", $id_equipo,$id_equipo, $id_equipo,$id_equipo);
@@ -125,7 +125,7 @@ function BorrarEquipo($id_equipo, &$mensajes){
 		
 		// Si no hay registros hijo, borrar
 		if ($rCuantos == 0){
-			if ($stmtBorrado = $db->mysqli->prepare("DELETE FROM `EQUIPOS`  WHERE  id_equipo = ?")){
+			if ($stmtBorrado = $db->mysqli->prepare("DELETE FROM EQUIPO WHERE  id_equipo = ?")){
 				$stmtBorrado->bind_param("i", $id_equipo);
 				$stmtBorrado->execute();
 				if ($db->mysqli->affected_rows >= 0){
@@ -144,7 +144,7 @@ function BorrarEquipo($id_equipo, &$mensajes){
 function GetCompeticionesEquipo($id_equipo){
 	$competiciones_equipo = array();
 	$db = new dbConnection();
-	if ($stmtCompeticiones = $db->mysqli->prepare('SELECT id_equipo, id_competicion, id_grupo FROM EQUIPOS_COMPETICION WHERE id_equipo = ? ORDER BY id_competicion;')){
+	if ($stmtCompeticiones = $db->mysqli->prepare('SELECT id_equipo, id_competicion, id_grupo FROM EQUIPO_COMPETICION WHERE id_equipo = ? ORDER BY id_competicion;')){
 		$stmtCompeticiones->bind_param("i", $id_equipo);
 		$stmtCompeticiones->execute();
 		$stmtCompeticiones->bind_result($rIdEquipo, $rIdCompeticion, $rIdGrupo);
@@ -160,7 +160,7 @@ function GetCompeticionesEquipo($id_equipo){
 function GetCompeticionEquipo($id_equipo, $id_competicion){
 	$competicion_equipo = null;
 	$db = new dbConnection();
-	if ($stmtCompeticiones = $db->mysqli->prepare('SELECT id_equipo, id_competicion, id_grupo FROM EQUIPOS_COMPETICION WHERE id_equipo = ? AND id_competicion = ? ORDER BY id_competicion;')){
+	if ($stmtCompeticiones = $db->mysqli->prepare('SELECT id_equipo, id_competicion, id_grupo FROM EQUIPO_COMPETICION WHERE id_equipo = ? AND id_competicion = ? ORDER BY id_competicion;')){
 		$stmtCompeticiones->bind_param("ii", $id_equipo, $id_competicion);
 		$stmtCompeticiones->execute();
 		$stmtCompeticiones->bind_result($rIdEquipo, $rIdCompeticion, $rIdGrupo);
@@ -186,7 +186,7 @@ function GuardarCompeticionEquipo($id_equipo, $id_competicion, $id_grupo, &$mens
 function InsertarCompeticionEquipo($comp_equipo, &$mensajes){
     $correctInsert = false;
 	$db = new dbConnection();
-    if ($stmt = $db->mysqli->prepare("INSERT INTO EQUIPOS_COMPETICION (id_equipo, id_competicion, id_grupo) VALUES  (?, ?, ?)")){
+    if ($stmt = $db->mysqli->prepare("INSERT INTO EQUIPO_COMPETICION (id_equipo, id_competicion, id_grupo) VALUES  (?, ?, ?)")){
 		$stmt->bind_param("iii", $comp_equipo->id_equipo, $comp_equipo->id_competicion, $comp_equipo->id_grupo);
 		$stmt->execute();
 		if ($db->mysqli->affected_rows >= 0){
@@ -202,7 +202,7 @@ function InsertarCompeticionEquipo($comp_equipo, &$mensajes){
 function ActualizarCompeticionEquipo($comp_equipo, &$mensajes){
     $correctUpdate = false;
 	$db = new dbConnection();
-    if ($stmt = $db->mysqli->prepare("UPDATE EQUIPOS_COMPETICION SET id_grupo = ? WHERE id_equipo = ? AND id_competicion = ?")){
+    if ($stmt = $db->mysqli->prepare("UPDATE EQUIPO_COMPETICION SET id_grupo = ? WHERE id_equipo = ? AND id_competicion = ?")){
 		$stmt->bind_param("iii", $comp_equipo->id_grupo, $comp_equipo->id_equipo, $comp_equipo->id_competicion);
 		$stmt->execute();
 		if ($db->mysqli->affected_rows >= 0){ 
@@ -218,24 +218,24 @@ function ActualizarCompeticionEquipo($comp_equipo, &$mensajes){
 function BorrarCompeticionEquipo($id_equipo, $id_competicion, &$mensajes){
     $correctDelete = false;
 	$db = new dbConnection();
-	// // Comprobar existencia de registros hijo
-	// $sql = "select partidos.cuantos 
-			// from (  SELECT count(1) cuantos FROM PARTIDO p JOIN JORNADA j ON j.id_jornada = p.id_jornada 
-			        // WHERE (p.id_equipo_1 = ? OR p.id_equipo_2 = ?) AND j.id_competicion = ?) partidos";
+	// Comprobar existencia de registros hijo
+	$sql = "select partidos.cuantos 
+			from (  SELECT count(1) cuantos FROM PARTIDO p JOIN JORNADA j ON j.id_jornada = p.id_jornada 
+			        WHERE (p.id_equipo_1 = ? OR p.id_equipo_2 = ?) AND j.id_competicion = ?) partidos";
 	
-	// if ($stmtComprobacion = $db->mysqli->prepare($sql)){
-		// $stmtComprobacion->bind_param("iii", $id_equipo, $id_equipo, $id_competicion);
+	if ($stmtComprobacion = $db->mysqli->prepare($sql)){
+		$stmtComprobacion->bind_param("iii", $id_equipo, $id_equipo, $id_competicion);
 		
-		// $stmtComprobacion->execute();
-		// $stmtComprobacion->bind_result($rCuantos);
-		// if ($stmtComprobacion->fetch()){
-			// // Si no hay registros hijo, borrar
-			// if ($rCuantos > 0){ $mensajes = "El equipo/competicion tiene datos vinculados, limpie antes esos datos (competiciones, partidos, estadios)."; }
-		// }
-		// $stmtComprobacion->close();
+		$stmtComprobacion->execute();
+		$stmtComprobacion->bind_result($rCuantos);
+		if ($stmtComprobacion->fetch()){
+			// Si no hay registros hijo, borrar
+			if ($rCuantos > 0){ $mensajes = "El equipo/competicion tiene datos vinculados, limpie antes esos datos (competiciones, partidos, estadios)."; }
+		}
+		$stmtComprobacion->close();
 		
-		// if ($rCuantos == 0){
-			if ($stmtBorrado = $db->mysqli->prepare("DELETE FROM EQUIPOS_COMPETICION WHERE  id_equipo = ? AND id_competicion = ?")){
+		if ($rCuantos == 0){
+			if ($stmtBorrado = $db->mysqli->prepare("DELETE FROM EQUIPO_COMPETICION WHERE  id_equipo = ? AND id_competicion = ?")){
 				$stmtBorrado->bind_param("ii", $id_equipo, $id_competicion);
 				$stmtBorrado->execute();
 				if ($db->mysqli->affected_rows >= 0){
@@ -244,9 +244,9 @@ function BorrarCompeticionEquipo($id_equipo, $id_competicion, &$mensajes){
 				} else { $mensajes = "Error al borrar: ".$db->mysqli->error; } 
 				$stmtBorrado->close();
 			} else { $mensajes = "Error al borrar, sentencia incorrecta: ".$db->mysqli->error; }
-		//}
+		}
 		$stmtBorrado->close();
-	// }			
+	}			
 	$db->close();
 	return $correctDelete;
 }
