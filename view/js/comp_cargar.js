@@ -4,7 +4,7 @@ var partidos = [];
 var equipos = [];
 
 $(document).ready(function(){
-	var usuario_conexion = usuarioConectado(false); // No necesario administrador
+	var usuario_conexion = usuarioConectado(true); // SI necesario administrador
 	generarMenu();
 	generarFooter();
 	
