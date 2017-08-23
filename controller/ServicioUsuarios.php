@@ -79,6 +79,12 @@ function Login($login, $password){
 	return $correctUser;
 }
 
+function Logout(){
+	$_SESSION['usuario'] = null;
+	return true;
+}
+
+
 function GetUsuarioConectado(){
 	$usuario = null;
 	if (isset($_SESSION['usuario'])){ $usuario = $_SESSION['usuario']; }
@@ -110,35 +116,35 @@ function GetUsuarioConectado(){
 	// return $insercion_correcta;
 // }
 
-// function ActualizarUsuario($id_usuario, $password, $nombre, $apellidos, $comentarios, $email, &$mensajes){
-    // $actualizacion_correcta = false;
-	// $db = new dbConnection();
-	// $sql =  "UPDATE USUARIO SET ".(isset($password) ? 'password = ? ,' : '')."nombre = ?, apellidos = ?, comentarios = ?, email = ?
-	         // WHERE id_usuario = ?";
+function ActualizarUsuario($id_usuario, $password, $nombre, $apellidos, $comentarios, $email, &$mensajes){
+    $actualizacion_correcta = false;
+	$db = new dbConnection();
+	$sql =  "UPDATE USUARIO SET ".(isset($password) ? 'password = ? ,' : '')."nombre = ?, apellidos = ?, comentarios = ?, email = ?
+	         WHERE id_usuario = ?";
     
-    // if ($stmt = $db->mysqli->prepare($sql)){
-		// $nombre_acortado = substr($nombre, 0, 20);
-		// $apellidos_acortado = substr($nombre, 0, 50);
-		// $comentarios_acortados = substr($comentarios, 0, 200);
-		// $email_acortado = substr($email, 0, 50);
+    if ($stmt = $db->mysqli->prepare($sql)){
+		$nombre_acortado = substr($nombre, 0, 20);
+		$apellidos_acortado = substr($apellidos, 0, 50);
+		$comentarios_acortados = substr($comentarios, 0, 200);
+		$email_acortado = substr($email, 0, 50);
 		
-		// if (isset($password)){
-			// $md5 = md5($password);
-			// $stmt->bind_param("sssssi", $md5, $nombre_acortado, $apellidos_acortado, $comentarios_acortados, $email_acortado, $id_usuario);
-		// } else {
-			// $stmt->bind_param("ssssi", $nombre_acortado, $apellidos_acortado, $comentarios_acortados, $email_acortado, $id_usuario);
-		// }			
+		if (isset($password)){
+			$md5 = md5($password);
+			$stmt->bind_param("sssssi", $md5, $nombre_acortado, $apellidos_acortado, $comentarios_acortados, $email_acortado, $id_usuario);
+		} else {
+			$stmt->bind_param("ssssi", $nombre_acortado, $apellidos_acortado, $comentarios_acortados, $email_acortado, $id_usuario);
+		}			
 
-		// $stmt->execute();
-		// if ($db->mysqli->affected_rows >= 0){
-			// $mensajes = "Actualización correcta";
-			// $actualizacion_correcta = true;
-		// } else { $mensajes = "Error al actualizar: ".$db->mysqli->error; }
-		// $stmt->close();
-	// } else { $mensajes = "Datos recibidos incorrectos: ".$db->mysqli->error; }
-	// $db->close();
-	// return $actualizacion_correcta;
-// }
+		$stmt->execute();
+		if ($db->mysqli->affected_rows >= 0){
+			$mensajes = "Actualización correcta";
+			$actualizacion_correcta = true;
+		} else { $mensajes = "Error al actualizar: ".$db->mysqli->error; }
+		$stmt->close();
+	} else { $mensajes = "Datos recibidos incorrectos: ".$db->mysqli->error; }
+	$db->close();
+	return $actualizacion_correcta;
+}
 
 // function ActualizarUsuarioByAdmin($id_usuario, $estado, $acceso, $competiciones){
 	
@@ -158,99 +164,6 @@ function GetCompeticionesUsuarios(){
 	$db->close();
 	return $competiciones_usuarios;
 }
-
-// // function GuardarPartido($id_partido, $equipo_1, $equipo_2, $estadio, $grupo, $fecha_hora, $jornada, &$mensajes){
-	// // $guardado_correcto = true;
-	// // $partido = new CPartido($id_partido, $fecha_hora, $equipo_1, $equipo_2, $estadio, $grupo, $jornada, null, null);
-	// // if ( !isset($id_partido) ) { $guardado_correcto = InsertarPartido($partido, $mensajes); }
-	// // else { $guardado_correcto = ActualizarPartido($partido, $mensajes); }
-	// // return $guardado_correcto;
-// // }
-
-// // function InsertarPartido($partido, &$mensajes){
-    // // $insercion_correcta = false;
-	// // $db = new dbConnection();
-	// // $sql =  "INSERT INTO PARTIDO (id_equipo_1, id_equipo_2, id_estadio, ".(isset($partido->id_grupo) ? "id_grupo, " : "")."fecha_hora, id_jornada) 
-	         // // VALUES  (?, ?, ?, ".(isset($partido->id_grupo) ? "?, " : "")."?, ?)";
-    
-    // // if ($stmt = $db->mysqli->prepare($sql)){
-		// // if (isset($partido->id_grupo)) $stmt->bind_param("iiiisi", $partido->id_equipo_1, $partido->id_equipo_2, $partido->id_estadio, $partido->id_grupo, 
-		                                                           // // $partido->fecha_hora, $partido->id_jornada);
-		// // else $stmt->bind_param("iiisi", $partido->id_equipo_1, $partido->id_equipo_2, $partido->id_estadio, $partido->fecha_hora, $partido->id_jornada);
-		
-		// // $stmt->execute();
-		// // if ($db->mysqli->affected_rows >= 0) {
-			// // $mensajes = "Inserción correcta";
-			// // $insercion_correcta = true;
-		// // } else {
-			// // $mensajes = "Error al insertar: ".$db->mysqli->error;
-		// // }
-		// // $stmt->close();
-	// // } else { $mensajes = "Datos recibidos incorrectos: ".$db->mysqli->error; }
-	// // $db->close();
-	// // return $insercion_correcta;
-// // }
-
-// // function ActualizarPartido($partido, &$mensajes){
-    // // $actualizacion_correcta = false;
-	// // $db = new dbConnection();
-	// // $sql =  "UPDATE PARTIDO SET id_equipo_1 = ?, id_equipo_2 = ?, id_estadio = ?, id_grupo = ".(isset($partido->id_grupo) ? "?" : "null").", fecha_hora = ?, id_jornada = ? 
-	         // // WHERE id_partido = ?";
-    
-    // // if ($stmt = $db->mysqli->prepare($sql)){
-		// // if (isset($partido->id_grupo)) $stmt->bind_param("iiiisii", $partido->id_equipo_1, $partido->id_equipo_2, $partido->id_estadio, $partido->id_grupo, 
-		                                                            // // $partido->fecha_hora, $partido->id_jornada, $partido->id_partido);
-		// // else $stmt->bind_param("iiisii", $partido->id_equipo_1, $partido->id_equipo_2, $partido->id_estadio, $partido->fecha_hora, $partido->id_jornada, $partido->id_partido);
-		// // $stmt->execute();
-		// // if ($db->mysqli->affected_rows >= 0){
-			// // $mensajes = "Actualización correcta";
-			// // $actualizacion_correcta = true;
-		// // } else {
-			// // $mensajes = "Error al actualizar: ".$db->mysqli->error;
-		// // }
-		// // $stmt->close();
-	// // } else { $mensajes = "Datos recibidos incorrectos: ".$db->mysqli->error; }
-	// // $db->close();
-	// // return $actualizacion_correcta;
-// // }
-
-// // function BorrarPartido($id_partido, &$mensajes){
-    // // $borrado_correcto = false;
-	// // $db = new dbConnection();
-	
-	// // //TODO: Tabla no creada todavia
-// // /*	// Comprobar existencia de registros hijo
-	// // $sql = "SELECT count(1) cuantos FROM PRONOSTICO WHERE id_partido = ?";
-	
-	// // if ($stmtComprobacion = $db->mysqli->prepare($sql)){
-		// // $stmtComprobacion->bind_param("i", $id_partido);
-		
-		// // $stmtComprobacion->execute();
-		// // $stmtComprobacion->bind_result($rCuantos);
-		// // if ($stmtComprobacion->fetch()){
-			// // // Si no hay registros hijo, borrar
-			// // if ($rCuantos > 0){ $mensajes = "El partido tiene datos vinculados, limpie antes esos datos (pronósticos)."; }
-		// // }
-		// // $stmtComprobacion->close();
-		
-		// // if ($rCuantos == 0){*/
-			// // if ($stmtBorrado = $db->mysqli->prepare("DELETE FROM PARTIDO WHERE id_partido = ?")){
-				// // $stmtBorrado->bind_param("i", $id_partido);
-				// // $stmtBorrado->execute();
-				// // if ($db->mysqli->affected_rows >= 0){
-					// // $mensajes = "Borrado correcto";
-					// // $borrado_correcto = true;
-				// // } else {
-					// // $mensajes = "Error al borrar: ".$db->mysqli->error;
-				// // }
-				// // $stmtBorrado->close();
-			// // } else { $mensajes = "Error al borrar, sentencia incorrecta: ".$db->mysqli->error; }
-		// // /*}
-	// // } else { $mensajes = "Error al comprobar si existen datos vinculados."; }*/
-
-	// // $db->close();
-	// // return $borrado_correcto;
-// // }
 
 header('Content-Type: application/json');
 $aResult = array();
@@ -295,6 +208,11 @@ if( !isset($aResult['error']) ) {
 				} else { $aResult['error'] = 'Wrong arguments!'; }
 			 }
 			break;
+
+		case 'Logout': 
+			if (Logout()) $aResult['result'] = "ok";
+			else $aResult['result'] = "error";
+			break;
 			
 		// case 'InsertarUsuario':
 			// if( !isset($_GET['arguments']) ) { $aResult['error'] = 'No arguments!'; }
@@ -309,18 +227,18 @@ if( !isset($aResult['error']) ) {
 			// }
 			// break;
 
-		// case 'ActualizarUsuario': 
-			// if( !isset($_GET['arguments']) ) { $aResult['error'] = 'No arguments!'; }
-			// else {
-				// $arguments = json_decode($_GET['arguments']);
-				// if ( isset($arguments->id_usuario) && isset($arguments->nombre) && isset($arguments->apellidos) && isset($arguments->email) ){ 
-					// if (ActualizarUsuario($arguments->id_usuario, $arguments->password, $arguments->nombre, $arguments->apellidos, $arguments->comentarios,
-					                      // $arguments->email, $aResult['messages']) ){ 
-						// $aResult['result'] = "ok"; 
-					// } else { $aResult['result'] = "error"; }
-				// } else { $aResult['error'] = 'Wrong arguments!'; }
-			 // }
-			// break;
+		case 'ActualizarUsuario': 
+			if( !isset($_GET['arguments']) ) { $aResult['error'] = 'No arguments!'; }
+			else {
+				$arguments = json_decode($_GET['arguments']);
+				if ( isset($arguments->id) && isset($arguments->nombre) && isset($arguments->apellidos) && isset($arguments->email) ){ 
+					if (ActualizarUsuario($arguments->id, $arguments->password, $arguments->nombre, $arguments->apellidos, $arguments->comentarios,
+					                      $arguments->email, $aResult['messages']) ){ 
+						$aResult['result'] = "ok"; 
+					} else { $aResult['result'] = "error"; }
+				} else { $aResult['error'] = 'Wrong arguments!'; }
+			 }
+			break;
 
 		// case 'ActualizarUsuarioByAdmin': 
 			// if( !isset($_GET['arguments']) ) { $aResult['error'] = 'No arguments!'; }
