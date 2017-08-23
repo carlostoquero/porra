@@ -258,6 +258,37 @@ ul.meta-post li a:hover, ul.cat li a:hover, ul.recent li h6 a:hover, ul.portfoli
 	color: #337ab7;
 }
 
+.jornadas {
+	margin: 20px 0 40px;
+	text-align: center;
+}
+
+.selector-jornada {
+	display: inline-block;
+}
+
+.selector-jornada a {
+	background-color: #f0f0f0;
+	color: #333333;
+	text-transform: uppercase;
+	text-decoration: none;
+	font-size: 14px;
+	font-weight: 700;
+	margin: 4px;
+	padding: 14px;
+	border-radius: 5px;
+}
+
+.selector-jornada a:hover, a:focus {
+	background-color: #337ab7;
+	color: #ffffff;
+}
+
+.selector-jornada a:active {
+	background-color: #333333;
+	color: #ffffff;
+}
+
 .breadcrumb {
   background-color: #000000;
 }
