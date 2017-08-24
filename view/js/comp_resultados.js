@@ -22,13 +22,13 @@ $(document).ready(function(){
 					var row = $('<tr class="jornada">');
 					row.append('<td><img src="' + equipo_1.url_escudo + '" title="' + equipo_1.nombre_equipo + '"></td>');
 					row.append('<td>' + equipo_1.abreviatura + '</td>');
-					row.append('<td>' + partido.goles_equipo_1 + '</td>');
-					row.append('<td>-</td>');
-					row.append('<td>' + partido.goles_equipo_2 + '</td>');
+					row.append('<td class="resultado">' + partido.goles_equipo_1 + '</td>');
+					row.append('<td class="vs">-</td>');
+					row.append('<td class="resultado">' + partido.goles_equipo_2 + '</td>');
 					row.append('<td>' + equipo_2.abreviatura + '</td>');
 					row.append('<td><img src="' + equipo_2.url_escudo + '" title="' + equipo_2.nombre_equipo + '"></td>');
-					row.append('<td>' + estadio.nombre_estadio + '</td>');
-					row.append('<td>' + partido.fecha_hora + '</td>');
+					row.append('<td class="estadio">' + estadio.nombre_estadio + '</td>');
+					row.append('<td class="fecha">' + partido.fecha_hora + '</td>');
 					$('.tabla-partidos').append(row);
 				}
 			});
