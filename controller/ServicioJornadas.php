@@ -46,7 +46,8 @@ function GetJornadaActual($id_competicion){
 	// Primera opción, hay jornada en curso
 	$db = new dbConnection();
 	if ($stmt = $db->mysqli->prepare('SELECT id_jornada, fecha_inicio, fecha_fin, numero_jornada, nombre_jornada, nombre_corto, id_tipo_jornada, id_competicion 
-									  FROM JORNADA WHERE now() BETWEEN fecha_inicio and fecha_fin;')){
+									  FROM JORNADA WHERE id_competicion = ? AND now() BETWEEN fecha_inicio and fecha_fin;')){
+		$stmt->bind_param("i", $id_competicion);
 		$stmt->execute();
 		$stmt->bind_result($rId, $rFechaInicio, $rFechaFin, $rNumero, $rNombre, $rNombreCorto, $rTipoJornada, $rCompeticion);
 		if ($stmt->fetch()){
@@ -58,7 +59,10 @@ function GetJornadaActual($id_competicion){
 	// Segunda opción, próxima jornada en el futuro
 	if ($jornada == null){
 		if ($stmt = $db->mysqli->prepare('SELECT id_jornada, fecha_inicio, fecha_fin, numero_jornada, nombre_jornada, nombre_corto, id_tipo_jornada, id_competicion 
-									      FROM JORNADA WHERE fecha_inicio = (SELECT min(j2.fecha_inicio) FROM JORNADA j2 WJERE j2.fecha_inicio > now());')){
+									      FROM JORNADA WHERE id_competicion = ? AND  fecha_inicio = (SELECT min(j2.fecha_inicio) 
+										                                                             FROM JORNADA j2 
+																									 WHERE j2.id_competicion = ? AND j2.fecha_inicio > now());')){
+			$stmt->bind_param("ii", $id_competicion, $id_competicion);
 			$stmt->execute();
 			$stmt->bind_result($rId, $rFechaInicio, $rFechaFin, $rNumero, $rNombre, $rNombreCorto, $rTipoJornada, $rCompeticion);
 			if ($stmt->fetch()){
@@ -71,7 +75,10 @@ function GetJornadaActual($id_competicion){
 	// Tercera opción, última jornada en el pasado
 	if ($jornada == null){
 		if ($stmt = $db->mysqli->prepare('SELECT id_jornada, fecha_inicio, fecha_fin, numero_jornada, nombre_jornada, nombre_corto, id_tipo_jornada, id_competicion 
-									      FROM JORNADA WHERE fecha_fin = (SELECT max(j2.fecha_fin) FROM JORNADA j2 WHERE j2.fecha_fin < now());')){
+									      FROM JORNADA WHERE id_competicion = ? AND fecha_fin = (SELECT max(j2.fecha_fin) 
+										                                                         FROM JORNADA j2 
+																								 WHERE j2.id_competicion = ? AND j2.fecha_fin < now());')){
+			$stmt->bind_param("ii", $id_competicion, $id_competicion);
 			$stmt->execute();
 			$stmt->bind_result($rId, $rFechaInicio, $rFechaFin, $rNumero, $rNombre, $rNombreCorto, $rTipoJornada, $rCompeticion);
 			if ($stmt->fetch()){
@@ -318,7 +325,12 @@ if( !isset($aResult['error']) ) {
 			break;
 
 		case 'GetJornadaActual':
-			$aResult['result'] = GetJornadaActual();
+			if( !isset($_GET['arguments']) ) { $aResult['error'] = 'No arguments!'; }
+			else {
+				$arguments = json_decode($_GET['arguments']);
+				if ( isset($arguments->id_competicion) ){  $aResult['result'] = GetJornadaActual($arguments->id_competicion); } 
+				else { $aResult['error'] = 'Wrong arguments!'; }
+			 }
 			break;
 			
 		case 'GuardarJornada':
