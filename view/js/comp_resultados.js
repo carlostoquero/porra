@@ -14,7 +14,7 @@ $(document).ready(function(){
 		jornada_seleccionada = findElementByField(jornadas, "id_jornada", idJornada);
 		if (jornada_seleccionada !== null){
 			$('.jornada.title').html('Resultados - ' + jornada_seleccionada.nombre_jornada);
-			partidos = getPartidosJornada(jornada_seleccionada);
+			partidos = getPartidosJornada(jornada_seleccionada.id_jornada);
 			if (partidos && partidos.length > 0){
 				$('.tabla-partidos').find('tr').remove();
 				$.each(partidos, function(index, partido){
