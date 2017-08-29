@@ -463,3 +463,7 @@ function getClasificacionEquiposMockup(){
 function getCompeticionSeleccionadaMockup(){
 	return {id_competicion: 1, nombre_competicion: "Mundial Brasil 2014", 			titulo: "La porra del mundial", subtitulo: "FIFA World Cup Brasil 2014", siglas: "wc-14", id_tipo_competicion: 3, reglas: "Prueba de contenido para reglas"};
 }
+
+function getJornadaActualMockup(){
+	return {id_jornada: 1, numero_jornada: 1, nombre_jornada: 'Jornada 01', nombre_corto: 'J01', fecha_inicio: '2016-08-19 20:45:00', fecha_fin: '2016-08-19 20:45:00', id_tipo_jornada: 1, id_competicion: 1};
+}

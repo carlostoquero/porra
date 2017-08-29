@@ -306,8 +306,14 @@ function getCompeticionSeleccionada(){
 	}
 	return competicion_seleccionada;
 }
-function getJornadaActual(){
-	return 1;
+function getJornadaActual(id_competicion){
+	var jornada_actual = null;
+	if (TRABAJANDO_EN_LOCAL){
+		jornada_actual = getJornadaActualMockup();
+	} else {
+		jornada_actual = getAjaxSync('ServicioJornadas', 'GetJornadaActual', JSON.stringify({id_competicion: id_competicion}));
+	}
+	return jornada_actual;
 }
 
 function getAjaxSync(servicio, funcion, argumentos){
