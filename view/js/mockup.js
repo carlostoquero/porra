@@ -259,7 +259,7 @@ function getJornadasMockup(){
 	
 	// Jornadas Mundial
 	jornadas.push({id_jornada: id_jornada++, numero_jornada: 1, nombre_jornada: 'Jornada 01', nombre_corto: 'J01', fecha_inicio: '2016-08-19 20:45:00', fecha_fin: '2016-08-19 20:45:00', id_tipo_jornada: 1, id_competicion: 1});
-	jornadas.push({id_jornada: id_jornada++, numero_jornada: 2, nombre_jornada: 'Jornada 02', nombre_corto: 'J02', fecha_inicio: '2016-08-19 20:45:00', fecha_fin: '2016-08-19 20:45:00', id_tipo_jornada: 1, id_competicion: 1});
+	jornadas.push({id_jornada: id_jornada++, numero_jornada: 2, nombre_jornada: 'Jornada 02', nombre_corto: 'J02', fecha_inicio: '2018-08-19 20:45:00', fecha_fin: '2018-08-19 20:45:00', id_tipo_jornada: 1, id_competicion: 1});
 	jornadas.push({id_jornada: id_jornada++, numero_jornada: 3, nombre_jornada: 'Jornada 03', nombre_corto: 'J03', fecha_inicio: '2016-08-19 20:45:00', fecha_fin: '2016-08-19 20:45:00', id_tipo_jornada: 1, id_competicion: 1});
 	jornadas.push({id_jornada: id_jornada++, numero_jornada: 4, nombre_jornada: 'Octavos de final', nombre_corto: 'OF', fecha_inicio: '2016-08-19 20:45:00', fecha_fin: '2016-08-19 20:45:00', id_tipo_jornada: 2, id_competicion: 1});
 	jornadas.push({id_jornada: id_jornada++, numero_jornada: 5, nombre_jornada: 'Cuartos de final', nombre_corto: 'QF' , fecha_inicio: '2016-08-19 20:45:00', fecha_fin: '2016-08-19 20:45:00', id_tipo_jornada: 2, id_competicion: 1});
