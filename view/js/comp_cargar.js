@@ -13,7 +13,7 @@ $(document).ready(function(){
 		var idJornada = parseInt($(this).attr('data-id-jornada'));
 		jornada_seleccionada = findElementByField(jornadas, "id_jornada", idJornada);
 		if (jornada_seleccionada !== null){
-			var editable = moment(jornada_seleccionada.fecha_inicio).isAfter(moment());
+			var editable = moment(jornada_seleccionada.fecha_fin).add(1, 'days').isAfter(moment());
 			$('.jornada.title').html('Resultados - ' + jornada_seleccionada.nombre_jornada);
 			partidos = getPartidosJornada(jornada_seleccionada.id_jornada);
 			if (partidos && partidos.length > 0){
