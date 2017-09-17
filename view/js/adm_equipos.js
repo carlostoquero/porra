@@ -37,7 +37,7 @@ $(document).ready(function(){
 			var equipo_borrar = findElementByField(equipos, "id_equipo", id_equipo);
 			if (equipo_borrar !== null){
 				if (confirm("Borrar el equipo '" + equipo_borrar.nombre_equipo + "'?")){
-					var resultado_borrado = getAjaxSync('ServicioEquipos', 'BorrarEquipo', JSON.stringify({id: equipo_borrar.id_equipo}));
+					var resultado_borrado = getAjaxSync('BorrarEquipo', JSON.stringify({id: equipo_borrar.id_equipo}));
 					if (resultado_borrado === "ok") loadEquipos();
 				}
 			}
@@ -62,7 +62,7 @@ $(document).ready(function(){
 			datos_equipo.abreviatura = $('.equipo_abreviatura').val();
 			datos_equipo.url = $('.equipo_escudo').val();
 			
-			var resultado_guardado = getAjaxSync('ServicioEquipos', 'GuardarEquipo', JSON.stringify(datos_equipo));
+			var resultado_guardado = getAjaxSync('GuardarEquipo', JSON.stringify(datos_equipo));
 			if (resultado_guardado === "ok") loadEquipos();
 		}
 	});
@@ -92,7 +92,7 @@ $(document).ready(function(){
 				var competicion = findElementByField(competiciones, "id_competicion", competicion_borrar.id_competicion);
 				if (confirm("Borrar el equipo '" + competicion.nombre_competicion + "'?")){
 					var datos_competicion_equipo = {id_equipo: competicion_borrar.id_equipo, id_competicion: competicion_borrar.id_competicion};
-					var resultado_borrado = getAjaxSync('ServicioEquipos', 'BorrarCompeticionEquipo', JSON.stringify(datos_competicion_equipo));
+					var resultado_borrado = getAjaxSync('BorrarCompeticionEquipo', JSON.stringify(datos_competicion_equipo));
 					if (resultado_borrado === "ok") loadCompeticionesEquipo(competicion_borrar.id_equipo);
 				}
 			}
@@ -133,7 +133,7 @@ $(document).ready(function(){
 			datos_competicion.id_competicion = parseInt($('.comp_competicion').val());
 			datos_competicion.id_grupo = parseInt($('.comp_grupo').val());
 			
-			var resultado_guardado = getAjaxSync('ServicioEquipos', 'GuardarCompeticionEquipo', JSON.stringify(datos_competicion));
+			var resultado_guardado = getAjaxSync('GuardarCompeticionEquipo', JSON.stringify(datos_competicion));
 			if (resultado_guardado === "ok") loadCompeticionesEquipo(id_equipo);
 		}
 	});

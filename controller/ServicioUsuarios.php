@@ -2,10 +2,6 @@
 include_once ("../model/dbConnection.php");
 include_once ("../model/Usuario.php");
 
-if (session_id() == '') {
-    session_start();
-}
-
 function GetUsuarios(){
 	$usuarios = array();
 	$db = new dbConnection();
@@ -165,101 +161,4 @@ function GetCompeticionesUsuarios(){
 	return $competiciones_usuarios;
 }
 
-header('Content-Type: application/json');
-$aResult = array();
-
-if( !isset($_GET['function_name']) ) { $aResult['error'] = 'No function name!'; }
-if( !isset($aResult['error']) ) {
-
-	switch($_GET['function_name']) {
-		case 'GetUsuarios': 
-			$aResult['result'] = GetUsuarios();
-			break;
-			
-		case 'GetUsuario': 
-			if( !isset($_GET['arguments']) ) { $aResult['error'] = 'No arguments!'; }
-			else {
-				$arguments = json_decode($_GET['arguments']);
-				if ( isset($arguments->id_usuario) ){  $aResult['result'] = GetUsuario($arguments->id_usuario); } 
-				else { $aResult['error'] = 'Wrong arguments!'; }
-			 }
-			break;
-
-		case 'GetUsuariosCompeticion':
-			if( !isset($_GET['arguments']) ) { $aResult['error'] = 'No arguments!'; }
-			else {
-				$arguments = json_decode($_GET['arguments']);
-				if ( isset($arguments->id_competicion) ){  $aResult['result'] = GetUsuariosCompeticion($arguments->id_competicion); } 
-				else { $aResult['error'] = 'Wrong arguments!'; }
-			 }
-			break;
-			
-		case 'GetUsuarioConectado': 
-			$aResult['result'] = GetUsuarioConectado();
-			break;
-
-		case 'Login':
-			if( !isset($_GET['arguments']) ) { $aResult['error'] = 'No arguments!'; }
-			else {
-				$arguments = json_decode($_GET['arguments']);
-				if ( isset($arguments->login) && isset($arguments->password) ){  
-					if (Login($arguments->login, $arguments->password)) { $aResult['result'] = "ok"; }
-					else { $aResult['result'] = "error"; }
-				} else { $aResult['error'] = 'Wrong arguments!'; }
-			 }
-			break;
-
-		case 'Logout': 
-			if (Logout()) $aResult['result'] = "ok";
-			else $aResult['result'] = "error";
-			break;
-			
-		// case 'InsertarUsuario':
-			// if( !isset($_GET['arguments']) ) { $aResult['error'] = 'No arguments!'; }
-			// else{
-				// $arguments = json_decode($_GET['arguments']);
-				// if ( isset($arguments->login) && isset($arguments->password) && isset($arguments->nombre) && isset($arguments->apellidos) && isset($arguments->email) ){
-					// if (InsertarUsuario($arguments->login, $arguments->password, $arguments->nombre, $arguments->apellidos, 
-					                    // $arguments->comentarios, $arguments->email, $aResult['messages'])){
-						// $aResult['result'] = "ok";
-					// } else { $aResult['result'] = "error"; }
-				// } else { $aResult['error'] = 'Wrong arguments!'; }
-			// }
-			// break;
-
-		case 'ActualizarUsuario': 
-			if( !isset($_GET['arguments']) ) { $aResult['error'] = 'No arguments!'; }
-			else {
-				$arguments = json_decode($_GET['arguments']);
-				if ( isset($arguments->id) && isset($arguments->nombre) && isset($arguments->apellidos) && isset($arguments->email) ){ 
-					if (ActualizarUsuario($arguments->id, $arguments->password, $arguments->nombre, $arguments->apellidos, $arguments->comentarios,
-					                      $arguments->email, $aResult['messages']) ){ 
-						$aResult['result'] = "ok"; 
-					} else { $aResult['result'] = "error"; }
-				} else { $aResult['error'] = 'Wrong arguments!'; }
-			 }
-			break;
-
-		// case 'ActualizarUsuarioByAdmin': 
-			// if( !isset($_GET['arguments']) ) { $aResult['error'] = 'No arguments!'; }
-			// else {
-				// $arguments = json_decode($_GET['arguments']);
-				// if ( isset($arguments->id_usuario) && isset($arguments->estado) && isset($arguments->acceso) && isset($arguments->competiciones) ){ 
-					// if (ActualizarUsuarioByAdmin($arguments->id_usuario, $arguments->estado, $arguments->acceso, $arguments->competiciones, $aResult['messages']) ){ 
-						// $aResult['result'] = "ok"; 
-					// } else { $aResult['result'] = "error"; }
-				// } else { $aResult['error'] = 'Wrong arguments!'; }
-			 // }
-			// break;
-
-		case 'GetCompeticionesUsuarios':
-			$aResult['result'] = GetCompeticionesUsuarios();
-			break;
-			
-		default:
-		   $aResult['error'] = 'Not found function '.$_POST['function_name'].'!';
-		   break;
-	}
-}
-echo json_encode($aResult);
 ?>

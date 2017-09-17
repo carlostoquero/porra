@@ -2,10 +2,6 @@
 include_once ("../model/dbConnection.php");
 include_once ("../model/Tipos.php");
 
-if (session_id() == '') {
-    session_start();
-}
-
 function GetAccesos(){
 	$accesos = array();
 	$db = new dbConnection();
@@ -66,33 +62,4 @@ function GetTiposJornada(){
 	return $tiposJornada;
 }
 
-header('Content-Type: application/json');
-$aResult = array();
-
-if( !isset($_GET['function_name']) ) { $aResult['error'] = 'No function name!'; }
-if( !isset($aResult['error']) ) {
-
-	switch($_GET['function_name']) {
-		case 'GetAccesos': 
-			$aResult['result'] = GetAccesos();
-			break;
-
-		case 'GetEstados':
-			$aResult['result'] = GetEstados();
-			break;
-
-		case 'GetTiposCompeticion':
-			$aResult['result'] = GetTiposCompeticion();
-			break;
-
-		case 'GetTiposJornada':
-			$aResult['result'] = GetTiposJornada();
-			break;
-			
-		default:
-		   $aResult['error'] = 'Not found function '.$_POST['function_name'].'!';
-		   break;
-	}
-}
-echo json_encode($aResult);
 ?>

@@ -2,10 +2,6 @@
 include_once ("../model/dbConnection.php");
 include_once ("../model/Equipo.php");
 
-if (session_id() == '') {
-    session_start();
-}
-
 function GetEquipos(){
 	$equipos = array();
 	$db = new dbConnection();
@@ -251,96 +247,4 @@ function BorrarCompeticionEquipo($id_equipo, $id_competicion, &$mensajes){
 	return $correctDelete;
 }
 
-header('Content-Type: application/json');
-$aResult = array();
-
-if( !isset($_GET['function_name']) ) { $aResult['error'] = 'No function name!'; }
-if( !isset($aResult['error']) ) {
-	switch($_GET['function_name']) {
-		case 'GetEquipos': 
-			$aResult['result'] = GetEquipos();
-			break;
-
-		case 'GetEquiposByCompeticion': 
-			if( !isset($_GET['arguments']) ) { $aResult['error'] = 'No arguments!'; }
-			else{
-				$arguments = json_decode($_GET['arguments']);
-				if ( isset($arguments->id) ){
-					$aResult['result'] = GetEquiposByCompeticion($arguments->id);
-				} else { $aResult['error'] = 'Wrong arguments!'; }
-			}
-			break;
-			
-		// case 'GetEquiposByGrupo': 
-			// if( !isset($_GET['arguments']) ) { $aResult['error'] = 'No arguments!'; }
-			// else{
-				// $arguments = json_decode($_GET['arguments']);
-				// if ( isset($arguments->id_grupo) ){
-					// $aResult['result'] = GetEquiposByGrupo($arguments->id_grupo);
-				// } else { $aResult['error'] = 'Wrong arguments!'; }
-			// }
-			// break;
-
-		case 'GuardarEquipo':
-			if( !isset($_GET['arguments']) ) { $aResult['error'] = 'No arguments!'; }
-			else{
-				$arguments = json_decode($_GET['arguments']);
-				if ( isset($arguments->nombre) && isset($arguments->abreviatura) && isset($arguments->url)){
-					if (GuardarEquipo($arguments->id, $arguments->nombre, $arguments->abreviatura, $arguments->url, $aResult['messages']))  { 
-						$aResult['result'] = "ok";
-					} else { $aResult['result'] = "error"; }
-				} else { $aResult['error'] = 'Wrong arguments!'; }
-			}
-			break;
-
-		case 'BorrarEquipo': 
-			if( !isset($_GET['arguments']) ) { $aResult['error'] = 'No arguments!'; }
-			else {
-				$arguments = json_decode($_GET['arguments']);
-				if ( isset($arguments->id) ){
-					if (BorrarEquipo($arguments->id, $aResult['messages']))  { $aResult['result'] = "ok";}
-					else { $aResult['result'] = "error"; }
-				} else { $aResult['error'] = 'Wrong arguments!'; }
-			 }
-			break;
-
-		case 'GetCompeticionesEquipo':
-			if( !isset($_GET['arguments']) ) { $aResult['error'] = 'No arguments!'; }
-			else {
-				$arguments = json_decode($_GET['arguments']);
-				if ( isset($arguments->id) ){
-					$aResult['result'] = GetCompeticionesEquipo($arguments->id);
-				} else { $aResult['error'] = 'Wrong arguments!'; }
-			 }
-			break;
-			
-		case 'GuardarCompeticionEquipo':
-			if( !isset($_GET['arguments']) ) { $aResult['error'] = 'No arguments!'; }
-			else {
-				$arguments = json_decode($_GET['arguments']);
-				if ( isset($arguments->id_equipo) && isset($arguments->id_competicion) && isset($arguments->id_grupo) ){
-					if (GuardarCompeticionEquipo($arguments->id_equipo, $arguments->id_competicion, $arguments->id_grupo, $aResult['messages']))  { 
-						$aResult['result'] = "ok";
-					} else { $aResult['result'] = "error"; }
-				} else { $aResult['error'] = 'Wrong arguments!'; }
-			 }
-			break;
-			
-		case 'BorrarCompeticionEquipo':
-			if( !isset($_GET['arguments']) ) { $aResult['error'] = 'No arguments!'; }
-			else {
-				$arguments = json_decode($_GET['arguments']);
-				if ( isset($arguments->id_equipo) && isset($arguments->id_competicion) ){
-					if (BorrarCompeticionEquipo($arguments->id_equipo, $arguments->id_competicion, $aResult['messages']))  { $aResult['result'] = "ok";}
-					else { $aResult['result'] = "error"; }
-				} else { $aResult['error'] = 'Wrong arguments!'; }
-			 }
-			break;
-
-		default:
-		   $aResult['error'] = 'Not found function '.$_POST['function_name'].'!';
-		   break;
-	}
-}
-echo json_encode($aResult);
 ?>

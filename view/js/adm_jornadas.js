@@ -66,7 +66,7 @@ $(document).ready(function(){
 			var jornada_borrar = findElementByField(jornadas, "id_jornada", id_jornada);
 			if (jornada_borrar !== null){
 				if (confirm("Borrar la jornada '" + jornada_borrar.nombre_jornada + "'?")){
-					var resultado_borrado = getAjaxSync('ServicioJornadas', 'BorrarJornada', JSON.stringify({id: jornada_borrar.id_jornada}));
+					var resultado_borrado = getAjaxSync('BorrarJornada', JSON.stringify({id: jornada_borrar.id_jornada}));
 					if (resultado_borrado === "ok"){
 						var id_competicion = parseInt($('.competicion').val());
 						loadJornadas(id_competicion);
@@ -99,7 +99,7 @@ $(document).ready(function(){
 			datos_jornada.tipo_jornada = parseInt($('.jorn_tipo_jornada').val());
 			datos_jornada.competicion = id_competicion;
 			
-			var resultado_guardado = getAjaxSync('ServicioJornadas', 'GuardarJornada', JSON.stringify(datos_jornada));
+			var resultado_guardado = getAjaxSync('GuardarJornada', JSON.stringify(datos_jornada));
 			if (resultado_guardado === "ok") loadJornadas(id_competicion);
 		}
 	});
@@ -129,7 +129,7 @@ $(document).ready(function(){
 			var partido_borrar = findElementByField(partidos_jornada, "id_partido", id_partido);
 			if (partido_borrar !== null){
 				if (confirm("Borrar el partido?")){
-					var resultado_borrado = getAjaxSync('ServicioJornadas', 'BorrarPartido', JSON.stringify({id: partido_borrar.id_partido}));
+					var resultado_borrado = getAjaxSync('BorrarPartido', JSON.stringify({id: partido_borrar.id_partido}));
 					if (resultado_borrado === "ok") loadPartidosJornada(id_jornada);
 				}
 			}
@@ -156,7 +156,7 @@ $(document).ready(function(){
 			datos_partido.fecha_hora = moment($('.part_fecha_hora').val()).format('YYYY-MM-DD HH:mm:SS');
 			datos_partido.jornada = id_jornada;
 			
-			var resultado_guardado = getAjaxSync('ServicioJornadas', 'GuardarPartido', JSON.stringify(datos_partido));
+			var resultado_guardado = getAjaxSync('GuardarPartido', JSON.stringify(datos_partido));
 			if (resultado_guardado === "ok") loadPartidosJornada(id_jornada);
 		}
 	});

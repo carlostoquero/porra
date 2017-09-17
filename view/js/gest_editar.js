@@ -16,7 +16,7 @@ $(document).ready(function(){
 			datos_usuario.comentarios = $('.usr-comments').val();
 			datos_usuario.email = $('.usr-email').val();
 			
-			var resultado_guardado = getAjaxSync('ServicioUsuarios', 'ActualizarUsuario', JSON.stringify(datos_usuario));
+			var resultado_guardado = getAjaxSync('ActualizarUsuario', JSON.stringify(datos_usuario));
 			if (resultado_guardado === "ok") loadUsuario();
 		}
 	});

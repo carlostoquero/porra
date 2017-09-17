@@ -19,7 +19,7 @@ $(document).ready(function(){
 	$('body').on('click', '.select-competicion', function(){
 		var idCompeticion = $(this).attr('data-id-competicion') !== null && $(this).attr('data-id-competicion') !== "" ? parseInt($(this).attr('data-id-competicion')) : null;
 		if (idCompeticion !== null){
-			var resultado_cambio = getAjaxSync('ServicioCompeticiones', 'SetCompeticionSeleccionada', JSON.stringify({id: idCompeticion}));
+			var resultado_cambio = getAjaxSync('SetCompeticionSeleccionada', JSON.stringify({id: idCompeticion}));
 			if (resultado_cambio === "ok") location.href = './reglas.html'; 
 		}
 	});

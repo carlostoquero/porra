@@ -2,10 +2,6 @@
 include_once ("../model/dbConnection.php");
 include_once ("../model/Estadio.php");
 
-if (session_id() == '') {
-    session_start();
-}
-
 function GetEstadios(){
 	$estadios = array();
 	$db = new dbConnection();
@@ -82,44 +78,4 @@ function BorrarEstadio($id_estadio){
 	return $correctDelete;
 }
 
-header('Content-Type: application/json');
-$aResult = array();
-
-if( !isset($_GET['function_name']) ) { $aResult['error'] = 'No function name!'; }
-if( !isset($aResult['error']) ) {
-
-	switch($_GET['function_name']) {
-		case 'GetEstadios': 
-			$aResult['result'] = GetEstadios();
-			break;
-			
-		case 'GuardarEstadio':
-			if( !isset($_GET['arguments']) ) { $aResult['error'] = 'No arguments!'; }
-			else{
-				$arguments = json_decode($_GET['arguments']);
-				if ( isset($arguments->nombre) && isset($arguments->ciudad) ){
-					if (GuardarEstadio($arguments->id, $arguments->nombre, $arguments->ciudad, $arguments->equipo_local))  { 
-						$aResult['result'] = "ok";
-					} else { $aResult['result'] = "error"; }
-				} else { $aResult['error'] = 'Wrong arguments!'; }
-			}
-			break;
-
-		case 'BorrarEstadio': 
-			if( !isset($_GET['arguments']) ) { $aResult['error'] = 'No arguments!'; }
-			else {
-				$arguments = json_decode($_GET['arguments']);
-				if ( isset($arguments->id) ){
-					if (BorrarEstadio($arguments->id))  { $aResult['result'] = "ok";}
-					else { $aResult['result'] = "error"; }
-				} else { $aResult['error'] = 'Wrong arguments!'; }
-			 }
-			break;
-
-		default:
-		   $aResult['error'] = 'Not found function '.$_POST['function_name'].'!';
-		   break;
-	}
-}
-echo json_encode($aResult);
 ?>

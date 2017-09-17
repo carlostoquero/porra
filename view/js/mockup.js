@@ -456,7 +456,7 @@ function getClasificacionEquiposMockup(){
 	clasificacion_equipos.push({id_equipo: 19, url_escudo: "img/OSA.png", nombre_equipo: "At.Osasuna", jugados: 38, ganados: 4, empatados: 10, perdidos: 24, goles_favor: 40, goles_contra: 94, puntos: 22 });
 	clasificacion_equipos.push({id_equipo: 20, url_escudo: "img/GRA.png", nombre_equipo: "Granada", jugados: 38, ganados: 4, empatados: 8, perdidos: 26, goles_favor: 30, goles_contra: 82, puntos: 20 });
 	
-	clasificacion_grupos.push({ id_grupo: 1, nombre_grupo: "Primera_division", clasificacion: clasificacion_equipos });
+	clasificacion_grupos["1"] = clasificacion_equipos ;
 	return clasificacion_grupos;
 }
 

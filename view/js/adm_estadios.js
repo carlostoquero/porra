@@ -27,7 +27,7 @@ $(document).ready(function(){
 			var estadio_borrar = findElementByField(estadios, "id_estadio", id_estadio);
 			if (estadio_borrar !== null){
 				if (confirm("Borrar el estadio '" + estadio_borrar.nombre_estadio + "'?")){
-					var resultado_borrado = getAjaxSync('ServicioEstadios', 'BorrarEstadio', JSON.stringify({id: estadio_borrar.id_estadio}));
+					var resultado_borrado = getAjaxSync('BorrarEstadio', JSON.stringify({id: estadio_borrar.id_estadio}));
 					if (resultado_borrado === "ok") loadEstadios();
 				}
 			}
@@ -48,7 +48,7 @@ $(document).ready(function(){
 			datos_estadio.ciudad = $('.estadio_ciudad').val();
 			if ($('.estadio_equipo').val() !== null && $('.estadio_equipo').val() !== "") datos_estadio.equipo_local = parseInt($('.estadio_equipo').val());
 			
-			var resultado_guardado = getAjaxSync('ServicioEstadios', 'GuardarEstadio', JSON.stringify(datos_estadio));
+			var resultado_guardado = getAjaxSync('GuardarEstadio', JSON.stringify(datos_estadio));
 			if (resultado_guardado === "ok") loadEstadios();
 		}
 	});

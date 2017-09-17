@@ -55,7 +55,7 @@ function usuarioConectado(checkAdmin){
 	if (TRABAJANDO_EN_LOCAL){
 		usuario_conectado = {id_usuario: 8, login: "usuario", id_estado: 1, id_acceso: 2};
 	} else {
-		usuario_conectado = getAjaxSync('ServicioUsuarios', 'GetUsuarioConectado');
+		usuario_conectado = getAjaxSync('GetUsuarioConectado');
 		if (usuario_conectado === null) location.href = './login.html';
 	
 		// Comprobación de acceso de administrador para determinadas páginas
@@ -73,7 +73,7 @@ function getTiposCompeticion(){
 	if (TRABAJANDO_EN_LOCAL){
 		tipos_competicion = getTiposCompeticionMockup();
 	} else {
-		tipos_competicion = getAjaxSync('ServicioTipos', 'GetTiposCompeticion');
+		tipos_competicion = getAjaxSync('GetTiposCompeticion');
 	}
 	return tipos_competicion;
 }
@@ -82,7 +82,7 @@ function getTiposJornada(){
 	if (TRABAJANDO_EN_LOCAL){
 		tipos_jornada = getTiposJornadaMockup();
 	} else {
-		tipos_jornada = getAjaxSync('ServicioTipos', 'GetTiposJornada');
+		tipos_jornada = getAjaxSync('GetTiposJornada');
 	}
 	return tipos_jornada;
 }
@@ -91,7 +91,7 @@ function getAccesosUsuario() {
 	if (TRABAJANDO_EN_LOCAL){
 		accesos_usuario = getAccesosUsuarioMockup();
 	} else {
-		accesos_usuario = getAjaxSync('ServicioTipos', 'GetAccesos');
+		accesos_usuario = getAjaxSync('GetAccesos');
 	}
 	return accesos_usuario;
 }
@@ -100,7 +100,7 @@ function getEstadosUsuario(){
 	if (TRABAJANDO_EN_LOCAL){
 		estados_usuario = getEstadosUsuarioMockup();
 	} else {
-		estados_usuario = getAjaxSync('ServicioTipos', 'GetEstados');
+		estados_usuario = getAjaxSync('GetEstados');
 	}
 	return estados_usuario;
 }
@@ -112,7 +112,7 @@ function getCompeticiones(){
 	if (TRABAJANDO_EN_LOCAL) {
 		competiciones = getCompeticionesMockup();
 	} else {
-		competiciones = getAjaxSync('ServicioCompeticiones', 'GetCompeticiones');
+		competiciones = getAjaxSync('GetCompeticiones');
 	}
 	return competiciones;
 }
@@ -122,7 +122,7 @@ function getGrupos(){
 	if (TRABAJANDO_EN_LOCAL) {
 		grupos = getGruposMockup();
 	} else {
-		grupos = getAjaxSync('ServicioCompeticiones', 'GetGrupos');
+		grupos = getAjaxSync('GetGrupos');
 	}
 	return grupos;
 }
@@ -132,7 +132,7 @@ function getGruposCompeticion(id_competicion){
 	if (TRABAJANDO_EN_LOCAL) {
 		grupos_competicion = getGruposCompeticionMockup(id_competicion);
 	} else {
-		grupos_competicion = getAjaxSync('ServicioCompeticiones', 'GetGruposCompeticion', JSON.stringify({id: id_competicion}));
+		grupos_competicion = getAjaxSync('GetGruposCompeticion', JSON.stringify({id: id_competicion}));
 	}
 	return grupos_competicion;
 }
@@ -142,7 +142,7 @@ function getCompeticionesEquipo(id_equipo){
 	if (TRABAJANDO_EN_LOCAL) {
 		competiciones_equipo = getCompeticionesEquipoMockup(id_equipo);
 	} else {
-		competiciones_equipo = getAjaxSync('ServicioEquipos', 'GetCompeticionesEquipo', JSON.stringify({id: id_equipo}));
+		competiciones_equipo = getAjaxSync('GetCompeticionesEquipo', JSON.stringify({id: id_equipo}));
 	}
 	return competiciones_equipo;
 }
@@ -152,7 +152,7 @@ function getCompeticionesUsuarios(){
 	if (TRABAJANDO_EN_LOCAL) {
 		competiciones_usuarios = getCompeticionesUsuariosMockup();
 	} else {
-		competiciones_usuarios = getAjaxSync('ServicioUsuarios', 'GetCompeticionesUsuarios');
+		competiciones_usuarios = getAjaxSync('GetCompeticionesUsuarios');
 	}
 	return competiciones_usuarios;
 }
@@ -162,7 +162,7 @@ function getCompeticionesUsuario(id_usuario){
 	if (TRABAJANDO_EN_LOCAL) {
 		competiciones_usuario = getCompeticionesUsuarioMockup(id_usuario);
 	} else {
-		competiciones_usuario = getAjaxSync('ServicioCompeticiones', 'GetCompeticionesUsuario', JSON.stringify({id_usuario: id_usuario}));
+		competiciones_usuario = getAjaxSync('GetCompeticionesUsuario', JSON.stringify({id_usuario: id_usuario}));
 	}
 	return competiciones_usuario;
 }
@@ -172,7 +172,7 @@ function getEquipos(){
 	if (TRABAJANDO_EN_LOCAL) {
 		equipos = getEquiposMockup();
 	} else {
-		equipos = getAjaxSync('ServicioEquipos', 'GetEquipos');
+		equipos = getAjaxSync('GetEquipos');
 	}
 	return equipos;
 }
@@ -182,7 +182,7 @@ function getEquiposCompeticion(id_competicion){
 	if (TRABAJANDO_EN_LOCAL) {
 		equipos_competicion = getEquiposCompeticionMockup(id_competicion);
 	} else {
-		equipos_competicion = getAjaxSync('ServicioEquipos', 'GetEquiposByCompeticion', JSON.stringify({id: id_competicion}));
+		equipos_competicion = getAjaxSync('GetEquiposByCompeticion', JSON.stringify({id: id_competicion}));
 	}
 	return equipos_competicion;
 }
@@ -192,7 +192,7 @@ function getEquiposGrupo(id_grupo){
 	if (TRABAJANDO_EN_LOCAL) {
 		equipos_grupo = getEquiposGrupoMockup(id_grupo);
 	} else {
-		equipos_grupo = getAjaxSync('ServicioEquipos', 'GetEquiposByGrupo', JSON.stringify({id_grupo: id_grupo}));
+		equipos_grupo = getAjaxSync('GetEquiposByGrupo', JSON.stringify({id_grupo: id_grupo}));
 	}
 	return equipos_grupo;
 }
@@ -202,7 +202,7 @@ function getEstadios(){
 	if (TRABAJANDO_EN_LOCAL) {
 		estadios = getEstadiosMockup();
 	} else {
-		estadios = getAjaxSync('ServicioEstadios', 'GetEstadios');
+		estadios = getAjaxSync('GetEstadios');
 	}
 	return estadios;
 }
@@ -212,7 +212,7 @@ function getJornadas(){
 	if (TRABAJANDO_EN_LOCAL) {
 		jornadas = getJornadasMockup();
 	} else {
-		jornadas = getAjaxSync('ServicioJornadas', 'GetJornadas');
+		jornadas = getAjaxSync('GetJornadas');
 	}
 	return jornadas;
 }
@@ -222,7 +222,7 @@ function getJornadasCompeticion(id_competicion){
 	if (TRABAJANDO_EN_LOCAL) {
 		jornadas_competicion = getJornadasCompeticionMockup(id_competicion);
 	} else {
-		jornadas_competicion = getAjaxSync('ServicioJornadas', 'GetJornadasCompeticion', JSON.stringify({id_competicion: id_competicion}));
+		jornadas_competicion = getAjaxSync('GetJornadasCompeticion', JSON.stringify({id_competicion: id_competicion}));
 	}
 	return jornadas_competicion;
 }
@@ -232,7 +232,7 @@ function getPartidosJornada(id_jornada){
 	if (TRABAJANDO_EN_LOCAL) {
 		partidos_jornada = getPartidosJornadaMockup(id_jornada);
 	} else {
-		partidos_jornada = getAjaxSync('ServicioJornadas', 'GetPartidosJornada', JSON.stringify({id: id_jornada}));
+		partidos_jornada = getAjaxSync('GetPartidosJornada', JSON.stringify({id: id_jornada}));
 	}
 	return partidos_jornada;
 }
@@ -242,7 +242,7 @@ function getUsuarios(){
 	if (TRABAJANDO_EN_LOCAL) {
 		usuarios = getUsuariosMockup();
 	} else {
-		usuarios = getAjaxSync('ServicioUsuarios', 'GetUsuarios');
+		usuarios = getAjaxSync('GetUsuarios');
 	}
 	return usuarios;
 }
@@ -252,7 +252,7 @@ function getUsuario(id_usuario){
 	if (TRABAJANDO_EN_LOCAL) {
 		usuario = getUsuarioMockup(id_usuario);
 	} else {
-		usuario = getAjaxSync('ServicioUsuarios', 'GetUsuario', JSON.stringify({id_usuario: id_usuario}));
+		usuario = getAjaxSync('GetUsuario', JSON.stringify({id_usuario: id_usuario}));
 	}
 	return usuario;
 }
@@ -262,7 +262,7 @@ function getUsuariosCompeticion(id_competicion){
 	if (TRABAJANDO_EN_LOCAL) {
 		usuarios_competicion = getUsuariosCompeticionMockup(id_competicion);
 	} else {
-		usuarios_competicion = getAjaxSync('ServicioUsuarios', 'GetUsuariosCompeticion', JSON.stringify({id_competicion: id_competicion}));
+		usuarios_competicion = getAjaxSync('GetUsuariosCompeticion', JSON.stringify({id_competicion: id_competicion}));
 	}
 	return usuarios_competicion;
 }
@@ -272,17 +272,17 @@ function getPronosticos(id_jornada){
 	if (TRABAJANDO_EN_LOCAL){
 		pronosticos = getPronosticosMockup(id_jornada);
 	} else {
-		pronosticos = getAjaxSync('ServicioPronosticos', 'GetPronosticosJornada', JSON.stringify({id_jornada: id_jornada}));
+		pronosticos = getAjaxSync('GetPronosticosJornada', JSON.stringify({id_jornada: id_jornada}));
 	}
 	return pronosticos;
 }
 
-function getClasificacionEquipos(){
+function getClasificacionEquipos(id_competicion){
 	var clasificacion_equipos = null;
 	if (TRABAJANDO_EN_LOCAL){
 		clasificacion_equipos = getClasificacionEquiposMockup();
 	} else {
-		clasificacion_equipos = getAjaxSync('ServicioJornadas', 'GetClasificacion');
+		clasificacion_equipos = getAjaxSync('GetClasificacionLigaEquipos', JSON.stringify({id_competicion: id_competicion}));
 	}
 	return clasificacion_equipos;
 }
@@ -292,7 +292,7 @@ function getClasificacionUsuarios(){
 	if (TRABAJANDO_EN_LOCAL){
 		puntos = getClasificacionUsuariosMockup();
 	} else {
-		puntos = getAjaxSync('ServicioPronosticos', 'GetPuntosUsuarios');
+		puntos = getAjaxSync('GetPuntosUsuarios');
 	}
 	return puntos;
 }
@@ -302,7 +302,7 @@ function getCompeticionSeleccionada(){
 	if (TRABAJANDO_EN_LOCAL){
 		competicion_seleccionada = getCompeticionSeleccionadaMockup();
 	} else {
-		competicion_seleccionada = getAjaxSync('ServicioCompeticiones', 'GetCompeticionSeleccionada');
+		competicion_seleccionada = getAjaxSync('GetCompeticionSeleccionada');
 	}
 	return competicion_seleccionada;
 }
@@ -311,12 +311,12 @@ function getJornadaActual(id_competicion){
 	if (TRABAJANDO_EN_LOCAL){
 		jornada_actual = getJornadaActualMockup();
 	} else {
-		jornada_actual = getAjaxSync('ServicioJornadas', 'GetJornadaActual', JSON.stringify({id_competicion: id_competicion}));
+		jornada_actual = getAjaxSync('GetJornadaActual', JSON.stringify({id_competicion: id_competicion}));
 	}
 	return jornada_actual;
 }
 
-function getAjaxSync(servicio, funcion, argumentos){
+function getAjaxSync(funcion, argumentos){
 	var resultado = null;
 	
 	var requestData = { function_name: funcion };
@@ -324,7 +324,7 @@ function getAjaxSync(servicio, funcion, argumentos){
 	
 	jQuery.ajax({
 		type: "GET",
-		url: '../controller/' + servicio + '.php',
+		url: '../controller/Map.php',
 		async: false,
 		dataType: 'json',
 		data: requestData,

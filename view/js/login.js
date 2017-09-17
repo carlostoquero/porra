@@ -5,7 +5,7 @@ $(document).ready(function(){
 			var login = $('#in_user').val();
 			var password = $('#in_password').val();
 			
-			var correctLogin = TRABAJANDO_EN_LOCAL ? "ok" : getAjaxSync('ServicioUsuarios', 'Login', JSON.stringify({login: login, password : password}));
+			var correctLogin = TRABAJANDO_EN_LOCAL ? "ok" : getAjaxSync('Login', JSON.stringify({login: login, password : password}));
 			if (correctLogin === "ok") location.href = './inicio.html';
 			else $('.errores').append('<div>Login incorrecto.</div>');
 		}

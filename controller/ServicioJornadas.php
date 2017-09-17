@@ -3,10 +3,6 @@ include_once ("../model/dbConnection.php");
 include_once ("../model/Jornada.php");
 include_once ("../model/Partido.php");
 
-if (session_id() == '') {
-    session_start();
-}
-
 function GetJornadas(){
 	$jornadas = array();
 	$db = new dbConnection();
@@ -194,6 +190,23 @@ function GetPartidos(){
 	return $partidos;
 }
 
+function GetPartidosGrupo($id_grupo){
+	$partidos = array();
+	$db = new dbConnection();
+	if ($stmt = $db->mysqli->prepare('SELECT id_partido, fecha_hora, id_equipo_1, id_equipo_2, id_estadio, id_grupo, id_jornada, goles_equipo_1, goles_equipo_2
+	                                  FROM PARTIDO WHERE id_grupo = ? ORDER BY id_partido')){
+		$stmt->bind_param("i", $id_grupo);
+		$stmt->execute();
+		$stmt->bind_result($rId, $rFecha, $rEquipo1, $rEquipo2, $rEstadio, $rGrupo, $rJornada, $rGoles1, $rGoles2);
+		while ($stmt->fetch()){
+			$partidos[] = new CPartido($rId, $rFecha, $rEquipo1, $rEquipo2, $rEstadio, $rGrupo, $rJornada, $rGoles1, $rGoles2);
+		}
+		$stmt->close();
+	}
+	$db->close();
+	return $partidos;
+}
+
 function GetPartidosJornada($id_jornada){
 	$partidos = array();
 	$db = new dbConnection();
@@ -304,102 +317,23 @@ function BorrarPartido($id_partido, &$mensajes){
 	return $borrado_correcto;
 }
 
-header('Content-Type: application/json');
-$aResult = array();
-
-if( !isset($_GET['function_name']) ) { $aResult['error'] = 'No function name!'; }
-if( !isset($aResult['error']) ) {
-
-	switch($_GET['function_name']) {
-		case 'GetJornadas': 
-			$aResult['result'] = GetJornadas();
-			break;
-			
-		case 'GetJornadasCompeticion': 
-			if( !isset($_GET['arguments']) ) { $aResult['error'] = 'No arguments!'; }
-			else {
-				$arguments = json_decode($_GET['arguments']);
-				if ( isset($arguments->id_competicion) ){  $aResult['result'] = GetJornadasCompeticion($arguments->id_competicion); } 
-				else { $aResult['error'] = 'Wrong arguments!'; }
-			 }
-			break;
-
-		case 'GetJornadaActual':
-			if( !isset($_GET['arguments']) ) { $aResult['error'] = 'No arguments!'; }
-			else {
-				$arguments = json_decode($_GET['arguments']);
-				if ( isset($arguments->id_competicion) ){  $aResult['result'] = GetJornadaActual($arguments->id_competicion); } 
-				else { $aResult['error'] = 'Wrong arguments!'; }
-			 }
-			break;
-			
-		case 'GuardarJornada':
-			if( !isset($_GET['arguments']) ) { $aResult['error'] = 'No arguments!'; }
-			else{
-				$arguments = json_decode($_GET['arguments']);
-				if ( isset($arguments->inicio) && isset($arguments->fin) && isset($arguments->numero) && isset($arguments->nombre) && 
-				    isset($arguments->nombre_corto) && isset($arguments->tipo_jornada) && isset($arguments->competicion) ){
-					if (GuardarJornada($arguments->id, $arguments->inicio, $arguments->fin, $arguments->numero, $arguments->nombre, 
-					                   $arguments->nombre_corto, $arguments->tipo_jornada, $arguments->competicion, $aResult['messages'])){
-						$aResult['result'] = "ok";
-					} else { $aResult['result'] = "error"; }
-				} else { $aResult['error'] = 'Wrong arguments!'; }
-			}
-			break;
-
-		case 'BorrarJornada': 
-			if( !isset($_GET['arguments']) ) { $aResult['error'] = 'No arguments!'; }
-			else {
-				$arguments = json_decode($_GET['arguments']);
-				if ( isset($arguments->id) ){ 
-					if (BorrarJornada($arguments->id, $aResult['messages']) ){ $aResult['result'] = "ok"; }
-					else { $aResult['result'] = "error"; }
-				} else { $aResult['error'] = 'Wrong arguments!'; }
-			 }
-			break;
-
-		case 'GetPartidos':
-			$aResult['result'] = GetPartidos();
-			break;
-			
-		case 'GetPartidosJornada':
-			if( !isset($_GET['arguments']) ) { $aResult['error'] = 'No arguments!'; }
-			else {
-				$arguments = json_decode($_GET['arguments']);
-				if ( isset($arguments->id) ){  $aResult['result'] = GetPartidosJornada($arguments->id); } 
-				else { $aResult['error'] = 'Wrong arguments!'; }
-			 }
-			break;
-		
-		case 'GuardarPartido':
-			if( !isset($_GET['arguments']) ) { $aResult['error'] = 'No arguments!'; }
-			else{
-				$arguments = json_decode($_GET['arguments']);
-				if ( isset($arguments->equipo_1) && isset($arguments->equipo_2) && isset($arguments->estadio) && isset($arguments->fecha_hora) && isset($arguments->jornada)){
-					$aResult['result'] = "ok";
-					if (GuardarPartido($arguments->id, $arguments->equipo_1, $arguments->equipo_2, $arguments->estadio, $arguments->grupo,
-					                   $arguments->fecha_hora, $arguments->jornada, $aResult['messages'])){
-						$aResult['result'] = "ok";
-					} else { $aResult['result'] = "error"; }
-				} else { $aResult['error'] = 'Wrong arguments!'; }
-			}
-			break;
-
-		case 'BorrarPartido': 
-			if( !isset($_GET['arguments']) ) { $aResult['error'] = 'No arguments!'; }
-			else {
-				$arguments = json_decode($_GET['arguments']);
-				if ( isset($arguments->id) ){ 
-					if (BorrarPartido($arguments->id, $aResult['messages']) ){ $aResult['result'] = "ok"; }
-					else { $aResult['result'] = "error"; }
-				} else { $aResult['error'] = 'Wrong arguments!'; }
-			 }
-			break;
-
-		default:
-		   $aResult['error'] = 'Not found function '.$_POST['function_name'].'!';
-		   break;
+function GetPartidosCompeticionPorTipoJornada($id_competicion, $id_tipo_jornada){
+	$partidos = array();
+	$db = new dbConnection();
+	if ($stmt = $db->mysqli->prepare('SELECT p.id_partido, p.fecha_hora, p.id_equipo_1, p.id_equipo_2, p.id_estadio, p.id_grupo, p.id_jornada, p.goles_equipo_1, p.goles_equipo_2
+	                                  FROM PARTIDO p JOIN JORNADA j ON j.id_jornada = p.id_jornada
+									  WHERE j.id_competicion = ? AND j.id_tipo_jornada = ? ORDER BY id_partido')){
+		$stmt->bind_param("ii", $id_competicion, $id_tipo_jornada);
+		$stmt->execute();
+		$stmt->bind_result($rId, $rFecha, $rEquipo1, $rEquipo2, $rEstadio, $rGrupo, $rJornada, $rGoles1, $rGoles2);
+		while ($stmt->fetch()){
+			$partidos[] = new CPartido($rId, $rFecha, $rEquipo1, $rEquipo2, $rEstadio, $rGrupo, $rJornada, $rGoles1, $rGoles2);
+		}
+		$stmt->close();
 	}
+	$db->close();
+	return $partidos;
+
 }
-echo json_encode($aResult);
+
 ?>

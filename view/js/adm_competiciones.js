@@ -40,7 +40,7 @@ $(document).ready(function(){
 			var competicion_borrar = findElementByField(competiciones, "id_competicion", id_competicion);
 			if (competicion_borrar !== null){
 				if (confirm("Borrar la competicion '" + competicion_borrar.nombre_competicion + "'?")){
-					var resultado_borrado = getAjaxSync('ServicioCompeticiones', 'BorrarCompeticion', JSON.stringify({id: competicion_borrar.id_competicion}));
+					var resultado_borrado = getAjaxSync('BorrarCompeticion', JSON.stringify({id: competicion_borrar.id_competicion}));
 					if (resultado_borrado === "ok") loadCompeticiones();
 				}
 			}
@@ -69,7 +69,7 @@ $(document).ready(function(){
 			datos_competicion.fin = moment($('.comp_fin').val()).format('YYYY-MM-DD HH:mm:SS');
 			datos_competicion.tipo_competicion = parseInt($('.comp_tipo_competicion').val());
 			
-			var resultado_guardado = getAjaxSync('ServicioCompeticiones', 'GuardarCompeticion', JSON.stringify(datos_competicion));
+			var resultado_guardado = getAjaxSync('GuardarCompeticion', JSON.stringify(datos_competicion));
 			if (resultado_guardado === "ok") loadCompeticiones();
 		}
 	});
@@ -95,7 +95,7 @@ $(document).ready(function(){
 			var grupo_borrar = findElementByField(grupos_competicion, "id_grupo", id_grupo);
 			if (grupo_borrar !== null){
 				if (confirm("Borrar el grupo '" + grupo_borrar.nombre_grupo + "'?")){
-					var resultado_borrado = getAjaxSync('ServicioCompeticiones', 'BorrarGrupo', JSON.stringify({id: grupo_borrar.id_grupo}));
+					var resultado_borrado = getAjaxSync('BorrarGrupo', JSON.stringify({id: grupo_borrar.id_grupo}));
 					if (resultado_borrado === "ok") loadGrupos(id_competicion);
 				}
 			}
@@ -117,7 +117,7 @@ $(document).ready(function(){
 			datos_grupo.nombre = $('.grupo_nombre').val();
 			datos_grupo.id_competicion = id_competicion;
 			
-			var resultado_guardado = getAjaxSync('ServicioCompeticiones', 'GuardarGrupo', JSON.stringify(datos_grupo));
+			var resultado_guardado = getAjaxSync('GuardarGrupo', JSON.stringify(datos_grupo));
 			if (resultado_guardado === "ok") loadGrupos(id_competicion);
 		}
 	});
