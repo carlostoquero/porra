@@ -8,11 +8,17 @@ $(document).ready(function(){
 	var clasificacion = getClasificacionEquipos(competicion_seleccionada.id_competicion);
 	
 	if (grupos !== null && grupos.length > 0 && clasificacion !== null){
+		var row = null;
 		$.each(grupos, function(index, grupo){
+			if (grupos.length === 1 || index % 2 === 0){
+				if (row !== null) $('.container-clasificacion').append(row);
+				row = $('<div class="row">');
+			}
 			var clasif_grupo = clasificacion[grupo.id_grupo];
 			if (clasif_grupo && clasif_grupo.length > 0){
-				var cell = $('<div class="row">');
-				cell.append('<div class="col-xs-1 col-sm-2 col-md-3 col-lg-4"></div>');
+				var cell = $('<div class="col-xs-12 col-sm-' + (grupos.length > 1 ? '6' : '12') + ' col-md-' + (grupos.length > 1 ? '6' : '12') + '">');
+				var cellContent = $('<div class="row">');
+				cellContent.append('<div class="col-xs-1 col-sm-2 col-md-3 col-lg-4"></div>');
 				var div = $('<div class="col-xs-10 col-sm-8 col-md-6 col-lg-4">');
 				div.append('<div><h3 class="title">' + grupo.nombre_grupo + '</h3></div>');
 				
@@ -40,11 +46,13 @@ $(document).ready(function(){
 				table.append(body);
 
 				div.append(table);
-				cell.append(div);
-				cell.append('<div class="col-xs-1 col-sm-2 col-md-3 col-lg-4"></div>');
+				cellContent.append(div);
+				cellContent.append('<div class="col-xs-1 col-sm-2 col-md-3 col-lg-4"></div>');
 				
-				$('.container-clasificacion').append(cell);
+				cell.append(cellContent);
+				row.append(cell);
 			}
 		});
+		$('.container-clasificacion').append(row);
 	}
 });
