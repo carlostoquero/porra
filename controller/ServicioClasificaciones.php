@@ -96,9 +96,17 @@ function ordenarClasificacionLiga($clasificaciones){
 	return $clasificacion_final;
 }
 
-// function GetClasificacionCopaEquipos($id_competicion){
-
-// }
+function GetClasificacionCopaEquipos($id_competicion){
+	$clasificacion = array();
+	$jornadas = GetJornadasCompeticionPorTipoJornada($id_competicion, 2); // Jornadas de tipo COPA
+	if (isset($jornadas) && count($jornadas) > 0){
+		foreach($jornadas as $jornada){
+			$partidos = GetPartidosJornada($jornada->id_jornada);
+			$clasificacion[$jornada->id_jornada] = $partidos;
+		}
+	}
+	return $clasificacion;
+}
 
 // function GetClasificacionUsuarios($id_competicion){
 

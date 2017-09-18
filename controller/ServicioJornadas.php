@@ -36,6 +36,23 @@ function GetJornadasCompeticion($id_competicion){
 	return $jornadas;
 }
 
+function GetJornadasCompeticionPorTipoJornada($id_competicion, $id_tipo_jornada){
+	$jornadas = array();
+	$db = new dbConnection();
+	if ($stmt = $db->mysqli->prepare('SELECT id_jornada, fecha_inicio, fecha_fin, numero_jornada, nombre_jornada, nombre_corto, id_tipo_jornada, id_competicion
+									  FROM JORNADA WHERE id_competicion = ? AND id_tipo_jornada = ? ORDER BY id_jornada')){
+		$stmt->bind_param("ii", $id_competicion, $id_tipo_jornada);
+		$stmt->execute();
+		$stmt->bind_result($rId, $rFechaInicio, $rFechaFin, $rNumero, $rNombre, $rNombreCorto, $rTipoJornada, $rCompeticion);
+		while ($stmt->fetch()){
+			$jornadas[] = new CJornada($rId, $rFechaInicio, $rFechaFin, $rNumero, $rNombre, $rNombreCorto, $rTipoJornada, $rCompeticion);
+		}
+		$stmt->close();
+	}
+	$db->close();
+	return $jornadas;
+}
+
 function GetJornadaActual($id_competicion){
 	$jornada = null;
 	

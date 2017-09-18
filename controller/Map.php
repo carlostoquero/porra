@@ -436,14 +436,14 @@ if( !isset($aResult['error']) ) {
 			 }
 			break;
 
-		// case 'GetClasificacionCopaEquipos': 
-			// if( !isset($_GET['arguments']) ) { $aResult['error'] = 'No arguments!'; }
-			// else {
-				// $arguments = json_decode($_GET['arguments']);
-				// if ( isset($arguments->id_competicion) ){  $aResult['result'] = GetClasificacionCopaEquipos($arguments->id_competicion); } 
-				// else { $aResult['error'] = 'Wrong arguments!'; }
-			 // }
-			// break;
+		case 'GetClasificacionCopaEquipos': 
+			if( !isset($_GET['arguments']) ) { $aResult['error'] = 'No arguments!'; }
+			else {
+				$arguments = json_decode($_GET['arguments']);
+				if ( isset($arguments->id_competicion) ){  $aResult['result'] = GetClasificacionCopaEquipos($arguments->id_competicion); } 
+				else { $aResult['error'] = 'Wrong arguments!'; }
+			 }
+			break;
 
 		// case 'GetClasificacionUsuarios': 
 			// if( !isset($_GET['arguments']) ) { $aResult['error'] = 'No arguments!'; }

@@ -431,34 +431,77 @@ function getClasificacionUsuariosMockup(){
 	return puntos;
 }
 
-function getClasificacionEquiposMockup(){
+function getClasificacionLigaEquiposMockup(){
 	var clasificacion_grupos = [];
 	
 	var clasificacion_equipos = [];
-	clasificacion_equipos.push({id_equipo: 1, url_escudo: "img/RMA.png", nombre_equipo: "Real Madrid", jugados: 38, ganados: 29, empatados: 6, perdidos: 3, goles_favor: 106, goles_contra: 41, puntos: 93 });
-	clasificacion_equipos.push({id_equipo: 2, url_escudo: "img/FCB.png", nombre_equipo: "Barcelona", jugados: 38, ganados: 28, empatados: 6, perdidos: 4, goles_favor: 116, goles_contra: 37, puntos: 90 });
-	clasificacion_equipos.push({id_equipo: 3, url_escudo: "img/ATM.png", nombre_equipo: "Atl&eacute;tico de Madrid", jugados: 38, ganados: 23, empatados: 9, perdidos: 6, goles_favor: 70, goles_contra: 27, puntos: 78 });
-	clasificacion_equipos.push({id_equipo: 4, url_escudo: "img/SEV.png", nombre_equipo: "Sevilla", jugados: 38, ganados: 21, empatados: 9, perdidos: 8, goles_favor: 69, goles_contra: 49, puntos: 72 });
-	clasificacion_equipos.push({id_equipo: 5, url_escudo: "img/VIL.png", nombre_equipo: "Villarreal", jugados: 38, ganados: 19, empatados: 10, perdidos: 9, goles_favor: 56, goles_contra: 33, puntos: 67 });
-	clasificacion_equipos.push({id_equipo: 6, url_escudo: "img/RSO.png", nombre_equipo: "Real Sociedad", jugados: 38, ganados: 19, empatados: 7, perdidos: 12, goles_favor: 59, goles_contra: 53, puntos: 64 });
-	clasificacion_equipos.push({id_equipo: 7, url_escudo: "img/ATH.png", nombre_equipo: "Athletic de Bilbao", jugados: 38, ganados: 19, empatados: 6, perdidos: 13, goles_favor: 53, goles_contra: 43, puntos: 63 });
-	clasificacion_equipos.push({id_equipo: 8, url_escudo: "img/ESY.png", nombre_equipo: "Espanyol", jugados: 38, ganados: 15, empatados: 11, perdidos: 12, goles_favor: 49, goles_contra: 50, puntos: 56 });
-	clasificacion_equipos.push({id_equipo: 9, url_escudo: "img/ALA.png", nombre_equipo: "Deportivo Alav&eacute;s SAD", jugados: 38, ganados: 14, empatados: 13, perdidos: 11, goles_favor: 41, goles_contra: 43, puntos: 55 });
-	clasificacion_equipos.push({id_equipo: 10, url_escudo: "img/EIB.png", nombre_equipo: "Eibar", jugados: 38, ganados: 15, empatados: 9, perdidos: 14, goles_favor: 56, goles_contra: 51, puntos: 54 });
-	clasificacion_equipos.push({id_equipo: 11, url_escudo: "img/MAL.png", nombre_equipo: "M&aacute;laga", jugados: 38, ganados: 12, empatados: 10, perdidos: 16, goles_favor: 49, goles_contra: 55, puntos: 46 });
-	clasificacion_equipos.push({id_equipo: 12, url_escudo: "img/VAL.png", nombre_equipo: "Valencia", jugados: 38, ganados: 13, empatados: 7, perdidos: 18, goles_favor: 56, goles_contra: 65, puntos: 46 });
-	clasificacion_equipos.push({id_equipo: 13, url_escudo: "img/CEL.png", nombre_equipo: "Celta", jugados: 38, ganados: 13, empatados: 6, perdidos: 19, goles_favor: 53, goles_contra: 69, puntos: 45 });
-	clasificacion_equipos.push({id_equipo: 14, url_escudo: "img/LPA.png", nombre_equipo: "Las Palmas", jugados: 38, ganados: 10, empatados: 9, perdidos: 19, goles_favor: 53, goles_contra: 74, puntos: 39 });
-	clasificacion_equipos.push({id_equipo: 15, url_escudo: "img/BET.png", nombre_equipo: "Real Betis", jugados: 38, ganados: 10, empatados: 9, perdidos: 19, goles_favor: 41, goles_contra: 64, puntos: 39 });
-	clasificacion_equipos.push({id_equipo: 16, url_escudo: "img/DEP.png", nombre_equipo: "Deportivo de la Coruña", jugados: 38, ganados: 8, empatados: 12, perdidos: 18, goles_favor: 43, goles_contra: 61, puntos: 36 });
-	clasificacion_equipos.push({id_equipo: 17, url_escudo: "img/LEG.png", nombre_equipo: "CD Legan&eacute;s", jugados: 38, ganados: 8, empatados: 11, perdidos: 19, goles_favor: 36, goles_contra: 55, puntos: 35 });
-	clasificacion_equipos.push({id_equipo: 18, url_escudo: "img/SPO.png", nombre_equipo: "Sporting de Gij&oacute;n", jugados: 38, ganados: 7, empatados: 10, perdidos: 21, goles_favor: 42, goles_contra: 72, puntos: 31 });
-	clasificacion_equipos.push({id_equipo: 19, url_escudo: "img/OSA.png", nombre_equipo: "At.Osasuna", jugados: 38, ganados: 4, empatados: 10, perdidos: 24, goles_favor: 40, goles_contra: 94, puntos: 22 });
-	clasificacion_equipos.push({id_equipo: 20, url_escudo: "img/GRA.png", nombre_equipo: "Granada", jugados: 38, ganados: 4, empatados: 8, perdidos: 26, goles_favor: 30, goles_contra: 82, puntos: 20 });
-	
+	clasificacion_equipos.push({id_equipo: 1,  jugados: 38, ganados: 29, empatados: 6, perdidos: 3, goles_favor: 106, goles_contra: 41, puntos: 93 });
+	clasificacion_equipos.push({id_equipo: 2,  jugados: 38, ganados: 28, empatados: 6, perdidos: 4, goles_favor: 116, goles_contra: 37, puntos: 90 });
+	clasificacion_equipos.push({id_equipo: 3,  jugados: 38, ganados: 23, empatados: 9, perdidos: 6, goles_favor: 70, goles_contra: 27, puntos: 78 });
+	clasificacion_equipos.push({id_equipo: 4,  jugados: 38, ganados: 21, empatados: 9, perdidos: 8, goles_favor: 69, goles_contra: 49, puntos: 72 });
+	clasificacion_equipos.push({id_equipo: 5,  jugados: 38, ganados: 19, empatados: 10, perdidos: 9, goles_favor: 56, goles_contra: 33, puntos: 67 });
 	clasificacion_grupos["1"] = clasificacion_equipos ;
+
+	clasificacion_equipos = [];
+	clasificacion_equipos.push({id_equipo: 6,  jugados: 38, ganados: 19, empatados: 7, perdidos: 12, goles_favor: 59, goles_contra: 53, puntos: 64 });
+	clasificacion_equipos.push({id_equipo: 7,  jugados: 38, ganados: 19, empatados: 6, perdidos: 13, goles_favor: 53, goles_contra: 43, puntos: 63 });
+	clasificacion_equipos.push({id_equipo: 8,  jugados: 38, ganados: 15, empatados: 11, perdidos: 12, goles_favor: 49, goles_contra: 50, puntos: 56 });
+	clasificacion_equipos.push({id_equipo: 9,  jugados: 38, ganados: 14, empatados: 13, perdidos: 11, goles_favor: 41, goles_contra: 43, puntos: 55 });
+	clasificacion_equipos.push({id_equipo: 10, jugados: 38, ganados: 15, empatados: 9, perdidos: 14, goles_favor: 56, goles_contra: 51, puntos: 54 });
+	clasificacion_grupos["2"] = clasificacion_equipos ;
+
+	clasificacion_equipos = [];
+	clasificacion_equipos.push({id_equipo: 11, jugados: 38, ganados: 12, empatados: 10, perdidos: 16, goles_favor: 49, goles_contra: 55, puntos: 46 });
+	clasificacion_equipos.push({id_equipo: 12, jugados: 38, ganados: 13, empatados: 7, perdidos: 18, goles_favor: 56, goles_contra: 65, puntos: 46 });
+	clasificacion_equipos.push({id_equipo: 13, jugados: 38, ganados: 13, empatados: 6, perdidos: 19, goles_favor: 53, goles_contra: 69, puntos: 45 });
+	clasificacion_equipos.push({id_equipo: 14, jugados: 38, ganados: 10, empatados: 9, perdidos: 19, goles_favor: 53, goles_contra: 74, puntos: 39 });
+	clasificacion_equipos.push({id_equipo: 15, jugados: 38, ganados: 10, empatados: 9, perdidos: 19, goles_favor: 41, goles_contra: 64, puntos: 39 });
+	clasificacion_grupos["3"] = clasificacion_equipos ;
+
+	clasificacion_equipos = [];
+	clasificacion_equipos.push({id_equipo: 16, jugados: 38, ganados: 8, empatados: 12, perdidos: 18, goles_favor: 43, goles_contra: 61, puntos: 36 });
+	clasificacion_equipos.push({id_equipo: 17, jugados: 38, ganados: 8, empatados: 11, perdidos: 19, goles_favor: 36, goles_contra: 55, puntos: 35 });
+	clasificacion_equipos.push({id_equipo: 18, jugados: 38, ganados: 7, empatados: 10, perdidos: 21, goles_favor: 42, goles_contra: 72, puntos: 31 });
+	clasificacion_equipos.push({id_equipo: 19, jugados: 38, ganados: 4, empatados: 10, perdidos: 24, goles_favor: 40, goles_contra: 94, puntos: 22 });
+	clasificacion_equipos.push({id_equipo: 20, jugados: 38, ganados: 4, empatados: 8, perdidos: 26, goles_favor: 30, goles_contra: 82, puntos: 20 });
+	clasificacion_grupos["4"] = clasificacion_equipos ;
+
 	return clasificacion_grupos;
 }
+
+function getClasificacionCopaEquiposMockup(){
+	var clasificacion = [];
+	
+	var partidos_jornada = [];
+	partidos_jornada.push({id_partido: 1,  id_equipo_1: 1,  id_equipo_2: 2,  goles_equipo_1: 1, goles_equipo_2: 1, id_estadio: 1, fecha_hora: '2016-08-19 20:45:00', id_grupo: 1});
+	partidos_jornada.push({id_partido: 2,  id_equipo_1: 3,  id_equipo_2: 4,  goles_equipo_1: 2, goles_equipo_2: 1, id_estadio: 2, fecha_hora: '2016-08-19 20:45:00', id_grupo: 1});
+	partidos_jornada.push({id_partido: 3,  id_equipo_1: 5,  id_equipo_2: 6,  goles_equipo_1: 6, goles_equipo_2: 2, id_estadio: 3, fecha_hora: '2016-08-19 20:45:00', id_grupo: 2});
+	partidos_jornada.push({id_partido: 4,  id_equipo_1: 7,  id_equipo_2: 8,  goles_equipo_1: 1, goles_equipo_2: 1, id_estadio: 4, fecha_hora: '2016-08-19 20:45:00', id_grupo: 2});
+	partidos_jornada.push({id_partido: 5,  id_equipo_1: 9,  id_equipo_2: 10, goles_equipo_1: 6, goles_equipo_2: 4, id_estadio: 5, fecha_hora: '2016-08-19 20:45:00', id_grupo: 3});
+	partidos_jornada.push({id_partido: 6,  id_equipo_1: 11, id_equipo_2: 12, goles_equipo_1: 2, goles_equipo_2: 1, id_estadio: 6, fecha_hora: '2016-08-19 20:45:00', id_grupo: 3});
+	partidos_jornada.push({id_partido: 7,  id_equipo_1: 13, id_equipo_2: 14, goles_equipo_1: 0, goles_equipo_2: 3, id_estadio: 7, fecha_hora: '2016-08-19 20:45:00', id_grupo: 4});
+	partidos_jornada.push({id_partido: 8,  id_equipo_1: 15, id_equipo_2: 16, goles_equipo_1: 1, goles_equipo_2: 1, id_estadio: 8, fecha_hora: '2016-08-19 20:45:00', id_grupo: 4});
+	clasificacion["4"] = partidos_jornada;
+	
+	partidos_jornada = [];
+	partidos_jornada.push({id_partido: 9,  id_equipo_1: 17, id_equipo_2: 18, goles_equipo_1: 0, goles_equipo_2: 1, id_estadio: 9, fecha_hora: '2016-08-19 20:45:00', id_grupo: 5});
+	partidos_jornada.push({id_partido: 10, id_equipo_1: 19, id_equipo_2: 20, goles_equipo_1: 2, goles_equipo_2: 4, id_estadio: 10, fecha_hora: '2016-08-19 20:45:00', id_grupo: 5});
+	partidos_jornada.push({id_partido: 11,  id_equipo_1: 17, id_equipo_2: 18, goles_equipo_1: 0, goles_equipo_2: 1, id_estadio: 9, fecha_hora: '2016-08-19 20:45:00', id_grupo: 5});
+	partidos_jornada.push({id_partido: 12, id_equipo_1: 19, id_equipo_2: 20, goles_equipo_1: 2, goles_equipo_2: 4, id_estadio: 10, fecha_hora: '2016-08-19 20:45:00', id_grupo: 5});
+	clasificacion["5"] = partidos_jornada;
+
+	partidos_jornada = [];
+	partidos_jornada.push({id_partido: 13,  id_equipo_1: 17, id_equipo_2: 18, goles_equipo_1: 0, goles_equipo_2: 1, id_estadio: 9, fecha_hora: '2016-08-19 20:45:00', id_grupo: 5});
+	partidos_jornada.push({id_partido: 14, id_equipo_1: 19, id_equipo_2: 20, goles_equipo_1: 2, goles_equipo_2: 4, id_estadio: 10, fecha_hora: '2016-08-19 20:45:00', id_grupo: 5});
+	clasificacion["6"] = partidos_jornada;
+
+	partidos_jornada = [];
+	partidos_jornada.push({id_partido: 15, id_equipo_1: 19, id_equipo_2: 20, goles_equipo_1: 2, goles_equipo_2: 4, id_estadio: 10, fecha_hora: '2016-08-19 20:45:00', id_grupo: 5});
+	clasificacion["7"] = partidos_jornada;
+
+	return clasificacion;
+}
+
 
 function getCompeticionSeleccionadaMockup(){
 	return {id_competicion: 1, nombre_competicion: "Mundial Brasil 2014", 			titulo: "La porra del mundial", subtitulo: "FIFA World Cup Brasil 2014", siglas: "wc-14", id_tipo_competicion: 3, reglas: "Prueba de contenido para reglas"};

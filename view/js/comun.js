@@ -277,12 +277,22 @@ function getPronosticos(id_jornada){
 	return pronosticos;
 }
 
-function getClasificacionEquipos(id_competicion){
+function getClasificacionLigaEquipos(id_competicion){
 	var clasificacion_equipos = null;
 	if (TRABAJANDO_EN_LOCAL){
-		clasificacion_equipos = getClasificacionEquiposMockup();
+		clasificacion_equipos = getClasificacionLigaEquiposMockup();
 	} else {
 		clasificacion_equipos = getAjaxSync('GetClasificacionLigaEquipos', JSON.stringify({id_competicion: id_competicion}));
+	}
+	return clasificacion_equipos;
+}
+
+function getClasificacionCopaEquipos(id_competicion){
+	var clasificacion_equipos = null;
+	if (TRABAJANDO_EN_LOCAL){
+		clasificacion_equipos = getClasificacionCopaEquiposMockup();
+	} else {
+		clasificacion_equipos = getAjaxSync('GetClasificacionCopaEquipos', JSON.stringify({id_competicion: id_competicion}));
 	}
 	return clasificacion_equipos;
 }
